@@ -13,6 +13,19 @@ public class MessagesItem {
     @JsonProperty("sticker")
     private Sticker sticker;
 
+    @JsonProperty("location")
+    private Location location;
+
+    @JsonProperty("contacts")
+    private List<ContactsItem> contacts;
+
+
+    @JsonProperty("button")
+    private Button button;
+
+    @JsonProperty("context")
+    private Context context;
+
     @JsonProperty("from")
     private String from;
 
@@ -64,5 +77,21 @@ public class MessagesItem {
 
     public String getTimestamp() {
         return timestamp;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public List<ContactsItem> getContacts() {
+        return contacts;
+    }
+
+    public Button getButton() {
+        return button;
+    }
+
+    public Context getContext() {
+        return context;
     }
 }
