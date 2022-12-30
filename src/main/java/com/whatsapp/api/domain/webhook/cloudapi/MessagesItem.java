@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MessagesItem{
 
+	@JsonProperty("reaction")
+	private Reaction reaction;
+
 	@JsonProperty("from")
 	private String from;
 
@@ -18,6 +21,10 @@ public class MessagesItem{
 
 	@JsonProperty("timestamp")
 	private String timestamp;
+
+	public Reaction getReaction(){
+		return reaction;
+	}
 
 	public String getFrom(){
 		return from;
