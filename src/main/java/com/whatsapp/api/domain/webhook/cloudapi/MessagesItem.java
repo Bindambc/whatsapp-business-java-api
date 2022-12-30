@@ -6,6 +6,8 @@ public class MessagesItem{
 
 	@JsonProperty("reaction")
 	private Reaction reaction;
+	@JsonProperty("image")
+	private Image image;
 
 	@JsonProperty("from")
 	private String from;
@@ -22,8 +24,11 @@ public class MessagesItem{
 	@JsonProperty("timestamp")
 	private String timestamp;
 
-	public Reaction getReaction(){
+	public Reaction getReaction() {
 		return reaction;
+	}
+	public Image getImage(){
+		return image;
 	}
 
 	public String getFrom(){
