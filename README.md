@@ -9,7 +9,7 @@ Whatsapp business api SDK, written in java
 ---
 
 ## Installation
-1. Add the JitPack repository to your build file:
+**1. Add the JitPack repository to your build file:**
 
 ```xml
 	<repositories>
@@ -20,7 +20,7 @@ Whatsapp business api SDK, written in java
 	</repositories>
 ```
 
-2. Add the following Maven dependency to your project's `pom.xml`:
+**2. Add the following Maven dependency to your project's `pom.xml`:**
 
 ```xml
    <dependency>
@@ -30,7 +30,7 @@ Whatsapp business api SDK, written in java
    </dependency>
 ```
 
-3. Install library into your Maven's local repository by running `mvn install`
+**3. Install library into your Maven's local repository by running `mvn install`**
 
 Alternatively, you can clone this repository and run the [examples](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples).
 
@@ -62,7 +62,7 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 
 ## Examples (WhatsApp Business Platform Cloud API)
 
-[Send a simple text message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTextMessageExample.java)
+[**Send a simple text message:**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTextMessageExample.java)
 
 ```java
 WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
@@ -78,7 +78,7 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
 ---        
- [Send a message with buttons (template):](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTemplateButtonMessageExample.java)
+ [**Send a message with buttons (template):**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTemplateButtonMessageExample.java)
 
 ```java
 WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
@@ -102,7 +102,7 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
 ---
-[Send a message with a contact](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendContactMessageExample.java)
+[**Send a message with a contact**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendContactMessageExample.java)
 
 ```java
  WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
@@ -128,7 +128,7 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
 ## Examples (WhatsApp Business Management API)
 
-[Create a template message](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/CreateMessageTemplate3Example.java)
+[**Create a template message**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/CreateMessageTemplate3Example.java)
 
 ```java
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
