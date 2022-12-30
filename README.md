@@ -25,8 +25,8 @@ Whatsapp business api SDK, written in java
 ```xml
    <dependency>
       <groupId>com.github.Bindambc</groupId>
-      <artifactId>whatsapp-business-sdk</artifactId>
-      <version>0.0.1</version>
+      <artifactId>whatsapp-business-java-api</artifactId>
+      <version>0.0.2</version>
    </dependency>
 ```
 
