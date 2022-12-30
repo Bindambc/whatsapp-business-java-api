@@ -52,6 +52,9 @@ public class MessagesItem {
     @JsonProperty("order")
     private Order order;
 
+    @JsonProperty("system")
+    private System system;
+
     public Reaction getReaction() {
         return reaction;
     }
@@ -114,5 +117,9 @@ public class MessagesItem {
 
     public Order getOrder() {
         return order;
+    }
+
+    public System getSystem() {
+        return system;
     }
 }
