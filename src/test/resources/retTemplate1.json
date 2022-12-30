@@ -1,0 +1,246 @@
+{
+  "data": [
+    {
+      "name": "welcome_template3",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Wellcome title"
+        },
+        {
+          "type": "BODY",
+          "text": "Hello {{1}}, welcome to our {{2}} test.",
+          "example": {
+            "body_text": [
+              [
+                "Mr. José",
+                "s"
+              ]
+            ]
+          }
+        }
+      ],
+      "language": "en_US",
+      "status": "REJECTED",
+      "category": "TRANSACTIONAL",
+      "id": "1214624639427985"
+    },
+    {
+      "name": "schedule_confirmation5",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Confirmação de Atendimento"
+        },
+        {
+          "type": "BODY",
+          "text": "Olá *{{1}}*, passando aqui para confirmar seu horário no dia *{{2}}* as *{{3}}h*.\nVocê confirma que comparecerá?",
+          "example": {
+            "body_text": [
+              [
+                "Maria",
+                "04/11/2022",
+                "13:30"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Utilize um dos botões abaixo para a confirmação"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "SIM"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "NÃO"
+            }
+          ]
+        }
+      ],
+      "language": "pt_BR",
+      "status": "APPROVED",
+      "category": "TRANSACTIONAL",
+      "id": "1145489599421404"
+    },
+    {
+      "name": "schedule_confirmation3",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Confirmação de Atendimento"
+        },
+        {
+          "type": "BODY",
+          "text": "Olá *{{1}}*, passando aqui para confirmar seu horário no dia *{{2}}* as *{{3}}h*.\nVocê confirma que comparecerá?",
+          "example": {
+            "body_text": [
+              [
+                "Maria",
+                "04/11/2022",
+                "13:30"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Utilize um dos botões abaixo para a confirmação"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "SIM"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "NÃO"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "REMARCAR"
+            }
+          ]
+        }
+      ],
+      "language": "pt_BR",
+      "status": "APPROVED",
+      "category": "TRANSACTIONAL",
+      "id": "1184925792108517"
+    },
+    {
+      "name": "number_confirmation",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Código de confirmação"
+        },
+        {
+          "type": "BODY",
+          "text": "Este é o seu código de confirmação: *{{1}}.*",
+          "example": {
+            "body_text": [
+              [
+                "1458425"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Use este código para confirmar seu telefone."
+        }
+      ],
+      "language": "pt_BR",
+      "status": "APPROVED",
+      "category": "TRANSACTIONAL",
+      "id": "449731913956272"
+    },
+    {
+      "name": "welcome_template2",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Wellcome title"
+        },
+        {
+          "type": "BODY",
+          "text": "Hello {{1}}, welcome to our {{2}} test.",
+          "example": {
+            "body_text": [
+              [
+                "Mr. José",
+                "s"
+              ]
+            ]
+          }
+        }
+      ],
+      "language": "en_US",
+      "status": "APPROVED",
+      "category": "TRANSACTIONAL",
+      "id": "1144099983158932"
+    },
+    {
+      "name": "confirmacao_horario",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Confirmação de Horário"
+        },
+        {
+          "type": "BODY",
+          "text": "Olá  {{1}}, gostaria de confirmar seu horário amanhã ({{2}}) às {{3}}h. Caso não confirme, seu agendamento será desmarcado.",
+          "example": {
+            "body_text": [
+              [
+                "João",
+                "10/10/2022",
+                "13:30"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "FOOTER",
+          "text": "Clique no botão para confirmar"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "URL",
+              "text": "Confirmar",
+              "url": "https://www.google.com/search?q=et+bilu"
+            }
+          ]
+        }
+      ],
+      "language": "pt_BR",
+      "status": "APPROVED",
+      "category": "TRANSACTIONAL",
+      "id": "1169370916992361"
+    },
+    {
+      "name": "hello_world",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Hello World"
+        },
+        {
+          "type": "BODY",
+          "text": "Welcome and congratulations!! This message demonstrates your ability to send a message notification from WhatsApp Business Platform’s Cloud API. Thank you for taking the time to test with us."
+        },
+        {
+          "type": "FOOTER",
+          "text": "WhatsApp Business API Team"
+        }
+      ],
+      "language": "en_US",
+      "status": "APPROVED",
+      "category": "ACCOUNT_UPDATE",
+      "id": "1772832833109192"
+    }
+  ],
+  "paging": {
+    "cursors": {
+      "before": "MAZDZD",
+      "after": "MjQZD"
+    }
+  }
+}

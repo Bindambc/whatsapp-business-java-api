@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "name": "welcome_template3",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Wellcome title"
+        },
+        {
+          "type": "BODY",
+          "text": "Hello {{1}}, welcome to our {{2}} test.",
+          "example": {
+            "body_text": [
+              [
+                "Mr. José",
+                "s"
+              ]
+            ]
+          }
+        }
+      ],
+      "language": "en_US",
+      "status": "REJECTED",
+      "category": "TRANSACTIONAL",
+      "id": "1214624639427985"
+    }
+  ],
+  "paging": {
+    "cursors": {
+      "before": "MAZDZD",
+      "after": "MjQZD"
+    }
+  }
+}
