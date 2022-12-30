@@ -46,6 +46,9 @@ public class MessagesItem {
     @JsonProperty("timestamp")
     private String timestamp;
 
+	@JsonProperty("referral")
+	private Referral referral;
+
     public Reaction getReaction() {
         return reaction;
     }
@@ -101,4 +104,8 @@ public class MessagesItem {
     public Context getContext() {
         return context;
     }
+
+	public Referral getReferral() {
+		return referral;
+	}
 }
