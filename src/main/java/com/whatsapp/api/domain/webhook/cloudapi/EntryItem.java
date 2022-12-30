@@ -3,15 +3,15 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Entry {
+public class EntryItem{
 
 	@JsonProperty("changes")
-	private List<Change> changes;
+	private List<ChangesItem> changes;
 
 	@JsonProperty("id")
 	private String id;
 
-	public List<Change> getChanges(){
+	public List<ChangesItem> getChanges(){
 		return changes;
 	}
 

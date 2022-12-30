@@ -12,10 +12,10 @@ public class Value{
 	private String messagingProduct;
 
 	@JsonProperty("messages")
-	private List<Message> messages;
+	private List<MessagesItem> messages;
 
 	@JsonProperty("contacts")
-	private List<Contact> contacts;
+	private List<ContactsItem> contacts;
 
 	public Metadata getMetadata(){
 		return metadata;
@@ -25,11 +25,11 @@ public class Value{
 		return messagingProduct;
 	}
 
-	public List<Message> getMessages(){
+	public List<MessagesItem> getMessages(){
 		return messages;
 	}
 
-	public List<Contact> getContacts(){
+	public List<ContactsItem> getContacts(){
 		return contacts;
 	}
 }

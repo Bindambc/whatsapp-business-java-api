@@ -6,12 +6,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class WebHookPayload{
 
 	@JsonProperty("entry")
-	private List<Entry> entry;
+	private List<EntryItem> entry;
 
 	@JsonProperty("object")
 	private String object;
 
-	public List<Entry> getEntry(){
+	public List<EntryItem> getEntry(){
 		return entry;
 	}
 

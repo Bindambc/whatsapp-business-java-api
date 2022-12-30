@@ -2,7 +2,7 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Message {
+public class MessagesItem{
 
 	@JsonProperty("from")
 	private String from;
