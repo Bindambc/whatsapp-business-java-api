@@ -2,52 +2,59 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class MessagesItem{
+public class MessagesItem {
 
-	@JsonProperty("reaction")
-	private Reaction reaction;
-	@JsonProperty("image")
-	private Image image;
+    @JsonProperty("reaction")
+    private Reaction reaction;
+    @JsonProperty("image")
+    private Image image;
+    @JsonProperty("sticker")
+    private Sticker sticker;
 
-	@JsonProperty("from")
-	private String from;
+    @JsonProperty("from")
+    private String from;
 
-	@JsonProperty("id")
-	private String id;
+    @JsonProperty("id")
+    private String id;
 
-	@JsonProperty("text")
-	private Text text;
+    @JsonProperty("text")
+    private Text text;
 
-	@JsonProperty("type")
-	private String type;
+    @JsonProperty("type")
+    private String type;
 
-	@JsonProperty("timestamp")
-	private String timestamp;
+    @JsonProperty("timestamp")
+    private String timestamp;
 
-	public Reaction getReaction() {
-		return reaction;
-	}
-	public Image getImage(){
-		return image;
-	}
+    public Reaction getReaction() {
+        return reaction;
+    }
 
-	public String getFrom(){
-		return from;
-	}
+    public Image getImage() {
+        return image;
+    }
 
-	public String getId(){
-		return id;
-	}
+    public Sticker getSticker() {
+        return sticker;
+    }
 
-	public Text getText(){
-		return text;
-	}
+    public String getFrom() {
+        return from;
+    }
 
-	public String getType(){
-		return type;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getTimestamp(){
-		return timestamp;
-	}
+    public Text getText() {
+        return text;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
 }
