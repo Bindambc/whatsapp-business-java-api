@@ -40,6 +40,9 @@ public class MessagesItem {
     @JsonProperty("type")
     private String type;
 
+	@JsonProperty("interactive")
+	private Interactive interactive;
+
     @JsonProperty("timestamp")
     private String timestamp;
 
@@ -87,7 +90,11 @@ public class MessagesItem {
         return contacts;
     }
 
-    public Button getButton() {
+	public Interactive getInteractive() {
+		return interactive;
+	}
+
+	public Button getButton() {
         return button;
     }
 
