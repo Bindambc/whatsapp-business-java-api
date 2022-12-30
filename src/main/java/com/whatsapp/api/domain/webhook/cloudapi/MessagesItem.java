@@ -40,14 +40,17 @@ public class MessagesItem {
     @JsonProperty("type")
     private String type;
 
-	@JsonProperty("interactive")
-	private Interactive interactive;
+    @JsonProperty("interactive")
+    private Interactive interactive;
 
     @JsonProperty("timestamp")
     private String timestamp;
 
-	@JsonProperty("referral")
-	private Referral referral;
+    @JsonProperty("referral")
+    private Referral referral;
+
+    @JsonProperty("order")
+    private Order order;
 
     public Reaction getReaction() {
         return reaction;
@@ -93,11 +96,11 @@ public class MessagesItem {
         return contacts;
     }
 
-	public Interactive getInteractive() {
-		return interactive;
-	}
+    public Interactive getInteractive() {
+        return interactive;
+    }
 
-	public Button getButton() {
+    public Button getButton() {
         return button;
     }
 
@@ -105,7 +108,11 @@ public class MessagesItem {
         return context;
     }
 
-	public Referral getReferral() {
-		return referral;
-	}
+    public Referral getReferral() {
+        return referral;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
 }
