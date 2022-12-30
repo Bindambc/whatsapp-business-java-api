@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <name>whatsapp-business-sdk</name>
-    <url>https://github.com/Bindambc/whatsapp-business-java-api</url>
+    <url>https://github.com/Bindambc/whatsapp-business-java-sdk</url>
 
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
