@@ -2,6 +2,8 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 public class MessagesItem {
 
     @JsonProperty("reaction")
@@ -19,6 +21,8 @@ public class MessagesItem {
 
     @JsonProperty("text")
     private Text text;
+    @JsonProperty("errors")
+    private List<ErrorsItem> errors;
 
     @JsonProperty("type")
     private String type;
@@ -36,6 +40,10 @@ public class MessagesItem {
 
     public Sticker getSticker() {
         return sticker;
+    }
+
+    public List<ErrorsItem> getErrors() {
+        return errors;
     }
 
     public String getFrom() {
