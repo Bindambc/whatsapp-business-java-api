@@ -17,7 +17,7 @@ public class HeaderComponent extends Component<HeaderComponent> {
         super(ComponentType.HEADER);
     }
 
-    
+
     public HeaderFormat getFormat() {
         return format;
     }

@@ -1,21 +1,22 @@
 package com.whatsapp.api.domain.webhook.cloudapi;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class EntryItem{
+import java.util.List;
 
-	@JsonProperty("changes")
-	private List<ChangesItem> changes;
+public class EntryItem {
 
-	@JsonProperty("id")
-	private String id;
+    @JsonProperty("changes")
+    private List<ChangesItem> changes;
 
-	public List<ChangesItem> getChanges(){
-		return changes;
-	}
+    @JsonProperty("id")
+    private String id;
 
-	public String getId(){
-		return id;
-	}
+    public List<ChangesItem> getChanges() {
+        return changes;
+    }
+
+    public String getId() {
+        return id;
+    }
 }

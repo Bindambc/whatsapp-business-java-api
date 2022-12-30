@@ -1,21 +1,22 @@
 package com.whatsapp.api.domain.webhook.cloudapi;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class WebHookPayload{
+import java.util.List;
 
-	@JsonProperty("entry")
-	private List<EntryItem> entry;
+public class WebHookPayload {
 
-	@JsonProperty("object")
-	private String object;
+    @JsonProperty("entry")
+    private List<EntryItem> entry;
 
-	public List<EntryItem> getEntry(){
-		return entry;
-	}
+    @JsonProperty("object")
+    private String object;
 
-	public String getObject(){
-		return object;
-	}
+    public List<EntryItem> getEntry() {
+        return entry;
+    }
+
+    public String getObject() {
+        return object;
+    }
 }

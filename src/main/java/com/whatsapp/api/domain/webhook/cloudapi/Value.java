@@ -1,35 +1,42 @@
 package com.whatsapp.api.domain.webhook.cloudapi;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Value{
+import java.util.List;
 
-	@JsonProperty("metadata")
-	private Metadata metadata;
+public class Value {
 
-	@JsonProperty("messaging_product")
-	private String messagingProduct;
+    @JsonProperty("metadata")
+    private Metadata metadata;
 
-	@JsonProperty("messages")
-	private List<MessagesItem> messages;
+    @JsonProperty("messaging_product")
+    private String messagingProduct;
 
-	@JsonProperty("contacts")
-	private List<ContactsItem> contacts;
+    @JsonProperty("messages")
+    private List<MessagesItem> messages;
 
-	public Metadata getMetadata(){
-		return metadata;
-	}
+    @JsonProperty("contacts")
+    private List<ContactsItem> contacts;
+    @JsonProperty("statuses")
+    private List<StatusesItem> statuses;
 
-	public String getMessagingProduct(){
-		return messagingProduct;
-	}
+    public Metadata getMetadata() {
+        return metadata;
+    }
 
-	public List<MessagesItem> getMessages(){
-		return messages;
-	}
+    public String getMessagingProduct() {
+        return messagingProduct;
+    }
 
-	public List<ContactsItem> getContacts(){
-		return contacts;
-	}
+    public List<MessagesItem> getMessages() {
+        return messages;
+    }
+
+    public List<ContactsItem> getContacts() {
+        return contacts;
+    }
+
+    public List<StatusesItem> getStatuses() {
+        return statuses;
+    }
 }

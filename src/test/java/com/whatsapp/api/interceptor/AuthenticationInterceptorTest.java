@@ -1,14 +1,7 @@
 package com.whatsapp.api.interceptor;
 
-import okhttp3.HttpUrl;
-import okhttp3.Interceptor.Chain;
-import okhttp3.Request;
-import okhttp3.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 
 class AuthenticationInterceptorTest {

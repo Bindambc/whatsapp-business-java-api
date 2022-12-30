@@ -24,6 +24,8 @@ public class WhatsappApiServiceGenerator {
 
     private static final OkHttpClient sharedClient;
     private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
+    @SuppressWarnings("unchecked")
+    private static final Converter<ResponseBody, WhatsappApiError> errorBodyConverter = (Converter<ResponseBody, WhatsappApiError>) converterFactory.responseBodyConverter(WhatsappApiError.class, new Annotation[0], null);
 
     static {
 
@@ -32,10 +34,6 @@ public class WhatsappApiServiceGenerator {
                 .pingInterval(20, TimeUnit.SECONDS)//
                 .build();
     }
-
-    @SuppressWarnings("unchecked")
-    private static final Converter<ResponseBody, WhatsappApiError> errorBodyConverter = (Converter<ResponseBody, WhatsappApiError>) converterFactory.responseBodyConverter(WhatsappApiError.class, new Annotation[0], null);
-
 
     public static <S> S createService(Class<S> serviceClass, String token, String baseUrl) {
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(converterFactory);

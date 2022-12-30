@@ -2,19 +2,19 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ContactsItem{
+public class ContactsItem {
 
-	@JsonProperty("profile")
-	private Profile profile;
+    @JsonProperty("profile")
+    private Profile profile;
 
-	@JsonProperty("wa_id")
-	private String waId;
+    @JsonProperty("wa_id")
+    private String waId;
 
-	public Profile getProfile(){
-		return profile;
-	}
+    public Profile getProfile() {
+        return profile;
+    }
 
-	public String getWaId(){
-		return waId;
-	}
+    public String getWaId() {
+        return waId;
+    }
 }

@@ -16,7 +16,7 @@ public class RetrieveTemplates2Example {
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
 
-        var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID,2);
+        var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID, 2);
 
         ObjectMapper mapper = new ObjectMapper();
 

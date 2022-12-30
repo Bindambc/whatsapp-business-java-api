@@ -2,19 +2,19 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UrlsItem{
+public class UrlsItem {
 
-	@JsonProperty("type")
-	private String type;
+    @JsonProperty("type")
+    private String type;
 
-	@JsonProperty("url")
-	private String url;
+    @JsonProperty("url")
+    private String url;
 
-	public String getType(){
-		return type;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public String getUrl(){
-		return url;
-	}
+    public String getUrl() {
+        return url;
+    }
 }

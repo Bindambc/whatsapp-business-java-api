@@ -11,5 +11,4 @@ public class FooterComponent extends Component<FooterComponent> {
     }
 
 
-
 }

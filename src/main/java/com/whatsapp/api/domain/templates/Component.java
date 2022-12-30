@@ -25,12 +25,13 @@ public class Component<T extends Component<T>> {
      * <li>BUTTONS</li>
      * </ul>
      */
-    private  ComponentType type;
+    private ComponentType type;
 
     private String text;
 
     private Example example;
-    protected Component(){
+
+    protected Component() {
 
     }
 
@@ -38,14 +39,14 @@ public class Component<T extends Component<T>> {
         this.type = type;
     }
 
+    public String getText() {
+        return text;
+    }
+
     @SuppressWarnings("unchecked")
     public T setText(String text) {
         this.text = text;
         return (T) this;
-    }
-
-    public String getText() {
-        return text;
     }
 
     public Example getExample() {
@@ -58,12 +59,12 @@ public class Component<T extends Component<T>> {
         return (T) this;
     }
 
+    public ComponentType getType() {
+        return type;
+    }
+
     public Component<T> setType(ComponentType type) {
         this.type = type;
         return this;
-    }
-
-    public ComponentType getType() {
-        return type;
     }
 }

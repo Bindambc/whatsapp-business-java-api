@@ -8,7 +8,5 @@ public record Cursors(
 
         @JsonProperty("before") String before,
 
-        @JsonProperty("after") String after)
-
-    {
+        @JsonProperty("after") String after) {
 }

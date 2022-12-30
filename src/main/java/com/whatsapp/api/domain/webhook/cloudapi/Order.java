@@ -1,28 +1,29 @@
 package com.whatsapp.api.domain.webhook.cloudapi;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Order{
+import java.util.List;
 
-	@JsonProperty("catalog_id")
-	private String catalogId;
+public class Order {
 
-	@JsonProperty("product_items")
-	private List<ProductItemsItem> productItems;
+    @JsonProperty("catalog_id")
+    private String catalogId;
 
-	@JsonProperty("text")
-	private String text;
+    @JsonProperty("product_items")
+    private List<ProductItemsItem> productItems;
 
-	public String getCatalogId(){
-		return catalogId;
-	}
+    @JsonProperty("text")
+    private String text;
 
-	public List<ProductItemsItem> getProductItems(){
-		return productItems;
-	}
+    public String getCatalogId() {
+        return catalogId;
+    }
 
-	public String getText(){
-		return text;
-	}
+    public List<ProductItemsItem> getProductItems() {
+        return productItems;
+    }
+
+    public String getText() {
+        return text;
+    }
 }

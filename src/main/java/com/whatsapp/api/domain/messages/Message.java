@@ -48,11 +48,15 @@ public class Message {
 
     public static class MessageBuilder {
 
+        private String to;
+
+
         private MessageBuilder() {
         }
 
-
-        private String to;
+        public static MessageBuilder builder() {
+            return new MessageBuilder();
+        }
 
         /**
          * @param to Required.
@@ -62,11 +66,6 @@ public class Message {
         public MessageBuilder setTo(String to) {
             this.to = to;
             return this;
-        }
-
-
-        public static MessageBuilder builder() {
-            return new MessageBuilder();
         }
 
         /**
