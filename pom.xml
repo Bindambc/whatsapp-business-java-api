@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.whatsapp.api</groupId>
-    <artifactId>whatsapp-business-sdk</artifactId>
-    <version>0.0.1</version>
+    <artifactId>whatsapp-business-java-api</artifactId>
+    <version>0.0.2</version>
     <licenses>
         <license>
             <name>The MIT License</name>
