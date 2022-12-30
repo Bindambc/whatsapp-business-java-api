@@ -11,6 +11,9 @@ Whatsapp business api SDK, written in java. This SDK implements Whatsapp Cloud A
 ---
 
 ## Installation
+
+This library was built for Java 17.
+
 **1. Add the JitPack repository to your build file:**
 
 ```xml
