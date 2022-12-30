@@ -13,8 +13,14 @@ public class Interactive{
 	public ListReply getListReply(){
 		return listReply;
 	}
+	@JsonProperty("button_reply")
+	private ButtonReply buttonReply;
 
 	public String getType(){
 		return type;
+	}
+
+	public ButtonReply getButtonReply(){
+		return buttonReply;
 	}
 }
