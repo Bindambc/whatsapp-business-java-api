@@ -1,4 +1,4 @@
-# whatsapp-business-java-api
+# :iphone: Whatsapp Business java api SDK
 
 [![Java CI with Maven](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/maven-ci.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/maven-ci.yml)
 [![CodeQL](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml)
@@ -10,9 +10,9 @@ Whatsapp business api SDK, written in java. This SDK implements Whatsapp Cloud A
 
 ---
 
-## Installation
+## :hammer_and_wrench: Installation
 
-This library was built for Java 17.
+:warning: this library is compatible with **java 17+**.
 
 **1. Add the JitPack repository to your build file:**
 
@@ -40,7 +40,7 @@ This library was built for Java 17.
 Alternatively, you can clone this repository and run the [examples](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples).
 
 
-## Overview
+## :eyes: Overview
 
 There are two client classes that can be used to interact with the API:
 
@@ -65,7 +65,7 @@ WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessMana
 
 These can be instantiated through the corresponding factory method of [`WhatsappApiFactory`](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/WhatsappApiFactory.java), by passing the token, which can be created following the instructions at [whatsapp](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started).
 
-## Examples (WhatsApp Business Platform Cloud API)
+## :scroll: Examples (WhatsApp Business Platform Cloud API)
 
 [**Send a simple text message:**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTextMessageExample.java)
 
@@ -131,7 +131,7 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
 ---
 
-## Examples (WhatsApp Business Management API)
+## :scroll: Examples (WhatsApp Business Management API)
 
 [**Create a template message**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/CreateMessageTemplate3Example.java)
 
@@ -172,7 +172,7 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
 ---
 
-### [See more examples here](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples).
+### :heavy_plus_sign: [See more examples here](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples).
 
 
 
