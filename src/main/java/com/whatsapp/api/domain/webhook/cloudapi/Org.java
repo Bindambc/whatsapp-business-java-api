@@ -2,26 +2,12 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Org {
+public record Org(
 
-    @JsonProperty("company")
-    private String company;
+        @JsonProperty("company") String company,
 
-    @JsonProperty("department")
-    private String department;
+        @JsonProperty("department") String department,
 
-    @JsonProperty("title")
-    private String title;
+        @JsonProperty("title") String title) {
 
-    public String getCompany() {
-        return company;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 }

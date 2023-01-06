@@ -2,26 +2,15 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Pricing{
+public record Pricing(
 
-	@JsonProperty("pricing_model")
-	private String pricingModel;
+        @JsonProperty("pricing_model") String pricingModel,
 
-	@JsonProperty("category")
-	private String category;
+        @JsonProperty("category") String category,
 
-	@JsonProperty("billable")
-	private boolean billable;
+        @JsonProperty("billable") boolean billable
 
-	public String getPricingModel(){
-		return pricingModel;
-	}
+) {
 
-	public String getCategory(){
-		return category;
-	}
 
-	public boolean isBillable(){
-		return billable;
-	}
 }

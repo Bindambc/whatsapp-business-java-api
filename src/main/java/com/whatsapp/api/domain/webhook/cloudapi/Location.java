@@ -2,33 +2,15 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Location {
+public record Location(
 
-    @JsonProperty("address")
-    private String address;
+        @JsonProperty("address") String address,
 
-    @JsonProperty("latitude")
-    private String latitude;
+        @JsonProperty("latitude") String latitude,
 
-    @JsonProperty("name")
-    private String name;
+        @JsonProperty("name") String name,
 
-    @JsonProperty("longitude")
-    private String longitude;
+        @JsonProperty("longitude") String longitude
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
+) {
 }

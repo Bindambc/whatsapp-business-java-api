@@ -4,26 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class Order {
+public record Order(
 
-    @JsonProperty("catalog_id")
-    private String catalogId;
+        @JsonProperty("catalog_id") String catalogId,
 
-    @JsonProperty("product_items")
-    private List<ProductItemsItem> productItems;
+        @JsonProperty("product_items") List<ProductItemsItem> productItems,
 
-    @JsonProperty("text")
-    private String text;
-
-    public String getCatalogId() {
-        return catalogId;
-    }
-
-    public List<ProductItemsItem> getProductItems() {
-        return productItems;
-    }
-
-    public String getText() {
-        return text;
-    }
+        @JsonProperty("text") String text) {
 }

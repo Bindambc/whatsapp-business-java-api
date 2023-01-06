@@ -2,26 +2,16 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ListReply {
+public record ListReply(
 
-    @JsonProperty("description")
-    private String description;
+        @JsonProperty("description")
+        String description,
 
-    @JsonProperty("id")
-    private String id;
+        @JsonProperty("id")
+        String id,
 
-    @JsonProperty("title")
-    private String title;
+        @JsonProperty("title")
+        String title
+) {
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 }

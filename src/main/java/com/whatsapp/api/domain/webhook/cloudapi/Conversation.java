@@ -2,26 +2,12 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Conversation{
+public record Conversation(
 
-	@JsonProperty("expiration_timestamp")
-	private String expirationTimestamp;
+        @JsonProperty("expiration_timestamp") String expirationTimestamp,
 
-	@JsonProperty("origin")
-	private Origin origin;
+        @JsonProperty("origin") Origin origin,
 
-	@JsonProperty("id")
-	private String id;
+        @JsonProperty("id") String id) {
 
-	public String getExpirationTimestamp(){
-		return expirationTimestamp;
-	}
-
-	public Origin getOrigin(){
-		return origin;
-	}
-
-	public String getId(){
-		return id;
-	}
 }

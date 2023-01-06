@@ -2,19 +2,11 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Reaction {
+public record Reaction(
 
-    @JsonProperty("emoji")
-    private String emoji;
+        @JsonProperty("emoji") String emoji,
 
-    @JsonProperty("message_id")
-    private String messageId;
+        @JsonProperty("message_id") String messageId
 
-    public String getEmoji() {
-        return emoji;
-    }
-
-    public String getMessageId() {
-        return messageId;
-    }
+) {
 }

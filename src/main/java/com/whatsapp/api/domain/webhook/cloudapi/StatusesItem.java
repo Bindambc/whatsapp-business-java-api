@@ -2,47 +2,18 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class StatusesItem{
+public record StatusesItem(
 
-	@JsonProperty("id")
-	private String id;
+        @JsonProperty("id") String id,
 
-	@JsonProperty("conversation")
-	private Conversation conversation;
+        @JsonProperty("conversation") Conversation conversation,
 
-	@JsonProperty("pricing")
-	private Pricing pricing;
+        @JsonProperty("pricing") Pricing pricing,
 
-	@JsonProperty("recipient_id")
-	private String recipientId;
+        @JsonProperty("recipient_id") String recipientId,
 
-	@JsonProperty("status")
-	private String status;
+        @JsonProperty("status") String status,
 
-	@JsonProperty("timestamp")
-	private String timestamp;
+        @JsonProperty("timestamp") String timestamp) {
 
-	public String getId(){
-		return id;
-	}
-
-	public Conversation getConversation(){
-		return conversation;
-	}
-
-	public Pricing getPricing(){
-		return pricing;
-	}
-
-	public String getRecipientId(){
-		return recipientId;
-	}
-
-	public String getStatus(){
-		return status;
-	}
-
-	public String getTimestamp(){
-		return timestamp;
-	}
 }

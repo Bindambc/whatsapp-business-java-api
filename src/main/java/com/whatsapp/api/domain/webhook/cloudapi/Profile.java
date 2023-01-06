@@ -2,12 +2,9 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Profile {
+public record Profile(
 
-    @JsonProperty("name")
-    private String name;
+        @JsonProperty("name") String name
 
-    public String getName() {
-        return name;
-    }
+) {
 }

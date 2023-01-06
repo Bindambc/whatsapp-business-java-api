@@ -2,33 +2,15 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ProductItemsItem {
+public record ProductItemsItem(
 
-    @JsonProperty("quantity")
-    private String quantity;
+        @JsonProperty("quantity") String quantity,
 
-    @JsonProperty("product_retailer_id")
-    private String productRetailerId;
+        @JsonProperty("product_retailer_id") String productRetailerId,
 
-    @JsonProperty("item_price")
-    private String itemPrice;
+        @JsonProperty("item_price") String itemPrice,
 
-    @JsonProperty("currency")
-    private String currency;
+        @JsonProperty("currency") String currency
 
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public String getProductRetailerId() {
-        return productRetailerId;
-    }
-
-    public String getItemPrice() {
-        return itemPrice;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
+) {
 }

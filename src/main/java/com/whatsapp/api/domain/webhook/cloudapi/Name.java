@@ -2,47 +2,19 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Name {
+public record Name(
 
-    @JsonProperty("prefix")
-    private String prefix;
+        @JsonProperty("prefix") String prefix,
 
-    @JsonProperty("last_name")
-    private String lastName;
+        @JsonProperty("last_name") String lastName,
 
-    @JsonProperty("middle_name")
-    private String middleName;
+        @JsonProperty("middle_name") String middleName,
 
-    @JsonProperty("suffix")
-    private String suffix;
+        @JsonProperty("suffix") String suffix,
 
-    @JsonProperty("first_name")
-    private String firstName;
+        @JsonProperty("first_name") String firstName,
 
-    @JsonProperty("formatted_name")
-    private String formattedName;
+        @JsonProperty("formatted_name") String formattedName
 
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public String getSuffix() {
-        return suffix;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getFormattedName() {
-        return formattedName;
-    }
+) {
 }
