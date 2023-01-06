@@ -1,0 +1,42 @@
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "1111111111111",
+      "changes": [
+        {
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "1111111111111",
+              "phone_number_id": "1111111111111"
+            },
+            "contacts": [
+              {
+                "profile": {
+                  "name": "Mauricio Binda"
+                },
+                "wa_id": "1111111111111"
+              }
+            ],
+            "messages": [
+              {
+                "from": "1111111111111",
+                "id": "wamid.HBzk5zNkE1NNzAzgNNTUyNMDkzIYFDNFNhjMyNjcUCABQjA1NzcDY0M0AA==",
+                "timestamp": "1673033070",
+                "type": "audio",
+                "audio": {
+                  "mime_type": "audio/ogg; codecs=opus",
+                  "sha256": "iWa0+O81ZLcSkZx6n4QAmrWuHpn8HWFX3gB6a3fQtmk=",
+                  "id": "827776106019109",
+                  "voice": true
+                }
+              }
+            ]
+          },
+          "field": "messages"
+        }
+      ]
+    }
+  ]
+}

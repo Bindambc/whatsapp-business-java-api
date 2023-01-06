@@ -241,6 +241,35 @@ class WebHookPayloadTest extends TestUtils {
 
     }
 
+    @Test
+    void testDeserializationImageMessage() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "imageMessage.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertEquals("1673032525", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
+        Assertions.assertEquals("image", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals("image/jpeg", obj.entry().get(0).changes().get(0).value().messages().get(0).image().mimeType());
+        Assertions.assertEquals("ciJuSxU7RLnnFz3cNcasdL7UQKt9e1yj/3u+Rhsabv0=", obj.entry().get(0).changes().get(0).value().messages().get(0).image().sha256());
+        Assertions.assertEquals("8472976218001204", obj.entry().get(0).changes().get(0).value().messages().get(0).image().id());
+
+    }
+
+    @Test
+    void testDeserializationAudioMessage() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "audioMessage.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertEquals("1673033070", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
+        Assertions.assertEquals("audio", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals("audio/ogg; codecs=opus", obj.entry().get(0).changes().get(0).value().messages().get(0).audio().mimeType());
+        Assertions.assertEquals("iWa0+O81ZLcSkZx6n4QAmrWuHpn8HWFX3gB6a3fQtmk=", obj.entry().get(0).changes().get(0).value().messages().get(0).audio().sha256());
+        Assertions.assertEquals("827776106019109", obj.entry().get(0).changes().get(0).value().messages().get(0).audio().id());
+        Assertions.assertTrue(obj.entry().get(0).changes().get(0).value().messages().get(0).audio().voice());
+
+    }
+
 
 }
 

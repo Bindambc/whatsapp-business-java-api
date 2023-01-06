@@ -41,5 +41,7 @@ public record MessagesItem(
 
         @JsonProperty("system") System system,
 
-        @JsonProperty("video") Video video) {
+        @JsonProperty("video") Video video,
+
+        @JsonProperty("audio") Audio audio) {
 }
