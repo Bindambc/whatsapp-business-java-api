@@ -129,6 +129,86 @@ class WebHookPayloadTest extends TestUtils {
 
     }
 
+    @Test
+    void testDeserializationButtonMessage() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "buttonMessage.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertNotNull(obj);
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value());
+        Assertions.assertFalse(obj.entry().get(0).changes().get(0).value().contacts().isEmpty());
+
+        Assertions.assertEquals(1, obj.entry().size());
+        Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
+        Assertions.assertEquals(1, obj.entry().get(0).changes().size());
+        Assertions.assertEquals("messages", obj.entry().get(0).changes().get(0).field());
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).context());
+        Assertions.assertEquals("button", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).button());
+
+    }
+
+
+    @Test
+    void testDeserializationMessageDeleted() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "messageDeleted.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertNotNull(obj);
+        Assertions.assertEquals(1, obj.entry().size());
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value());
+        Assertions.assertFalse(obj.entry().get(0).changes().get(0).value().contacts().isEmpty());
+
+
+        Assertions.assertEquals("unsupported", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).errors());
+
+
+    }
+
+    @Test
+    void testDeserializationReactMessage() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "reactMessage.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertNotNull(obj);
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value());
+        Assertions.assertFalse(obj.entry().get(0).changes().get(0).value().contacts().isEmpty());
+
+        Assertions.assertEquals(1, obj.entry().size());
+        Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
+        Assertions.assertEquals(1, obj.entry().get(0).changes().size());
+        Assertions.assertEquals("messages", obj.entry().get(0).changes().get(0).field());
+
+        Assertions.assertEquals("reaction", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).reaction());
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).reaction().messageId());
+
+    }
+
+
+    @Test
+    void testDeserializationStickerMessage() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "stickerMessage.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertEquals("whatsapp_business_account", obj.object());
+        Assertions.assertFalse(obj.entry().isEmpty());
+        Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
+
+        Assertions.assertFalse(obj.entry().get(0).changes().isEmpty());
+
+        Assertions.assertEquals("sticker", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals("image/webp", obj.entry().get(0).changes().get(0).value().messages().get(0).sticker().mimeType());
+        Assertions.assertFalse(obj.entry().get(0).changes().get(0).value().messages().get(0).sticker().animated());
+        Assertions.assertEquals("1604825680670873", obj.entry().get(0).changes().get(0).value().messages().get(0).sticker().id());
+
+    }
+
 
 }
 

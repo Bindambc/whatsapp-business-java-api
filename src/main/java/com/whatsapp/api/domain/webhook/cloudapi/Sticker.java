@@ -4,14 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record Sticker(
 
-        @JsonProperty("sha256")
-        String sha256,
+        @JsonProperty("sha256") String sha256,
 
-        @JsonProperty("mime_type")
-        String mimeType,
+        @JsonProperty("mime_type") String mimeType,
 
-        @JsonProperty("id")
-        String id
-) {
+        @JsonProperty("id") String id,
+
+        @JsonProperty("animated") boolean animated) {
 
 }
