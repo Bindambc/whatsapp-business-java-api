@@ -9,7 +9,7 @@ public record MessagesItem(
         @JsonProperty("reaction") Reaction reaction,
 
         @JsonProperty("image") Image image,
-        
+
         @JsonProperty("sticker") Sticker sticker,
 
         @JsonProperty("location") Location location,
@@ -39,5 +39,7 @@ public record MessagesItem(
 
         @JsonProperty("order") Order order,
 
-        @JsonProperty("system") System system) {
+        @JsonProperty("system") System system,
+
+        @JsonProperty("video") Video video) {
 }
