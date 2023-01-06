@@ -22,8 +22,8 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals("messages", obj.entry().get(0).changes().get(0).field());
-        Assertions.assertEquals("hi everyone!", obj.entry().get(0).changes().get(0).value().messages().get(0).getText().getBody());
-        Assertions.assertEquals("text", obj.entry().get(0).changes().get(0).value().messages().get(0).getType());
+        Assertions.assertEquals("hi everyone!", obj.entry().get(0).changes().get(0).value().messages().get(0).text().body());
+        Assertions.assertEquals("text", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
 
 
     }
