@@ -4,39 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class Value {
+public record Value(
 
-    @JsonProperty("metadata")
-    private Metadata metadata;
+        @JsonProperty("metadata") Metadata metadata,
 
-    @JsonProperty("messaging_product")
-    private String messagingProduct;
+        @JsonProperty("messaging_product") String messagingProduct,
 
-    @JsonProperty("messages")
-    private List<MessagesItem> messages;
+        @JsonProperty("messages") List<MessagesItem> messages,
 
-    @JsonProperty("contacts")
-    private List<ContactsItem> contacts;
-    @JsonProperty("statuses")
-    private List<StatusesItem> statuses;
+        @JsonProperty("contacts") List<ContactsItem> contacts,
 
-    public Metadata getMetadata() {
-        return metadata;
-    }
+        @JsonProperty("statuses") List<StatusesItem> statuses) {
 
-    public String getMessagingProduct() {
-        return messagingProduct;
-    }
 
-    public List<MessagesItem> getMessages() {
-        return messages;
-    }
-
-    public List<ContactsItem> getContacts() {
-        return contacts;
-    }
-
-    public List<StatusesItem> getStatuses() {
-        return statuses;
-    }
 }

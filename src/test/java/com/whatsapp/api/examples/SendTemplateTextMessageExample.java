@@ -1,6 +1,6 @@
 package com.whatsapp.api.examples;
 
-import com.whatsapp.api.TestUtils;
+import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.messages.Component;
 import com.whatsapp.api.domain.messages.Language;
@@ -10,17 +10,17 @@ import com.whatsapp.api.domain.messages.TextParameter;
 import com.whatsapp.api.domain.templates.ComponentType;
 import com.whatsapp.api.impl.WhatsappBusinessCloudApi;
 
-import static com.whatsapp.api.TestUtils.PHONE_NUMBER_ID;
+import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
 
 public class SendTemplateTextMessageExample {
 
     public static void main(String[] args) {
-        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
 
         var message = MessageBuilder.builder()//
-                .setTo(TestUtils.PHONE_NUMBER_1)//
+                .setTo(TestConstants.PHONE_NUMBER_1)//
                 .buildTemplateMessage(//
                         new TemplateMessage()//
                                 .setLanguage(new Language(com.whatsapp.api.domain.templates.Language.PT_BR)).setName("number_confirmation")//

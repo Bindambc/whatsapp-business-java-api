@@ -3,8 +3,8 @@ package com.whatsapp.api.examples;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.impl.WhatsappBusinessManagementApi;
 
-import static com.whatsapp.api.TestUtils.TOKEN;
-import static com.whatsapp.api.TestUtils.WABA_ID;
+import static com.whatsapp.api.TestConstants.TOKEN;
+import static com.whatsapp.api.TestConstants.WABA_ID;
 
 public class DeleteMessageTemplate {
 
