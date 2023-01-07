@@ -8,6 +8,8 @@ Whatsapp business api SDK, written in java. This SDK implements Whatsapp Cloud A
 - manage your WhatsApp Business Account assets, such as message templates and phone numbers;
 - send messages to your contacts, such as simple text messages, messages with buttons...
 
+:warning: This project is still under construction. Contributions are welcome.
+
 ---
 
 ## :hammer_and_wrench: Installation
