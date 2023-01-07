@@ -16,7 +16,7 @@ Whatsapp business api SDK, written in java. This SDK implements [Whatsapp Cloud 
 
 :warning: this library is compatible with **java 17+**.
 
-**1. Add the JitPack repository to your build file:**
+**1. Add the [JitPack](https://jitpack.io/#Bindambc/whatsapp-business-java-api) repository to your build file:**
 
 ```xml
 	<repositories>
