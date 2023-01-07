@@ -270,6 +270,21 @@ class WebHookPayloadTest extends TestUtils {
 
     }
 
+    @Test
+    void testDeserializationDocumentMessage() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "documentMessage.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertEquals("1673034392", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
+        Assertions.assertEquals("document", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals("application/pdf", obj.entry().get(0).changes().get(0).value().messages().get(0).document().mimeType());
+        Assertions.assertEquals("mu/J5jGsroQM3Tbn4c6StBJG4C4glbTi8gT4jhRHSt0=", obj.entry().get(0).changes().get(0).value().messages().get(0).document().sha256());
+        Assertions.assertEquals("848704520347750", obj.entry().get(0).changes().get(0).value().messages().get(0).document().id());
+        Assertions.assertEquals("4_641947.pdf", obj.entry().get(0).changes().get(0).value().messages().get(0).document().filename());
+
+    }
+
 
 }
 

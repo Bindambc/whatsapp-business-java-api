@@ -43,5 +43,8 @@ public record MessagesItem(
 
         @JsonProperty("video") Video video,
 
-        @JsonProperty("audio") Audio audio) {
+        @JsonProperty("audio") Audio audio,
+
+        @JsonProperty("document") Document document
+) {
 }
