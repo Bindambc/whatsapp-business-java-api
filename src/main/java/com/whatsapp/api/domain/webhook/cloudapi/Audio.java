@@ -1,7 +1,13 @@
 package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+/**
+ *
+ * @param sha256 The checksum of the media.
+ * @param mimeType The mime type of the media.
+ * The caption that describes the media.
+ * @param id The ID of the medi
+ */
 public record Audio(
 
         @JsonProperty("mime_type") String mimeType,

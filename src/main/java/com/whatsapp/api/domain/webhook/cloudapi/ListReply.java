@@ -2,6 +2,12 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ *
+ * @param description The description of the selected row.
+ * @param id The unique identifier (ID) of the selected row.
+ * @param title The title of the selected row.
+ */
 public record ListReply(
 
         @JsonProperty("description")
