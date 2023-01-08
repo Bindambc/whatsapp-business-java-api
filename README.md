@@ -4,7 +4,7 @@
 [![CodeQL](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Whatsapp business api SDK, written in java. This SDK implements [Whatsapp Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api), and [WhatsApp Business Management API](https://developers.facebook.com/docs/whatsapp/business-management-api). These allows you to:
+Whatsapp business api SDK, written in java. This SDK implements the Official [Whatsapp Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api), and [WhatsApp Business Management API](https://developers.facebook.com/docs/whatsapp/business-management-api). These allows you to:
 - manage your WhatsApp Business Account assets, such as message templates and phone numbers;
 - send messages to your contacts, such as simple text messages, messages with buttons...
 
