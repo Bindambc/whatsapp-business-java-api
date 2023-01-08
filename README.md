@@ -84,6 +84,12 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/211179681-488341bf-a831-48ab-9ea1-312adcb769a4.png)
+
+
 ---        
  [**Send a message with buttons (template):**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTemplateButtonMessageExample.java)
 
@@ -108,6 +114,11 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/211179613-3b9a30db-4f2f-4424-8073-adb8fce09226.png)
+
 ---
 [**Send a message with a contact**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendContactMessageExample.java)
 
@@ -130,6 +141,11 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/211179648-e4c97874-a380-49db-8337-39f17e661799.png)
+
 
 ---
 
