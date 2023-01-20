@@ -18,11 +18,11 @@ public record Value(
 
         @JsonProperty("messaging_product") String messagingProduct,
 
-        @JsonProperty("messages") List<MessagesItem> messages,
+        @JsonProperty("messages") List<Message> messages,
 
-        @JsonProperty("contacts") List<ContactsItem> contacts,
+        @JsonProperty("contacts") List<Contact> contacts,
 
-        @JsonProperty("statuses") List<StatusesItem> statuses) {
+        @JsonProperty("statuses") List<Status> statuses) {
 
 
 }

@@ -2,7 +2,7 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record ProductItemsItem(
+public record Product(
 
         @JsonProperty("quantity") String quantity,
 

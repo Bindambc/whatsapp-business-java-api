@@ -24,7 +24,7 @@ public class Message {
     private TextMessage textMessage;
 
     @JsonProperty("contacts")
-    private List<ContactsItem> contactMessage;
+    private List<Contact> contactMessage;
 
     @JsonProperty("template")
     private TemplateMessage templateMessage;
@@ -87,7 +87,7 @@ public class Message {
 
         /**
          * <b>Requiered</b>.
-         * Build an objetc with {@link ContactsItem}
+         * Build an objetc with {@link Contact}
          */
         public Message buildContactMessage(ContactMessage contactMessage) {
             var message = new Message(to, MessageType.CONTACTS);

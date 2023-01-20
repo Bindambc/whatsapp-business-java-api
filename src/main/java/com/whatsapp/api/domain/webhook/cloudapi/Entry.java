@@ -10,12 +10,12 @@ import java.util.List;
  * @param changes Changes that triggered the Webhooks call. This field contains an array of change objects.
  * @param id      The ID of Whatsapp Business Accounts this Webhook belongs to.
  */
-public record EntryItem(
+public record Entry(
 
         /*
         	Changes that triggered the Webhooks call. This field contains an array of change objects.
          */
-        @JsonProperty("changes") List<ChangesItem> changes,
+        @JsonProperty("changes") List<Change> changes,
         /*
             The ID of Whatsapp Business Accounts this Webhook belongs to.
         */

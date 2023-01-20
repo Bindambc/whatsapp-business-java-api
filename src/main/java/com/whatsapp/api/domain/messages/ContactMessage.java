@@ -9,26 +9,26 @@ import java.util.List;
 public class ContactMessage {
 
 
-    private List<ContactsItem> contacts;
+    private List<Contact> contacts;
 
-    public List<ContactsItem> getContacts() {
+    public List<Contact> getContacts() {
         return contacts;
     }
 
-    public ContactMessage setContacts(List<ContactsItem> contacts) {
+    public ContactMessage setContacts(List<Contact> contacts) {
         this.contacts = contacts;
         return this;
     }
 
     /**
-     * @param contactsItem : Contacts Object.
+     * @param contact : Contacts Object.
      *                     <p>
-     *                     Add a {@link ContactsItem} object into contacts array.
+     *                     Add a {@link Contact} object into contacts array.
      */
-    public ContactMessage addContacts(ContactsItem contactsItem) {
+    public ContactMessage addContacts(Contact contact) {
         if (this.contacts == null) this.contacts = new ArrayList<>();
 
-        this.contacts.add(contactsItem);
+        this.contacts.add(contact);
         return this;
     }
 }

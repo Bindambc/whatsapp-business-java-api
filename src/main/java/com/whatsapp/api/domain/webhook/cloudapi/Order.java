@@ -8,7 +8,7 @@ public record Order(
 
         @JsonProperty("catalog_id") String catalogId,
 
-        @JsonProperty("product_items") List<ProductItemsItem> productItems,
+        @JsonProperty("product_items") List<Product> productItems,
 
         @JsonProperty("text") String text) {
 }

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param status       The status of the message. Valid values are: read, delivered, sent, failed, or deleted.
  * @param timestamp    The timestamp of the status message.
  */
-public record StatusesItem(
+public record Status(
 
         @JsonProperty("id") String id,
 
@@ -28,7 +28,7 @@ public record StatusesItem(
 
         @JsonProperty("recipient_id") String recipientId,
 
-        @JsonProperty("status") String status,
+        @JsonProperty("status") MessageStatus status,
 
         @JsonProperty("timestamp") String timestamp) {
 

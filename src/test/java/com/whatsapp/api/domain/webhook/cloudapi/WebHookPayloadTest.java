@@ -64,7 +64,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals("messages", obj.entry().get(0).changes().get(0).field());
-        Assertions.assertEquals("sent", obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
+        Assertions.assertEquals(MessageStatus.SENT, obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
 
         Assertions.assertEquals("8eb644d2350611f3746e7f0985bddfc1", obj.entry().get(0).changes().get(0).value().statuses().get(0).conversation().id());
         Assertions.assertEquals("1673031000", obj.entry().get(0).changes().get(0).value().statuses().get(0).conversation().expirationTimestamp());
@@ -100,7 +100,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals("messages", obj.entry().get(0).changes().get(0).field());
-        Assertions.assertEquals("delivered", obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
+        Assertions.assertEquals(MessageStatus.DELIVERED, obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
 
 
     }
@@ -127,7 +127,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals("messages", obj.entry().get(0).changes().get(0).field());
-        Assertions.assertEquals("read", obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
+        Assertions.assertEquals(MessageStatus.READ, obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
 
 
     }
@@ -285,6 +285,18 @@ class WebHookPayloadTest extends TestUtils {
 
     }
 
+    @Test
+    void testDeserializationContactMessage() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "contactMessage.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertEquals("1673641462", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
+        Assertions.assertEquals("contacts", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+
+        Assertions.assertEquals("Person", obj.entry().get(0).changes().get(0).value().messages().get(0).contacts().get(0).namem().firstName());
+
+    }
 
 }
 

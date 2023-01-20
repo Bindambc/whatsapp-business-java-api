@@ -2,7 +2,7 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record AddressesItem(
+public record Address(
 
         @JsonProperty("zip") String zip,
 

@@ -15,7 +15,7 @@ import java.util.List;
  */
 public record WebHookPayload(
 
-        @JsonProperty("entry") List<EntryItem> entry,
+        @JsonProperty("entry") List<Entry> entry,
 
         @JsonProperty("object") String object) {
 }

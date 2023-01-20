@@ -2,7 +2,7 @@ package com.whatsapp.api.domain.webhook.cloudapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record PhonesItem(
+public record Phone(
 
         @JsonProperty("phone") String phone,
 

@@ -15,7 +15,7 @@ import java.util.List;
  * @param from        The customer's phone number.
  * @param id          The unique identifier of incoming message, you can use messages endpoint to mark it as read.
  * @param text        A text object. Added to Webhook if type is text. See {@link Text}
- * @param errors      Added to Webhook if type is unknown. See {@link ErrorsItem}
+ * @param errors      Added to Webhook if type is unknown. See {@link Error}
  * @param type        Supported values are:
  *                                <ul>
  *                      <li>text: for text messages.</li>
@@ -32,7 +32,7 @@ import java.util.List;
  *                      <li>unknown: for unknown messages.</li>
  *                      <li>system: for user number change messages.</li>
  *                    </ul>
- * @param interactive When a customer has interacted with your message, an interactive object is included in the {@link MessagesItem} object
+ * @param interactive When a customer has interacted with your message, an interactive object is included in the {@link Message} object
  * @param timestamp   The timestamp when a customer sends a message.
  * @param referral    Added to Webhook if the message is coming from a user that clicked an ad that is Click To WhatsApp.
  *                    A referral object. This is how the referral object works:<ul>
@@ -46,7 +46,7 @@ import java.util.List;
  * @param audio       A media object with the audio information. Added to Webhook if type is audio (including voice messages). See {@link Audio}
  * @param document    A media object with the document information. Added to Webhook if type is document. See {@link Document}
  */
-public record MessagesItem(
+public record Message(
 
         @JsonProperty("reaction") Reaction reaction,
 
@@ -56,7 +56,7 @@ public record MessagesItem(
 
         @JsonProperty("location") Location location,
 
-        @JsonProperty("contacts") List<ContactsItem> contacts,
+        @JsonProperty("contacts") List<Contact> contacts,
 
 
         @JsonProperty("button") Button button,
@@ -69,7 +69,7 @@ public record MessagesItem(
 
         @JsonProperty("text") Text text,
 
-        @JsonProperty("errors") List<ErrorsItem> errors,
+        @JsonProperty("errors") List<Error> errors,
 
         @JsonProperty("type") String type,
 

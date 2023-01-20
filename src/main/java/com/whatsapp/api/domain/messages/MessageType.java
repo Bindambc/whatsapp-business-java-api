@@ -1,4 +1,5 @@
 package com.whatsapp.api.domain.messages;
+//TODO: implementar mais tipos de mensagens. Não está completo.
 
 /**
  * Mandatory for message templates.

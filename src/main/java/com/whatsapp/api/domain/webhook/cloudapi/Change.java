@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param field A value object. Contains details of the changes related to the specified field.
  * @param value Contains the type of notification you are getting on that Webhook. Currently, the only option for this API is “messages”.
  */
-public record ChangesItem(
+public record Change(
 /*
 Contains the type of notification you are getting on that Webhook. Currently, the only option for this API is “messages”.
  */
