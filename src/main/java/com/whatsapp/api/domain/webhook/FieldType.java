@@ -27,7 +27,15 @@ public enum FieldType {
     /**
      * Notifies you about messages
      */
-    MESSAGES("messages");
+    MESSAGES("messages"),
+    /**
+     * A notification is sent to you when:
+     * <ul> <li>you request to disable two-step verification code</li>
+     *  <li>the two-step verification code is disabled</li>
+     *  <li>the two-step verification code is updated</li>
+     * </ul>
+     */
+    security("security");
 
     private final String value;
 

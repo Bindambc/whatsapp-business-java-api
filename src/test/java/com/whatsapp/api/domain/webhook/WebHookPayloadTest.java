@@ -318,7 +318,7 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
-        Assertions.assertEquals("VERIFIED_ACCOUNT", obj.entry().get(0).changes().get(0).value().event());
+        Assertions.assertEquals(EventType.VERIFIED_ACCOUNT, obj.entry().get(0).changes().get(0).value().event());
         Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
 
 
@@ -330,9 +330,48 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
-        Assertions.assertEquals("REJECTED", obj.entry().get(0).changes().get(0).value().event());
+        Assertions.assertEquals(EventType.REJECTED, obj.entry().get(0).changes().get(0).value().event());
         Assertions.assertEquals("905507062668800", obj.entry().get(0).changes().get(0).value().messageTemplateId());
         Assertions.assertEquals(FieldType.MESSAGE_TEMPLATE_STATUS_UPDATE, obj.entry().get(0).changes().get(0).field());
+
+    }
+
+    @Test
+    void testDeserializationPhoneNumberNameUpdate() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "phoneNumberNameUpdate.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertEquals(FieldType.PHONE_NUMBER_NAME_UPDATE, obj.entry().get(0).changes().get(0).field());
+
+        Assertions.assertEquals("APPROVED", obj.entry().get(0).changes().get(0).value().decision());
+        Assertions.assertEquals("WhatsApp", obj.entry().get(0).changes().get(0).value().requestedVerifiedName());
+
+    }
+
+    @Test
+    void testDeserializationTemplateSchedulingForDisabling() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "templateSchedulingForDisabling.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        Assertions.assertEquals(FieldType.MESSAGE_TEMPLATE_STATUS_UPDATE, obj.entry().get(0).changes().get(0).field());
+
+        Assertions.assertEquals(EventType.FLAGGED, obj.entry().get(0).changes().get(0).value().event());
+        Assertions.assertEquals("My message template", obj.entry().get(0).changes().get(0).value().messageTemplateName());
+
+
+    }
+
+    @Test
+    void testDeserializationQualityUpdate() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "qualityUpdate.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+
+        Assertions.assertEquals(FieldType.PHONE_NUMBER_QUALITY_UPDATE, obj.entry().get(0).changes().get(0).field());
+
 
     }
 }
