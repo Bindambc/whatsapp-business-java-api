@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param mimeType Mime type of the document file
  * @param sha256   Hash
  * @param id       ID for the document
- * @param caption Caption for the document, if provided
+ * @param caption  Caption for the document, if provided
  */
 public record Document(
 

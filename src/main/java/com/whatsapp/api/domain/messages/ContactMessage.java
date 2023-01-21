@@ -22,8 +22,8 @@ public class ContactMessage {
 
     /**
      * @param contact : Contacts Object.
-     *                     <p>
-     *                     Add a {@link Contact} object into contacts array.
+     *                <p>
+     *                Add a {@link Contact} object into contacts array.
      */
     public ContactMessage addContacts(Contact contact) {
         if (this.contacts == null) this.contacts = new ArrayList<>();

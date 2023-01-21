@@ -293,7 +293,7 @@ class WebHookPayloadTest extends TestUtils {
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
         Assertions.assertEquals("1673641462", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
-        Assertions.assertEquals(MessageType.CONTACTS,obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.CONTACTS, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
 
         Assertions.assertEquals("Person", obj.entry().get(0).changes().get(0).value().messages().get(0).contacts().get(0).name().firstName());
 

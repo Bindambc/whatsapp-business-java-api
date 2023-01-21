@@ -17,7 +17,7 @@ import com.whatsapp.api.impl.WhatsappBusinessManagementApi;
 import static com.whatsapp.api.TestConstants.TOKEN;
 import static com.whatsapp.api.TestConstants.WABA_ID;
 
-public class CreateMessageTemplate3Example { 
+public class CreateMessageTemplate3Example {
 
     public static void main(String[] args) {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
