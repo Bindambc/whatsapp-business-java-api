@@ -31,7 +31,7 @@ Whatsapp business api SDK, written in java. This SDK implements Whatsapp Cloud A
    <dependency>
       <groupId>com.github.Bindambc</groupId>
       <artifactId>whatsapp-business-java-api</artifactId>
-      <version>0.0.2</version>
+      <version>0.0.3</version>
    </dependency>
 ```
 
