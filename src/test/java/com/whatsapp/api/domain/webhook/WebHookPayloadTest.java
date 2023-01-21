@@ -374,5 +374,37 @@ class WebHookPayloadTest extends TestUtils {
 
 
     }
+
+    @Test
+    void testDeserializationAccountBanned() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "accountBanned.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+
+        Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
+        Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().banInfo());
+    }
+
+    @Test
+    void testDeserializationAccountReview() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "accountReview.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+
+        Assertions.assertEquals(FieldType.ACCOUNT_REVIEW_UPDATE, obj.entry().get(0).changes().get(0).field());
+    }
+
+    @Test
+    void testDeserializationAccountRestricted() throws IOException, URISyntaxException {
+        var fileContent = fromResource(JSON_FOLDER + "accountRestricted.json");
+
+        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+
+        Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
+        Assertions.assertEquals(RestrictionType.RESTRICTED_ADD_PHONE_NUMBER_ACTION, obj.entry().get(0).changes().get(0).value().restrictionInfo().get(0).restrictionType());
+    }
 }
 

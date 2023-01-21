@@ -53,7 +53,11 @@ public record Value(
 
         @JsonProperty("disable_info") DisableInfo disableInfo,
 
-        @JsonProperty("current_limit") String currentLimit
+        @JsonProperty("current_limit") String currentLimit,
+
+        @JsonProperty("ban_info") BanInfo banInfo,
+
+        @JsonProperty("restriction_info") List<RestrictionInfo> restrictionInfo
 
 
 ) {
