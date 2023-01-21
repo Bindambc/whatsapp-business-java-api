@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.webhook;
 
 import com.whatsapp.api.TestUtils;
+import com.whatsapp.api.domain.messages.MessageType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +24,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
         Assertions.assertEquals("hi everyone!", obj.entry().get(0).changes().get(0).value().messages().get(0).text().body());
-        Assertions.assertEquals("text", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.TEXT, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
 
 
     }
@@ -43,7 +44,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
         Assertions.assertEquals("Good afternoon", obj.entry().get(0).changes().get(0).value().messages().get(0).text().body());
-        Assertions.assertEquals("text", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.TEXT, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
 
 
     }
@@ -147,7 +148,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).context());
-        Assertions.assertEquals("button", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.BUTTON, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).button());
 
     }
@@ -165,7 +166,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertFalse(obj.entry().get(0).changes().get(0).value().contacts().isEmpty());
 
 
-        Assertions.assertEquals("unsupported", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.UNSUPPORTED, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).errors());
 
 
@@ -186,7 +187,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
 
-        Assertions.assertEquals("reaction", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.REACTION, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).reaction());
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).reaction().messageId());
 
@@ -205,7 +206,7 @@ class WebHookPayloadTest extends TestUtils {
 
         Assertions.assertFalse(obj.entry().get(0).changes().isEmpty());
 
-        Assertions.assertEquals("sticker", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.STICKER, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertEquals("image/webp", obj.entry().get(0).changes().get(0).value().messages().get(0).sticker().mimeType());
         Assertions.assertFalse(obj.entry().get(0).changes().get(0).value().messages().get(0).sticker().animated());
         Assertions.assertEquals("1604825680670873", obj.entry().get(0).changes().get(0).value().messages().get(0).sticker().id());
@@ -234,7 +235,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("1111111111111", obj.entry().get(0).changes().get(0).value().messages().get(0).from());
         Assertions.assertEquals("wamid.HBgNNTUyNzk5NzAzMDkzNhUCABIYFDNFQjAwQjVGQUFGOEVDMTUyMTJBAA==", obj.entry().get(0).changes().get(0).value().messages().get(0).id());
         Assertions.assertEquals("1673029501", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
-        Assertions.assertEquals("video", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.VIDEO, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertEquals("video/mp4", obj.entry().get(0).changes().get(0).value().messages().get(0).video().mimeType());
         Assertions.assertEquals("waIq5BBe5GgjT6DHWu3LY9F8jYOZzYLHRRRGDTbipNk=", obj.entry().get(0).changes().get(0).value().messages().get(0).video().sha256());
         Assertions.assertEquals("661828760183585", obj.entry().get(0).changes().get(0).value().messages().get(0).video().id());
@@ -248,7 +249,7 @@ class WebHookPayloadTest extends TestUtils {
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
         Assertions.assertEquals("1673032525", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
-        Assertions.assertEquals("image", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.IMAGE, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertEquals("image/jpeg", obj.entry().get(0).changes().get(0).value().messages().get(0).image().mimeType());
         Assertions.assertEquals("ciJuSxU7RLnnFz3cNcasdL7UQKt9e1yj/3u+Rhsabv0=", obj.entry().get(0).changes().get(0).value().messages().get(0).image().sha256());
         Assertions.assertEquals("8472976218001204", obj.entry().get(0).changes().get(0).value().messages().get(0).image().id());
@@ -262,7 +263,7 @@ class WebHookPayloadTest extends TestUtils {
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
         Assertions.assertEquals("1673033070", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
-        Assertions.assertEquals("audio", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.AUDIO, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertEquals("audio/ogg; codecs=opus", obj.entry().get(0).changes().get(0).value().messages().get(0).audio().mimeType());
         Assertions.assertEquals("iWa0+O81ZLcSkZx6n4QAmrWuHpn8HWFX3gB6a3fQtmk=", obj.entry().get(0).changes().get(0).value().messages().get(0).audio().sha256());
         Assertions.assertEquals("827776106019109", obj.entry().get(0).changes().get(0).value().messages().get(0).audio().id());
@@ -277,7 +278,7 @@ class WebHookPayloadTest extends TestUtils {
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
         Assertions.assertEquals("1673034392", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
-        Assertions.assertEquals("document", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.DOCUMENT, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertEquals("application/pdf", obj.entry().get(0).changes().get(0).value().messages().get(0).document().mimeType());
         Assertions.assertEquals("mu/J5jGsroQM3Tbn4c6StBJG4C4glbTi8gT4jhRHSt0=", obj.entry().get(0).changes().get(0).value().messages().get(0).document().sha256());
         Assertions.assertEquals("848704520347750", obj.entry().get(0).changes().get(0).value().messages().get(0).document().id());
@@ -292,7 +293,7 @@ class WebHookPayloadTest extends TestUtils {
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
         Assertions.assertEquals("1673641462", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
-        Assertions.assertEquals("contacts", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.CONTACTS,obj.entry().get(0).changes().get(0).value().messages().get(0).type());
 
         Assertions.assertEquals("Person", obj.entry().get(0).changes().get(0).value().messages().get(0).contacts().get(0).name().firstName());
 
@@ -305,7 +306,7 @@ class WebHookPayloadTest extends TestUtils {
         var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
 
         Assertions.assertEquals("1673641462", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
-        Assertions.assertEquals("location", obj.entry().get(0).changes().get(0).value().messages().get(0).type());
+        Assertions.assertEquals(MessageType.LOCATION, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
 
         Assertions.assertEquals(-10.93941311633, obj.entry().get(0).changes().get(0).value().messages().get(0).location().latitude());
         Assertions.assertEquals(-10.606395436721, obj.entry().get(0).changes().get(0).value().messages().get(0).location().longitude());
