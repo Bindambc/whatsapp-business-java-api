@@ -197,7 +197,7 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 ## :arrow_down: WebHooks
 Webhooks are triggered when a customer performs an action or the status for a message a business sends a customer changes.
 
-WebHook objects are mapped on [**WebHookPayload class**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/java/com/whatsapp/api/domain/webhook/WebHookPayload.java)
+WebHook objects are mapped on [**WebHookPayload class**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/domain/webhook/WebHookPayload.java)
 ```java
     var objectMapper = new ObjectMapper();
     var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
