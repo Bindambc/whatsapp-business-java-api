@@ -190,7 +190,7 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
 ---
 
-### :heavy_plus_sign: [See more examples here](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples).
+### :heavy_plus_sign: [See more examples here](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/domain/webhook/WebHookPayload.java).
 
 ---
 
