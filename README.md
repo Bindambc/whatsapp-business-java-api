@@ -4,9 +4,11 @@
 [![CodeQL](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Whatsapp business api SDK, written in java. This SDK implements Whatsapp Cloud API, and WhatsApp Business Management API. These allows you to:
+Whatsapp business api SDK, written in java. This SDK implements the Official [Whatsapp Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api) and [WhatsApp Business Management API](https://developers.facebook.com/docs/whatsapp/business-management-api). These allows you to:
 - manage your WhatsApp Business Account assets, such as message templates and phone numbers;
 - send messages to your contacts, such as simple text messages, messages with buttons...
+
+:warning: This project is still under construction. Contributions are welcome.
 
 ---
 
@@ -14,7 +16,7 @@ Whatsapp business api SDK, written in java. This SDK implements Whatsapp Cloud A
 
 :warning: this library is compatible with **java 17+**.
 
-**1. Add the JitPack repository to your build file:**
+**1. Add the [JitPack](https://jitpack.io/#Bindambc/whatsapp-business-java-api) repository to your build file:**
 
 ```xml
 	<repositories>
@@ -82,6 +84,12 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/211179681-488341bf-a831-48ab-9ea1-312adcb769a4.png)
+
+
 ---        
  [**Send a message with buttons (template):**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTemplateButtonMessageExample.java)
 
@@ -106,6 +114,11 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/211179613-3b9a30db-4f2f-4424-8073-adb8fce09226.png)
+
 ---
 [**Send a message with a contact**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendContactMessageExample.java)
 
@@ -128,6 +141,11 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/211179648-e4c97874-a380-49db-8337-39f17e661799.png)
+
 
 ---
 
