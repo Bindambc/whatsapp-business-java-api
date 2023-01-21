@@ -19,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record Error(@JsonProperty("code") Integer code, @JsonProperty("details") String details,
                     @JsonProperty("error_subcode") Integer errorSubcode, @JsonProperty("fbtrace_id") String fbtraceId,
-                    @JsonProperty("message") @JsonAlias({"message",}) String message, @JsonProperty("messaging_product") String messagingProduct,
+                    @JsonProperty("message") @JsonAlias({"message",}) String message,
+                    @JsonProperty("messaging_product") String messagingProduct,
                     @JsonProperty("error_data") ErrorData errorData, @JsonProperty("type") String type,
 
                     @JsonProperty("is_transient") Boolean isTransient,

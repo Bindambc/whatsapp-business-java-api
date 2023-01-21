@@ -14,8 +14,8 @@ import com.whatsapp.api.domain.templates.QuickReplyButton;
 import com.whatsapp.api.exception.utils.Formatter;
 import com.whatsapp.api.impl.WhatsappBusinessManagementApi;
 
-import static com.whatsapp.api.TestUtils.TOKEN;
-import static com.whatsapp.api.TestUtils.WABA_ID;
+import static com.whatsapp.api.TestConstants.TOKEN;
+import static com.whatsapp.api.TestConstants.WABA_ID;
 
 public class CreateMessageTemplate3Example {
 

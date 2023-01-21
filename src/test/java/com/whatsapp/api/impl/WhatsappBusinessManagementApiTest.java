@@ -20,8 +20,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static com.whatsapp.api.TestUtils.TOKEN;
-import static com.whatsapp.api.TestUtils.WABA_ID;
+import static com.whatsapp.api.TestConstants.TOKEN;
+import static com.whatsapp.api.TestConstants.WABA_ID;
 
 class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 

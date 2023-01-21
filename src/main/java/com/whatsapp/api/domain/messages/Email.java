@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * - typestring – Optional. Standard values are HOME and WORK.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EmailsItem {
+public class Email {
 
     @JsonProperty("type")
     private AddressType type;
@@ -25,7 +25,7 @@ public class EmailsItem {
         return type;
     }
 
-    public EmailsItem setType(AddressType type) {
+    public Email setType(AddressType type) {
         this.type = type;
         return this;
     }
@@ -34,7 +34,7 @@ public class EmailsItem {
         return email;
     }
 
-    public EmailsItem setEmail(String email) {
+    public Email setEmail(String email) {
         this.email = email;
         return this;
     }

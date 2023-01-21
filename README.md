@@ -33,7 +33,7 @@ Whatsapp business api SDK, written in java. This SDK implements the Official [Wh
    <dependency>
       <groupId>com.github.Bindambc</groupId>
       <artifactId>whatsapp-business-java-api</artifactId>
-      <version>0.0.2</version>
+      <version>0.0.3</version>
    </dependency>
 ```
 
@@ -192,5 +192,40 @@ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
 ### :heavy_plus_sign: [See more examples here](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples).
 
+---
 
+## :arrow_down: WebHooks
+Webhooks are triggered when a customer performs an action or the status for a message a business sends a customer changes.
 
+WebHook objects are mapped on [**WebHookPayload class**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/java/com/whatsapp/api/domain/webhook/WebHookPayload.java)
+```java
+    var objectMapper = new ObjectMapper();
+    var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+```
+
+You get a webhooks notification:
+
+1- When a customer performs an action
+
+- Sends a text message to the business
+- Sends an image, video, audio, document, or sticker to the business
+- Sends contact information to the business
+- Sends location information to the business
+- Clicks a reply button set up by the business
+- Clicks a call-to-actions button on an Ad that Clicks to WhatsApp
+- Clicks an item on a business' list
+- Updates their profile information such as their phone number
+- Asks for information about a specific product
+- Orders products being sold by the business
+
+2- When the status for a message received by a business changes (includes pricing information)
+
+- delivered
+- read
+- sent
+
+3- When WhatsApp Business Management API updates:
+
+- Message Template Updates
+- Phone Number Updates
+- WABA Updates

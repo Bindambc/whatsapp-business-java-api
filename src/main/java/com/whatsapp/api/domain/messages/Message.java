@@ -24,7 +24,7 @@ public class Message {
     private TextMessage textMessage;
 
     @JsonProperty("contacts")
-    private List<ContactsItem> contactMessage;
+    private List<Contact> contactMessage;
 
     @JsonProperty("template")
     private TemplateMessage templateMessage;
@@ -48,11 +48,15 @@ public class Message {
 
     public static class MessageBuilder {
 
+        private String to;
+
+
         private MessageBuilder() {
         }
 
-
-        private String to;
+        public static MessageBuilder builder() {
+            return new MessageBuilder();
+        }
 
         /**
          * @param to Required.
@@ -62,11 +66,6 @@ public class Message {
         public MessageBuilder setTo(String to) {
             this.to = to;
             return this;
-        }
-
-
-        public static MessageBuilder builder() {
-            return new MessageBuilder();
         }
 
         /**
@@ -88,7 +87,7 @@ public class Message {
 
         /**
          * <b>Requiered</b>.
-         * Build an objetc with {@link ContactsItem}
+         * Build an objetc with {@link Contact}
          */
         public Message buildContactMessage(ContactMessage contactMessage) {
             var message = new Message(to, MessageType.CONTACTS);

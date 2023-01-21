@@ -5,10 +5,6 @@ package com.whatsapp.api.exception.utils;
  */
 public class Formatter {
 
-
-    private final String STRIKETHROUGH = "~";
-    private final String CODE = "```";
-
     /**
      * @param text String
      * @return text formatted in italic. Example: <i>"italic text"</i>

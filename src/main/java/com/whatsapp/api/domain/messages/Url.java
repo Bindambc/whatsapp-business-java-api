@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UrlsItem {
+public class Url {
 
     @JsonProperty("type")
     private String type;
@@ -16,7 +16,7 @@ public class UrlsItem {
         return type;
     }
 
-    public UrlsItem setType(String type) {
+    public Url setType(String type) {
         this.type = type;
         return this;
     }
@@ -25,7 +25,7 @@ public class UrlsItem {
         return url;
     }
 
-    public UrlsItem setUrl(String url) {
+    public Url setUrl(String url) {
         this.url = url;
         return this;
     }

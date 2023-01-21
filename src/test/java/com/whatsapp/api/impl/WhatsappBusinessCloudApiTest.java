@@ -1,7 +1,7 @@
 package com.whatsapp.api.impl;
 
 import com.whatsapp.api.MockServerUtilsTest;
-import com.whatsapp.api.TestUtils;
+import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.TextMessage;
@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static com.whatsapp.api.TestUtils.PHONE_NUMBER_1;
-import static com.whatsapp.api.TestUtils.PHONE_NUMBER_ID;
+import static com.whatsapp.api.TestConstants.PHONE_NUMBER_1;
+import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
 import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
 
 public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
@@ -25,7 +25,7 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
     void testSendTextMessage() throws IOException, URISyntaxException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/message.json")));
 
-        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
         var message = MessageBuilder.builder()//

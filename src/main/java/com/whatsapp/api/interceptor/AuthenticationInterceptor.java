@@ -3,7 +3,6 @@ package com.whatsapp.api.interceptor;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import retrofit2.internal.EverythingIsNonNull;
 
 import java.io.IOException;
 

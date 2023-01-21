@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.impl.WhatsappBusinessManagementApi;
 
-import static com.whatsapp.api.TestUtils.TOKEN;
-import static com.whatsapp.api.TestUtils.WABA_ID;
+import static com.whatsapp.api.TestConstants.TOKEN;
+import static com.whatsapp.api.TestConstants.WABA_ID;
 
 public class RetrieveTemplates2Example {
 
@@ -16,7 +16,7 @@ public class RetrieveTemplates2Example {
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
 
-        var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID,2);
+        var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID, 2);
 
         ObjectMapper mapper = new ObjectMapper();
 

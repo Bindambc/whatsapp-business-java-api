@@ -10,7 +10,7 @@ import java.util.List;
  * Full contact information.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ContactsItem {
+public class Contact {
     /**
      * Optional.
      * <p>
@@ -20,17 +20,17 @@ public class ContactsItem {
     private String birthday;
 
     @JsonProperty("emails")
-    private List<EmailsItem> emails;
+    private List<Email> emails;
     /**
      * Optional.
      * <p>
      * Full contact address(es) formatted as an addresses object.
      */
     @JsonProperty("addresses")
-    private List<AddressesItem> addresses;
+    private List<Address> addresses;
 
     @JsonProperty("urls")
-    private List<UrlsItem> urls;
+    private List<Url> urls;
 
     @JsonProperty("org")
     private Org org;
@@ -39,61 +39,61 @@ public class ContactsItem {
     private Name name;
 
     @JsonProperty("phones")
-    private List<PhonesItem> phones;
+    private List<Phone> phones;
 
     public String getBirthday() {
         return birthday;
     }
 
-    public ContactsItem setBirthday(String birthday) {
+    public Contact setBirthday(String birthday) {
         this.birthday = birthday;
         return this;
     }
 
-    public List<EmailsItem> getEmails() {
+    public List<Email> getEmails() {
         return emails;
     }
 
-    public ContactsItem setEmails(List<EmailsItem> emails) {
+    public Contact setEmails(List<Email> emails) {
         this.emails = emails;
         return this;
     }
 
-    public ContactsItem addEmails(EmailsItem emailsItem) {
+    public Contact addEmails(Email email) {
         if (this.emails == null) this.emails = new ArrayList<>();
 
-        this.emails.add(emailsItem);
+        this.emails.add(email);
         return this;
     }
 
-    public List<AddressesItem> getAddresses() {
+    public List<Address> getAddresses() {
         return addresses;
     }
 
-    public ContactsItem setAddresses(List<AddressesItem> addresses) {
+    public Contact setAddresses(List<Address> addresses) {
         this.addresses = addresses;
         return this;
     }
 
-    public ContactsItem addAddresses(AddressesItem addressesItem) {
+    public Contact addAddresses(Address address) {
         if (this.addresses == null) this.addresses = new ArrayList<>();
 
         return this;
     }
 
-    public List<UrlsItem> getUrls() {
+    public List<Url> getUrls() {
         return urls;
     }
 
-    public ContactsItem setUrls(List<UrlsItem> urls) {
+    public Contact setUrls(List<Url> urls) {
         this.urls = urls;
         return this;
     }
 
-    public ContactsItem addUrls(UrlsItem urlsItem) {
+    public Contact addUrls(Url url) {
         if (this.urls == null) this.urls = new ArrayList<>();
 
-        this.urls.add(urlsItem);
+        this.urls.add(url);
         return this;
     }
 
@@ -101,7 +101,7 @@ public class ContactsItem {
         return org;
     }
 
-    public ContactsItem setOrg(Org org) {
+    public Contact setOrg(Org org) {
         this.org = org;
         return this;
     }
@@ -113,29 +113,29 @@ public class ContactsItem {
     /**
      * @param name {@link Name}
      */
-    public ContactsItem setName(Name name) {
+    public Contact setName(Name name) {
         this.name = name;
         return this;
     }
 
 
-    public List<PhonesItem> getPhones() {
+    public List<Phone> getPhones() {
         return phones;
     }
 
     /**
-     * @param phones {@link PhonesItem}
+     * @param phones {@link Phone}
      */
-    public ContactsItem setPhones(List<PhonesItem> phones) {
+    public Contact setPhones(List<Phone> phones) {
         this.phones = phones;
         return this;
     }
 
-    public ContactsItem addPhones(PhonesItem phonesItem) {
+    public Contact addPhones(Phone phone) {
         if (this.phones == null) this.phones = new ArrayList<>();
 
 
-        this.phones.add(phonesItem);
+        this.phones.add(phone);
         return this;
     }
 }

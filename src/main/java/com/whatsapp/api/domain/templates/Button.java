@@ -27,21 +27,21 @@ public class Button {
         this.type = buttonType;
     }
 
+    public ButtonType getType() {
+        return type;
+    }
+
     public Button setType(ButtonType type) {
         this.type = type;
         return this;
     }
 
+    public String getText() {
+        return text;
+    }
+
     public Button setText(String text) {
         this.text = text;
         return this;
-    }
-
-    public ButtonType getType() {
-        return type;
-    }
-
-    public String getText() {
-        return text;
     }
 }

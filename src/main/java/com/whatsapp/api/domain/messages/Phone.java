@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * </ul>
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PhonesItem {
+public class Phone {
 
     @JsonProperty("phone")
     private String phone;
@@ -29,7 +29,7 @@ public class PhonesItem {
         return phone;
     }
 
-    public PhonesItem setPhone(String phone) {
+    public Phone setPhone(String phone) {
         this.phone = phone;
         return this;
     }
@@ -38,7 +38,7 @@ public class PhonesItem {
         return waId;
     }
 
-    public PhonesItem setWaId(String waId) {
+    public Phone setWaId(String waId) {
         this.waId = waId;
         return this;
     }
@@ -47,7 +47,7 @@ public class PhonesItem {
         return type;
     }
 
-    public PhonesItem setType(AddressType type) {
+    public Phone setType(AddressType type) {
         this.type = type;
         return this;
     }

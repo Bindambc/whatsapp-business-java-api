@@ -1,7 +1,6 @@
 package com.whatsapp.api.domain.templates;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ public class ButtonComponent extends Component<ButtonComponent> {
 
 
     public ButtonComponent() {
-     super(ComponentType.BUTTONS);
+        super(ComponentType.BUTTONS);
     }
 
 

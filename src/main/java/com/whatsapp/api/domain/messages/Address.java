@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * typestring – Optional. Standard values are HOME and WORK.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AddressesItem {
+public class Address {
 
     @JsonProperty("zip")
     private String zip;
@@ -50,7 +50,7 @@ public class AddressesItem {
         return zip;
     }
 
-    public AddressesItem setZip(String zip) {
+    public Address setZip(String zip) {
         this.zip = zip;
         return this;
     }
@@ -59,7 +59,7 @@ public class AddressesItem {
         return country;
     }
 
-    public AddressesItem setCountry(String country) {
+    public Address setCountry(String country) {
         this.country = country;
         return this;
     }
@@ -68,7 +68,7 @@ public class AddressesItem {
         return countryCode;
     }
 
-    public AddressesItem setCountryCode(String countryCode) {
+    public Address setCountryCode(String countryCode) {
         this.countryCode = countryCode;
         return this;
     }
@@ -77,7 +77,7 @@ public class AddressesItem {
         return city;
     }
 
-    public AddressesItem setCity(String city) {
+    public Address setCity(String city) {
         this.city = city;
         return this;
     }
@@ -86,7 +86,7 @@ public class AddressesItem {
         return street;
     }
 
-    public AddressesItem setStreet(String street) {
+    public Address setStreet(String street) {
         this.street = street;
         return this;
     }
@@ -95,7 +95,7 @@ public class AddressesItem {
         return state;
     }
 
-    public AddressesItem setState(String state) {
+    public Address setState(String state) {
         this.state = state;
         return this;
     }
@@ -104,7 +104,7 @@ public class AddressesItem {
         return type;
     }
 
-    public AddressesItem setType(AddressType type) {
+    public Address setType(AddressType type) {
         this.type = type;
         return this;
     }

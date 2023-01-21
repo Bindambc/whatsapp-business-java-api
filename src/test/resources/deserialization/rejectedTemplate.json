@@ -1,0 +1,21 @@
+{
+  "entry": [
+    {
+      "id": "880480871844883",
+      "time": 1674250641,
+      "changes": [
+        {
+          "value": {
+            "event": "REJECTED",
+            "message_template_id": 905507062668800,
+            "message_template_name": "schedule_confirmation4",
+            "message_template_language": "pt_BR",
+            "reason": "SCAM"
+          },
+          "field": "message_template_status_update"
+        }
+      ]
+    }
+  ],
+  "object": "whatsapp_business_account"
+}
