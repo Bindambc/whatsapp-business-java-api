@@ -26,22 +26,22 @@ public class CreateMessageTemplate3Example {
 
         var template = new MessageTemplate();
 
-        template.setName("schedule_confirmation4")//
+        template.setName("schedule_confirmation3")//
                 .setCategory(Category.TRANSACTIONAL)//
                 .setLanguage(Language.PT_BR)//
                 .addComponent(new HeaderComponent()//
-                        .setText("Confirmação de Compra")//
+                        .setText("Confirmação de Atendimento")//
                         .setFormat(HeaderFormat.TEXT))//
                 .addComponent(new BodyComponent()//
-                        .setText("Olá " + Formatter.bold("{{1}}") + ", passando aqui para confirmar sua compra para o dia " + Formatter.bold("{{2}}") + " as " + Formatter.bold("{{3}}h") + ".\nVocê confirma?")//
+                        .setText("Olá " + Formatter.bold("{{1}}") + ", passando aqui para confirmar seu horário no dia " + Formatter.bold("{{2}}") + " as " + Formatter.bold("{{3}}h") + ".\nVocê confirma que comparecerá?")//
                         .setExample(new Example()//
                                 .addBodyTextExamples("Maria", "04/11/2022", "13:30")//
                         ))//
                 .addComponent(new ButtonComponent()//
                         .addButton(new QuickReplyButton("SIM"))//
                         .addButton(new QuickReplyButton("NÃO"))//
-
-
+                        .addButton(new QuickReplyButton("REMARCAR")//
+                        )
 
 
                 )//
