@@ -29,6 +29,9 @@ public class Message {
     @JsonProperty("template")
     private TemplateMessage templateMessage;
 
+    @JsonProperty("interactive")
+    public InteractiveMessage interactiveMessage;
+
 
     private Message() {
     }
@@ -99,6 +102,13 @@ public class Message {
         public Message buildTemplateMessage(TemplateMessage templateMessage) {
             var message = new Message(to, MessageType.TEMPLATE);
             message.templateMessage = templateMessage;
+            return message;
+
+        }
+
+        public Message buildInteractiveMessage(InteractiveMessage interactiveMessage) {
+            var message = new Message(to, MessageType.INTERACTIVE);
+            message.interactiveMessage = interactiveMessage;
             return message;
 
         }
