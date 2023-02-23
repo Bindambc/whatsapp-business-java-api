@@ -39,7 +39,7 @@ public class Action {
     @JsonProperty("product_retailer_id")
     private String productRetailerId;
     @JsonProperty("button")
-    private String button;
+    private String buttonText;
     @JsonProperty("buttons")
     private List<Button> buttons;
     @JsonProperty("sections")
@@ -63,12 +63,12 @@ public class Action {
         return this;
     }
 
-    public String getButton() {
-        return button;
+    public String getButtonText() {
+        return buttonText;
     }
 
-    public Action setButton(String button) {
-        this.button = button;
+    public Action setButtonText(String buttonText) {
+        this.buttonText = buttonText;
         return this;
     }
 
