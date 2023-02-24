@@ -127,7 +127,7 @@ public class Action {
     /**
      * Add button action.
      *
-     * @param button @{@link Button}
+     * @param button the type {@link Button}
      * @return the action
      */
     public Action addButton(Button button) {

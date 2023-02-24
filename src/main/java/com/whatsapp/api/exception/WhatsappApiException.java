@@ -6,7 +6,9 @@ import com.whatsapp.api.domain.errors.WhatsappApiError;
  * The type Whatsapp api exception.
  */
 public class WhatsappApiException extends RuntimeException {
-
+    /**
+     * The type  WhatsappApiError
+     */
     private WhatsappApiError whatsappApiError;
 
     /**
