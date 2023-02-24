@@ -5,10 +5,12 @@ import com.whatsapp.api.domain.media.Media;
 import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
+import com.whatsapp.api.domain.response.Response;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
@@ -49,5 +51,8 @@ public interface WhatsappBusinessCloudApiService {
     @Streaming
     @Headers(value = "User-Agent:curl/7.64.1")
     Call<ResponseBody> downloadFile(@Url String url);
+
+    @DELETE("/" + API_VERSION + "/{media-id}")
+    Call<Response> deleteMedia(@Url String url);
 
 }

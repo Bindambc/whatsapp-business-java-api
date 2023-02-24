@@ -10,7 +10,7 @@ import java.nio.file.Path;
 
 import static com.whatsapp.api.TestConstants.TOKEN;
 
-public class DownloadMediaExample {
+public class DeleteMediaExample {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);

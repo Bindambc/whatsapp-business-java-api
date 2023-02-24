@@ -26,7 +26,6 @@ public class UploadMediaExample {
 
         var response = whatsappBusinessCloudApi.uploadMedia(PHONE_NUMBER_ID, fileName, FileType.PNG, fileContent);
 
-//1227829768162607
         System.out.println(response);
     }
 

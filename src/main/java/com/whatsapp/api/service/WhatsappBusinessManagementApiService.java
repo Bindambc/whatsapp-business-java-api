@@ -2,7 +2,7 @@ package com.whatsapp.api.service;
 
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
-import com.whatsapp.api.domain.templates.response.MessageTemplateSuccessResponse;
+import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -52,7 +52,7 @@ public interface WhatsappBusinessManagementApiService {
      * @return the call
      */
     @DELETE("/" + API_VERSION + "/{whatsapp-business-account-ID}/message_templates")
-    Call<MessageTemplateSuccessResponse> deleteMessageTemplate(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Query("name") String name);
+    Call<Response> deleteMessageTemplate(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Query("name") String name);
 
     /**
      * Retrieve templates call.

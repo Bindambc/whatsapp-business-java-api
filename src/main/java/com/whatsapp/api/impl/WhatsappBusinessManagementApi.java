@@ -2,7 +2,7 @@ package com.whatsapp.api.impl;
 
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
-import com.whatsapp.api.domain.templates.response.MessageTemplateSuccessResponse;
+import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
 import com.whatsapp.api.service.WhatsappBusinessManagementApiService;
 
@@ -60,7 +60,7 @@ public class WhatsappBusinessManagementApi {
      * @param name                      the name
      * @return the message template success response
      */
-    public MessageTemplateSuccessResponse deleteMessageTemplate(String whatsappBusinessAccountId, String name) {
+    public Response deleteMessageTemplate(String whatsappBusinessAccountId, String name) {
 
         return executeSync(whatsappBusinessManagementApiService.deleteMessageTemplate(whatsappBusinessAccountId, name));
     }
