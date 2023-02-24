@@ -30,19 +30,41 @@ public class TextMessage {
     @JsonProperty("body")
     private String body;
 
+    /**
+     * Is preview url boolean.
+     *
+     * @return the boolean
+     */
     public boolean isPreviewUrl() {
         return previewUrl;
     }
 
+    /**
+     * Sets preview url.
+     *
+     * @param previewUrl the preview url
+     * @return the preview url
+     */
     public TextMessage setPreviewUrl(boolean previewUrl) {
         this.previewUrl = previewUrl;
         return this;
     }
 
+    /**
+     * Gets body.
+     *
+     * @return the body
+     */
     public String getBody() {
         return body;
     }
 
+    /**
+     * Sets body.
+     *
+     * @param body the body
+     * @return the body
+     */
     public TextMessage setBody(String body) {
         this.body = body;
         return this;

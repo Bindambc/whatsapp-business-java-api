@@ -24,31 +24,68 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Section {
 
+    /**
+     * The Title.
+     */
     @JsonProperty("title")
     public String title;
+    /**
+     * The Products.
+     */
     @JsonProperty("product_items")
     public List<Product> products;
+    /**
+     * The Rows.
+     */
     @JsonProperty("rows")
     public List<Row> rows;
 
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Sets title.
+     *
+     * @param title the title
+     * @return the title
+     */
     public Section setTitle(String title) {
         this.title = title;
         return this;
     }
 
+    /**
+     * Gets product items.
+     *
+     * @return the product items
+     */
     public List<Product> getProductItems() {
         return products;
     }
 
+    /**
+     * Sets product items.
+     *
+     * @param products the products
+     * @return the product items
+     */
     public Section setProductItems(List<Product> products) {
         this.products = products;
         return this;
     }
 
+    /**
+     * Add product item section.
+     *
+     * @param product the product
+     * @return the section
+     */
     public Section addProductItem(Product product) {
         if (this.products == null)
             this.products = new ArrayList<>();
@@ -57,15 +94,32 @@ public class Section {
         return this;
     }
 
+    /**
+     * Gets rows.
+     *
+     * @return the rows
+     */
     public List<Row> getRows() {
         return rows;
     }
 
+    /**
+     * Sets rows.
+     *
+     * @param rows the rows
+     * @return the rows
+     */
     public Section setRows(List<Row> rows) {
         this.rows = rows;
         return this;
     }
 
+    /**
+     * Add row section.
+     *
+     * @param row the row
+     * @return the section
+     */
     public Section addRow(Row row) {
         if (this.rows == null)
             this.rows = new ArrayList<>();

@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * </ul>
  */
 public enum ButtonType {
+    /**
+     * Reply button type.
+     */
     REPLY("reply");
     private final String value;
 
@@ -16,6 +19,11 @@ public enum ButtonType {
         this.value = value;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
     @JsonValue
     public String getValue() {
         return value;

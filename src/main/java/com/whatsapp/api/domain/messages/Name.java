@@ -38,55 +38,121 @@ public class Name {
     @JsonProperty("formatted_name")
     private String formattedName;
 
+    /**
+     * Gets prefix.
+     *
+     * @return the prefix
+     */
     public String getPrefix() {
         return prefix;
     }
 
+    /**
+     * Sets prefix.
+     *
+     * @param prefix the prefix
+     * @return the prefix
+     */
     public Name setPrefix(String prefix) {
         this.prefix = prefix;
         return this;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     * @return the last name
+     */
     public Name setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
 
+    /**
+     * Gets middle name.
+     *
+     * @return the middle name
+     */
     public String getMiddleName() {
         return middleName;
     }
 
+    /**
+     * Sets middle name.
+     *
+     * @param middleName the middle name
+     * @return the middle name
+     */
     public Name setMiddleName(String middleName) {
         this.middleName = middleName;
         return this;
     }
 
+    /**
+     * Gets suffix.
+     *
+     * @return the suffix
+     */
     public String getSuffix() {
         return suffix;
     }
 
+    /**
+     * Sets suffix.
+     *
+     * @param suffix the suffix
+     * @return the suffix
+     */
     public Name setSuffix(String suffix) {
         this.suffix = suffix;
         return this;
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     * @return the first name
+     */
     public Name setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
 
+    /**
+     * Gets formatted name.
+     *
+     * @return the formatted name
+     */
     public String getFormattedName() {
         return formattedName;
     }
 
+    /**
+     * Sets formatted name.
+     *
+     * @param formattedName the formatted name
+     * @return the formatted name
+     */
     public Name setFormattedName(String formattedName) {
         this.formattedName = formattedName;
         return this;

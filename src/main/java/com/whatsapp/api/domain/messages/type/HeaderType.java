@@ -15,9 +15,21 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * </ul>
  */
 public enum HeaderType {
+    /**
+     * Text header type.
+     */
     TEXT("text"), /**/
+    /**
+     * Video header type.
+     */
     VIDEO("video"), /**/
+    /**
+     * Image header type.
+     */
     IMAGE("image"), /**/
+    /**
+     * Document header type.
+     */
     DOCUMENT("document"); /**/
     private final String value;
 
@@ -25,6 +37,11 @@ public enum HeaderType {
         this.value = value;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
     @JsonValue
     public String getValue() {
         return value;

@@ -12,9 +12,21 @@ package com.whatsapp.api.domain.messages.type;
  * </ul>
  */
 public enum InteractiveMessageType {
+    /**
+     * Button interactive message type.
+     */
     BUTTON("button"), //
+    /**
+     * List interactive message type.
+     */
     LIST("list"), //
+    /**
+     * Product interactive message type.
+     */
     PRODUCT("product"), //
+    /**
+     * Product list interactive message type.
+     */
     PRODUCT_LIST("product_list");
 
     private final String value;
@@ -23,6 +35,11 @@ public enum InteractiveMessageType {
         this.value = value;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
     public String getValue() {
         return value;
     }

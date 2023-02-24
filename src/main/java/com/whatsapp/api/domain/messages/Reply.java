@@ -14,24 +14,52 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Reply {
 
+    /**
+     * The Id.
+     */
     @JsonProperty("id")
     public String id;
+    /**
+     * The Title.
+     */
     @JsonProperty("title")
     public String title;
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     * @return the id
+     */
     public Reply setId(String id) {
         this.id = id;
         return this;
     }
 
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Sets title.
+     *
+     * @param title the title
+     * @return the title
+     */
     public Reply setTitle(String title) {
         this.title = title;
         return this;

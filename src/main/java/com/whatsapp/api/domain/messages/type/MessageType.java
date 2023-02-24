@@ -22,24 +22,75 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * </ul>
  */
 public enum MessageType {
+    /**
+     * Audio message type.
+     */
     AUDIO("audio"), //
+    /**
+     * Button message type.
+     */
     BUTTON("button"),//
+    /**
+     * Contacts message type.
+     */
     CONTACTS("contacts"),//
+    /**
+     * Document message type.
+     */
     DOCUMENT("document"), //
+    /**
+     * Location message type.
+     */
     LOCATION("location"), //
 
+    /**
+     * Text message type.
+     */
     TEXT("text"), //
+    /**
+     * Template message type.
+     */
     TEMPLATE("template"), //
+    /**
+     * Image message type.
+     */
     IMAGE("image"), //
+    /**
+     * Interactive message type.
+     */
     INTERACTIVE("interactive"), //
+    /**
+     * Order message type.
+     */
     ORDER("order"), //
+    /**
+     * Reaction message type.
+     */
     REACTION("reaction"), //
+    /**
+     * Sticker message type.
+     */
     STICKER("sticker"), //
+    /**
+     * System message type.
+     */
     SYSTEM("system"), //
+    /**
+     * Unknown message type.
+     */
     UNKNOWN("unknown"), //
+    /**
+     * Video message type.
+     */
     VIDEO("video"),//
+    /**
+     * Unsupported message type.
+     */
     UNSUPPORTED("unsupported"),//
 
+    /**
+     * Hsm message type.
+     */
     @Deprecated(forRemoval = true) HSM("hsm");//
 
     private final String value;
@@ -48,6 +99,11 @@ public enum MessageType {
         this.value = value;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
     @JsonValue
     public String getValue() {
         return value;

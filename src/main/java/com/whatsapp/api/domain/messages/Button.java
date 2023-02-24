@@ -20,24 +20,52 @@ import com.whatsapp.api.domain.messages.type.ButtonType;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Button {
 
+    /**
+     * The Type.
+     */
     @JsonProperty("type")
     public ButtonType type;
+    /**
+     * The Reply.
+     */
     @JsonProperty("reply")
     public Reply reply;
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public ButtonType getType() {
         return type;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     * @return the type
+     */
     public Button setType(ButtonType type) {
         this.type = type;
         return this;
     }
 
+    /**
+     * Gets reply.
+     *
+     * @return the reply
+     */
     public Reply getReply() {
         return reply;
     }
 
+    /**
+     * Sets reply.
+     *
+     * @param reply the reply
+     * @return the reply
+     */
     public Button setReply(Reply reply) {
         this.reply = reply;
         return this;
