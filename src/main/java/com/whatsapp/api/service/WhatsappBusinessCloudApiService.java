@@ -24,9 +24,19 @@ import java.util.Map;
 import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
 
 
+/**
+ * The interface Whatsapp business cloud api service.
+ */
 public interface WhatsappBusinessCloudApiService {
 
 
+    /**
+     * Send message call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param message       the message
+     * @return the call
+     */
     @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
     Call<MessageResponse> sendMessage(@Path("Phone-Number-ID") String phoneNumberId, @Body Message message);
 

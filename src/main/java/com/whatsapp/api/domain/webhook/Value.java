@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * The type Value.
+ *
  * @param metadata                The metadata about your phone number.
  * @param messagingProduct        The messaging service used for Webhooks. For WhatsApp messages, this value needs to be set to “whatsapp”.
  * @param messages                An array of message objects. Added to Webhooks for incoming message notifications.
@@ -16,8 +18,8 @@ import java.util.List;
  * @param messageTemplateId       The message template ID
  * @param messageTemplateLanguage The message template language
  * @param messageTemplateName     The message template name
- * @param phoneNumber
- * @param reason
+ * @param phoneNumber             the phone number
+ * @param reason                  reason
  * @param rejectionReason         If a request was rejected, this field displays the reason for that rejection.
  * @param requestedVerifiedName   This field displays the name that was sent to be verified.
  */

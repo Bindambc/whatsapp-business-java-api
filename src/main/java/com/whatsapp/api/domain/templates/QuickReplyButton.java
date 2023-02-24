@@ -2,12 +2,23 @@ package com.whatsapp.api.domain.templates;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+/**
+ * The type Quick reply button.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuickReplyButton extends Button {
+    /**
+     * Instantiates a new Quick reply button.
+     */
     protected QuickReplyButton() {
 
     }
 
+    /**
+     * Instantiates a new Quick reply button.
+     *
+     * @param text the text
+     */
     public QuickReplyButton(String text) {
         super(ButtonType.QUICK_REPLY, text);
     }

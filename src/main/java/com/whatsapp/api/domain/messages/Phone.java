@@ -2,6 +2,7 @@ package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whatsapp.api.domain.messages.type.AddressType;
 
 /**
  * <b>Optional.</b>
@@ -25,28 +26,61 @@ public class Phone {
     @JsonProperty("type")
     private AddressType type;
 
+    /**
+     * Gets phone.
+     *
+     * @return the phone
+     */
     public String getPhone() {
         return phone;
     }
 
+    /**
+     * Sets phone.
+     *
+     * @param phone the phone
+     * @return the phone
+     */
     public Phone setPhone(String phone) {
         this.phone = phone;
         return this;
     }
 
+    /**
+     * Gets wa id.
+     *
+     * @return the wa id
+     */
     public String getWaId() {
         return waId;
     }
 
+    /**
+     * Sets wa id.
+     *
+     * @param waId the wa id
+     * @return the wa id
+     */
     public Phone setWaId(String waId) {
         this.waId = waId;
         return this;
     }
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public AddressType getType() {
         return type;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     * @return the type
+     */
     public Phone setType(AddressType type) {
         this.type = type;
         return this;

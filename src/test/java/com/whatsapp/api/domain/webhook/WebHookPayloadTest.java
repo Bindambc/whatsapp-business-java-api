@@ -1,7 +1,7 @@
 package com.whatsapp.api.domain.webhook;
 
 import com.whatsapp.api.TestUtils;
-import com.whatsapp.api.domain.messages.MessageType;
+import com.whatsapp.api.domain.messages.type.MessageType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

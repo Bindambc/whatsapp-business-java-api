@@ -6,15 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * An object representing errors from the whatsapp api
- *
- * @param code
- * @param details
- * @param errorSubcode
- * @param fbtraceId
- * @param message
- * @param messagingProduct
- * @param errorData
- * @param type
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record Error(@JsonProperty("code") Integer code, @JsonProperty("details") String details,

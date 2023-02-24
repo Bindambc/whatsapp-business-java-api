@@ -6,6 +6,8 @@ package com.whatsapp.api.exception.utils;
 public class Formatter {
 
     /**
+     * Italic string.
+     *
      * @param text String
      * @return text formatted in italic. Example: <i>"italic text"</i>
      */
@@ -15,6 +17,8 @@ public class Formatter {
     }
 
     /**
+     * Bold string.
+     *
      * @param text String
      * @return bold formatted text. Example: <b>"bold text"</b>
      */
@@ -24,6 +28,8 @@ public class Formatter {
     }
 
     /**
+     * Strikethrough string.
+     *
      * @param text String
      * @return strikethrough text. Example: <s>"strikethrough text"</s>
      */
@@ -33,6 +39,8 @@ public class Formatter {
     }
 
     /**
+     * Code string.
+     *
      * @param text String
      * @return text formatted as code. Example: <code>"code text"</code>
      */

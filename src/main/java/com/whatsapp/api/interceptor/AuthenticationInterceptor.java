@@ -6,10 +6,18 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
+/**
+ * The type Authentication interceptor.
+ */
 public class AuthenticationInterceptor implements Interceptor {
 
     private final String token;
 
+    /**
+     * Instantiates a new Authentication interceptor.
+     *
+     * @param token the token
+     */
     public AuthenticationInterceptor(String token) {
         this.token = token;
     }
