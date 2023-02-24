@@ -3,6 +3,9 @@ package com.whatsapp.api.domain.webhook;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * The enum Message status.
+ */
 public enum MessageStatus {
     /**
      * Message received by WhatsApp server. (One checkmark)
@@ -32,6 +35,11 @@ public enum MessageStatus {
         this.value = value;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
     @JsonValue
     public String getValue() {
         return value;

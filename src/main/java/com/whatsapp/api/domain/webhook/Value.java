@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
+ * The type Value.
+ *
  * @param metadata                The metadata about your phone number.
  * @param messagingProduct        The messaging service used for Webhooks. For WhatsApp messages, this value needs to be set to “whatsapp”.
  * @param messages                An array of message objects. Added to Webhooks for incoming message notifications.

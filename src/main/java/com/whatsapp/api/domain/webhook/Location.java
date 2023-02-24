@@ -2,6 +2,9 @@ package com.whatsapp.api.domain.webhook;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * The type Location.
+ */
 public record Location(
 
         @JsonProperty("address") String address,
