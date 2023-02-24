@@ -24,12 +24,20 @@ public class WhatsappApiFactory {
     }
 
 
+    /**
+     * New instance whatsapp api factory.
+     *
+     * @param apiKey the api key
+     * @return the whatsapp api factory
+     */
     public static WhatsappApiFactory newInstance(String apiKey) {
         return new WhatsappApiFactory(apiKey);
     }
 
     /**
      * Creates a new synchronous/blocking Whatsapp business cloud api client
+     *
+     * @return the whatsapp business cloud api
      */
     public WhatsappBusinessCloudApi newBusinessCloudApi() {
 
@@ -38,6 +46,8 @@ public class WhatsappApiFactory {
 
     /**
      * Creates a new synchronous/blocking Whatsapp business management api client
+     *
+     * @return the whatsapp business management api
      */
     public WhatsappBusinessManagementApi newBusinessManagementApi() {
         return new WhatsappBusinessManagementApi(token);
