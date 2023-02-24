@@ -2,6 +2,7 @@ package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whatsapp.api.domain.messages.type.MessageType;
 
 import java.util.List;
 
@@ -28,6 +29,9 @@ public class Message {
 
     @JsonProperty("template")
     private TemplateMessage templateMessage;
+
+    @JsonProperty("interactive")
+    public InteractiveMessage interactiveMessage;
 
 
     private Message() {
@@ -86,7 +90,7 @@ public class Message {
         }
 
         /**
-         * <b>Requiered</b>.
+         * <b>Required</b>.
          * Build an objetc with {@link Contact}
          */
         public Message buildContactMessage(ContactMessage contactMessage) {
@@ -99,6 +103,16 @@ public class Message {
         public Message buildTemplateMessage(TemplateMessage templateMessage) {
             var message = new Message(to, MessageType.TEMPLATE);
             message.templateMessage = templateMessage;
+            return message;
+
+        }
+
+        /**
+         * Build an object to send an {@link InteractiveMessage}
+         */
+        public Message buildInteractiveMessage(InteractiveMessage interactiveMessage) {
+            var message = new Message(to, MessageType.INTERACTIVE);
+            message.interactiveMessage = interactiveMessage;
             return message;
 
         }

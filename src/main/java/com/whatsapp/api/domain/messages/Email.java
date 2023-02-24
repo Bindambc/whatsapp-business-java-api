@@ -2,6 +2,7 @@ package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whatsapp.api.domain.messages.type.AddressType;
 
 /**
  * <b>Optional</b>
