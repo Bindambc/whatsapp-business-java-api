@@ -15,23 +15,21 @@ public class Message {
     private final String messagingProduct = "whatsapp";
     @JsonProperty("recipient_type")
     private final String recipientType = "individual";
-    @JsonProperty("to")
-    private String to;
-
-    @JsonProperty("type")
-    private MessageType type;
-
-    @JsonProperty("text")
-    private TextMessage textMessage;
-
-    @JsonProperty("contacts")
-    private List<Contact> contactMessage;
-
-    @JsonProperty("template")
-    private TemplateMessage templateMessage;
-
+    /**
+     * The Interactive message.
+     */
     @JsonProperty("interactive")
     public InteractiveMessage interactiveMessage;
+    @JsonProperty("to")
+    private String to;
+    @JsonProperty("type")
+    private MessageType type;
+    @JsonProperty("text")
+    private TextMessage textMessage;
+    @JsonProperty("contacts")
+    private List<Contact> contactMessage;
+    @JsonProperty("template")
+    private TemplateMessage templateMessage;
 
 
     private Message() {
@@ -42,14 +40,27 @@ public class Message {
         this.type = type;
     }
 
+    /**
+     * Gets messaging product.
+     *
+     * @return the messaging product
+     */
     public String getMessagingProduct() {
         return messagingProduct;
     }
 
+    /**
+     * Gets recipient type.
+     *
+     * @return the recipient type
+     */
     public String getRecipientType() {
         return recipientType;
     }
 
+    /**
+     * The type Message builder.
+     */
     public static class MessageBuilder {
 
         private String to;
@@ -58,14 +69,20 @@ public class Message {
         private MessageBuilder() {
         }
 
+        /**
+         * Builder message builder.
+         *
+         * @return the message builder
+         */
         public static MessageBuilder builder() {
             return new MessageBuilder();
         }
 
         /**
-         * @param to Required.
-         *           <p>
-         *           WhatsApp ID or phone number for the person you want to send a message to.
+         * Sets to.
+         *
+         * @param to Required.           <p>           WhatsApp ID or phone number for the person you want to send a message to.
+         * @return the to
          */
         public MessageBuilder setTo(String to) {
             this.to = to;
@@ -79,7 +96,8 @@ public class Message {
          *     <li><b>preview_url</b> optional</li>
          * </ul>
          *
-         * @param textMessage: {@link TextMessage} object.
+         * @param textMessage : {@link TextMessage} object.
+         * @return the message
          */
         public Message buildTextMessage(TextMessage textMessage) {
             var message = new Message(to, MessageType.TEXT);
@@ -92,6 +110,9 @@ public class Message {
         /**
          * <b>Required</b>.
          * Build an objetc with {@link Contact}
+         *
+         * @param contactMessage the contact message
+         * @return the message
          */
         public Message buildContactMessage(ContactMessage contactMessage) {
             var message = new Message(to, MessageType.CONTACTS);
@@ -100,6 +121,12 @@ public class Message {
 
         }
 
+        /**
+         * Build template message message.
+         *
+         * @param templateMessage the template message
+         * @return the message
+         */
         public Message buildTemplateMessage(TemplateMessage templateMessage) {
             var message = new Message(to, MessageType.TEMPLATE);
             message.templateMessage = templateMessage;
@@ -109,6 +136,9 @@ public class Message {
 
         /**
          * Build an object to send an {@link InteractiveMessage}
+         *
+         * @param interactiveMessage the interactive message
+         * @return the message
          */
         public Message buildInteractiveMessage(InteractiveMessage interactiveMessage) {
             var message = new Message(to, MessageType.INTERACTIVE);

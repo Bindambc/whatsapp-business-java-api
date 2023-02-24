@@ -18,6 +18,11 @@ public class WhatsappBusinessCloudApi {
     private final WhatsappBusinessCloudApiService whatsappBusinessCloudApiService;
 
 
+    /**
+     * Instantiates a new Whatsapp business cloud api.
+     *
+     * @param token the token
+     */
     public WhatsappBusinessCloudApi(String token) {
         this.whatsappBusinessCloudApiService = createService(WhatsappBusinessCloudApiService.class, token);
 

@@ -33,6 +33,12 @@ public class MessageTemplate {
     private List<Component<?>> components;
 
 
+    /**
+     * Add component message template.
+     *
+     * @param component the component
+     * @return the message template
+     */
     public MessageTemplate addComponent(Component<?> component) {
         if (this.components == null) this.components = new ArrayList<>();
 
@@ -41,6 +47,12 @@ public class MessageTemplate {
 
     }
 
+    /**
+     * Add components message template.
+     *
+     * @param components the components
+     * @return the message template
+     */
     public MessageTemplate addComponents(Component<?>... components) {
         if (this.components == null) this.components = new ArrayList<>();
         if (components != null) this.components.addAll(Arrays.stream(components).toList());
@@ -49,37 +61,81 @@ public class MessageTemplate {
     }
 
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     * @return the name
+     */
     public MessageTemplate setName(String name) {
         this.name = name;
         return this;
     }
 
+    /**
+     * Gets language.
+     *
+     * @return the language
+     */
     public Language getLanguage() {
         return language;
     }
 
+    /**
+     * Sets language.
+     *
+     * @param language the language
+     * @return the language
+     */
     public MessageTemplate setLanguage(Language language) {
         this.language = language;
         return this;
     }
 
+    /**
+     * Gets category.
+     *
+     * @return the category
+     */
     public Category getCategory() {
         return category;
     }
 
+    /**
+     * Sets category.
+     *
+     * @param category the category
+     * @return the category
+     */
     public MessageTemplate setCategory(Category category) {
         this.category = category;
         return this;
     }
 
+    /**
+     * Gets components.
+     *
+     * @return the components
+     */
     public List<Component<?>> getComponents() {
         return components;
     }
 
+    /**
+     * Sets components.
+     *
+     * @param components the components
+     * @return the components
+     */
     public MessageTemplate setComponents(List<Component<?>> components) {
         this.components = components;
         return this;

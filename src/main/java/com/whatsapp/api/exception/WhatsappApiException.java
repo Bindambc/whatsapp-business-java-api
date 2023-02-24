@@ -2,18 +2,34 @@ package com.whatsapp.api.exception;
 
 import com.whatsapp.api.domain.errors.WhatsappApiError;
 
+/**
+ * The type Whatsapp api exception.
+ */
 public class WhatsappApiException extends RuntimeException {
 
     private WhatsappApiError whatsappApiError;
 
+    /**
+     * Instantiates a new Whatsapp api exception.
+     */
     public WhatsappApiException() {
         super();
     }
 
+    /**
+     * Instantiates a new Whatsapp api exception.
+     *
+     * @param cause the cause
+     */
     public WhatsappApiException(Throwable cause) {
         super(cause);
     }
 
+    /**
+     * Instantiates a new Whatsapp api exception.
+     *
+     * @param whatsappApiError the whatsapp api error
+     */
     public WhatsappApiException(WhatsappApiError whatsappApiError) {
         this.whatsappApiError = whatsappApiError;
     }

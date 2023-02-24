@@ -3,6 +3,8 @@ package com.whatsapp.api.domain.webhook;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * The type Referral.
+ *
  * @param videoUrl     Added if media_type is “video”. Contains a URL to the video.
  * @param mediaType    Media present in the ad or post the user clicked. Supported values are "image" or "video".
  * @param imageUrl     Added if media_type is “image”. Contains a URL to the raw image.

@@ -1,4 +1,3 @@
-
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -45,62 +44,127 @@ public class Action {
     @JsonProperty("sections")
     private List<Section> sections;
 
+    /**
+     * Gets catalog id.
+     *
+     * @return the catalog id
+     */
     public String getCatalogId() {
         return catalogId;
     }
 
+    /**
+     * Sets catalog id.
+     *
+     * @param catalogId Required for Single Product Messages and Multi-Product Messages - Unique identifier of the                  Facebook catalog linked to your WhatsApp Business Account. This ID can be retrieved via the Meta Commerce Manager.
+     * @return the catalog id
+     */
     public Action setCatalogId(String catalogId) {
         this.catalogId = catalogId;
         return this;
     }
 
+    /**
+     * Gets product retailer id.
+     *
+     * @return the product retailer id
+     */
     public String getProductRetailerId() {
         return productRetailerId;
     }
 
+    /**
+     * Sets product retailer id.
+     *
+     * @param productRetailerId the product retailer id
+     * @return the product retailer id
+     */
     public Action setProductRetailerId(String productRetailerId) {
         this.productRetailerId = productRetailerId;
         return this;
     }
 
+    /**
+     * Gets button text.
+     *
+     * @return the button text
+     */
     public String getButtonText() {
         return buttonText;
     }
 
+    /**
+     * Sets button text.
+     *
+     * @param buttonText the button text
+     * @return the button text
+     */
     public Action setButtonText(String buttonText) {
         this.buttonText = buttonText;
         return this;
     }
 
+    /**
+     * Gets buttons.
+     *
+     * @return the buttons
+     */
     public List<Button> getButtons() {
         return buttons;
     }
 
+    /**
+     * Sets buttons.
+     *
+     * @param buttons the buttons
+     * @return the buttons
+     */
     public Action setButtons(List<Button> buttons) {
         this.buttons = buttons;
         return this;
     }
 
+    /**
+     * Add button action.
+     *
+     * @param button @{@link Button}
+     * @return the action
+     */
     public Action addButton(Button button) {
-        if (this.buttons == null)
-            this.buttons = new ArrayList<>();
+        if (this.buttons == null) this.buttons = new ArrayList<>();
 
         this.buttons.add(button);
         return this;
     }
 
+    /**
+     * Gets sections.
+     *
+     * @return the sections
+     */
     public List<Section> getSections() {
         return sections;
     }
 
+    /**
+     * Sets sections.
+     *
+     * @param sections List of @{@link Section}
+     * @return the sections
+     */
     public Action setSections(List<Section> sections) {
         this.sections = sections;
         return this;
     }
 
+    /**
+     * Add section action.
+     *
+     * @param section the section
+     * @return the action
+     */
     public Action addSection(Section section) {
-        if (this.sections == null)
-            this.sections = new ArrayList<>();
+        if (this.sections == null) this.sections = new ArrayList<>();
 
         this.sections.add(section);
         return this;

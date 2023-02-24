@@ -6,6 +6,9 @@ import com.whatsapp.api.domain.templates.Component;
 
 import java.util.List;
 
+/**
+ * The type Data item.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record DataItem(
 

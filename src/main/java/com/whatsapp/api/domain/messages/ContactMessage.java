@@ -11,19 +11,31 @@ public class ContactMessage {
 
     private List<Contact> contacts;
 
+    /**
+     * Gets contacts.
+     *
+     * @return the contacts
+     */
     public List<Contact> getContacts() {
         return contacts;
     }
 
+    /**
+     * Sets contacts.
+     *
+     * @param contacts the contacts
+     * @return the contacts
+     */
     public ContactMessage setContacts(List<Contact> contacts) {
         this.contacts = contacts;
         return this;
     }
 
     /**
-     * @param contact : Contacts Object.
-     *                <p>
-     *                Add a {@link Contact} object into contacts array.
+     * Add contacts contact message.
+     *
+     * @param contact : Contacts Object.                <p>                Add a {@link Contact} object into contacts array.
+     * @return the contact message
      */
     public ContactMessage addContacts(Contact contact) {
         if (this.contacts == null) this.contacts = new ArrayList<>();

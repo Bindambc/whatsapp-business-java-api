@@ -1,5 +1,19 @@
 package com.whatsapp.api.domain.templates;
 
+/**
+ * The enum Button type.
+ */
 public enum ButtonType {
-    PHONE_NUMBER, URL, QUICK_REPLY
+    /**
+     * Phone number button type.
+     */
+    PHONE_NUMBER,
+    /**
+     * Url button type.
+     */
+    URL,
+    /**
+     * Quick reply button type.
+     */
+    QUICK_REPLY
 }

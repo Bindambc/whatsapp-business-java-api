@@ -8,299 +8,304 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 //TODO: add another supported languages
 public enum Language {
-    
+
     /**
-    Afrikaans af
-    */
+     * Afrikaans af
+     */
     AF("af"),
     /**
-    *Albanian sq
-    */
+     * Albanian sq
+     */
     SQ("sq"),
     /**
-    *Arabic ar
-    */
+     * Arabic ar
+     */
     AR("ar"),
     /**
-    *Azerbaijani az
-    */
+     * Azerbaijani az
+     */
     AZ("az"),
     /**
-    *Bengali bn
-    */
+     * Bengali bn
+     */
     BN("bn"),
     /**
-    *Bulgarian bg
-    */
+     * Bulgarian bg
+     */
     BG("bg"),
     /**
-    *Catalan ca
-    */
+     * Catalan ca
+     */
     CA("ca"),
     /**
-    *Chinese (CHN) zh_CN
-    */
+     * Chinese (CHN) zh_CN
+     */
     ZH_CN("zh_CN"),
     /**
-    *Chinese (HKG) zh_HK
-    */
+     * Chinese (HKG) zh_HK
+     */
     ZH_HK("zh_HK"),
     /**
-    *Chinese (TAI) zh_TW
-    */
+     * Chinese (TAI) zh_TW
+     */
     ZH_TW("zh_TW"),
     /**
-    *Croatian hr
-    */
+     * Croatian hr
+     */
     HR("hr"),
     /**
-    *Czech cs
-    */
+     * Czech cs
+     */
     CS("cs"),
     /**
-    *Danish da
-    */
+     * Danish da
+     */
     DA("da"),
     /**
-    *Dutch nl
-    */
+     * Dutch nl
+     */
     NL("nl"),
     /**
-    *English en
-    */
+     * English en
+     */
     EN("en"),
     /**
-    *English (UK) en_GB
-    */  
+     * English (UK) en_GB
+     */
     EN_GB("en_GB"),
     /**
-    *English (US) en_US
-    */
+     * English (US) en_US
+     */
     EN_US("en_US"),
     /**
-    *Estonian et
-    */
+     * Estonian et
+     */
     ET("et"),
     /**
-    *Filipino fil
-    */
+     * Filipino fil
+     */
     FIL("fil"),
     /**
-    *Finnish fi
-    */
+     * Finnish fi
+     */
     FI("fi"),
     /**
-    *French fr
-    */
+     * French fr
+     */
     FR("fr"),
     /**
-    *Georgian ka
-    */
+     * Georgian ka
+     */
     KA("ka"),
     /**
-    *German de
-    */
+     * German de
+     */
     DE("de"),
     /**
-    *Greek el
-    */
+     * Greek el
+     */
     EL("el"),
     /**
-    *Gujarati gu
-    */
+     * Gujarati gu
+     */
     GU("gu"),
     /**
-    *Hausa ha
-    */
+     * Hausa ha
+     */
     HA("ha"),
     /**
-    *Hebrew he
-    */
+     * Hebrew he
+     */
     ha("he"),
     /**
-    *Hindi hi
-    */
+     * Hindi hi
+     */
     HI("hi"),
     /**
-    *Hungarian hu
-    */
+     * Hungarian hu
+     */
     HU("hu"),
     /**
-    *Indonesian id
-    */
+     * Indonesian id
+     */
     ID("id"),
     /**
-    *Irish ga
-    */
+     * Irish ga
+     */
     GA("ga"),
     /**
-    *Italian it
-    */
+     * Italian it
+     */
     IT("it"),
     /**
-    *Japanese ja
-    */
+     * Japanese ja
+     */
     JA("ja"),
     /**
-    *Kannada kn
-    */
+     * Kannada kn
+     */
     KN("kn"),
     /**
-    *Kazakh kk
-    */
+     * Kazakh kk
+     */
     KK("kk"),
     /**
-    *Kinyarwanda rw_RW
-    */
+     * Kinyarwanda rw_RW
+     */
     RW_RW("rw_RW"),
     /**
-    *Korean ko
-    */
+     * Korean ko
+     */
     KO("ko"),
     /**
-    *Kyrgyz (Kyrgyzstan) ky_KG
-    */
+     * Kyrgyz (Kyrgyzstan) ky_KG
+     */
     KY_KG("ky_KG"),
     /**
-    *Lao lo
-    */
+     * Lao lo
+     */
     LO("lo"),
     /**
-    *Latvian lv
-    */
+     * Latvian lv
+     */
     LV("lv"),
     /**
-    *Lithuanian lt
-    */
+     * Lithuanian lt
+     */
     LT("lt"),
     /**
-    *Macedonian mk
-    */
+     * Macedonian mk
+     */
     MK("mk"),
     /**
-    *Malay ms
-    */
+     * Malay ms
+     */
     MS("ms"),
     /**
-    *Malayalam ml
-    */
+     * Malayalam ml
+     */
     ML("ml"),
     /**
-    *Marathi mr
-    */
+     * Marathi mr
+     */
     MR("mr"),
     /**
-    *Norwegian nb
-    */
+     * Norwegian nb
+     */
     NB("nb"),
     /**
-    *Persian fa
-    */
+     * Persian fa
+     */
     FA("fa"),
     /**
-    *Polish pl
-    */
+     * Polish pl
+     */
     PL("pl"),
     /**
-    *Portuguese (BR) pt_BR
-    */
+     * Portuguese (BR) pt_BR
+     */
     PT_BR("pt_BR"),
     /**
-    *Portuguese (POR) pt_PT
-    */
+     * Portuguese (POR) pt_PT
+     */
     PT_PT("pt_PT"),
     /**
-    *Punjabi pa
-    */
+     * Punjabi pa
+     */
     PA("pa"),
     /**
-    *Romanian ro
-    */
+     * Romanian ro
+     */
     RO("ro"),
     /**
-    *Russian ru
-    */
+     * Russian ru
+     */
     RU("ru"),
     /**
-    *Serbian sr
-    */
+     * Serbian sr
+     */
     SR("sr"),
     /**
-    *Slovak sk
-    */
+     * Slovak sk
+     */
     SK("sk"),
     /**
-    *Slovenian sl
-    */
+     * Slovenian sl
+     */
     SL("sl"),
     /**
-    *Spanish es
-    */
+     * Spanish es
+     */
     ES("es"),
     /**
-    *Spanish (ARG) es_AR
-    */
+     * Spanish (ARG) es_AR
+     */
     ES_AR("es_AR"),
     /**
-    *Spanish (SPA) es_ES
-    */
+     * Spanish (SPA) es_ES
+     */
     ES_ES("es_ES"),
     /**
-    *Spanish (MEX) es_MX
-    */
+     * Spanish (MEX) es_MX
+     */
     ES_MX("es_MX"),
     /**
-    *Swahili sw
-    */
+     * Swahili sw
+     */
     SW("sw"),
     /**
-    *Swedish sv
-    */
+     * Swedish sv
+     */
     SV("sv"),
     /**
-    *Tamil ta
-    */
+     * Tamil ta
+     */
     TA("ta"),
     /**
-    *Telugu te
-    */
+     * Telugu te
+     */
     TE("te"),
     /**
-    *Thai th
-    */
+     * Thai th
+     */
     TH("th"),
     /**
-    *Turkish tr
-    */
+     * Turkish tr
+     */
     TR("tr"),
     /**
-    *Ukrainian uk
-    */
+     * Ukrainian uk
+     */
     UK("uk"),
     /**
-    *Urdu ur
-    */
+     * Urdu ur
+     */
     UR("ur"),
     /**
-    *Uzbek uz
-    */
+     * Uzbek uz
+     */
     UZ("uz"),
     /**
-    *Vietnamese vi
-    */
+     * Vietnamese vi
+     */
     VI("vi"),
     /**
-    *Zulu zu
-    */
+     * Zulu zu
+     */
     ZU("zu");
-        
-        
+
+
     private final String value;
 
     Language(String value) {
         this.value = value;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
     @JsonValue
     public String getValue() {
         return value;

@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
+ * The type Whatsapp api service generator.
  */
 public class WhatsappApiServiceGenerator {
 
@@ -35,6 +35,15 @@ public class WhatsappApiServiceGenerator {
                 .build();
     }
 
+    /**
+     * Create service s.
+     *
+     * @param <S>          the type parameter
+     * @param serviceClass the service class
+     * @param token        the token
+     * @param baseUrl      the base url
+     * @return the s
+     */
     public static <S> S createService(Class<S> serviceClass, String token, String baseUrl) {
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(converterFactory);
 
@@ -51,6 +60,14 @@ public class WhatsappApiServiceGenerator {
         return retrofit.create(serviceClass);
     }
 
+    /**
+     * Create service s.
+     *
+     * @param <S>          the type parameter
+     * @param serviceClass the service class
+     * @param token        the token
+     * @return the s
+     */
     public static <S> S createService(Class<S> serviceClass, String token) {
 
         var baseUrl = WhatsappApiConfig.BASE_DOMAIN;
@@ -58,6 +75,13 @@ public class WhatsappApiServiceGenerator {
 
     }
 
+    /**
+     * Execute sync t.
+     *
+     * @param <T>  the type parameter
+     * @param call the call
+     * @return the t
+     */
     public static <T> T executeSync(Call<T> call) {
         try {
             Response<T> response = call.execute();
@@ -72,6 +96,14 @@ public class WhatsappApiServiceGenerator {
         }
     }
 
+    /**
+     * Gets whatsapp api error.
+     *
+     * @param response the response
+     * @return the whatsapp api error
+     * @throws WhatsappApiException the whatsapp api exception
+     * @throws IOException          the io exception
+     */
     public static WhatsappApiError getWhatsappApiError(Response<?> response) throws WhatsappApiException, IOException {
         Objects.requireNonNull(errorBodyConverter);
         ResponseBody responseBody = response.errorBody();
@@ -80,6 +112,11 @@ public class WhatsappApiServiceGenerator {
 
     }
 
+    /**
+     * Gets shared client.
+     *
+     * @return the shared client
+     */
     public static OkHttpClient getSharedClient() {
         return sharedClient;
     }

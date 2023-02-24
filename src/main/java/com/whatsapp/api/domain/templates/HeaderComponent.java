@@ -13,15 +13,29 @@ public class HeaderComponent extends Component<HeaderComponent> {
      */
     private HeaderFormat format;
 
+    /**
+     * Instantiates a new Header component.
+     */
     public HeaderComponent() {
         super(ComponentType.HEADER);
     }
 
 
+    /**
+     * Gets format.
+     *
+     * @return the format
+     */
     public HeaderFormat getFormat() {
         return format;
     }
 
+    /**
+     * Sets format.
+     *
+     * @param format the format
+     * @return the format
+     */
     public HeaderComponent setFormat(HeaderFormat format) {
         this.format = format;
         return this;

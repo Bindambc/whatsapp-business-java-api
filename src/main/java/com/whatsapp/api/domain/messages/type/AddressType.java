@@ -1,7 +1,17 @@
 package com.whatsapp.api.domain.messages.type;
 
+/**
+ * The enum Address type.
+ */
 public enum AddressType {
-    HOME("HOME"), WORK("WORK");
+    /**
+     * Home address type.
+     */
+    HOME("HOME"),
+    /**
+     * Work address type.
+     */
+    WORK("WORK");
 
     private final String value;
 
@@ -9,6 +19,11 @@ public enum AddressType {
         this.value = value;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
     public String getValue() {
         return value;
     }

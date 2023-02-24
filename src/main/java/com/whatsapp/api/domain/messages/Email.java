@@ -22,19 +22,41 @@ public class Email {
     @JsonProperty("email")
     private String email;
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public AddressType getType() {
         return type;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     * @return the type
+     */
     public Email setType(AddressType type) {
         this.type = type;
         return this;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     * @return the email
+     */
     public Email setEmail(String email) {
         this.email = email;
         return this;
