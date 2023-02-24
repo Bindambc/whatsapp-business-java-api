@@ -1,4 +1,3 @@
-
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -49,6 +48,10 @@ public class Action {
         return catalogId;
     }
 
+    /**
+     * @param catalogId Required for Single Product Messages and Multi-Product Messages - Unique identifier of the
+     *                  Facebook catalog linked to your WhatsApp Business Account. This ID can be retrieved via the Meta Commerce Manager.
+     */
     public Action setCatalogId(String catalogId) {
         this.catalogId = catalogId;
         return this;
@@ -81,9 +84,11 @@ public class Action {
         return this;
     }
 
+    /**
+     * @param button @{@link Button}
+     */
     public Action addButton(Button button) {
-        if (this.buttons == null)
-            this.buttons = new ArrayList<>();
+        if (this.buttons == null) this.buttons = new ArrayList<>();
 
         this.buttons.add(button);
         return this;
@@ -99,8 +104,7 @@ public class Action {
     }
 
     public Action addSection(Section section) {
-        if (this.sections == null)
-            this.sections = new ArrayList<>();
+        if (this.sections == null) this.sections = new ArrayList<>();
 
         this.sections.add(section);
         return this;

@@ -16,8 +16,8 @@ import java.util.List;
  * @param messageTemplateId       The message template ID
  * @param messageTemplateLanguage The message template language
  * @param messageTemplateName     The message template name
- * @param phoneNumber
- * @param reason
+ * @param phoneNumber             the phone number
+ * @param reason                  reason
  * @param rejectionReason         If a request was rejected, this field displays the reason for that rejection.
  * @param requestedVerifiedName   This field displays the name that was sent to be verified.
  */

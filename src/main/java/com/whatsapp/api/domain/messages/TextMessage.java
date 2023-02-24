@@ -11,8 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * <b>Maximum length: 4096 characters</b></p>
  *     </li>
  *     <li><b>preview_url</b> optional
- *     <p>
- *         By default, WhatsApp recognizes URLs and makes them clickable, but you can also include a preview box with more information about the link. Set this field to true if you want to include a URL preview box.
+ * By default, WhatsApp recognizes URLs and makes them clickable, but you can also include a preview box with more information about the link. Set this field to true if you want to include a URL preview box.
  * The majority of the time, the receiver will see a URL they can click on when you send an URL, set preview_url to true, and provide a body object with a http or https link.
  * URL previews are only rendered after one of the following has happened:
  * The business has sent a message template to the user.
@@ -20,8 +19,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * The user adds the business phone number to their address book and initiates a conversation.
  * Default: false.
  * </li>
- *     </p>
- *
  *     </ul>
  *     <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object">See oficial documentation</a>
  */

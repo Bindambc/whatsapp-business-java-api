@@ -9,8 +9,8 @@ import java.util.List;
  * @param reaction    A reaction object. See {@link Reaction}
  * @param image       A media object with the image information. Added to Webhook if type is image. See {@link Image}
  * @param sticker     A media object with the sticker information. Added to Webhook if type is sticker. See {@link Sticker}
- * @param location
- * @param contacts
+ * @param location    Location
+ * @param contacts    Contacts
  * @param button      Added to Webhook if type is button. This field is used when the Webhook notifies you that a user clicked on a quick reply button. See {@link Button}
  * @param context     Added to Webhook if message is forwarded or an inbound reply. See {@link Context}
  * @param from        The customer's phone number.
