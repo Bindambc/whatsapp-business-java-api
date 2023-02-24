@@ -1,5 +1,23 @@
 package com.whatsapp.api.domain.templates;
 
+/**
+ * The enum Component type.
+ */
 public enum ComponentType {
-    BODY, HEADER, FOOTER, BUTTONS
+    /**
+     * Body component type.
+     */
+    BODY,
+    /**
+     * Header component type.
+     */
+    HEADER,
+    /**
+     * Footer component type.
+     */
+    FOOTER,
+    /**
+     * Buttons component type.
+     */
+    BUTTONS
 }

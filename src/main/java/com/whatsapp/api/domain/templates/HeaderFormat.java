@@ -4,5 +4,20 @@ package com.whatsapp.api.domain.templates;
  * Only applies to the HEADER type.
  */
 public enum HeaderFormat {
-    TEXT, IMAGE, DOCUMENT, VIDEO
+    /**
+     * Text header format.
+     */
+    TEXT,
+    /**
+     * Image header format.
+     */
+    IMAGE,
+    /**
+     * Document header format.
+     */
+    DOCUMENT,
+    /**
+     * Video header format.
+     */
+    VIDEO
 }
