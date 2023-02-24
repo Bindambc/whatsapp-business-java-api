@@ -2,23 +2,19 @@ package com.whatsapp.api.impl;
 
 import com.whatsapp.api.domain.media.FileType;
 import com.whatsapp.api.domain.media.Media;
+import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
 import com.whatsapp.api.service.WhatsappBusinessCloudApiService;
-import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.MultipartBody.Part;
-import okhttp3.ResponseBody;
 
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import static com.whatsapp.api.WhatsappApiServiceGenerator.createService;
+import static com.whatsapp.api.WhatsappApiServiceGenerator.executeDownloadSync;
 import static com.whatsapp.api.WhatsappApiServiceGenerator.executeSync;
 
 /**
@@ -81,22 +77,9 @@ public class WhatsappBusinessCloudApi {
 
     }
 
-    public ResponseBody downloadFile(String url) throws URISyntaxException {
+    public MediaFile downloadFile(String url) throws URISyntaxException {
 
-        URI uri = new URI(url);
-
-        HttpUrl httpUrl = HttpUrl.parse(url);
-
-        assert httpUrl != null;
-        var mid = httpUrl.queryParameter("mid");
-        var ext = httpUrl.queryParameter("ext");
-        var hash = httpUrl.queryParameter("hash");
-
-
-
-        var baseUrl = httpUrl.scheme() + "://" + httpUrl.host() + httpUrl.encodedPath();
-        return executeSync(whatsappBusinessCloudApiService.downloadFile(baseUrl, mid, ext, hash));
-        //  return executeSync(whatsappBusinessCloudApiService.downloadFile(url));
+        return executeDownloadSync(whatsappBusinessCloudApiService.downloadFile(url));
 
     }
 

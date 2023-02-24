@@ -10,16 +10,13 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
-
-import java.util.Map;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
 
@@ -50,10 +47,7 @@ public interface WhatsappBusinessCloudApiService {
 
     @GET
     @Streaming
-   Call<ResponseBody> downloadFile(@Url String url, @QueryMap Map<String, String> query);
-
-    @GET
-    @Streaming
-    Call<ResponseBody> downloadFile(@Url String url, @Query("mid") String mid, @Query("ext") String ext, @Query("hash") String hash);
+    @Headers(value = "User-Agent:curl/7.64.1")
+    Call<ResponseBody> downloadFile(@Url String url);
 
 }
