@@ -53,6 +53,6 @@ public interface WhatsappBusinessCloudApiService {
     Call<ResponseBody> downloadFile(@Url String url);
 
     @DELETE("/" + API_VERSION + "/{media-id}")
-    Call<Response> deleteMedia(@Url String url);
+    Call<Response> deleteMedia(@Path("media-id") String mediaId);
 
 }

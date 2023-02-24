@@ -1,8 +1,8 @@
 package com.whatsapp.api.service;
 
+import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
-import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
 import retrofit2.Call;
 import retrofit2.http.Body;

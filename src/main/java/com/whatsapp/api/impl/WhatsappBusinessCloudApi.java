@@ -84,7 +84,7 @@ public class WhatsappBusinessCloudApi {
 
     }
 
-    public Response deleteMedia(String mediaId) throws URISyntaxException {
+    public Response deleteMedia(String mediaId) {
 
         return executeSync(whatsappBusinessCloudApiService.deleteMedia(mediaId));
     }
