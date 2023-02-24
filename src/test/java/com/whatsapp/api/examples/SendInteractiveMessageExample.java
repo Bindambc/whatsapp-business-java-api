@@ -5,12 +5,14 @@ import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.messages.Action;
 import com.whatsapp.api.domain.messages.Body;
 import com.whatsapp.api.domain.messages.Button;
+import com.whatsapp.api.domain.messages.type.ButtonType;
 import com.whatsapp.api.domain.messages.Footer;
 import com.whatsapp.api.domain.messages.Header;
+import com.whatsapp.api.domain.messages.type.HeaderType;
 import com.whatsapp.api.domain.messages.InteractiveMessage;
-import com.whatsapp.api.domain.messages.InteractiveMessageType;
+import com.whatsapp.api.domain.messages.type.InteractiveMessageType;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
-import com.whatsapp.api.domain.messages.ProductItem;
+import com.whatsapp.api.domain.messages.Product;
 import com.whatsapp.api.domain.messages.Reply;
 import com.whatsapp.api.domain.messages.Row;
 import com.whatsapp.api.domain.messages.Section;
@@ -29,9 +31,9 @@ public class SendInteractiveMessageExample {
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
 
-//        productMessage(whatsappBusinessCloudApi);
+        productMessage(whatsappBusinessCloudApi);
 
-//        multiProductMessage(whatsappBusinessCloudApi);
+        multiProductMessage(whatsappBusinessCloudApi);
 
         buttonMessage(whatsappBusinessCloudApi);
 
@@ -47,21 +49,21 @@ public class SendInteractiveMessageExample {
                                 .setCatalogId("1") //
                                 .addSection(new Section() //
                                         .setTitle("Title 1") //
-                                        .addProductItem(new ProductItem() //
+                                        .addProductItem(new Product() //
                                                 .setProductRetailerId("product-SKU1-in-catalog")) //
-                                        .addProductItem(new ProductItem() //
+                                        .addProductItem(new Product() //
                                                 .setProductRetailerId("product-SKU2-in-catalog")) //
-                                        .addProductItem(new ProductItem() //
+                                        .addProductItem(new Product() //
                                                 .setProductRetailerId("product-SKU3-in-catalog")) //
                                 ) //
                                 .addSection(new Section() //
                                         .setTitle("Title 2") //
-                                        .addProductItem(new ProductItem() //
+                                        .addProductItem(new Product() //
                                                 .setProductRetailerId("product-SKU5-in-catalog"))) //
                         ) //
                         .setType(InteractiveMessageType.PRODUCT_LIST) //
                         .setHeader(new Header() //
-                                .setType("text") //
+                                .setType(HeaderType.TEXT) //
                                 .setText("Header Text")) //
                         .setBody(new Body() //
                                 .setText("Body message")) //
@@ -95,12 +97,12 @@ public class SendInteractiveMessageExample {
                 .buildInteractiveMessage(InteractiveMessage.build() //
                         .setAction(new Action() //
                                 .addButton(new Button() //
-                                        .setType("reply")
+                                        .setType(ButtonType.REPLY)
                                         .setReply(new Reply() //
                                                 .setId("UNIQUE_BUTTON_ID_1") //
                                                 .setTitle("BUTTON_TITLE_1"))) //
                                 .addButton(new Button() //
-                                        .setType("reply")
+                                        .setType(ButtonType.REPLY)
                                         .setReply(new Reply() //
                                                 .setId("UNIQUE_BUTTON_ID_2") //
                                                 .setTitle("BUTTON_TITLE_2")))
@@ -154,7 +156,7 @@ public class SendInteractiveMessageExample {
                         ) //
                         .setType(InteractiveMessageType.LIST) //
                         .setHeader(new Header() //
-                                .setType("text") //
+                                .setType(HeaderType.TEXT) //
                                 .setText("Header Text")) //
                         .setBody(new Body() //
                                 .setText("Body message")) //

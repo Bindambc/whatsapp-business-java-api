@@ -3,9 +3,22 @@ package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.whatsapp.api.domain.messages.IInteractiveMessageBuilder.IInteractiveAction;
-import com.whatsapp.api.domain.messages.IInteractiveMessageBuilder.IInteractiveType;
+import com.whatsapp.api.domain.messages.builder.IInteractiveMessageBuilder.IInteractiveAction;
+import com.whatsapp.api.domain.messages.builder.IInteractiveMessageBuilder.IInteractiveType;
+import com.whatsapp.api.domain.messages.type.InteractiveMessageType;
 
+/**
+ * <p>Interactive messages give your users a simpler way to find and select what they want from your business on WhatsApp</p>
+ * <br>
+ * <ul>
+ *     <li><b>action:</b> <i>Required</i> - Action you want the user to perform after reading the message</li>
+ *     <li><b>body:</b> <i>Optional for type product. Required for other message types</i> - An object with the body of the message</li>
+ *     <li><b>footer:</b> <i>Optional</i> - An object with the footer of the message</li>
+ *     <li><b>header:</b> <i>Required for type product_list. Optional for other types</i> - Header content displayed on top of a message.
+ *     You cannot set a header if your interactive object is of product type</li>
+ *     <li><b>type:</b> <i>Required</i> - The type of interactive message you want to send</li>
+ * </ul>
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InteractiveMessage implements IInteractiveAction, IInteractiveType {
 

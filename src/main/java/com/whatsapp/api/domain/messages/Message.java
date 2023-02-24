@@ -2,6 +2,7 @@ package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whatsapp.api.domain.messages.type.MessageType;
 
 import java.util.List;
 
@@ -89,7 +90,7 @@ public class Message {
         }
 
         /**
-         * <b>Requiered</b>.
+         * <b>Required</b>.
          * Build an objetc with {@link Contact}
          */
         public Message buildContactMessage(ContactMessage contactMessage) {
@@ -106,6 +107,9 @@ public class Message {
 
         }
 
+        /**
+         * Build an object to send an {@link InteractiveMessage}
+         */
         public Message buildInteractiveMessage(InteractiveMessage interactiveMessage) {
             var message = new Message(to, MessageType.INTERACTIVE);
             message.interactiveMessage = interactiveMessage;

@@ -1,4 +1,4 @@
-package com.whatsapp.api.domain.messages;
+package com.whatsapp.api.domain.messages.type;
 //TODO: implementar mais tipos de mensagens. Não está completo.
 
 import com.fasterxml.jackson.annotation.JsonValue;

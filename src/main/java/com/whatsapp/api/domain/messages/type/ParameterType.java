@@ -1,4 +1,4 @@
-package com.whatsapp.api.domain.messages;
+package com.whatsapp.api.domain.messages.type;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

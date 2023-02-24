@@ -1,7 +1,7 @@
 package com.whatsapp.api.domain.webhook;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.whatsapp.api.domain.messages.MessageType;
+import com.whatsapp.api.domain.messages.type.MessageType;
 
 import java.util.List;
 
