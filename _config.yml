@@ -1,2 +1,2 @@
 kramdown:
-  input: GFM
+  gfm_emojis: true
