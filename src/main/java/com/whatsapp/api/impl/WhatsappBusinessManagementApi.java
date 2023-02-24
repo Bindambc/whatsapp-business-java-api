@@ -11,10 +11,18 @@ import java.util.Map;
 import static com.whatsapp.api.WhatsappApiServiceGenerator.createService;
 import static com.whatsapp.api.WhatsappApiServiceGenerator.executeSync;
 
+/**
+ * The type Whatsapp business management api.
+ */
 public class WhatsappBusinessManagementApi {
 
     private final WhatsappBusinessManagementApiService whatsappBusinessManagementApiService;
 
+    /**
+     * Instantiates a new Whatsapp business management api.
+     *
+     * @param token the token
+     */
     public WhatsappBusinessManagementApi(String token) {
         this.whatsappBusinessManagementApiService = createService(WhatsappBusinessManagementApiService.class, token);
     }
@@ -32,11 +40,26 @@ public class WhatsappBusinessManagementApi {
         return executeSync(whatsappBusinessManagementApiService.createMessageTemplate(whatsappBusinessAccountId, messageTemplate));
     }
 
+    /**
+     * Update message template message template id response.
+     *
+     * @param whatsappBusinessAccountId the whatsapp business account id
+     * @param messageTemplateId         the message template id
+     * @param messageTemplate           the message template
+     * @return the message template id response
+     */
     public MessageTemplateIDResponse updateMessageTemplate(String whatsappBusinessAccountId, String messageTemplateId, MessageTemplate messageTemplate) {
 
         return executeSync(whatsappBusinessManagementApiService.updateMessageTemplate(whatsappBusinessAccountId, messageTemplateId, messageTemplate));
     }
 
+    /**
+     * Delete message template message template success response.
+     *
+     * @param whatsappBusinessAccountId the whatsapp business account id
+     * @param name                      the name
+     * @return the message template success response
+     */
     public MessageTemplateSuccessResponse deleteMessageTemplate(String whatsappBusinessAccountId, String name) {
 
         return executeSync(whatsappBusinessManagementApiService.deleteMessageTemplate(whatsappBusinessAccountId, name));
@@ -57,9 +80,10 @@ public class WhatsappBusinessManagementApi {
     }
 
     /**
+     * Retrieve templates message templates.
+     *
      * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
-     * @param limit                     You can use the limit parameter to define the number of items returned. This limit applies to the maximum number of message template names that may be returned,
-     *                                  not the maximum number of objects
+     * @param limit                     You can use the limit parameter to define the number of items returned. This limit applies to the maximum number of message template names that may be returned,                                  not the maximum number of objects
      * @return {@link MessageTemplates} List of templates
      * @see <a href="https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates">Message templates</a>
      */
@@ -68,6 +92,8 @@ public class WhatsappBusinessManagementApi {
     }
 
     /**
+     * Retrieve templates message templates.
+     *
      * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
      * @param templateName              template name.
      * @return {@link MessageTemplates} List of templates
@@ -78,11 +104,12 @@ public class WhatsappBusinessManagementApi {
     }
 
     /**
+     * Retrieve templates message templates.
+     *
      * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
-     * @param limit                     You can use the limit parameter to define the number of items returned. This limit applies to the maximum number of message template names that may be returned,
-     *                                  not the maximum number of objects
+     * @param limit                     You can use the limit parameter to define the number of items returned. This limit applies to the maximum number of message template names that may be returned,                                  not the maximum number of objects
      * @param after                     next
-     * @return
+     * @return message templates
      */
     public MessageTemplates retrieveTemplates(String whatsappBusinessAccountId, int limit, String after) {
         return executeSync(whatsappBusinessManagementApiService.retrieveTemplates(whatsappBusinessAccountId, Map.of("limit", limit, "after", after)));
