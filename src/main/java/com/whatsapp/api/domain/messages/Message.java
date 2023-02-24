@@ -15,26 +15,21 @@ public class Message {
     private final String messagingProduct = "whatsapp";
     @JsonProperty("recipient_type")
     private final String recipientType = "individual";
-    @JsonProperty("to")
-    private String to;
-
-    @JsonProperty("type")
-    private MessageType type;
-
-    @JsonProperty("text")
-    private TextMessage textMessage;
-
-    @JsonProperty("contacts")
-    private List<Contact> contactMessage;
-
-    @JsonProperty("template")
-    private TemplateMessage templateMessage;
-
     /**
      * The Interactive message.
      */
     @JsonProperty("interactive")
     public InteractiveMessage interactiveMessage;
+    @JsonProperty("to")
+    private String to;
+    @JsonProperty("type")
+    private MessageType type;
+    @JsonProperty("text")
+    private TextMessage textMessage;
+    @JsonProperty("contacts")
+    private List<Contact> contactMessage;
+    @JsonProperty("template")
+    private TemplateMessage templateMessage;
 
 
     private Message() {

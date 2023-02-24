@@ -1,4 +1,3 @@
-
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
