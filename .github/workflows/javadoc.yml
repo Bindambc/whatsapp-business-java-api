@@ -3,9 +3,14 @@
 
 name: Deploy Javadoc
 
+#on:
+#  release:
+#    types: [created]
+
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
