@@ -2,6 +2,9 @@ package com.whatsapp.api.domain.media;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * The type Media.
+ */
 public record Media(
 
         @JsonProperty("sha256") String sha256,
