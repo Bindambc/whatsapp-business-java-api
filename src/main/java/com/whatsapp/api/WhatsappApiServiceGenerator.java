@@ -1,6 +1,7 @@
 package com.whatsapp.api;
 
 import com.whatsapp.api.configuration.WhatsappApiConfig;
+import com.whatsapp.api.domain.errors.Error;
 import com.whatsapp.api.domain.errors.WhatsappApiError;
 import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.exception.WhatsappApiException;
@@ -116,7 +117,10 @@ public class WhatsappApiServiceGenerator {
                 assert body != null;
                 return new MediaFile(fileName, body.bytes());
             } else {
-                if (response.code() == 404) throw new RuntimeException("404 - Not found");
+                if (response.code() == 404) {
+                    var error = new Error(404, null, 404, null, "Not found", null, null, null, false, null, null);
+                    throw new WhatsappApiException(new WhatsappApiError(error));
+                }
                 WhatsappApiError apiError = getWhatsappApiError(response);
                 throw new WhatsappApiException(apiError);
             }

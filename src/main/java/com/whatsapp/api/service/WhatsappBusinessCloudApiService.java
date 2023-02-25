@@ -50,7 +50,7 @@ public interface WhatsappBusinessCloudApiService {
     @GET
     @Streaming
     @Headers(value = "User-Agent:curl/7.64.1")
-    Call<ResponseBody> downloadFile(@Url String url);
+    Call<ResponseBody> downloadMediaFile(@Url String url);
 
     @DELETE("/" + API_VERSION + "/{media-id}")
     Call<Response> deleteMedia(@Path("media-id") String mediaId);

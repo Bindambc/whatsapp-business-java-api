@@ -78,9 +78,9 @@ public class WhatsappBusinessCloudApi {
 
     }
 
-    public MediaFile downloadFile(String url) throws URISyntaxException {
+    public MediaFile downloadMediaFile(String url) throws URISyntaxException {
 
-        return executeDownloadSync(whatsappBusinessCloudApiService.downloadFile(url));
+        return executeDownloadSync(whatsappBusinessCloudApiService.downloadMediaFile(url));
 
     }
 
