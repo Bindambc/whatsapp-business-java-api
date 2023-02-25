@@ -55,9 +55,11 @@ public class WhatsappBusinessCloudApi {
 
     /**
      * You can use the endpoint to upload media:
+     * All media files sent through this endpoint are encrypted and persist for 30 days, unless they are deleted earlier
      *
      * @param phoneNumberId Represents a specific phone number.
      * @param fileName      file name. Ex: photo1.jpg
+     * @param fileType      the file type
      * @param file          byte[] - file content
      * @return {@link UploadResponse}
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
@@ -73,17 +75,40 @@ public class WhatsappBusinessCloudApi {
         return executeSync(whatsappBusinessCloudApiService.uploadMedia(phoneNumberId, body, messageProduct));
     }
 
+    /**
+     * Retrieve {@link Media} object. This object contains  media url.
+     * All media URLs expire after 5 minutes — you need to retrieve the media URL again if it expires. If you directly click on the URL you get from a /MEDIA_ID GET call, you get an access error.
+     *
+     * @param mediaId the media id
+     * @return the media
+     * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
+     */
     public Media retrieveMediaUrl(String mediaId) {
         return executeSync(whatsappBusinessCloudApiService.retrieveMediaUrl(mediaId));
 
     }
 
+    /**
+     * Download media file from whatsapp server
+     *
+     * @param url the url
+     * @return the media file {@link MediaFile}
+     * @throws URISyntaxException the uri syntax exception
+     * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
+     */
     public MediaFile downloadMediaFile(String url) throws URISyntaxException {
 
         return executeDownloadSync(whatsappBusinessCloudApiService.downloadMediaFile(url));
 
     }
 
+    /**
+     * Delete media from whatsapp server
+     *
+     * @param mediaId the media id
+     * @return the response
+     * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
+     */
     public Response deleteMedia(String mediaId) {
 
         return executeSync(whatsappBusinessCloudApiService.deleteMedia(mediaId));

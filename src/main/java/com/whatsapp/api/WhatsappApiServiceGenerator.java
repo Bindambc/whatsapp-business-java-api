@@ -100,7 +100,7 @@ public class WhatsappApiServiceGenerator {
     }
 
     /**
-     * Execute sync t.
+     * Execute sync file download
      *
      * @param <T>  the type parameter
      * @param call the call
