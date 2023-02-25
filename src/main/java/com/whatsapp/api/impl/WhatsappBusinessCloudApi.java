@@ -56,10 +56,13 @@ public class WhatsappBusinessCloudApi {
     /**
      * You can use the endpoint to upload media:
      * All media files sent through this endpoint are encrypted and persist for 30 days, unless they are deleted earlier
+     * <p>The maximum supported file size for media messages on Cloud API is 100MB. In the event the customer sends a file that is greater than 100MB, you will receive a webhook with error code 131052 and title:
+     * "Media file size too big. Max file size we currently support: 100MB. Please communicate with your customer to send a media file that is smaller than 100MB"_.
+     * We advise that you send customers a warning message that their media file exceeds the maximum file size when this webhook event is triggered.</p>
      *
-     * @param phoneNumberId Represents a specific phone number.
+     * @param phoneNumberId Business phone number ID. If included, the operation will only be processed if the ID matches the ID of the business phone number that the media was uploaded on.
      * @param fileName      file name. Ex: photo1.jpg
-     * @param fileType      the file type
+     * @param fileType      the file type. See {@link FileType}
      * @param file          byte[] - file content
      * @return {@link UploadResponse}
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
@@ -76,8 +79,7 @@ public class WhatsappBusinessCloudApi {
     }
 
     /**
-     * Retrieve {@link Media} object. This object contains  media url.
-     * All media URLs expire after 5 minutes — you need to retrieve the media URL again if it expires. If you directly click on the URL you get from a /MEDIA_ID GET call, you get an access error.
+     * Retrieve {@link Media} object. A successful response includes an object with a media url. The URL is only valid for 5 minutes. To use this URL, see {@link WhatsappBusinessCloudApi#downloadMediaFile(String)}
      *
      * @param mediaId the media id
      * @return the media

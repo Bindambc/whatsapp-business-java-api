@@ -1,10 +1,8 @@
 package com.whatsapp.api.domain.media;
 
 /**
- * The type Media file.
+ * @param fileName file name
+ * @param content  file content
  */
-public record MediaFile(String fileName, byte[] content
-
-
-) {
+public record MediaFile(String fileName, byte[] content) {
 }

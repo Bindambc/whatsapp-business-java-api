@@ -3,7 +3,9 @@ package com.whatsapp.api.domain.media;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * The enum File type.
+ * Supported Media Types
+ * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types">whatsapp official documentation</a>
+ *
  */
 public enum FileType {
 
