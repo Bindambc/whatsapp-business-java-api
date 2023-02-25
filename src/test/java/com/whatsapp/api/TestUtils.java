@@ -25,4 +25,15 @@ public class TestUtils {
 
 
     }
+
+    /**
+     * @return byte[] with file contents
+     */
+    public byte[] bytesFromResource(String fileName) throws IOException, URISyntaxException {
+
+        return Files.readAllBytes(Paths.get(Objects.requireNonNull(this.getClass() //
+                .getResource(fileName)).toURI()));
+
+
+    }
 }

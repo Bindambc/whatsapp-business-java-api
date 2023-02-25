@@ -64,7 +64,7 @@ public class Section {
      *
      * @return the product items
      */
-    public List<Product> getProductItems() {
+    public List<Product> getProducts() {
         return products;
     }
 
@@ -74,7 +74,7 @@ public class Section {
      * @param products the products
      * @return the product items
      */
-    public Section setProductItems(List<Product> products) {
+    public Section setProducts(List<Product> products) {
         this.products = products;
         return this;
     }

@@ -1,7 +1,9 @@
 package com.whatsapp.api;
 
 import com.whatsapp.api.configuration.WhatsappApiConfig;
+import com.whatsapp.api.domain.errors.Error;
 import com.whatsapp.api.domain.errors.WhatsappApiError;
+import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.interceptor.AuthenticationInterceptor;
 import okhttp3.OkHttpClient;
@@ -86,8 +88,39 @@ public class WhatsappApiServiceGenerator {
         try {
             Response<T> response = call.execute();
             if (response.isSuccessful()) {
+
                 return response.body();
             } else {
+                WhatsappApiError apiError = getWhatsappApiError(response);
+                throw new WhatsappApiException(apiError);
+            }
+        } catch (IOException e) {
+            throw new WhatsappApiException(e);
+        }
+    }
+
+    /**
+     * Execute sync file download
+     *
+     * @param <T>  the type parameter
+     * @param call the call
+     * @return the t
+     */
+    public static <T> MediaFile executeDownloadSync(Call<T> call) {
+        try {
+            Response<T> response = call.execute();
+            if (response.isSuccessful()) {
+
+                var fileName = Objects.requireNonNull(response.headers().get("Content-Disposition")).split("=")[1];
+                ResponseBody body = (ResponseBody) response.body();
+
+                assert body != null;
+                return new MediaFile(fileName, body.bytes());
+            } else {
+                if (response.code() == 404) {
+                    var error = new Error(404, null, 404, null, "Not found", null, null, null, false, null, null);
+                    throw new WhatsappApiException(new WhatsappApiError(error));
+                }
                 WhatsappApiError apiError = getWhatsappApiError(response);
                 throw new WhatsappApiException(apiError);
             }
