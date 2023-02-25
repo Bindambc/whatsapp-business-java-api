@@ -1,2 +1,5 @@
+plugins:
+  - jemoji
+  
 kramdown:
   gfm_emojis: true
