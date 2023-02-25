@@ -1,0 +1,17 @@
+com.whatsapp.api
+com.whatsapp.api.configuration
+com.whatsapp.api.domain.errors
+com.whatsapp.api.domain.media
+com.whatsapp.api.domain.messages
+com.whatsapp.api.domain.messages.builder
+com.whatsapp.api.domain.messages.response
+com.whatsapp.api.domain.messages.type
+com.whatsapp.api.domain.response
+com.whatsapp.api.domain.templates
+com.whatsapp.api.domain.templates.response
+com.whatsapp.api.domain.webhook
+com.whatsapp.api.exception
+com.whatsapp.api.exception.utils
+com.whatsapp.api.impl
+com.whatsapp.api.interceptor
+com.whatsapp.api.service
