@@ -16,7 +16,6 @@ Whatsapp business api SDK, written in java. This SDK implements the Official [Wh
 
 ## :link: Links:
 
-
 - [:hammer_and_wrench: Installation](#hammer_and_wrench-installation)
 	- [Maven](#maven)
 	- [Gradle](#gradle)
