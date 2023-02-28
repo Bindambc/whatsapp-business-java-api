@@ -37,7 +37,7 @@ jobs:
         run: |
           mvn javadoc:javadoc
           git add .
-          git commit -m javadoc updates 
+          git commit -m "javadoc updates"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
