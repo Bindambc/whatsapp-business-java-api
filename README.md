@@ -1,4 +1,4 @@
-# [Whatsapp Business java api SDK](https://bindambc.github.io/whatsapp-business-java-api/)
+# [ <img src="https://user-images.githubusercontent.com/7831956/222028018-181cf927-781c-40a9-af7a-e3c3d1e39390.png" width="28" height="28"> Whatsapp Business java api SDK](https://bindambc.github.io/whatsapp-business-java-api/)
 
 [![Java CI with Maven](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/maven-ci.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/maven-ci.yml)
 [![CodeQL](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml)
@@ -13,7 +13,7 @@ Whatsapp business api SDK, written in java. This SDK implements the Official [Wh
 :warning: This project is still under construction. Contributions are welcome.
 
 ---
-
+																     
 ## :link: Links:
 
 - [:hammer_and_wrench: Installation](#hammer_and_wrench-installation)
