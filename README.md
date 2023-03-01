@@ -372,14 +372,17 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 ## :arrow_down: WebHooks
 Webhooks are triggered when a customer performs an action or the status for a message a business sends a customer changes.
 
-WebHook objects are mapped on [**WebHookPayload class**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/domain/webhook/WebHookPayload.java)
+WebHook objects are mapped on [**WebHookEvent class**](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/domain/webhook/WebHookEvent.java)
 
-**Example (using Jackson):**
+See [Whatsapp api documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks) for more details.
+**Example:**
 
 ```java
-    var objectMapper = new ObjectMapper();
-    var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+//payload = the webhook payload json sent by Whatsapp
+//using WebHook.constructEvent() to deserialize event
+WebHookEvent event = WebHook.constructEvent(payload);
 ```
+See an example [here](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples/WebHookExample.java)
 
 You get a webhooks notification:
 
