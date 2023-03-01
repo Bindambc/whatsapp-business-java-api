@@ -65,7 +65,7 @@ Whatsapp business api SDK, written in java. This SDK implements the Official [Wh
    <dependency>
       <groupId>com.github.Bindambc</groupId>
       <artifactId>whatsapp-business-java-api</artifactId>
-      <version>0.0.5</version>
+      <version>v0.0.6</version>
    </dependency>
 ```
 
@@ -86,7 +86,7 @@ Whatsapp business api SDK, written in java. This SDK implements the Official [Wh
 
 ```gradle
 	dependencies {
-	        implementation 'com.github.Bindambc:whatsapp-business-java-api:0.0.5'
+	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.0.6'
 	}
 ```
 
