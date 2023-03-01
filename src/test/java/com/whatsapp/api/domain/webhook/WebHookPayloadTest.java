@@ -14,9 +14,10 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationTextMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "textMessage.json");
+        var payload = fromResource(JSON_FOLDER + "textMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertEquals(1, obj.entry().size());
@@ -31,9 +32,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationTextMessage2() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "textMessage2.json");
+        var payload = fromResource(JSON_FOLDER + "textMessage2.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value());
@@ -51,9 +52,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationTextMessageSent() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "textMessageStatusSent.json");
+        var payload = fromResource(JSON_FOLDER + "textMessageStatusSent.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertNotNull(obj.entry());
@@ -81,9 +82,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationTextMessageDelivered() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "textMessageStatusDelivered.json");
+        var payload = fromResource(JSON_FOLDER + "textMessageStatusDelivered.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertNotNull(obj.entry());
@@ -108,9 +109,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationTextMessageRead() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "textMessageStatusRead.json");
+        var payload = fromResource(JSON_FOLDER + "textMessageStatusRead.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertNotNull(obj.entry());
@@ -135,9 +136,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationButtonMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "buttonMessage.json");
+        var payload = fromResource(JSON_FOLDER + "buttonMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value());
@@ -156,9 +157,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationMessageDeleted() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "messageDeleted.json");
+        var payload = fromResource(JSON_FOLDER + "messageDeleted.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertEquals(1, obj.entry().size());
@@ -174,9 +175,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationReactMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "reactMessage.json");
+        var payload = fromResource(JSON_FOLDER + "reactMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertNotNull(obj);
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value());
@@ -196,9 +197,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationStickerMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "stickerMessage.json");
+        var payload = fromResource(JSON_FOLDER + "stickerMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals("whatsapp_business_account", obj.object());
         Assertions.assertFalse(obj.entry().isEmpty());
@@ -215,9 +216,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationVideoMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "videoMessage.json");
+        var payload = fromResource(JSON_FOLDER + "videoMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals("whatsapp_business_account", obj.object());
         Assertions.assertFalse(obj.entry().isEmpty());
@@ -244,9 +245,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationImageMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "imageMessage.json");
+        var payload = fromResource(JSON_FOLDER + "imageMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals("1673032525", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
         Assertions.assertEquals(MessageType.IMAGE, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
@@ -258,9 +259,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationAudioMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "audioMessage.json");
+        var payload = fromResource(JSON_FOLDER + "audioMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals("1673033070", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
         Assertions.assertEquals(MessageType.AUDIO, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
@@ -273,9 +274,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationDocumentMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "documentMessage.json");
+        var payload = fromResource(JSON_FOLDER + "documentMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals("1673034392", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
         Assertions.assertEquals(MessageType.DOCUMENT, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
@@ -288,9 +289,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationContactMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "contactMessage.json");
+        var payload = fromResource(JSON_FOLDER + "contactMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals("1673641462", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
         Assertions.assertEquals(MessageType.CONTACTS, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
@@ -301,9 +302,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationLocationMessage() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "locationMessage.json");
+        var payload = fromResource(JSON_FOLDER + "locationMessage.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals("1673641462", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
         Assertions.assertEquals(MessageType.LOCATION, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
@@ -315,9 +316,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationVerifiedAccount() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "verifiedAccount.json");
+        var payload = fromResource(JSON_FOLDER + "verifiedAccount.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals(EventType.VERIFIED_ACCOUNT, obj.entry().get(0).changes().get(0).value().event());
         Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
@@ -327,9 +328,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationRejectedTemplate() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "rejectedTemplate.json");
+        var payload = fromResource(JSON_FOLDER + "rejectedTemplate.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals(EventType.REJECTED, obj.entry().get(0).changes().get(0).value().event());
         Assertions.assertEquals("905507062668800", obj.entry().get(0).changes().get(0).value().messageTemplateId());
@@ -339,9 +340,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationPhoneNumberNameUpdate() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "phoneNumberNameUpdate.json");
+        var payload = fromResource(JSON_FOLDER + "phoneNumberNameUpdate.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals(FieldType.PHONE_NUMBER_NAME_UPDATE, obj.entry().get(0).changes().get(0).field());
 
@@ -352,9 +353,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationTemplateSchedulingForDisabling() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "templateSchedulingForDisabling.json");
+        var payload = fromResource(JSON_FOLDER + "templateSchedulingForDisabling.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
         Assertions.assertEquals(FieldType.MESSAGE_TEMPLATE_STATUS_UPDATE, obj.entry().get(0).changes().get(0).field());
 
@@ -366,9 +367,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationQualityUpdate() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "qualityUpdate.json");
+        var payload = fromResource(JSON_FOLDER + "qualityUpdate.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
 
         Assertions.assertEquals(FieldType.PHONE_NUMBER_QUALITY_UPDATE, obj.entry().get(0).changes().get(0).field());
@@ -378,9 +379,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationAccountBanned() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "accountBanned.json");
+        var payload = fromResource(JSON_FOLDER + "accountBanned.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
 
         Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
@@ -389,9 +390,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationAccountReview() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "accountReview.json");
+        var payload = fromResource(JSON_FOLDER + "accountReview.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
 
         Assertions.assertEquals(FieldType.ACCOUNT_REVIEW_UPDATE, obj.entry().get(0).changes().get(0).field());
@@ -399,9 +400,9 @@ class WebHookPayloadTest extends TestUtils {
 
     @Test
     void testDeserializationAccountRestricted() throws IOException, URISyntaxException {
-        var fileContent = fromResource(JSON_FOLDER + "accountRestricted.json");
+        var payload = fromResource(JSON_FOLDER + "accountRestricted.json");
 
-        var obj = objectMapper.readValue(fileContent, WebHookPayload.class);
+        var obj = WebHook.constructEvent(payload);
 
 
         Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
