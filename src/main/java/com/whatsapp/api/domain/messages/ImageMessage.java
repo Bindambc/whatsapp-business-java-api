@@ -1,10 +1,12 @@
 package com.whatsapp.api.domain.messages;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The type Image message.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ImageMessage extends MediaMessage<ImageMessage> {
     @JsonProperty("caption")
     private String caption;

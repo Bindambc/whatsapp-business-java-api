@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.messages;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param <T> the type parameter
  * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object">Media Object</a>
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MediaMessage<T extends MediaMessage<T>> {
 
     @JsonProperty("id")

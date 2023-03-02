@@ -1,10 +1,12 @@
 package com.whatsapp.api.domain.messages;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The type Video message.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class VideoMessage extends MediaMessage<VideoMessage> {
 
     @JsonProperty("caption")
