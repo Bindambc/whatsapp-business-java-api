@@ -12,11 +12,7 @@ import com.whatsapp.api.domain.templates.type.ComponentType;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-@JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "BUTTONS"),
-        @JsonSubTypes.Type(value = FooterComponent.class, name = "FOOTER"),
-        @JsonSubTypes.Type(value = HeaderComponent.class, name = "HEADER"),
-        @JsonSubTypes.Type(value = BodyComponent.class, name = "BODY")
-})
+@JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "BUTTONS"), @JsonSubTypes.Type(value = FooterComponent.class, name = "FOOTER"), @JsonSubTypes.Type(value = HeaderComponent.class, name = "HEADER"), @JsonSubTypes.Type(value = BodyComponent.class, name = "BODY")})
 public class Component<T extends Component<T>> {
     /**
      * <b>Required.</b>
@@ -28,7 +24,7 @@ public class Component<T extends Component<T>> {
      * <li>BUTTONS</li>
      * </ul>
      */
-    private com.whatsapp.api.domain.templates.type.ComponentType type;
+    private ComponentType type;
 
     private String text;
 
@@ -46,7 +42,7 @@ public class Component<T extends Component<T>> {
      *
      * @param type the type
      */
-    protected Component(com.whatsapp.api.domain.templates.type.ComponentType type) {
+    protected Component(ComponentType type) {
         this.type = type;
     }
 
@@ -97,7 +93,7 @@ public class Component<T extends Component<T>> {
      *
      * @return the type
      */
-    public com.whatsapp.api.domain.templates.type.ComponentType getType() {
+    public ComponentType getType() {
         return type;
     }
 

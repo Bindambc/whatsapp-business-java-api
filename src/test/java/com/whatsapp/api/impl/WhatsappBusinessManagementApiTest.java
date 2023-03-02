@@ -41,7 +41,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         var template = new MessageTemplate();
 
         template.setName("welcome_template2")//
-                .setCategory(com.whatsapp.api.domain.templates.type.Category.TRANSACTIONAL)//
+                .setCategory(Category.TRANSACTIONAL)//
                 .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
                         .setText("Wellcome title")//

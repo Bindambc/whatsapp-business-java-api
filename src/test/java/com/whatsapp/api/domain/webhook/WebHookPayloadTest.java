@@ -27,7 +27,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals(1, obj.entry().size());
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
-        Assertions.assertEquals(com.whatsapp.api.domain.webhook.type.FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
+        Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
         Assertions.assertEquals("hi everyone!", obj.entry().get(0).changes().get(0).value().messages().get(0).text().body());
         Assertions.assertEquals(MessageType.TEXT, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
 
@@ -70,7 +70,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
         Assertions.assertEquals(1, obj.entry().get(0).changes().size());
         Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
-        Assertions.assertEquals(com.whatsapp.api.domain.webhook.type.MessageStatus.SENT, obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
+        Assertions.assertEquals(MessageStatus.SENT, obj.entry().get(0).changes().get(0).value().statuses().get(0).status());
 
         Assertions.assertEquals("8eb644d2350611f3746e7f0985bddfc1", obj.entry().get(0).changes().get(0).value().statuses().get(0).conversation().id());
         Assertions.assertEquals("1673031000", obj.entry().get(0).changes().get(0).value().statuses().get(0).conversation().expirationTimestamp());
