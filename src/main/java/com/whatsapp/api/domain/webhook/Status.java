@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.webhook;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whatsapp.api.domain.webhook.type.MessageStatus;
 
 /**
  * The type Status.

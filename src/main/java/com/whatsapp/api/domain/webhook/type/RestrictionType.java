@@ -1,11 +1,8 @@
-package com.whatsapp.api.domain.webhook;
+package com.whatsapp.api.domain.webhook.type;
 
 /**
  * The enum Restriction type.
- *
- * @deprecated use {@link com.whatsapp.api.domain.webhook.type.RestrictionType} instead
  */
-@Deprecated(forRemoval = true)
 public enum RestrictionType {
     /**
      * Restricted add phone number action restriction type.

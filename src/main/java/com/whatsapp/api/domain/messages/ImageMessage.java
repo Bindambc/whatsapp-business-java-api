@@ -22,7 +22,6 @@ public class ImageMessage extends MediaMessage<ImageMessage> {
     /**
      * Sets caption.
      *
-     *
      * @param caption Describes the specified image, document, or video media. Do not use with audio or sticker media.
      * @return the caption
      */

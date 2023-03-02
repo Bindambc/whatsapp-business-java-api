@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = QuickReplyButton.class, name = "QUICK_REPLY")})
 public class Button {
 
-    private ButtonType type;
+    private com.whatsapp.api.domain.templates.type.ButtonType type;
     private String text;
 
     /**
@@ -30,7 +30,7 @@ public class Button {
      * @param type the type
      * @param text the text
      */
-    protected Button(ButtonType type, String text) {
+    protected Button(com.whatsapp.api.domain.templates.type.ButtonType type, String text) {
         this.type = type;
         this.text = text;
     }
@@ -40,7 +40,7 @@ public class Button {
      *
      * @param buttonType the button type
      */
-    public Button(ButtonType buttonType) {
+    public Button(com.whatsapp.api.domain.templates.type.ButtonType buttonType) {
         this.type = buttonType;
     }
 
@@ -49,7 +49,7 @@ public class Button {
      *
      * @return the type
      */
-    public ButtonType getType() {
+    public com.whatsapp.api.domain.templates.type.ButtonType getType() {
         return type;
     }
 
@@ -59,7 +59,7 @@ public class Button {
      * @param type the type
      * @return the type
      */
-    public Button setType(ButtonType type) {
+    public Button setType(com.whatsapp.api.domain.templates.type.ButtonType type) {
         this.type = type;
         return this;
     }

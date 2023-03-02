@@ -140,7 +140,7 @@ public class Message {
         }
 
         /**
-         * Build template message message.
+         * Build template message
          *
          * @param templateMessage the template message
          * @return the message

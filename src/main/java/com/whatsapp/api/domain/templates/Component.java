@@ -3,6 +3,7 @@ package com.whatsapp.api.domain.templates;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.whatsapp.api.domain.templates.type.ComponentType;
 
 /**
  * The parts of the message template.
@@ -27,7 +28,7 @@ public class Component<T extends Component<T>> {
      * <li>BUTTONS</li>
      * </ul>
      */
-    private ComponentType type;
+    private com.whatsapp.api.domain.templates.type.ComponentType type;
 
     private String text;
 
@@ -45,7 +46,7 @@ public class Component<T extends Component<T>> {
      *
      * @param type the type
      */
-    protected Component(ComponentType type) {
+    protected Component(com.whatsapp.api.domain.templates.type.ComponentType type) {
         this.type = type;
     }
 
@@ -96,7 +97,7 @@ public class Component<T extends Component<T>> {
      *
      * @return the type
      */
-    public ComponentType getType() {
+    public com.whatsapp.api.domain.templates.type.ComponentType getType() {
         return type;
     }
 

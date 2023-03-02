@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Supported Media Types
- * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types">whatsapp official documentation</a>
  *
+ * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media#supported-media-types">whatsapp official documentation</a>
  */
 public enum FileType {
 

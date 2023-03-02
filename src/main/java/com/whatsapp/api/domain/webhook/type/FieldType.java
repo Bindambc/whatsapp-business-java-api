@@ -1,14 +1,11 @@
-package com.whatsapp.api.domain.webhook;
+package com.whatsapp.api.domain.webhook.type;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
 /**
  * The enum Field type.
- *
- * @deprecated use {@link com.whatsapp.api.domain.webhook.type.FieldType} instead
  */
-@Deprecated(forRemoval = true)
 public enum FieldType {
     /**
      * Notifies you when the message template status changes, by being approved or rejected, or if it has been disabled.
