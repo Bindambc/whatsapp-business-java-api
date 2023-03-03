@@ -27,7 +27,13 @@ The WhatsApp Business API allows medium and large businesses to communicate with
 	- [Sending a message with buttons (template)](#sending-a-message-with-buttons-template)
 	- [Sending a message with a contact](#sending-a-message-with-a-contact)
 	- [Sending an interactive message with buttons](#sending-an-interactive-message-with-buttons)
-	- [Sendind an interactive message with a list](#sending-an-interactive-message-with-a-list)
+	- [Sending an interactive message with a list](#sending-an-interactive-message-with-a-list)
+	- [Sending an audio message](#sending-an-audio-message)
+	- [Sending a document message](#sending-a-document-message)
+	- [Sending an image link message](#sending-an-image-link-message)
+	- [Sending an image message](#sending-an-image-message)
+	- [Sending a sticker message](#sending-a-sticker-message)
+	- [Sending a video message](#sending-a-video-message)
 - [:scroll: Examples (WhatsApp Business Management API)](#scroll-examples-whatsapp-business-management-api)
 	- [Creating a message template](#create-a-message-template)
 - [:arrow_down: WebHooks](#arrow_down-webhooks)
@@ -373,13 +379,14 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 
 **Result:**
 
-![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+![image](https://user-images.githubusercontent.com/7831956/222820774-489b54fa-4975-4688-927a-09157fb54777.png)
+
 
 [:arrow_heading_up: back](#link-links)
 
 ---
 
-#### [Sending a image link message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageLinkMessageExample.java)
+#### [Sending an image link message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageLinkMessageExample.java)
 
 ```java
 		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
@@ -397,13 +404,14 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 		MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 
 ```
-![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+![image](https://user-images.githubusercontent.com/7831956/222820971-f27cdb60-9b93-4a8f-96c3-0740bbada95b.png)
+
 
 [:arrow_heading_up: back](#link-links)
 
 ---
 
-#### [Sending a image message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageMessageExample.java)
+#### [Sending an image message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageMessageExample.java)
 
 ```java
 		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
@@ -425,13 +433,14 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 
 **Result:**
 
-![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+![image](https://user-images.githubusercontent.com/7831956/222820870-3913c340-2f61-4622-bddc-c0863ec03e7d.png)
+
 
 [:arrow_heading_up: back](#link-links)
 
 ---
 
-#### [Sending a sticker message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageStickerExample.java)
+#### [Sending a sticker message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendStickerExample.java)
 
 ```java
 	WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
@@ -452,7 +461,8 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 
 **Result:**
 
-![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+![image](https://user-images.githubusercontent.com/7831956/222821074-a7f0d1c4-e68e-4350-b108-7c97bccf17bb.png)
+
 
 [:arrow_heading_up: back](#link-links)
 
@@ -477,10 +487,6 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 
 		MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 ```
-
-**Result:**
-
-![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
 
 [:arrow_heading_up: back](#link-links)
 
