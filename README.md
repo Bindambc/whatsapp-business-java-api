@@ -324,6 +324,168 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 
 ---
 
+#### [Sending an audio message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendAudioMessageExample.java)
+
+```java
+		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+		WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+		var audioMessage = new AudioMessage()//
+		.setId("6418001414900549");
+
+		var message = MessageBuilder.builder()//
+		.setTo(PHONE_NUMBER_1)//
+		.buildAudioMessage(audioMessage);
+
+
+		MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+
+[:arrow_heading_up: back](#link-links)
+
+---
+
+#### [Sending a document message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendDocumentMessageExample.java)
+
+```java
+
+		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+		WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+		var documentMessage = new DocumentMessage()//
+		.setId("1238834210396519")// media id (uploaded before)
+		.setCaption("Media Object details from developers.facebook.com")//
+		.setFileName("Media oject.pdf");
+
+		var message = MessageBuilder.builder()//
+		.setTo(PHONE_NUMBER_1)//
+		.buildDocumentMessage(documentMessage);
+
+
+		MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+
+[:arrow_heading_up: back](#link-links)
+
+---
+
+#### [Sending a image link message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageLinkMessageExample.java)
+
+```java
+		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+		WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+		var imageMessage = new ImageMessage()//
+		.setLink("https://upload.wikimedia.org/wikipedia/pt/4/45/Yoda.jpg").setCaption("See this image, please");
+
+		var message = MessageBuilder.builder()//
+		.setTo(PHONE_NUMBER_1)//
+		.buildImageMessage(imageMessage);
+
+
+		MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+```
+![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+
+[:arrow_heading_up: back](#link-links)
+
+---
+
+#### [Sending a image message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageMessageExample.java)
+
+```java
+		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+		WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+		var imageMessage = new ImageMessage()//
+		.setId("186057067456357")// media id (uploaded before)
+		.setCaption("See this image, please");
+
+		var message = MessageBuilder.builder()//
+		.setTo(PHONE_NUMBER_1)//
+		.buildImageMessage(imageMessage);
+
+
+		MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+
+[:arrow_heading_up: back](#link-links)
+
+---
+
+#### [Sending a sticker message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendImageStickerExample.java)
+
+```java
+	WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+        var stickerMessage = new StickerMessage()//
+                .setId("527984052814860");// media id (uploaded before)
+
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildStickerMessage(stickerMessage);
+
+
+        MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+
+[:arrow_heading_up: back](#link-links)
+
+---
+
+#### [Sending a video message:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendVideoStickerExample.java)
+
+```java
+		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+		WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+		var videoMessage = new VideoMessage()//
+		.setId("1236364143659727")// media id (uploaded before)
+		.setCaption("See this video");
+
+
+		var message = MessageBuilder.builder()//
+		.setTo(PHONE_NUMBER_1)//
+		.buildVideoMessage(videoMessage);
+
+
+		MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+```
+
+**Result:**
+
+![image](https://user-images.githubusercontent.com/7831956/221338759-b037cae5-6ed6-4b90-91c8-0541e7e19243.png)
+
+[:arrow_heading_up: back](#link-links)
+
+---
+
 ## :scroll: Examples (WhatsApp Business Management API)
 
 #### [Create a message template](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/CreateMessageTemplate3Example.java)
