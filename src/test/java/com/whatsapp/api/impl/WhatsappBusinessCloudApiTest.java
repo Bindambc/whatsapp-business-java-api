@@ -4,8 +4,13 @@ import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.media.FileType;
+import com.whatsapp.api.domain.messages.AudioMessage;
+import com.whatsapp.api.domain.messages.DocumentMessage;
+import com.whatsapp.api.domain.messages.ImageMessage;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
+import com.whatsapp.api.domain.messages.StickerMessage;
 import com.whatsapp.api.domain.messages.TextMessage;
+import com.whatsapp.api.domain.messages.VideoMessage;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.exception.utils.Formatter;
 import mockwebserver3.MockResponse;
@@ -21,7 +26,43 @@ import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
 import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
 
 public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
+    @Test
+    void testSendMessageError() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(500).setBody("{" +//
+                "  \"error\": {\n" +//
+                "    \"message\": \"(#130429) Rate limit hit\",\n" +//
+                "    \"type\": \"OAuthException\",\n" +//
+                "    \"code\": 130429,\n" +//
+                "    \"error_data\": {\n" +//
+                "        \"messaging_product\": \"whatsapp\", \n" +//
+                "        \"details\": \"Message failed to send because there were too many messages sent from this phone number in a short period of time\"\n" +//
+                "    },\n" +//
+                "    \"error_subcode\": 2494055,\n" +//
+                "    \"fbtrace_id\": \"Az8or2yhqkZfEZ-_4Qn_Bam\"\n" +//
+                "  }\n" +//
+                "}"));
 
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildTextMessage(new TextMessage()//
+                        .setBody(Formatter.bold("Hello world!") + "\nSome code here: \n" + Formatter.code("hello world code here"))//
+                        .setPreviewUrl(false));
+
+
+        var ex = Assertions.assertThrows(WhatsappApiException.class, () -> whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message));
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"text\",\"text\":{\"preview_url\":false,\"body\":\"*Hello world!*\\nSome code here: \\n```hello world code here```\"}}", PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
+
+
+        Assertions.assertEquals("(#130429) Rate limit hit | Message failed to send because there were too many messages sent from this phone number in a short period of time", ex.getMessage());
+    }
 
     @Test
     void testSendTextMessage() throws IOException, URISyntaxException, InterruptedException {
@@ -42,6 +83,165 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         RecordedRequest recordedRequest = mockWebServer.takeRequest();
         Assertions.assertEquals("POST", recordedRequest.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"text\",\"text\":{\"preview_url\":false,\"body\":\"*Hello world!*\\nSome code here: \\n```hello world code here```\"}}", PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
+
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testSendAudioMessage() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/message.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildAudioMessage(new AudioMessage()//
+                        .setId("4545454545454"));
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"audio\",\"audio\":{\"id\":\"4545454545454\"}}", PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testSendAudioLinkMessage() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/message.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+        var link = "https://testeteste778787878.com/audio.mp3";
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildAudioMessage(new AudioMessage()//
+                        .setLink(link));
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"audio\",\"audio\":{\"link\":\"%s\"}}", PHONE_NUMBER_1, link), recordedRequest.getBody().readUtf8());
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testSendVideoMessage() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/message.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildVideoMessage(new VideoMessage()//
+                        .setId("78795489879879554")//
+                        .setCaption("See the video"));
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"video\",\"video\":{\"id\":\"78795489879879554\",\"caption\":\"See the video\"}}", PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testSendImageMessage() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/message.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildImageMessage(new ImageMessage()//
+                        .setId("75457812459735784")//
+                        .setCaption("See the image"));
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"image\",\"image\":{\"id\":\"75457812459735784\",\"caption\":\"See the image\"}}", PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testSendDocumentMessage() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/message.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildDocumentMessage(new DocumentMessage()//
+                        .setId("78548846588564")//
+                        .setFileName("test.pdf").setCaption("My document"));
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"document\",\"document\":{\"id\":\"78548846588564\",\"caption\":\"My document\",\"filename\":\"test.pdf\"}}", PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testSendStickerMessage() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/message.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildStickerMessage(new StickerMessage()//
+                        .setId("78548846588564"));
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+
+        Assertions.assertEquals(String.format("{\"messaging_product\":\"whatsapp\",\"recipient_type\":\"individual\",\"to\":\"%s\",\"type\":\"sticker\",\"sticker\":{\"id\":\"78548846588564\"}}", PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
 
         Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
     }
