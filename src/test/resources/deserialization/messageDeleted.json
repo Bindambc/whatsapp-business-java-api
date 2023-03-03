@@ -27,7 +27,11 @@
                 "errors": [
                   {
                     "code": 131051,
-                    "title": "Message type is currently not supported."
+                    "title": "Message type unknown",
+                    "message": "Message type unknown",
+                    "error_data": {
+                      "details": "Message type is currently not supported."
+                    }
                   }
                 ],
                 "type": "unsupported"
