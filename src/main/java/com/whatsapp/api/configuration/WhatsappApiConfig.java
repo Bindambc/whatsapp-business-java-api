@@ -8,7 +8,7 @@ public class WhatsappApiConfig {
     /**
      * The constant API_VERSION.
      */
-    public final static String API_VERSION = "v15.0";
+    public final static String API_VERSION = "v16.0";
     /**
      * The constant BASE_DOMAIN.
      */

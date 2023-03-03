@@ -1,12 +1,8 @@
-package com.whatsapp.api.domain.templates;
+package com.whatsapp.api.domain.templates.type;
 
 /**
  * The enum Component type.
- *
- * @deprecated use {@link com.whatsapp.api.domain.templates.type.ComponentType} instead
  */
-
-@Deprecated(forRemoval = true)
 public enum ComponentType {
     /**
      * Body component type.

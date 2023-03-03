@@ -3,6 +3,7 @@ package com.whatsapp.api.domain.templates;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.whatsapp.api.domain.templates.type.ButtonType;
 
 /**
  * The type Button.

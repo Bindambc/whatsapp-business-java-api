@@ -2,6 +2,8 @@ package com.whatsapp.api.domain.templates;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.whatsapp.api.domain.templates.type.Category;
+import com.whatsapp.api.domain.templates.type.LanguageType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +24,7 @@ public class MessageTemplate {
     /**
      * The language of the message template.
      */
-    private Language language;
+    private LanguageType languageType;
     /**
      * The type of message template.
      */
@@ -86,18 +88,18 @@ public class MessageTemplate {
      *
      * @return the language
      */
-    public Language getLanguage() {
-        return language;
+    public LanguageType getLanguage() {
+        return languageType;
     }
 
     /**
      * Sets language.
      *
-     * @param language the language
+     * @param languageType the language
      * @return the language
      */
-    public MessageTemplate setLanguage(Language language) {
-        this.language = language;
+    public MessageTemplate setLanguage(LanguageType languageType) {
+        this.languageType = languageType;
         return this;
     }
 

@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.templates;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.whatsapp.api.domain.templates.type.ComponentType;
 
 import java.util.ArrayList;
 import java.util.List;

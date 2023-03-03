@@ -1,14 +1,11 @@
-package com.whatsapp.api.domain.webhook;
+package com.whatsapp.api.domain.webhook.type;
 
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * The enum Message status.
- *
- * @deprecated use {@link com.whatsapp.api.domain.webhook.type.MessageStatus} instead
  */
-@Deprecated(forRemoval = true)
 public enum MessageStatus {
     /**
      * Message received by WhatsApp server. (One checkmark)

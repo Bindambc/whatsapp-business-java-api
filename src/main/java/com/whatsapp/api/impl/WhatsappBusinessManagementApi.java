@@ -1,8 +1,8 @@
 package com.whatsapp.api.impl;
 
+import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
-import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
 import com.whatsapp.api.service.WhatsappBusinessManagementApiService;
 

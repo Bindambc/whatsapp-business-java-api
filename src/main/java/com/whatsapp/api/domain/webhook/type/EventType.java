@@ -1,12 +1,9 @@
-package com.whatsapp.api.domain.webhook;
+package com.whatsapp.api.domain.webhook.type;
 
 /**
  * Used when an event happened in a specific WABA.
  * See <a href="https://developers.facebook.com/docs/whatsapp/business-management-api/webhooks/components">Webhooks Components</a>
- *
- * @deprecated use {@link com.whatsapp.api.domain.webhook.type.EventType} instead
  */
-@Deprecated(forRemoval = true)
 public enum EventType {
 
     /**

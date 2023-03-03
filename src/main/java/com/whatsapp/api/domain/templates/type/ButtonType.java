@@ -1,11 +1,8 @@
-package com.whatsapp.api.domain.templates;
+package com.whatsapp.api.domain.templates.type;
 
 /**
  * The enum Button type.
- *
- * @deprecated use {@link com.whatsapp.api.domain.messages.type.ButtonType} instead
  */
-@Deprecated(forRemoval = true)
 public enum ButtonType {
     /**
      * Phone number button type.
