@@ -1,11 +1,14 @@
 package com.whatsapp.api.domain.messages;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A contact object
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ContactMessage {
 
 

@@ -1,16 +1,13 @@
-package com.whatsapp.api.domain.templates;
+package com.whatsapp.api.domain.templates.type;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.whatsapp.api.domain.templates.type.LanguageType;
 
 /**
  * Supported Languages for message templates
  * <a href="https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/#supported-languages">See more</a>
- *
- * @deprecated use {@link LanguageType} instead
  */
-@Deprecated(forRemoval = true)
-public enum Language {
+
+public enum LanguageType {
 
     /**
      * Afrikaans af
@@ -300,7 +297,7 @@ public enum Language {
 
     private final String value;
 
-    Language(String value) {
+    LanguageType(String value) {
         this.value = value;
     }
 

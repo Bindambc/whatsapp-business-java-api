@@ -4,14 +4,14 @@ import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.templates.BodyComponent;
 import com.whatsapp.api.domain.templates.ButtonComponent;
-import com.whatsapp.api.domain.templates.Category;
 import com.whatsapp.api.domain.templates.Example;
 import com.whatsapp.api.domain.templates.FooterComponent;
 import com.whatsapp.api.domain.templates.HeaderComponent;
-import com.whatsapp.api.domain.templates.HeaderFormat;
-import com.whatsapp.api.domain.templates.Language;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.QuickReplyButton;
+import com.whatsapp.api.domain.templates.type.Category;
+import com.whatsapp.api.domain.templates.type.HeaderFormat;
+import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.utils.Formatter;
 import mockwebserver3.MockResponse;
 import org.junit.jupiter.api.Assertions;
@@ -42,7 +42,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
         template.setName("welcome_template2")//
                 .setCategory(Category.TRANSACTIONAL)//
-                .setLanguage(Language.EN_US)//
+                .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
                         .setText("Wellcome title")//
                         .setFormat(HeaderFormat.TEXT))//
@@ -76,7 +76,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
         template.setName("welcome_template")//
                 .setCategory(Category.TRANSACTIONAL)//
-                .setLanguage(Language.EN_US)//
+                .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
                         .setText("Wellcome title")//
                         .setFormat(HeaderFormat.TEXT))//
@@ -125,7 +125,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
         template.setName("number_confirmation")//
                 .setCategory(Category.TRANSACTIONAL)//
-                .setLanguage(Language.PT_BR)//
+                .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
                         .setText("Código de confirmação")//
                         .setFormat(HeaderFormat.TEXT))//
@@ -156,7 +156,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
         template.setName("schedule_confirmation3")//
                 .setCategory(Category.TRANSACTIONAL)//
-                .setLanguage(Language.PT_BR)//
+                .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
                         .setText("Confirmação de Atendimento")//
                         .setFormat(HeaderFormat.TEXT))//
@@ -194,7 +194,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
         template.setName("schedule_confirmation5")//
                 .setCategory(Category.TRANSACTIONAL)//
-                .setLanguage(Language.PT_BR)//
+                .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
                         .setText("Confirmação de Atendimento")//
                         .setFormat(HeaderFormat.TEXT))//

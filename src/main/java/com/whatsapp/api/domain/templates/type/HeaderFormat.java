@@ -1,11 +1,8 @@
-package com.whatsapp.api.domain.templates;
+package com.whatsapp.api.domain.templates.type;
 
 /**
  * Only applies to the HEADER type.
- *
- * @deprecated use {@link com.whatsapp.api.domain.templates.type.HeaderFormat} instead
  */
-@Deprecated(forRemoval = true)
 public enum HeaderFormat {
     /**
      * Text header format.

@@ -2,6 +2,10 @@ package com.whatsapp.api.domain.webhook;
 
 import com.whatsapp.api.TestUtils;
 import com.whatsapp.api.domain.messages.type.MessageType;
+import com.whatsapp.api.domain.webhook.type.EventType;
+import com.whatsapp.api.domain.webhook.type.FieldType;
+import com.whatsapp.api.domain.webhook.type.MessageStatus;
+import com.whatsapp.api.domain.webhook.type.RestrictionType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -20,8 +20,6 @@ public class RetrieveTemplates1Example {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        templates.data().get(0).components().get(0).getType();
-
 
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(templates));
     }

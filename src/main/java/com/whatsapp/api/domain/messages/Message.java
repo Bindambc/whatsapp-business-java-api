@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * To send a message, you must first assemble a message object with the content you want to send.
+ *
+ * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages">API documentation - messages</a>
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Message {
@@ -19,7 +21,7 @@ public class Message {
      * The Interactive message.
      */
     @JsonProperty("interactive")
-    public InteractiveMessage interactiveMessage;
+    private InteractiveMessage interactiveMessage;
     @JsonProperty("to")
     private String to;
     @JsonProperty("type")
@@ -30,6 +32,21 @@ public class Message {
     private List<Contact> contactMessage;
     @JsonProperty("template")
     private TemplateMessage templateMessage;
+
+    @JsonProperty("audio")
+    private AudioMessage audioMessage;
+
+    @JsonProperty("document")
+    private DocumentMessage documentMessage;
+
+    @JsonProperty("image")
+    private ImageMessage imageMessage;
+
+    @JsonProperty("sticker")
+    private StickerMessage stickerMessage;
+
+    @JsonProperty("video")
+    private VideoMessage videoMessage;
 
 
     private Message() {
@@ -113,6 +130,7 @@ public class Message {
          *
          * @param contactMessage the contact message
          * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#contacts-object">API documentation</a>
          */
         public Message buildContactMessage(ContactMessage contactMessage) {
             var message = new Message(to, MessageType.CONTACTS);
@@ -122,10 +140,11 @@ public class Message {
         }
 
         /**
-         * Build template message message.
+         * Build template message
          *
          * @param templateMessage the template message
          * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#template-object">API documentation</a>
          */
         public Message buildTemplateMessage(TemplateMessage templateMessage) {
             var message = new Message(to, MessageType.TEMPLATE);
@@ -139,10 +158,82 @@ public class Message {
          *
          * @param interactiveMessage the interactive message
          * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object">API documentation</a>
          */
         public Message buildInteractiveMessage(InteractiveMessage interactiveMessage) {
             var message = new Message(to, MessageType.INTERACTIVE);
             message.interactiveMessage = interactiveMessage;
+            return message;
+
+        }
+
+
+        /**
+         * Build audio message
+         *
+         * @param audioMessage the audio message
+         * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object">API documentation</a>
+         */
+        public Message buildAudioMessage(AudioMessage audioMessage) {
+            var message = new Message(to, MessageType.AUDIO);
+            message.audioMessage = audioMessage;
+            return message;
+
+        }
+
+        /**
+         * Build document message
+         *
+         * @param documentMessage the document message
+         * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object">API documentation</a>
+         */
+        public Message buildDocumentMessage(DocumentMessage documentMessage) {
+            var message = new Message(to, MessageType.DOCUMENT);
+            message.documentMessage = documentMessage;
+            return message;
+
+        }
+
+        /**
+         * Build image message
+         *
+         * @param imageMessage the image message
+         * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object">API documentation</a>
+         */
+        public Message buildImageMessage(ImageMessage imageMessage) {
+            var message = new Message(to, MessageType.IMAGE);
+            message.imageMessage = imageMessage;
+            return message;
+
+        }
+
+        /**
+         * Build sticker message
+         *
+         * @param stickerMessage the sticker message
+         * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object">API documentation</a>
+         */
+        public Message buildStickerMessage(StickerMessage stickerMessage) {
+            var message = new Message(to, MessageType.STICKER);
+            message.stickerMessage = stickerMessage;
+            return message;
+
+        }
+
+        /**
+         * Build video message
+         *
+         * @param videoMessage the video message
+         * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object">API documentation</a>
+         */
+        public Message buildVideoMessage(VideoMessage videoMessage) {
+            var message = new Message(to, MessageType.VIDEO);
+            message.videoMessage = videoMessage;
             return message;
 
         }

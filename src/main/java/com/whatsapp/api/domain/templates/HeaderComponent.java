@@ -1,6 +1,8 @@
 package com.whatsapp.api.domain.templates;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.whatsapp.api.domain.templates.type.ComponentType;
+import com.whatsapp.api.domain.templates.type.HeaderFormat;
 
 /**
  * Header component
