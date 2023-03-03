@@ -9,7 +9,9 @@ com.whatsapp.api.domain.messages.type
 com.whatsapp.api.domain.response
 com.whatsapp.api.domain.templates
 com.whatsapp.api.domain.templates.response
+com.whatsapp.api.domain.templates.type
 com.whatsapp.api.domain.webhook
+com.whatsapp.api.domain.webhook.type
 com.whatsapp.api.exception
 com.whatsapp.api.exception.utils
 com.whatsapp.api.impl
