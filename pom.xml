@@ -4,7 +4,7 @@
 
     <groupId>com.whatsapp.api</groupId>
     <artifactId>whatsapp-business-java-api</artifactId>
-    <version>v0.0.6</version>
+    <version>v0.1.0</version>
     <licenses>
         <license>
             <name>The MIT License</name>
