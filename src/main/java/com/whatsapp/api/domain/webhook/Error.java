@@ -7,9 +7,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public record Error(
 
-        @JsonProperty("code") int code,
+        @JsonProperty("code")
+        int code,
 
-        @JsonProperty("details") String details,
+        @JsonProperty("title")
+        String title,
 
-        @JsonProperty("title") String title) {
+        @JsonProperty("message")
+        String message,
+
+        @JsonProperty("error_data")
+        ErrorData errorData
+) {
 }

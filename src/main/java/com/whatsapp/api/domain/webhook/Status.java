@@ -3,6 +3,8 @@ package com.whatsapp.api.domain.webhook;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.webhook.type.MessageStatus;
 
+import java.util.List;
+
 /**
  * The type Status.
  *
@@ -12,6 +14,7 @@ import com.whatsapp.api.domain.webhook.type.MessageStatus;
  * @param recipientId  The WhatsApp ID of the recipient.
  * @param status       The status of the message. Valid values are: read, delivered, sent, failed, or deleted.
  * @param timestamp    The timestamp of the status message.
+ * @param errors       The errors object in webhooks triggered by v16.0+ request errors now include message and error_data.details properties, and title values have changed for multiple error codes.
  */
 public record Status(
 
@@ -25,6 +28,8 @@ public record Status(
 
         @JsonProperty("status") MessageStatus status,
 
-        @JsonProperty("timestamp") String timestamp) {
+        @JsonProperty("timestamp") String timestamp,
+
+        @JsonProperty("errors") List<Error> errors) {
 
 }
