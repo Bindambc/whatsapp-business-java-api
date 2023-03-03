@@ -173,6 +173,11 @@ class WebHookPayloadTest extends TestUtils {
 
         Assertions.assertEquals(MessageType.UNSUPPORTED, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().messages().get(0).errors());
+        var erro = obj.entry().get(0).changes().get(0).value().messages().get(0).errors().get(0);
+        Assertions.assertEquals("Message type unknown", erro.message());
+        Assertions.assertEquals(131051, erro.code());
+        Assertions.assertEquals("Message type unknown", erro.title());
+        Assertions.assertEquals("Message type is currently not supported.", erro.errorData().details());
 
 
     }
@@ -375,7 +380,6 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = WebHook.constructEvent(payload);
 
-
         Assertions.assertEquals(FieldType.PHONE_NUMBER_QUALITY_UPDATE, obj.entry().get(0).changes().get(0).field());
 
 
@@ -387,7 +391,6 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = WebHook.constructEvent(payload);
 
-
         Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
         Assertions.assertNotNull(obj.entry().get(0).changes().get(0).value().banInfo());
     }
@@ -398,7 +401,6 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = WebHook.constructEvent(payload);
 
-
         Assertions.assertEquals(FieldType.ACCOUNT_REVIEW_UPDATE, obj.entry().get(0).changes().get(0).field());
     }
 
@@ -408,9 +410,26 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = WebHook.constructEvent(payload);
 
-
         Assertions.assertEquals(FieldType.ACCOUNT_UPDATE, obj.entry().get(0).changes().get(0).field());
         Assertions.assertEquals(RestrictionType.RESTRICTED_ADD_PHONE_NUMBER_ACTION, obj.entry().get(0).changes().get(0).value().restrictionInfo().get(0).restrictionType());
+    }
+
+    @Test
+    void testDeserializationMediaUploadError() throws IOException, URISyntaxException {
+        var payload = fromResource(JSON_FOLDER + "mediaUploadError.json");
+
+        var obj = WebHook.constructEvent(payload);
+
+        Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
+
+        var statuses = obj.entry().get(0).changes().get(0).value().statuses();
+
+        Assertions.assertNotNull(statuses);
+
+        Assertions.assertEquals(131053, statuses.get(0).errors().get(0).code());
+        Assertions.assertEquals("Media upload error", statuses.get(0).errors().get(0).title());
+        Assertions.assertEquals("Media upload error", statuses.get(0).errors().get(0).message());
+        Assertions.assertEquals("Unsupported Video mime type text/html. Please use one of video/3gpp, video/mp4.", statuses.get(0).errors().get(0).errorData().details());
     }
 }
 
