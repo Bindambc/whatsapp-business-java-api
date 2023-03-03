@@ -9,6 +9,8 @@
 Whatsapp business api SDK, written in java. This SDK implements the Official [Whatsapp Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api) and [WhatsApp Business Management API](https://developers.facebook.com/docs/whatsapp/business-management-api). These allows you to:
 - manage your WhatsApp Business Account assets, such as message templates and phone numbers;
 - send messages to your contacts, such as simple text messages, messages with buttons, video, images, sticker...
+- upload, delete and retrieve media files.
+- receive webhooks events
 
 The WhatsApp Business API allows medium and large businesses to communicate with their customers at scale. Using the API, businesses can build systems that connect thousands of customers with agents or bots, enabling both programmatic and manual communication. Additionally, you can integrate the API with numerous backend systems, such as CRM and marketing platforms.
 
