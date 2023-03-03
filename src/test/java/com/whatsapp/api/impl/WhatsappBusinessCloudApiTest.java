@@ -27,7 +27,7 @@ import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
 
 public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
     @Test
-    void testSendMessageError() throws IOException, URISyntaxException, InterruptedException {
+    void testSendMessageError() throws InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(500).setBody("{" +//
                 "  \"error\": {\n" +//
                 "    \"message\": \"(#130429) Rate limit hit\",\n" +//
