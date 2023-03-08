@@ -34,5 +34,7 @@ public class SendTemplateTextMessageExample {
                 );
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+
     }
 }
