@@ -1,4 +1,4 @@
-package com.whatsapp.api.domain.templates.response;
+package com.whatsapp.api.domain.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

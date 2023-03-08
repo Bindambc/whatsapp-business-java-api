@@ -1,11 +1,15 @@
 package com.whatsapp.api.impl;
 
+import com.whatsapp.api.domain.phone.DisplayNameStatus;
+import com.whatsapp.api.domain.phone.PhoneNumber;
+import com.whatsapp.api.domain.phone.PhoneNumbers;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
 import com.whatsapp.api.service.WhatsappBusinessManagementApiService;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.whatsapp.api.WhatsappApiServiceGenerator.createService;
@@ -113,6 +117,31 @@ public class WhatsappBusinessManagementApi {
      */
     public MessageTemplates retrieveTemplates(String whatsappBusinessAccountId, int limit, String after) {
         return executeSync(whatsappBusinessManagementApiService.retrieveTemplates(whatsappBusinessAccountId, Map.of("limit", limit, "after", after)));
+    }
+
+    /**
+     *
+     * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
+     * @param phoneNumberId a phoneNumber id
+     * @return PhoneNumber
+     */
+    public PhoneNumber retrievePhoneNumber(String whatsappBusinessAccountId, String phoneNumberId) {
+        return executeSync(whatsappBusinessManagementApiService.retrievePhoneNumber(whatsappBusinessAccountId, phoneNumberId));
+    }
+
+    /**
+     *
+     * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
+     * @return List<PhoneNumber>
+     */
+    public PhoneNumbers retrievePhoneNumbers(String whatsappBusinessAccountId) {
+        return executeSync(whatsappBusinessManagementApiService.retrievePhoneNumbers(whatsappBusinessAccountId));
+    }
+
+
+    public DisplayNameStatus retrieveDisplayNameStatus(String phoneNumberId){
+        return executeSync(whatsappBusinessManagementApiService.retrieveDisplayNameStatus(whatsappBusinessAccountId));
+
     }
 
 

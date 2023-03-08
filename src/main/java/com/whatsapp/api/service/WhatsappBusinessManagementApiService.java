@@ -1,5 +1,8 @@
 package com.whatsapp.api.service;
 
+import com.whatsapp.api.domain.phone.DisplayNameStatus;
+import com.whatsapp.api.domain.phone.PhoneNumber;
+import com.whatsapp.api.domain.phone.PhoneNumbers;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
@@ -13,6 +16,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
@@ -72,5 +76,28 @@ public interface WhatsappBusinessManagementApiService {
      */
     @GET("/" + API_VERSION + "/{whatsapp-business-account-ID}/message_templates")
     Call<MessageTemplates> retrieveTemplates(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @QueryMap Map<String, Object> filters);
+
+    /**
+     * Retrieve phone number call.
+     *
+     * @param whatsappBusinessAccountId the whatsapp business account id
+     * @param phoneNumberId             the phone number id
+     * @return the call
+     */
+    @GET("/" + API_VERSION + "/{whatsapp-business-account-ID}/{phone-number-ID}")
+    Call<PhoneNumber> retrievePhoneNumber(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Path("phone-number-ID") String phoneNumberId);
+
+    /**
+     * Retrieve phone numbers call.
+     *
+     * @param whatsappBusinessAccountId the whatsapp business account id
+     * @return the call
+     */
+    @GET("/" + API_VERSION + "/{whatsapp-business-account-ID}/phone_numbers")
+    Call<PhoneNumbers> retrievePhoneNumbers(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId);
+
+    @GET("/" + API_VERSION + "/{phone-number-ID}")
+    Call<DisplayNameStatus> retrieveDisplayNameStatus(@Path("phone-number-ID") String phoneNumberId, @QueryMap Map<String, Object> filters);
+
 
 }
