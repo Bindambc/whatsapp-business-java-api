@@ -168,7 +168,7 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 #### [Sending a message with buttons (template):](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTemplateButtonMessageExample.java)
 
 ```java
- 	WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
+	WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
 
@@ -176,7 +176,7 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
                 .setTo(PHONE_NUMBER_1)//
                 .buildTemplateMessage(//
                         new TemplateMessage()//
-                                .setLanguage(new Language(com.whatsapp.api.domain.templates.Language.PT_BR))//
+                                .setLanguage(new Language(LanguageType.PT_BR))//
                                 .setName("schedule_confirmation3")//
                                 .addComponent(//
                                         new Component(ComponentType.BODY)//
