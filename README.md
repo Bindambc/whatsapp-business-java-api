@@ -77,7 +77,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
    <dependency>
       <groupId>com.github.Bindambc</groupId>
       <artifactId>whatsapp-business-java-api</artifactId>
-      <version>v0.1.0</version>
+      <version>v0.1.1</version>
    </dependency>
 ```
 
@@ -98,7 +98,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 
 ```gradle
 	dependencies {
-	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.1.0'
+	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.1.1'
 	}
 ```
 
@@ -168,7 +168,7 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 #### [Sending a message with buttons (template):](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/SendTemplateButtonMessageExample.java)
 
 ```java
- 	WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
+	WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
 
@@ -176,7 +176,7 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
                 .setTo(PHONE_NUMBER_1)//
                 .buildTemplateMessage(//
                         new TemplateMessage()//
-                                .setLanguage(new Language(com.whatsapp.api.domain.templates.Language.PT_BR))//
+                                .setLanguage(new Language(LanguageType.PT_BR))//
                                 .setName("schedule_confirmation3")//
                                 .addComponent(//
                                         new Component(ComponentType.BODY)//
