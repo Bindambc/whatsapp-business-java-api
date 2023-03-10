@@ -9,8 +9,8 @@ import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.type.Category;
 import com.whatsapp.api.domain.templates.type.HeaderFormat;
 import com.whatsapp.api.domain.templates.type.LanguageType;
-import com.whatsapp.api.exception.utils.Formatter;
 import com.whatsapp.api.impl.WhatsappBusinessManagementApi;
+import com.whatsapp.api.utils.Formatter;
 
 import static com.whatsapp.api.TestConstants.TOKEN;
 import static com.whatsapp.api.TestConstants.WABA_ID;

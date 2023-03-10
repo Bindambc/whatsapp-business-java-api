@@ -1,6 +1,5 @@
 package com.whatsapp.api.examples;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.phone.RequestCode;
 import com.whatsapp.api.domain.phone.VerifyCode;
@@ -13,7 +12,7 @@ import static com.whatsapp.api.TestConstants.TOKEN;
 
 public class RequestVerificationCodeExample {
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args)  {
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 

@@ -19,7 +19,7 @@ import com.whatsapp.api.domain.templates.type.Category;
 import com.whatsapp.api.domain.templates.type.HeaderFormat;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
-import com.whatsapp.api.exception.utils.Formatter;
+import com.whatsapp.api.utils.Formatter;
 import mockwebserver3.MockResponse;
 import mockwebserver3.RecordedRequest;
 import org.junit.jupiter.api.Assertions;
