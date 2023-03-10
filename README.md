@@ -40,6 +40,8 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 	- [Sending a video message](#sending-a-video-message)
 - [:scroll: Examples (WhatsApp Business Management API)](#scroll-examples-whatsapp-business-management-api)
 	- [Creating a message template](#create-a-message-template)
+	- [Managing phone numbers](/docs/phone_numbers.md#scroll-managing-phone-numbers)
+	- [Getting verification codes and verifying them.](docs/verification_codes.md#scroll-get-verification-codes-and-verify-then)
 - [:arrow_down: WebHooks](#arrow_down-webhooks)
 - [:paperclip: Media](#paperclip-media)
 	- [Uploading media](#uploading-media)
