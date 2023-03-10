@@ -1,13 +1,13 @@
 package com.whatsapp.api.exception;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-
 import com.whatsapp.api.domain.errors.Error;
 import com.whatsapp.api.domain.errors.ErrorData;
 import com.whatsapp.api.domain.errors.WhatsappApiError;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class WhatsappApiExceptionTest {
     /**

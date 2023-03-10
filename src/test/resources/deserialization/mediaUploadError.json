@@ -1,36 +1,36 @@
 {
-  "object":"whatsapp_business_account",
-  "entry":[
+  "object": "whatsapp_business_account",
+  "entry": [
     {
-      "id":"880480571844883",
-      "changes":[
+      "id": "880480571844883",
+      "changes": [
         {
-          "value":{
-            "messaging_product":"whatsapp",
-            "metadata":{
-              "display_phone_number":"43330585569",
-              "phone_number_id":"409552778964973"
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "43330585569",
+              "phone_number_id": "409552778964973"
             },
-            "statuses":[
+            "statuses": [
               {
-                "id":"wamid.HBgNNTUyNzk5NzAUZBQTI3MzRGRDA3MjgzMDkzNhUCABEYEjNCR2OQA=",
-                "status":"failed",
-                "timestamp":"1677783372",
-                "recipient_id":"1111111111111",
-                "errors":[
+                "id": "wamid.HBgNNTUyNzk5NzAUZBQTI3MzRGRDA3MjgzMDkzNhUCABEYEjNCR2OQA=",
+                "status": "failed",
+                "timestamp": "1677783372",
+                "recipient_id": "1111111111111",
+                "errors": [
                   {
-                    "code":131053,
-                    "title":"Media upload error",
-                    "message":"Media upload error",
-                    "error_data":{
-                      "details":"Unsupported Video mime type text\/html. Please use one of video\/3gpp, video\/mp4."
+                    "code": 131053,
+                    "title": "Media upload error",
+                    "message": "Media upload error",
+                    "error_data": {
+                      "details": "Unsupported Video mime type text\/html. Please use one of video\/3gpp, video\/mp4."
                     }
                   }
                 ]
               }
             ]
           },
-          "field":"messages"
+          "field": "messages"
         }
       ]
     }

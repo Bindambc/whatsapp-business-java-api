@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record ErrorData(
 
-	@JsonProperty("details")
-	String details
+        @JsonProperty("details")
+        String details
 ) {
 }
