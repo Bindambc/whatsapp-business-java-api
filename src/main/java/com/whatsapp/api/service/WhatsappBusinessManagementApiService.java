@@ -1,5 +1,9 @@
 package com.whatsapp.api.service;
 
+import com.whatsapp.api.domain.phone.PhoneNumber;
+import com.whatsapp.api.domain.phone.PhoneNumbers;
+import com.whatsapp.api.domain.phone.RequestCode;
+import com.whatsapp.api.domain.phone.VerifyCode;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
@@ -72,5 +76,47 @@ public interface WhatsappBusinessManagementApiService {
      */
     @GET("/" + API_VERSION + "/{whatsapp-business-account-ID}/message_templates")
     Call<MessageTemplates> retrieveTemplates(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @QueryMap Map<String, Object> filters);
+
+
+    /**
+     * Retrieve phone number call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param queryParams   the query params
+     * @return the call
+     */
+    @GET("/" + API_VERSION + "/{phone-number-ID}")
+    Call<PhoneNumber> retrievePhoneNumber(@Path("phone-number-ID") String phoneNumberId, @QueryMap Map<String, Object> queryParams);
+
+
+    /**
+     * Retrieve phone numbers call.
+     *
+     * @param whatsappBusinessAccountId the whatsapp business account id
+     * @return the call
+     */
+    @GET("/" + API_VERSION + "/{whatsapp-business-account-ID}/phone_numbers")
+    Call<PhoneNumbers> retrievePhoneNumbers(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId);
+
+    /**
+     * Request code call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param requestCode   the request code
+     * @return the call
+     */
+    @POST("/" + API_VERSION + "/{phone-number-ID}/request_code")
+    Call<Response> requestCode(@Path("phone-number-ID") String phoneNumberId, @Body RequestCode requestCode);
+
+    /**
+     * Verify code call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param verifyCode    the verify code
+     * @return the call
+     */
+    @POST("/" + API_VERSION + "/{phone-number-ID}/verify_code")
+    Call<Response> verifyCode(@Path("phone-number-ID") String phoneNumberId, @Body VerifyCode verifyCode);
+
 
 }

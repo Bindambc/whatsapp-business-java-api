@@ -1,0 +1,12 @@
+{
+  "error": {
+    "message": "Verify code error",
+    "type": "OAuthException",
+    "code": 136025,
+    "error_subcode": 2388093,
+    "is_transient": false,
+    "error_user_title": "Não foi possível verificar o código",
+    "error_user_msg": "O código inserido está incorreto.",
+    "fbtrace_id": "AlUVfPbGecEVqld9CAPMk53"
+  }
+}

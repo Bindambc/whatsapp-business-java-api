@@ -1,0 +1,12 @@
+{
+  "error": {
+    "message": "Request code error",
+    "type": "OAuthException",
+    "code": 136024,
+    "error_subcode": 2388091,
+    "is_transient": false,
+    "error_user_title": "Não foi possível enviar o código",
+    "error_user_msg": "Tente novamente depois de um tempo.",
+    "fbtrace_id": "Aayh7_x-pxzNlCVeeb3IxXU"
+  }
+}

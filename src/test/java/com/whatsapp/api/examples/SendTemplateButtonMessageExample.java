@@ -32,6 +32,7 @@ public class SendTemplateButtonMessageExample {
                                                 .addParameter(new TextParameter("04/11/2022"))//
                                                 .addParameter(new TextParameter("14:30")))//
 
+
                 );
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
