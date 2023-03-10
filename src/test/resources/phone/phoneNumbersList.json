@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "verified_name": "Test Number",
+      "code_verification_status": "NOT_VERIFIED",
+      "display_phone_number": "1111111111",
+      "quality_rating": "YELLOW",
+      "id": "109219652874979"
+    },
+    {
+      "verified_name": "Test Number 2",
+      "code_verification_status": "NOT_VERIFIED",
+      "display_phone_number": "2222222222",
+      "quality_rating": "RED",
+      "id": "109252871979649"
+    },
+    {
+      "verified_name": "Test Number 3",
+      "code_verification_status": "NOT_VERIFIED",
+      "display_phone_number": "33333333333",
+      "quality_rating": "GREEN",
+      "id": "109287919526479"
+    },
+    {
+      "verified_name": "Test Number 4",
+      "code_verification_status": "NOT_VERIFIED",
+      "display_phone_number": "4444444",
+      "quality_rating": "NA",
+      "id": "105292879647919"
+    }
+  ],
+  "paging": {
+    "cursors": {
+      "before": "QVFIUlg0MXlkcnM0ODJkpqdTVfNzhuTUxOSVZARTGdWaTE4TlRIdFpJNEMwVkVWal9Q0x0WENuSnVCRGc1a240aUg2SmNYZAXNfWGN0N0o4dlSdlR4Qzk1bHh3",
+      "after": "QVFIUlg0MXlkcnM0ODJkQ0x0WENuSnVCRGc1a240aUgXNfWGN0N0o4dlpqdTVfNzhuTUpJNEMwVkVWal9SdlR4xOSVZAR2SmNYZATGdWaTE4TlRIdFQzk1bHh3"
+    }
+  }
+}
