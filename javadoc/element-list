@@ -6,6 +6,8 @@ com.whatsapp.api.domain.messages
 com.whatsapp.api.domain.messages.builder
 com.whatsapp.api.domain.messages.response
 com.whatsapp.api.domain.messages.type
+com.whatsapp.api.domain.phone
+com.whatsapp.api.domain.phone.type
 com.whatsapp.api.domain.response
 com.whatsapp.api.domain.templates
 com.whatsapp.api.domain.templates.response
