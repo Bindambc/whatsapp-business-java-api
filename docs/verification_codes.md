@@ -38,4 +38,4 @@ See the examples:
 
 See full examples [here](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/RequestVerificationCodeExample.java)
 
-[:arrow_heading_up: back](#link-links)
+[:arrow_heading_up: back](../README.md#link-links)
