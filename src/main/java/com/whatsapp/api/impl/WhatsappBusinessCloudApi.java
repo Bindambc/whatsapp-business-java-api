@@ -6,6 +6,7 @@ import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
+import com.whatsapp.api.domain.phone.RequestCode;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.service.WhatsappBusinessCloudApiService;
 import okhttp3.MediaType;
@@ -115,5 +116,6 @@ public class WhatsappBusinessCloudApi {
 
         return executeSync(whatsappBusinessCloudApiService.deleteMedia(mediaId));
     }
+
 
 }

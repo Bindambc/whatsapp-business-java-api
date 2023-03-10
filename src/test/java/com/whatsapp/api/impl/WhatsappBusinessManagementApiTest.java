@@ -3,6 +3,9 @@ package com.whatsapp.api.impl;
 import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
+import com.whatsapp.api.domain.phone.RequestCode;
+import com.whatsapp.api.domain.phone.VerifyCode;
+import com.whatsapp.api.domain.phone.type.CodeMethodType;
 import com.whatsapp.api.domain.phone.type.NameStatusType;
 import com.whatsapp.api.domain.phone.type.QualityRatingType;
 import com.whatsapp.api.domain.templates.BodyComponent;
@@ -365,6 +368,94 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("/" + API_VERSION + "/" + "454545", recordedRequest.getPath());
 
         Assertions.assertEquals("Unsupported get request. Object with ID '454545' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api", ex.getMessage());
+
+    }
+
+    /**
+     * Method under test: {@link WhatsappBusinessManagementApi#requestCode(String, RequestCode)}}
+     */
+    @Test
+    void requestCode() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/reponse.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessManagementApi businessManagementApi = factory.newBusinessManagementApi();
+
+        var reponse = businessManagementApi.requestCode(PHONE_NUMBER_ID, new RequestCode(CodeMethodType.SMS, LanguageType.EN_US));
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/request_code", recordedRequest.getPath());
+        Assertions.assertEquals("{\"code_method\":\"SMS\",\"language\":\"en_US\"}", recordedRequest.getBody().readUtf8());
+
+        Assertions.assertTrue(reponse.success());
+
+    }
+
+    /**
+     * Method under test: {@link WhatsappBusinessManagementApi#requestCode(String, RequestCode)}}
+     */
+    @Test
+    void requestCodeError() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody(fromResource("/phone/requestCodeError.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessManagementApi businessManagementApi = factory.newBusinessManagementApi();
+
+        var ex = Assertions.assertThrows(WhatsappApiException.class, () -> businessManagementApi.requestCode(PHONE_NUMBER_ID, new RequestCode(CodeMethodType.SMS, LanguageType.EN_US)));
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/request_code", recordedRequest.getPath());
+        Assertions.assertEquals("{\"code_method\":\"SMS\",\"language\":\"en_US\"}", recordedRequest.getBody().readUtf8());
+
+        Assertions.assertEquals("Request code error | Tente novamente depois de um tempo.", ex.getMessage());
+
+    }
+
+    /**
+     * Method under test: {@link WhatsappBusinessManagementApi#verifyCode(String, VerifyCode)}
+     */
+    @Test
+    void verifyCode() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/reponse.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessManagementApi businessManagementApi = factory.newBusinessManagementApi();
+
+        var reponse = businessManagementApi.verifyCode(PHONE_NUMBER_ID, new VerifyCode("12345678"));
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/verify_code", recordedRequest.getPath());
+        Assertions.assertEquals("{\"code\":\"12345678\"}", recordedRequest.getBody().readUtf8());
+
+        Assertions.assertTrue(reponse.success());
+
+    }
+
+    /**
+     * Method under test: {@link WhatsappBusinessManagementApi#verifyCode(String, VerifyCode)}
+     */
+    @Test
+    void verifyCodeError() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody(fromResource("/phone/verifyCodeError.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessManagementApi businessManagementApi = factory.newBusinessManagementApi();
+
+        var ex = Assertions.assertThrows(WhatsappApiException.class, () -> businessManagementApi.verifyCode(PHONE_NUMBER_ID, new VerifyCode("12345678")));
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/verify_code", recordedRequest.getPath());
+        Assertions.assertEquals("{\"code\":\"12345678\"}", recordedRequest.getBody().readUtf8());
+
+        Assertions.assertEquals("Verify code error | O código inserido está incorreto.", ex.getMessage());
 
     }
 

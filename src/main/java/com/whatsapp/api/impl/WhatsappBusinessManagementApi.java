@@ -2,6 +2,8 @@ package com.whatsapp.api.impl;
 
 import com.whatsapp.api.domain.phone.PhoneNumber;
 import com.whatsapp.api.domain.phone.PhoneNumbers;
+import com.whatsapp.api.domain.phone.RequestCode;
+import com.whatsapp.api.domain.phone.VerifyCode;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
@@ -140,14 +142,7 @@ public class WhatsappBusinessManagementApi {
      * </p>
      *
      * @param phoneNumberId the phone number id
-     * @param fields        the fields. Available options:
-     *                      <ul>
-     *                      <li>verified_name</li>
-     *                      <li>code_verification_status</li>
-     *                      <li>display_phone_number</li>
-     *                      <li>quality_rating</li>
-     *                      <li>name_status</li>
-     *                      </ul>
+     * @param fields        the fields. Available options:                      <ul>                      <li>verified_name</li>                      <li>code_verification_status</li>                      <li>display_phone_number</li>                      <li>quality_rating</li>                      <li>name_status</li>                      </ul>
      * @return the phone number
      * @see <a href="https://developers.facebook.com/docs/graph-api/reference/whats-app-business-account/phone_numbers/">api docs</a>
      */
@@ -169,5 +164,28 @@ public class WhatsappBusinessManagementApi {
         return executeSync(whatsappBusinessManagementApiService.retrievePhoneNumbers(whatsappBusinessAccountId));
     }
 
+
+    /**
+     * You need to verify the phone number you want to use to send messages to your customers. Phone numbers must be verified through SMS/voice call. The verification process can be done through this method.
+     *
+     * @param phoneNumberId the phone number id
+     * @param requestCode   the request code
+     * @return the response
+     */
+    public Response requestCode(String phoneNumberId, RequestCode requestCode) {
+        return executeSync(whatsappBusinessManagementApiService.requestCode(phoneNumberId, requestCode));
+    }
+
+    /**
+     * After you received a SMS or Voice request code from Request Verification Code, you need to verify the code that was sent to you.
+     * To verify this code, use this method
+     *
+     * @param phoneNumberId the phone number id
+     * @param verifyCode    the verify code
+     * @return the response
+     */
+    public Response verifyCode(String phoneNumberId, VerifyCode verifyCode) {
+        return executeSync(whatsappBusinessManagementApiService.verifyCode(phoneNumberId, verifyCode));
+    }
 
 }
