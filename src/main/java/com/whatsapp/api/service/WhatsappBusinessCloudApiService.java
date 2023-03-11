@@ -39,19 +39,45 @@ public interface WhatsappBusinessCloudApiService {
     @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
     Call<MessageResponse> sendMessage(@Path("Phone-Number-ID") String phoneNumberId, @Body Message message);
 
+    /**
+     * Upload media call.
+     *
+     * @param phoneNumberId  the phone number id
+     * @param file           the file
+     * @param messageProduct the message product
+     * @return the call
+     */
     @Multipart
     @POST("/" + API_VERSION + "/{Phone-Number-ID}/media")
     Call<UploadResponse> uploadMedia(@Path("Phone-Number-ID") String phoneNumberId, @Part MultipartBody.Part file, @Part MultipartBody.Part messageProduct);
 
+    /**
+     * Retrieve media url call.
+     *
+     * @param mediaId the media id
+     * @return the call
+     */
     @GET("/" + API_VERSION + "/{media-id}")
     Call<Media> retrieveMediaUrl(@Path("media-id") String mediaId);
 
 
+    /**
+     * Download media file call.
+     *
+     * @param url the url
+     * @return the call
+     */
     @GET
     @Streaming
     @Headers(value = "User-Agent:curl/7.64.1")
     Call<ResponseBody> downloadMediaFile(@Url String url);
 
+    /**
+     * Delete media call.
+     *
+     * @param mediaId the media id
+     * @return the call
+     */
     @DELETE("/" + API_VERSION + "/{media-id}")
     Call<Response> deleteMedia(@Path("media-id") String mediaId);
 
