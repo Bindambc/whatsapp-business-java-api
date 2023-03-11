@@ -12,7 +12,7 @@ public class WhatsappApiFactory {
     /**
      * Whatsapp token
      */
-    String token;
+   final String token;
 
     /**
      * Create a new whatsapp api factory
