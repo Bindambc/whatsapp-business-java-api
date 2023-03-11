@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,11 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TemplateMessage {
+    @JsonProperty("components")
     private List<Component> components;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("language")
     private Language language;
 
     /**
