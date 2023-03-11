@@ -95,7 +95,6 @@ public class WhatsappBusinessCloudApi {
      *
      * @param url the url
      * @return the media file {@link MediaFile}
-     * @throws URISyntaxException the uri syntax exception
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
      */
     public MediaFile downloadMediaFile(String url)  {
