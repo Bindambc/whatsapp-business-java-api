@@ -19,3 +19,4 @@ com.whatsapp.api.exception.utils
 com.whatsapp.api.impl
 com.whatsapp.api.interceptor
 com.whatsapp.api.service
+com.whatsapp.api.utils
