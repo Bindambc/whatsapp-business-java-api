@@ -18,7 +18,7 @@ import com.whatsapp.api.domain.messages.VideoMessage;
 import com.whatsapp.api.domain.templates.type.ComponentType;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
-import com.whatsapp.api.exception.utils.Formatter;
+import com.whatsapp.api.utils.Formatter;
 import mockwebserver3.MockResponse;
 import mockwebserver3.RecordedRequest;
 import org.junit.jupiter.api.Assertions;

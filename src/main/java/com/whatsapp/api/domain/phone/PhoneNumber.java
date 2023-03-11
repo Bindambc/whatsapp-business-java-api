@@ -12,7 +12,7 @@ import com.whatsapp.api.domain.phone.type.QualityRatingType;
  * @param id                     The ID associated with the phone number.
  * @param displayPhoneNumber     The string representation of the phone number.
  * @param nameStatus             The current status of the review of your business name.
- * @param codeVerificationStatus
+ * @param codeVerificationStatus Code Verification Status
  * @param qualityRating          The quality rating of the phone number based on how messages have been received by recipients in recent days. Valid values are:
  *                               <ul>
  *                               <li>Green: High Quality</li>
@@ -20,7 +20,7 @@ import com.whatsapp.api.domain.phone.type.QualityRatingType;
  *                               <li> Red: Low Quality</li>
  *                               <li>NA: Quality has not been determined</li>
  *                               </ul>
- * @param verifiedName
+ * @param verifiedName           the verified name
  * @see <a href="https://www.facebook.com/business/help/896873687365001">About WhatsApp Business Account Message Quality Rating</a>
  */
 @JsonInclude(value = Include.NON_NULL)

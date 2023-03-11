@@ -5,8 +5,8 @@ import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.TextMessage;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
-import com.whatsapp.api.exception.utils.Formatter;
 import com.whatsapp.api.impl.WhatsappBusinessCloudApi;
+import com.whatsapp.api.utils.Formatter;
 
 import static com.whatsapp.api.TestConstants.PHONE_NUMBER_1;
 import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
