@@ -5,7 +5,7 @@ import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.media.FileType;
 import com.whatsapp.api.domain.messages.AudioMessage;
-import com.whatsapp.api.domain.messages.Component;
+import com.whatsapp.api.domain.messages.BodyComponent;
 import com.whatsapp.api.domain.messages.DocumentMessage;
 import com.whatsapp.api.domain.messages.ImageMessage;
 import com.whatsapp.api.domain.messages.Language;
@@ -15,7 +15,6 @@ import com.whatsapp.api.domain.messages.TemplateMessage;
 import com.whatsapp.api.domain.messages.TextMessage;
 import com.whatsapp.api.domain.messages.TextParameter;
 import com.whatsapp.api.domain.messages.VideoMessage;
-import com.whatsapp.api.domain.templates.type.ComponentType;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.utils.Formatter;
@@ -108,10 +107,7 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         var templateMessage = new TemplateMessage()//
                 .setLanguage(new Language(LanguageType.PT_BR))//
                 .setName("number_confirmation")//
-                .addComponent(//
-                        new Component(ComponentType.BODY)//
-                                .addParameter(new TextParameter("18754269072")//
-                                ));
+                .addComponent(new BodyComponent().addParameter(new TextParameter("18754269072")));
 
         var message = MessageBuilder.builder()//
                 .setTo(TestConstants.PHONE_NUMBER_1)//
@@ -124,7 +120,7 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
 
         var expectedBody = """
-                {"messaging_product":"whatsapp","recipient_type":"individual","to":"%s","type":"template","template":{"components":[{"type":"BODY","parameters":[{"type":"text","text":"18754269072"}]}],"name":"number_confirmation","language":{"code":"pt_BR"}}}""";
+                {"messaging_product":"whatsapp","recipient_type":"individual","to":"%s","type":"template","template":{"components":[{"type":"body","parameters":[{"type":"text","text":"18754269072"}]}],"name":"number_confirmation","language":{"code":"pt_BR"}}}""";
 
         Assertions.assertEquals(String.format(expectedBody, PHONE_NUMBER_1), recordedRequest.getBody().readUtf8());
 

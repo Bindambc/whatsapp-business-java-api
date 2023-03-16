@@ -31,13 +31,22 @@ public class SendTemplateButtonMessageExample {
                                 .addComponent(new BodyComponent().addParameter(new TextParameter("Mauricio"))//
                                         .addParameter(new TextParameter("04/11/2022"))//
                                         .addParameter(new TextParameter("14:30")))//
-                                .addComponent(new ButtonComponent().setIndex(0).setSubType(ButtonSubType.QUICK_REPLY).addParameter(new ButtonTextParameter("O747"))
+                                .addComponent(new ButtonComponent()//
+                                        .setIndex(0)//
+                                        .setSubType(ButtonSubType.QUICK_REPLY)//
+                                        .addParameter(new ButtonTextParameter("O747"))//
 
-                                ).addComponent(new ButtonComponent().setIndex(1).setSubType(ButtonSubType.QUICK_REPLY).addParameter(new ButtonTextParameter("475"))
+                                )//
+                                .addComponent(new ButtonComponent()//
+                                        .setIndex(1)//
+                                        .setSubType(ButtonSubType.QUICK_REPLY)//
+                                        .addParameter(new ButtonTextParameter("475"))//
 
-                                ).addComponent(new ButtonComponent().setIndex(2).setSubType(ButtonSubType.QUICK_REPLY).addParameter(new ButtonTextParameter("8754"))
+                                )//
+                                .addComponent(new ButtonComponent(2, ButtonSubType.QUICK_REPLY)//
+                                        .addParameter(new ButtonTextParameter("8754"))//
 
-                                )
+                                )//
 
 
                 );
