@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.messages.type.ParameterType;
 
 /**
@@ -8,8 +9,11 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CurrencyParameter extends Parameter {
+    @JsonProperty("fallback_value")
     private String fallbackValue;
+    @JsonProperty("code")
     private String code;
+    @JsonProperty("amount_1000")
     private long amount1000;
 
     /**

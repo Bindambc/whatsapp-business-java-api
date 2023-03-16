@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.messages.type.ParameterType;
 
 /**
@@ -8,7 +9,7 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TextParameter extends Parameter {
-
+    @JsonProperty("text")
     private final String text;
 
 

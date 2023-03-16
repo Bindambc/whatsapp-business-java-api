@@ -12,7 +12,10 @@ import com.whatsapp.api.domain.templates.type.ComponentType;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-@JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "BUTTONS"), @JsonSubTypes.Type(value = FooterComponent.class, name = "FOOTER"), @JsonSubTypes.Type(value = HeaderComponent.class, name = "HEADER"), @JsonSubTypes.Type(value = BodyComponent.class, name = "BODY")})
+@JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "BUTTONS"), //
+        @JsonSubTypes.Type(value = FooterComponent.class, name = "FOOTER"), //
+        @JsonSubTypes.Type(value = HeaderComponent.class, name = "HEADER"), //
+        @JsonSubTypes.Type(value = BodyComponent.class, name = "BODY")})//
 public class Component<T extends Component<T>> {
     /**
      * <b>Required.</b>

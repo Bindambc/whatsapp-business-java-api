@@ -1,7 +1,8 @@
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.whatsapp.api.domain.templates.type.ComponentType;
+import com.whatsapp.api.domain.messages.type.ComponentType;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +11,18 @@ import java.util.List;
  * The type Component.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Component {
+public abstract class Component<T extends Component<T>> {
     private final ComponentType type;
     private List<Parameter> parameters;
+
+
 
     /**
      * Instantiates a new Component.
      *
      * @param type the type
      */
-    public Component(ComponentType type) {
+    protected Component(ComponentType type) {
         this.type = type;
     }
 
@@ -48,7 +51,7 @@ public class Component {
      * @param parameters the parameters
      * @return the parameters
      */
-    public Component setParameters(List<Parameter> parameters) {
+    public Component<T> setParameters(List<Parameter> parameters) {
         this.parameters = parameters;
         return this;
     }
@@ -59,7 +62,7 @@ public class Component {
      * @param parameter the parameter
      * @return the component
      */
-    public Component addParameter(Parameter parameter) {
+    public Component<T> addParameter(Parameter parameter) {
         if (this.parameters == null) this.parameters = new ArrayList<>();
 
         this.parameters.add(parameter);

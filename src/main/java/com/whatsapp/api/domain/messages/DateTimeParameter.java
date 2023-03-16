@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.messages.type.ParameterType;
 
 /**
@@ -8,13 +9,21 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DateTimeParameter extends Parameter {
+    @JsonProperty("fallback_value")
     private String fallbackValue;
+    @JsonProperty("calendar")
     private String calendar;
+    @JsonProperty("month")
     private int month;
+    @JsonProperty("hour")
     private int hour;
+    @JsonProperty("year")
     private int year;
+    @JsonProperty("day_of_month")
     private int dayOfMonth;
+    @JsonProperty("day_of_week")
     private int dayOfWeek;
+    @JsonProperty("minute")
     private int minute;
 
     /**

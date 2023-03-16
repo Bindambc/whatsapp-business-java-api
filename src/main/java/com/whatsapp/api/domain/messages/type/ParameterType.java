@@ -17,7 +17,27 @@ public enum ParameterType {
     /**
      * Date time parameter type.
      */
-    DATE_TIME("date_time");
+    DATE_TIME("date_time"),
+    /**
+     * Image parameter type
+     */
+    IMAGE("image"),
+
+    /**
+     * Video parameter type.
+     */
+    VIDEO("video"),
+
+    /**
+     * Document parameter type.
+     */
+    DOCUMENT("document"),
+
+
+    /**
+     * Payload parameter type. Indicates the type of parameter for the button.
+     */
+    PAYLOAD("payload");
 
     private final String value;
 
