@@ -8,6 +8,7 @@ import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
+import com.whatsapp.api.domain.templates.response.Template;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -35,7 +36,7 @@ public interface WhatsappBusinessManagementApiService {
      * @return the call
      */
     @POST("/" + API_VERSION + "/{whatsapp-business-account-ID}/message_templates")
-    Call<MessageTemplateIDResponse> createMessageTemplate(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Body MessageTemplate messageTemplate);
+    Call<Template> createMessageTemplate(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Body MessageTemplate messageTemplate);
 
     /**
      * Update message template call.
@@ -46,7 +47,7 @@ public interface WhatsappBusinessManagementApiService {
      * @return the call
      */
     @POST("/" + API_VERSION + "/{whatsapp-business-account-ID}/message_templates/{message-template-id}")
-    Call<MessageTemplateIDResponse> updateMessageTemplate(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Path("message-template-id") String messageTemplateId, @Body MessageTemplate messageTemplate);
+    Call<Template> updateMessageTemplate(@Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Path("message-template-id") String messageTemplateId, @Body MessageTemplate messageTemplate);
 
     /**
      * Delete message template call.

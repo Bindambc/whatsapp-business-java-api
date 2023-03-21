@@ -68,6 +68,8 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         var response = whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
 
         Assertions.assertEquals("952305634123456", response.id());
+        Assertions.assertEquals("REJECTED", response.status());
+        Assertions.assertEquals(Category.TRANSACTIONAL, response.category());
 
     }
 

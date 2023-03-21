@@ -27,7 +27,7 @@ public class CreateMessageTemplate3Example {
         var template = new MessageTemplate();
 
         template.setName("schedule_confirmation3")//
-                .setCategory(Category.TRANSACTIONAL)//
+                .setCategory(Category.UTILITY)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
                         .setText("Confirmação de Atendimento")//
