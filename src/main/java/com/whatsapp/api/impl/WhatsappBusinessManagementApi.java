@@ -6,8 +6,8 @@ import com.whatsapp.api.domain.phone.RequestCode;
 import com.whatsapp.api.domain.phone.VerifyCode;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
-import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
+import com.whatsapp.api.domain.templates.response.Template;
 import com.whatsapp.api.service.WhatsappBusinessManagementApiService;
 
 import java.util.HashMap;
@@ -39,9 +39,9 @@ public class WhatsappBusinessManagementApi {
      *
      * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
      * @param messageTemplate           {@link MessageTemplate} object
-     * @return {@link MessageTemplateIDResponse} template id
+     * @return {@link Template} template
      */
-    public MessageTemplateIDResponse createMessageTemplate(String whatsappBusinessAccountId, MessageTemplate messageTemplate) {
+    public Template createMessageTemplate(String whatsappBusinessAccountId, MessageTemplate messageTemplate) {
 
         return executeSync(whatsappBusinessManagementApiService.createMessageTemplate(whatsappBusinessAccountId, messageTemplate));
     }
@@ -54,7 +54,7 @@ public class WhatsappBusinessManagementApi {
      * @param messageTemplate           the message template
      * @return the message template id response
      */
-    public MessageTemplateIDResponse updateMessageTemplate(String whatsappBusinessAccountId, String messageTemplateId, MessageTemplate messageTemplate) {
+    public Template updateMessageTemplate(String whatsappBusinessAccountId, String messageTemplateId, MessageTemplate messageTemplate) {
 
         return executeSync(whatsappBusinessManagementApiService.updateMessageTemplate(whatsappBusinessAccountId, messageTemplateId, messageTemplate));
     }

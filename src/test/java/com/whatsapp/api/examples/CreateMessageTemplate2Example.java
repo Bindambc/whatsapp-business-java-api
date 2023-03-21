@@ -24,7 +24,7 @@ public class CreateMessageTemplate2Example {
         var template = new MessageTemplate();
 
         template.setName("number_confirmation")//
-                .setCategory(Category.TRANSACTIONAL)//
+                .setCategory(Category.UTILITY)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
                         .setText("Código de confirmação")//
