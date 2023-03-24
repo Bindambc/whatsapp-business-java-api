@@ -1,0 +1,10 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "text",
+  "text": {
+    "preview_url": false,
+    "body": "*Hello world!*\nSome code here: \n```hello world code here```"
+  }
+}

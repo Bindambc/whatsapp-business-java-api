@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.whatsapp.api.domain.messages.type.ComponentType;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.EXISTING_PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "button"), //
         @JsonSubTypes.Type(value = HeaderComponent.class, name = "header"), //
         @JsonSubTypes.Type(value = BodyComponent.class, name = "body")})//

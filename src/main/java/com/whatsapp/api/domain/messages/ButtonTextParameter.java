@@ -6,6 +6,8 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
 
 /**
  * The type Button text parameter.
+ * Required for URL buttons.
+ * Developer-provided suffix that is appended to the predefined prefix URL in the template.
  *
  * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#button-parameter-object">Api reference</a>
  */

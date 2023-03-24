@@ -6,6 +6,7 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
 
 /**
  * The type Button payload parameter.
+ *
  * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#button-parameter-object">Api reference</a>
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -6,6 +6,8 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
 
 /**
  * The type Text parameter.
+ * Required for URL buttons.
+ * Developer-provided suffix that is appended to the predefined prefix URL in the template.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TextParameter extends Parameter {
