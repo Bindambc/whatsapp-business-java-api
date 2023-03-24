@@ -12,7 +12,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TemplateMessage {
     @JsonProperty("components")
-    private List<Component> components;
+    private List<Component<?>> components;
     @JsonProperty("name")
     private String name;
     @JsonProperty("language")
@@ -23,7 +23,7 @@ public class TemplateMessage {
      *
      * @return the components
      */
-    public List<Component> getComponents() {
+    public List<Component<?>> getComponents() {
         return components;
     }
 
@@ -33,7 +33,7 @@ public class TemplateMessage {
      * @param components the components
      * @return the components
      */
-    public TemplateMessage setComponents(List<Component> components) {
+    public TemplateMessage setComponents(List<Component<?>> components) {
         this.components = components;
         return this;
     }
@@ -85,7 +85,7 @@ public class TemplateMessage {
      * @param component the component
      * @return the template message
      */
-    public TemplateMessage addComponent(Component component) {
+    public TemplateMessage addComponent(Component<?> component) {
         if (this.components == null) this.components = new ArrayList<>();
 
         this.components.add(component);

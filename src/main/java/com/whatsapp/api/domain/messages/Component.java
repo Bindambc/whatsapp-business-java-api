@@ -1,8 +1,11 @@
 package com.whatsapp.api.domain.messages;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.whatsapp.api.domain.messages.type.ComponentType;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +13,17 @@ import java.util.List;
 /**
  * The type Component.
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class Component<T extends Component<T>> {
-    private final ComponentType type;
-    private List<Parameter> parameters;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "button"), //
+        @JsonSubTypes.Type(value = HeaderComponent.class, name = "header"), //
+        @JsonSubTypes.Type(value = BodyComponent.class, name = "body")})//
+public abstract class Component<T extends Component<T>> {
+    @JsonProperty("type")
+    private final ComponentType type;
+    @JsonProperty("parameters")
+    private List<Parameter> parameters;
 
 
     /**
@@ -22,6 +31,7 @@ public abstract class Component<T extends Component<T>> {
      *
      * @param type the type
      */
+    @JsonCreator
     protected Component(ComponentType type) {
         this.type = type;
     }

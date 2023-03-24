@@ -1,0 +1,41 @@
+{
+  "name": "auth_code_2",
+  "category": "AUTHENTICATION",
+  "components": [
+    {
+      "format": "TEXT",
+      "type": "HEADER",
+      "text": "Your authentication code for {{1}}",
+      "example": {
+        "header_text": [
+          "App X"
+        ]
+      }
+    },
+    {
+      "type": "BODY",
+      "text": "Please use the code {{1}} to sign in to your account. Do not provide this code to third parties.",
+      "example": {
+        "body_text": [
+          [
+            "784-H45-7R4"
+          ]
+        ]
+      }
+    },
+    {
+      "type": "FOOTER",
+      "text": "Did you not request the code? Click on 'Not me'"
+    },
+    {
+      "buttons": [
+        {
+          "type": "QUICK_REPLY",
+          "text": "Not me"
+        }
+      ],
+      "type": "BUTTONS"
+    }
+  ],
+  "language": "en_US"
+}

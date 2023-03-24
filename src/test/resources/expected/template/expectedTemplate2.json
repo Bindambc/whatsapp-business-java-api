@@ -1,0 +1,46 @@
+{
+  "name": "schedule_confirmation3",
+  "category": "TRANSACTIONAL",
+  "components": [
+    {
+      "format": "TEXT",
+      "type": "HEADER",
+      "text": "Confirmação de Atendimento"
+    },
+    {
+      "type": "BODY",
+      "text": "Olá *{{1}}*, passando aqui para confirmar seu horário no dia *{{2}}* as *{{3}}h*.\nVocê confirma que comparecerá?",
+      "example": {
+        "body_text": [
+          [
+            "Maria",
+            "04/11/2022",
+            "13:30"
+          ]
+        ]
+      }
+    },
+    {
+      "buttons": [
+        {
+          "type": "QUICK_REPLY",
+          "text": "SIM"
+        },
+        {
+          "type": "QUICK_REPLY",
+          "text": "NÃO"
+        },
+        {
+          "type": "QUICK_REPLY",
+          "text": "REMARCAR"
+        }
+      ],
+      "type": "BUTTONS"
+    },
+    {
+      "type": "FOOTER",
+      "text": "Utilize um dos botões abaixo para a confirmação"
+    }
+  ],
+  "language": "pt_BR"
+}
