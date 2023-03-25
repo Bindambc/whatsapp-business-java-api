@@ -6,5 +6,8 @@ documentation:
 - '**/*.md'
 markdown:
 - '**/*.md'
-actions:
+github-actions:
 - .github/**/*
+dependencies:
+- pom.xml
+
