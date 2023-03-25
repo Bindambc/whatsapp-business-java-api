@@ -1,0 +1,10 @@
+tests:
+- src/test/**/*
+java:
+- '**/*.java'
+documentation:
+- '**/*.md'
+markdown:
+- '**/*.md'
+actions:
+- .github/**/*
