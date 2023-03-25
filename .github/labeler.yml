@@ -1,0 +1,13 @@
+tests:
+- src/test/**/*
+java:
+- '**/*.java'
+documentation:
+- '**/*.md'
+markdown:
+- '**/*.md'
+github-actions:
+- .github/**/*
+dependencies:
+- pom.xml
+
