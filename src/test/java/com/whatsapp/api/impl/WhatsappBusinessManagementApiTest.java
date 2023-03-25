@@ -621,7 +621,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/request_code", recordedRequest.getPath());
         Assertions.assertEquals("{\"code_method\":\"SMS\",\"language\":\"en_US\"}", recordedRequest.getBody().readUtf8());
 
-        Assertions.assertEquals("Request code error | Tente novamente depois de um tempo.", ex.getMessage());
+        Assertions.assertEquals("[136024] Request code error | Tente novamente depois de um tempo.", ex.getMessage());
 
     }
 
@@ -665,7 +665,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/verify_code", recordedRequest.getPath());
         Assertions.assertEquals("{\"code\":\"12345678\"}", recordedRequest.getBody().readUtf8());
 
-        Assertions.assertEquals("Verify code error | O código inserido está incorreto.", ex.getMessage());
+        Assertions.assertEquals("[136025] Verify code error | O código inserido está incorreto.", ex.getMessage());
 
     }
 

@@ -2,7 +2,6 @@ package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.messages.type.ParameterType;
 
 /**
@@ -11,10 +10,7 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
 @JsonInclude(Include.NON_NULL)
 public class DocumentParameter extends Parameter {
 
-    @JsonProperty("id")
-    private String id;
-    @JsonProperty("link")
-    private String link;
+    private Document document;
 
 
     /**
@@ -24,55 +20,34 @@ public class DocumentParameter extends Parameter {
         super(ParameterType.DOCUMENT);
     }
 
+
     /**
      * Instantiates a new Document parameter.
      *
-     * @param id   the id
-     * @param link the link
+     * @param document the document
      */
-    public DocumentParameter(String id, String link) {
+    public DocumentParameter(Document document) {
         super(ParameterType.DOCUMENT);
-        this.id = id;
-        this.link = link;
+        this.document = document;
     }
 
     /**
-     * Gets id.
+     * Gets document.
      *
-     * @return the id
+     * @return the document
      */
-    public String getId() {
-        return id;
+    public Document getDocument() {
+        return document;
     }
 
     /**
-     * Sets id.
+     * Sets document.
      *
-     * @param id the id
-     * @return the id
+     * @param document the document
+     * @return the document
      */
-    public DocumentParameter setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * Gets link.
-     *
-     * @return the link
-     */
-    public String getLink() {
-        return link;
-    }
-
-    /**
-     * Sets link.
-     *
-     * @param link the link
-     * @return the link
-     */
-    public DocumentParameter setLink(String link) {
-        this.link = link;
+    public DocumentParameter setDocument(Document document) {
+        this.document = document;
         return this;
     }
 }

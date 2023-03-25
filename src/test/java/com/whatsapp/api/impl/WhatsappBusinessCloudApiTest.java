@@ -6,11 +6,14 @@ import com.whatsapp.api.domain.messages.AudioMessage;
 import com.whatsapp.api.domain.messages.BodyComponent;
 import com.whatsapp.api.domain.messages.ButtonComponent;
 import com.whatsapp.api.domain.messages.ButtonPayloadParameter;
+import com.whatsapp.api.domain.messages.ButtonTextParameter;
 import com.whatsapp.api.domain.messages.Currency;
 import com.whatsapp.api.domain.messages.CurrencyParameter;
 import com.whatsapp.api.domain.messages.DateTime;
 import com.whatsapp.api.domain.messages.DateTimeParameter;
+import com.whatsapp.api.domain.messages.Document;
 import com.whatsapp.api.domain.messages.DocumentMessage;
+import com.whatsapp.api.domain.messages.DocumentParameter;
 import com.whatsapp.api.domain.messages.HeaderComponent;
 import com.whatsapp.api.domain.messages.Image;
 import com.whatsapp.api.domain.messages.ImageMessage;
@@ -277,6 +280,44 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
                         .setIndex(1)//
                         .setSubType(ButtonSubType.QUICK_REPLY)//
                         .addParameter(new ButtonPayloadParameter("OP_SPR_454585")));
+
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildTemplateMessage(templateMessage);
+
+        whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+        //System.out.println(recordedRequest.getBody().readUtf8());
+
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    void testSendTemplateDocumentPdfMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage6.json");
+
+        var templateMessage = new TemplateMessage()//
+                .setLanguage(new Language(LanguageType.EN_US))//
+                .setName("new_classes_pdf")//
+                .addComponent(new HeaderComponent()//
+                        .addParameter(new DocumentParameter()//
+                                .setDocument(new Document()//
+                                        .setFileName("Class.pdf").setId("928860901494862")//
+                                ))//
+                ).addComponent(//
+                        new BodyComponent()//
+                                .addParameter(new TextParameter("Mauricio Binda")))//
+                .addComponent(new ButtonComponent()//
+                        .setIndex(0)//
+                        .setSubType(ButtonSubType.URL)//
+                        .addParameter(new ButtonTextParameter("career-academy/?trk_ref=globalnav")));
 
 
         var message = MessageBuilder.builder()//

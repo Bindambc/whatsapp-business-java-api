@@ -33,8 +33,8 @@ class WhatsappApiExceptionTest {
                         "An error occurred")));
         assertNull(actualWhatsappApiException.getCause());
         assertEquals(0, actualWhatsappApiException.getSuppressed().length);
-        assertEquals("Not all who wander are lost | Details", actualWhatsappApiException.getMessage());
-        assertEquals("Not all who wander are lost | Details", actualWhatsappApiException.getLocalizedMessage());
+        assertEquals("[1] Not all who wander are lost | Details", actualWhatsappApiException.getMessage());
+        assertEquals("[1] Not all who wander are lost | Details", actualWhatsappApiException.getLocalizedMessage());
     }
 
     /**
@@ -62,17 +62,17 @@ class WhatsappApiExceptionTest {
     @Test
     void testGetMessage() {
         assertNull((new WhatsappApiException()).getMessage());
-        assertEquals("Not all who wander are lost | Details",
+        assertEquals("[1] Not all who wander are lost | Details",
                 (new WhatsappApiException(
                         new WhatsappApiError(new Error(1, "Details", -1, "42", "Not all who wander are lost",
                                 "Messaging Product", new ErrorData("Messaging Product", "Details", "Blame Field Specs"), "Type",
                                 true, "Dr", "An error occurred")))).getMessage());
-        assertEquals("Not all who wander are lost | An error occurred",
+        assertEquals("[1] Not all who wander are lost | An error occurred",
                 (new WhatsappApiException(
                         new WhatsappApiError(new Error(1, "Details", -1, "42", "Not all who wander are lost",
                                 "Messaging Product", new ErrorData("Messaging Product", null, "Blame Field Specs"), "Type", true,
                                 "Dr", "An error occurred")))).getMessage());
-        assertEquals("Not all who wander are lost | An error occurred",
+        assertEquals("[1] Not all who wander are lost | An error occurred",
                 (new WhatsappApiException(new WhatsappApiError(new Error(1, "Details", -1, "42",
                         "Not all who wander are lost", "Messaging Product", null, "Type", true, "Dr", "An error occurred"))))
                         .getMessage());
