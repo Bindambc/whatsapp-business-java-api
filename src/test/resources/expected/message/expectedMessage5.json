@@ -1,0 +1,73 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "template",
+  "template": {
+    "components": [
+      {
+        "type": "header",
+        "parameters": [
+          {
+            "type": "image",
+            "image": {
+              "id": "3196424913981611"
+            }
+          }
+        ]
+      },
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "date_time",
+            "date_time": {
+              "fallback_value": "May 10th, 2023",
+              "calendar": "GREGORIAN",
+              "month": 3,
+              "hour": 10,
+              "year": 2023,
+              "day_of_month": 26,
+              "day_of_week": 1,
+              "minute": 50
+            }
+          },
+          {
+            "type": "currency",
+            "currency": {
+              "fallback_value": "$35",
+              "code": "USD",
+              "amount_1000": 30000
+            }
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_SHN_454584"
+          }
+        ],
+        "index": 0,
+        "sub_type": "quick_reply"
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_SPR_454585"
+          }
+        ],
+        "index": 1,
+        "sub_type": "quick_reply"
+      }
+    ],
+    "name": "marketing_music_2",
+    "language": {
+      "code": "en_US"
+    }
+  }
+}

@@ -9,12 +9,9 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CurrencyParameter extends Parameter {
-    @JsonProperty("fallback_value")
-    private String fallbackValue;
-    @JsonProperty("code")
-    private String code;
-    @JsonProperty("amount_1000")
-    private long amount1000;
+
+    @JsonProperty("currency")
+    private Currency currency;
 
     /**
      * Instantiates a new Currency parameter.
@@ -24,62 +21,32 @@ public class CurrencyParameter extends Parameter {
     }
 
     /**
-     * Gets fallback value.
+     * Instantiates a new Currency parameter.
      *
-     * @return the fallback value
+     * @param currency the currency
      */
-    public String getFallbackValue() {
-        return fallbackValue;
+    public CurrencyParameter(Currency currency) {
+        super(ParameterType.CURRENCY);
+        this.currency = currency;
     }
 
     /**
-     * Sets fallback value.
+     * Gets currency.
      *
-     * @param fallbackValue the fallback value
-     * @return the fallback value
+     * @return the currency
      */
-    public CurrencyParameter setFallbackValue(String fallbackValue) {
-        this.fallbackValue = fallbackValue;
-        return this;
+    public Currency getCurrency() {
+        return currency;
     }
 
     /**
-     * Gets code.
+     * Sets currency.
      *
-     * @return the code
+     * @param currency the currency
+     * @return the currency
      */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Sets code.
-     *
-     * @param code the code
-     * @return the code
-     */
-    public CurrencyParameter setCode(String code) {
-        this.code = code;
-        return this;
-    }
-
-    /**
-     * Gets amount 1000.
-     *
-     * @return the amount 1000
-     */
-    public long getAmount1000() {
-        return amount1000;
-    }
-
-    /**
-     * Sets amount 1000.
-     *
-     * @param amount1000 the amount 1000
-     * @return the amount 1000
-     */
-    public CurrencyParameter setAmount1000(long amount1000) {
-        this.amount1000 = amount1000;
+    public CurrencyParameter setCurrency(Currency currency) {
+        this.currency = currency;
         return this;
     }
 }
