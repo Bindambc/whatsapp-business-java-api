@@ -6,6 +6,8 @@ import com.whatsapp.api.domain.messages.AudioMessage;
 import com.whatsapp.api.domain.messages.BodyComponent;
 import com.whatsapp.api.domain.messages.ButtonComponent;
 import com.whatsapp.api.domain.messages.ButtonPayloadParameter;
+import com.whatsapp.api.domain.messages.DateTime;
+import com.whatsapp.api.domain.messages.DateTimeParameter;
 import com.whatsapp.api.domain.messages.DocumentMessage;
 import com.whatsapp.api.domain.messages.ImageMessage;
 import com.whatsapp.api.domain.messages.Language;
@@ -16,6 +18,7 @@ import com.whatsapp.api.domain.messages.TextMessage;
 import com.whatsapp.api.domain.messages.TextParameter;
 import com.whatsapp.api.domain.messages.VideoMessage;
 import com.whatsapp.api.domain.messages.type.ButtonSubType;
+import com.whatsapp.api.domain.messages.type.CalendarType;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.utils.Formatter;
@@ -176,6 +179,59 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("POST", recordedRequest.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
         // System.out.println(recordedRequest.getBody().readUtf8());
+
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    void testSendTemplateButtonMessageWithDateTimeParam() throws IOException, URISyntaxException, InterruptedException, JSONException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage4.json");
+
+        var templateMessage = new TemplateMessage()//
+                .setLanguage(new Language(LanguageType.PT_BR))//
+                .setName("schedule_confirmation3")//
+                .addComponent(new BodyComponent()//
+                        .addParameter(new TextParameter("Mauricio"))//
+                        .addParameter(new DateTimeParameter()//
+                                .setDateTime(new DateTime()//
+                                        .setCalendar(CalendarType.GREGORIAN)//
+                                        .setDayOfMonth(25)//
+                                        .setMonth(3)//
+                                        .setYear(2023)//
+                                        .setHour(13).setMinute(50).setDayOfWeek(7).setFallbackValue("25/03/2023")//
+                                ))//
+                        .addParameter(new DateTimeParameter()//
+                                .setDateTime(new DateTime()//
+                                        .setHour(14)//
+                                        .setMinute(30)//
+                                        .setFallbackValue("14:34")//
+                                )))//
+
+                .addComponent(new ButtonComponent()//
+                        .setIndex(0)//
+                        .setSubType(ButtonSubType.QUICK_REPLY)//
+                        .addParameter(new ButtonPayloadParameter("OP_YES_48547")))//
+                .addComponent(new ButtonComponent()//
+                        .setIndex(1)//
+                        .setSubType(ButtonSubType.QUICK_REPLY)//
+                        .addParameter(new ButtonPayloadParameter("OP_NO_48548")))//
+                .addComponent(new ButtonComponent(2, ButtonSubType.QUICK_REPLY)//
+                        .addParameter(new ButtonPayloadParameter("OP_CH_48549")));
+
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildTemplateMessage(templateMessage);
+
+        whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+        //System.out.println(recordedRequest.getBody().readUtf8());
 
         JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
 
