@@ -23,7 +23,7 @@ public class CreateMessageTemplate1Example {
         var template = new MessageTemplate();
 
         template.setName("welcome_template3")//
-                .setCategory(Category.TRANSACTIONAL)//
+                .setCategory(Category.UTILITY)//
                 .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
                         .setText("Wellcome title")//

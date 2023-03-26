@@ -1,0 +1,77 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "template",
+  "template": {
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Mauricio"
+          },
+          {
+            "type": "date_time",
+            "date_time": {
+              "fallback_value": "25/03/2023",
+              "calendar": "GREGORIAN",
+              "month": 3,
+              "hour": 13,
+              "year": 2023,
+              "day_of_month": 25,
+              "day_of_week": 7,
+              "minute": 50
+            }
+          },
+          {
+            "type": "date_time",
+            "date_time": {
+              "fallback_value": "14:34",
+              "hour": 14,
+              "minute": 30
+            }
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_YES_48547"
+          }
+        ],
+        "index": 0,
+        "sub_type": "quick_reply"
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_NO_48548"
+          }
+        ],
+        "index": 1,
+        "sub_type": "quick_reply"
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_CH_48549"
+          }
+        ],
+        "index": 2,
+        "sub_type": "quick_reply"
+      }
+    ],
+    "name": "schedule_confirmation3",
+    "language": {
+      "code": "pt_BR"
+    }
+  }
+}

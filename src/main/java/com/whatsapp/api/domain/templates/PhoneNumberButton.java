@@ -17,16 +17,17 @@ public class PhoneNumberButton extends Button {
      *
      * @param text the text
      */
-    protected PhoneNumberButton(String text) {
+    public PhoneNumberButton(String text, String phoneNumber) {
         super(ButtonType.PHONE_NUMBER, text);
+        this.phoneNumber = phoneNumber;
 
     }
 
     /**
      * Instantiates a new Phone number button.
      */
-    protected PhoneNumberButton() {
-
+    public PhoneNumberButton() {
+        super(ButtonType.PHONE_NUMBER);
     }
 
     /**

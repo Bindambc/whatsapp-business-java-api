@@ -2,12 +2,11 @@ package com.whatsapp.api.examples;
 
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
-import com.whatsapp.api.domain.messages.Component;
+import com.whatsapp.api.domain.messages.BodyComponent;
 import com.whatsapp.api.domain.messages.Language;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.TemplateMessage;
 import com.whatsapp.api.domain.messages.TextParameter;
-import com.whatsapp.api.domain.templates.type.ComponentType;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.impl.WhatsappBusinessCloudApi;
 
@@ -25,10 +24,9 @@ public class SendTemplateTextMessageExample {
                 .buildTemplateMessage(//
                         new TemplateMessage()//
                                 .setLanguage(new Language(LanguageType.PT_BR)).setName("number_confirmation")//
-                                .addComponent(//
-                                        new Component(ComponentType.BODY)//
-                                                .addParameter(new TextParameter("18754269072")//
-                                                ))
+                                .addComponent(new BodyComponent()//
+                                        .addParameter(new TextParameter("18754269072")//
+                                        ))
 
 
                 );

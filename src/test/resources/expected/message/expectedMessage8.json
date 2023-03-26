@@ -1,0 +1,34 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "template",
+  "template": {
+    "components": [
+      {
+        "type": "header",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "id": "4548775454857854"
+            }
+          }
+        ]
+      },
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Mauricio Binda"
+          }
+        ]
+      }
+    ],
+    "name": "video_tm",
+    "language": {
+      "code": "en_US"
+    }
+  }
+}

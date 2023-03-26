@@ -1,0 +1,23 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "template",
+  "template": {
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "18754269072"
+          }
+        ]
+      }
+    ],
+    "name": "number_confirmation",
+    "language": {
+      "code": "pt_BR"
+    }
+  }
+}

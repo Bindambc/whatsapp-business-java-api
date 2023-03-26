@@ -1,0 +1,45 @@
+{
+  "name": "marketing_music_878",
+  "category": "MARKETING",
+  "components": [
+    {
+      "format": "IMAGE",
+      "type": "HEADER",
+      "example": {
+        "header_handle": [
+          "4::aW1hZ2UvanBlZw==:ARZdpGlLrA9uwIGGZc-UFu5viAD1BkqTCYGL8je2d7xovDZphaWG8gJPTSJfekNchsL3SWdY8-jTA9ZRq_MWro-1wfJnApfbb0ByrUoDb6nNZA:e:1679805732:3449498285304722:100002149375136:ARauotTcmqlFdNENzt0"
+        ]
+      }
+    },
+    {
+      "type": "BODY",
+      "text": "Join us for our live music event on {{1}}. You can get a ticket for only ${{2}}. Thanks.",
+      "example": {
+        "body_text": [
+          [
+            "May 10th, 2023",
+            "30"
+          ]
+        ]
+      }
+    },
+    {
+      "buttons": [
+        {
+          "type": "QUICK_REPLY",
+          "text": "Shop Now"
+        },
+        {
+          "type": "QUICK_REPLY",
+          "text": "Stop promotions"
+        }
+      ],
+      "type": "BUTTONS"
+    },
+    {
+      "type": "FOOTER",
+      "text": "Not interested? Tap Stop promotions"
+    }
+  ],
+  "language": "en_US"
+}

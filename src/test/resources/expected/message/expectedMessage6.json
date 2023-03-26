@@ -1,0 +1,46 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "template",
+  "template": {
+    "components": [
+      {
+        "type": "header",
+        "parameters": [
+          {
+            "document": {
+              "id": "928860901494862",
+              "filename": "Class.pdf"
+            },
+            "type": "document"
+          }
+        ]
+      },
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Mauricio Binda"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "career-academy/?trk_ref=globalnav"
+          }
+        ],
+        "index": 0,
+        "sub_type": "url"
+      }
+    ],
+    "name": "new_classes_pdf",
+    "language": {
+      "code": "en_US"
+    }
+  }
+}
