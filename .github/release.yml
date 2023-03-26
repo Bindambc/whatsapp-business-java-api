@@ -13,7 +13,7 @@ changelog:
           - breaking-change
     - title: Bug Fix 🪲
       labels:
-        - "bug"
+        - bug
       exclude:
         labels:
           - breaking-change
@@ -23,10 +23,10 @@ changelog:
       exclude:
         labels:
           - breaking-change
-     - title: Other Changes 🗸
-       labels:
+    - title: Other Changes 🗸
+      labels:
         - "*"
-       exclude:
+      exclude:
         labels:
           - breaking-change
           - bug
