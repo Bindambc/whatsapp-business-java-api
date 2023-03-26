@@ -50,7 +50,7 @@ public class Name {
     /**
      * Sets prefix.
      *
-     * @param prefix the prefix
+     * @param prefix  Optional. Name prefix.
      * @return the prefix
      */
     public Name setPrefix(String prefix) {
@@ -70,7 +70,7 @@ public class Name {
     /**
      * Sets last name.
      *
-     * @param lastName the last name
+     * @param lastName Optional. Last name
      * @return the last name
      */
     public Name setLastName(String lastName) {
@@ -90,7 +90,7 @@ public class Name {
     /**
      * Sets middle name.
      *
-     * @param middleName the middle name
+     * @param middleName  Optional. Middle name.
      * @return the middle name
      */
     public Name setMiddleName(String middleName) {
@@ -110,7 +110,7 @@ public class Name {
     /**
      * Sets suffix.
      *
-     * @param suffix the suffix
+     * @param suffix Optional. Name suffix
      * @return the suffix
      */
     public Name setSuffix(String suffix) {
@@ -130,7 +130,7 @@ public class Name {
     /**
      * Sets first name.
      *
-     * @param firstName the first name
+     * @param firstName Optional. First name.
      * @return the first name
      */
     public Name setFirstName(String firstName) {
@@ -150,7 +150,8 @@ public class Name {
     /**
      * Sets formatted name.
      *
-     * @param formattedName the formatted name
+     * @param formattedName <b>Required</b>. Full name, as it normally appears.
+     * At least one of the optional parameters needs to be included along with this.
      * @return the formatted name
      */
     public Name setFormattedName(String formattedName) {

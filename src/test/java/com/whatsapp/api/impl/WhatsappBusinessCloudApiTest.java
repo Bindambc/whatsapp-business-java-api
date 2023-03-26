@@ -2,11 +2,14 @@ package com.whatsapp.api.impl;
 
 import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.domain.media.FileType;
+import com.whatsapp.api.domain.messages.Address;
 import com.whatsapp.api.domain.messages.AudioMessage;
 import com.whatsapp.api.domain.messages.BodyComponent;
 import com.whatsapp.api.domain.messages.ButtonComponent;
 import com.whatsapp.api.domain.messages.ButtonPayloadParameter;
 import com.whatsapp.api.domain.messages.ButtonTextParameter;
+import com.whatsapp.api.domain.messages.Contact;
+import com.whatsapp.api.domain.messages.ContactMessage;
 import com.whatsapp.api.domain.messages.Currency;
 import com.whatsapp.api.domain.messages.CurrencyParameter;
 import com.whatsapp.api.domain.messages.DateTime;
@@ -14,21 +17,30 @@ import com.whatsapp.api.domain.messages.DateTimeParameter;
 import com.whatsapp.api.domain.messages.Document;
 import com.whatsapp.api.domain.messages.DocumentMessage;
 import com.whatsapp.api.domain.messages.DocumentParameter;
+import com.whatsapp.api.domain.messages.Email;
 import com.whatsapp.api.domain.messages.HeaderComponent;
 import com.whatsapp.api.domain.messages.Image;
 import com.whatsapp.api.domain.messages.ImageMessage;
 import com.whatsapp.api.domain.messages.ImageParameter;
 import com.whatsapp.api.domain.messages.Language;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
+import com.whatsapp.api.domain.messages.Name;
+import com.whatsapp.api.domain.messages.Org;
+import com.whatsapp.api.domain.messages.Phone;
 import com.whatsapp.api.domain.messages.StickerMessage;
 import com.whatsapp.api.domain.messages.TemplateMessage;
 import com.whatsapp.api.domain.messages.TextMessage;
 import com.whatsapp.api.domain.messages.TextParameter;
+import com.whatsapp.api.domain.messages.Url;
 import com.whatsapp.api.domain.messages.Video;
 import com.whatsapp.api.domain.messages.VideoMessage;
 import com.whatsapp.api.domain.messages.VideoParameter;
+import com.whatsapp.api.domain.messages.type.AddressType;
 import com.whatsapp.api.domain.messages.type.ButtonSubType;
 import com.whatsapp.api.domain.messages.type.CalendarType;
+import com.whatsapp.api.domain.messages.type.EmailType;
+import com.whatsapp.api.domain.messages.type.PhoneType;
+import com.whatsapp.api.domain.messages.type.UrlType;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.utils.Formatter;
@@ -124,6 +136,110 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("POST", recordedRequest.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
 
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testContactMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage10.json");
+
+        var contactMessage = new ContactMessage()//
+                .addContacts(new Contact()//
+                                .addPhones(new Phone()//
+                                        .setPhone(PHONE_NUMBER_1)//
+                                        .setType(PhoneType.IPHONE))//
+                                .setName(new Name()//
+                                        .setFormattedName("Mauricio Binda")////
+                                        .setFirstName("Mauricio"))//
+                                .setOrg(new Org()//
+                                        .setTitle("Org title")//
+                                        .setCompany("My company")//
+                                        .setDepartment("IT"))//
+                                .addEmails(new Email()//
+                                        .setType(EmailType.HOME)//
+                                        .setEmail("mauriciobinda@hotmail.com")//
+                                ).addAddresses(new Address()//
+                                        .setCity("New York")//
+                                        .setCountry("United States")//
+                                        .setState("NY")//
+                                        .setType(AddressType.WORK)//
+                                        .setStreet("47 W 13th St")//
+                                        .setZip("10011")//
+                                        .setCountryCode("US")//
+                                ).setBirthday("1900-01-01").addUrls(new Url()//
+                                        .setType(UrlType.WORK)//
+                                        .setUrl("https://www.google.com")//
+                                )
+
+                        //
+                );
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildContactMessage(contactMessage);
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testContactMessage2() throws IOException, URISyntaxException, InterruptedException, JSONException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage10.json");
+
+        var contactMessage = new ContactMessage()//
+                .addContacts(new Contact()//
+                                .addPhone(new Phone()//
+                                        .setPhone(PHONE_NUMBER_1)//
+                                        .setType(PhoneType.IPHONE))//
+                                .setName(new Name()//
+                                        .setFormattedName("Mauricio Binda")////
+                                        .setFirstName("Mauricio"))//
+                                .setOrg(new Org()//
+                                        .setTitle("Org title")//
+                                        .setCompany("My company")//
+                                        .setDepartment("IT"))//
+                                .addEmail(new Email()//
+                                        .setType(EmailType.HOME)//
+                                        .setEmail("mauriciobinda@hotmail.com")//
+                                ).addAddress(new Address()//
+                                        .setCity("New York")//
+                                        .setCountry("United States")//
+                                        .setState("NY")//
+                                        .setType(AddressType.WORK)//
+                                        .setStreet("47 W 13th St")//
+                                        .setZip("10011")//
+                                        .setCountryCode("US")//
+                                ).setBirthday("1900-01-01").addUrl(new Url()//
+                                        .setType(UrlType.WORK)//
+                                        .setUrl("https://www.google.com")//
+                                )
+
+                        //
+                );
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildContactMessage(contactMessage);
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
         JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
 
         Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
@@ -494,7 +610,7 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         RecordedRequest recordedRequest = mockWebServer.takeRequest();
         Assertions.assertEquals("POST", recordedRequest.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
-       // System.out.println(recordedRequest.getBody().readUtf8());
+        // System.out.println(recordedRequest.getBody().readUtf8());
 
         JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
 
