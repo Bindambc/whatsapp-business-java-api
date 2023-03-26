@@ -4,12 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.templates.BodyComponent;
-import com.whatsapp.api.domain.templates.ButtonComponent;
 import com.whatsapp.api.domain.templates.Example;
 import com.whatsapp.api.domain.templates.FooterComponent;
 import com.whatsapp.api.domain.templates.HeaderComponent;
 import com.whatsapp.api.domain.templates.MessageTemplate;
-import com.whatsapp.api.domain.templates.QuickReplyButton;
 import com.whatsapp.api.domain.templates.type.Category;
 import com.whatsapp.api.domain.templates.type.HeaderFormat;
 import com.whatsapp.api.domain.templates.type.LanguageType;
@@ -27,25 +25,18 @@ public class CreateMessageTemplate8Example {
 
         var template = new MessageTemplate();
 
-        template.setName("auth_code_2")//
+        template.setName("auth_app")//
                 .setCategory(Category.AUTHENTICATION)//
                 .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
-                        .setFormat(HeaderFormat.TEXT).setText("Your authentication code for {{1}}")//
-                        .setExample(new Example().addHeaderTextExamples("App X")))//
+                        .setFormat(HeaderFormat.IMAGE).setExample(new Example().addHeaderHandleExamples("4::aW1hZ2UvanBlZw==:ARbzAaeBdkTpPbPQcqoRsHvmI1iJnyxkjZBXVACmVZBGfIOSNOqujojIUCIciq0OttnlTqKZNfbTV81PmOJ2t-eIrJ0MCQFNP5pfMJvAdd-PZQ:e:1680186259:3449824985304722:100002914375136:ARYJQLBIIVIUS1MCM1w"))
+                )//
                 .addComponent(new BodyComponent()//
-                        .setText("Please use the code {{1}} to sign in to your account. Do not provide this code to third parties.")//
+                        .setText("Hello, scan the QR code or use the code {{1}} to authenticate on the website.")//
                         .setExample(new Example()//
                                 .addBodyTextExamples("784-H45-7R4")))//
-                .addComponent(new FooterComponent().setText("Did you not request the code? Click on 'Not me'"))//
-                .addComponent(new ButtonComponent()//
-                        .addButton(new QuickReplyButton("Not me"))//
+                .addComponent(new FooterComponent().setText("Do not share this message with anyone.'"));//
 
-
-                )//
-
-
-        ;
 
         System.out.println(new ObjectMapper().writeValueAsString(template));
         var response = whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);

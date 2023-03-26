@@ -1,0 +1,9 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "audio",
+  "audio": {
+    "id": "4545454545454"
+  }
+}

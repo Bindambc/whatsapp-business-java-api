@@ -7,68 +7,46 @@ import com.whatsapp.api.domain.messages.type.ParameterType;
  * The type Video parameter.
  */
 public class VideoParameter extends Parameter {
+    @JsonProperty("video")
+    private Video video;
 
-    @JsonProperty("id")
-    private String id;
-    @JsonProperty("link")
-    private String link;
 
     /**
      * Instantiates a new Parameter.
      */
-    protected VideoParameter() {
+    public VideoParameter() {
         super(ParameterType.VIDEO);
     }
+
 
     /**
      * Instantiates a new Video parameter.
      *
-     * @param id   the id
-     * @param link the link
+     * @param type  the type
+     * @param video the video
      */
-    public VideoParameter(String id, String link) {
-        super(ParameterType.VIDEO);
-        this.id = id;
-        this.link = link;
+    public VideoParameter(ParameterType type, Video video) {
+        super(type);
+        this.video = video;
     }
 
     /**
-     * Gets id.
+     * Gets video.
      *
-     * @return the id
+     * @return the video
      */
-    public String getId() {
-        return id;
+    public Video getVideo() {
+        return video;
     }
 
     /**
-     * Sets id.
+     * Sets video.
      *
-     * @param id the id
-     * @return the id
+     * @param video the video
+     * @return the video
      */
-    public VideoParameter setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * Gets link.
-     *
-     * @return the link
-     */
-    public String getLink() {
-        return link;
-    }
-
-    /**
-     * Sets link.
-     *
-     * @param link the link
-     * @return the link
-     */
-    public VideoParameter setLink(String link) {
-        this.link = link;
+    public VideoParameter setVideo(Video video) {
+        this.video = video;
         return this;
     }
 }
