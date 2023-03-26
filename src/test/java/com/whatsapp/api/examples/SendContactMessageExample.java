@@ -61,7 +61,7 @@ public class SendContactMessageExample {
                                         )
 
                                 //
-                        )) ;
+                        ));
 
 
         whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);

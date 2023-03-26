@@ -12,8 +12,6 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.MultipartBody.Part;
 
-import java.net.URISyntaxException;
-
 import static com.whatsapp.api.WhatsappApiServiceGenerator.createService;
 import static com.whatsapp.api.WhatsappApiServiceGenerator.executeDownloadSync;
 import static com.whatsapp.api.WhatsappApiServiceGenerator.executeSync;
@@ -97,7 +95,7 @@ public class WhatsappBusinessCloudApi {
      * @return the media file {@link MediaFile}
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
      */
-    public MediaFile downloadMediaFile(String url)  {
+    public MediaFile downloadMediaFile(String url) {
 
         return executeDownloadSync(whatsappBusinessCloudApiService.downloadMediaFile(url));
 

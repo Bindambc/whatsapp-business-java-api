@@ -38,11 +38,6 @@ import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
 
 class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
-    private final String PHONE_NUMBER_ID = "411001010101010";
-
-    private final String TOKEN = "54f6sd5f4654df21sdfs56d4fsd5f41f8we546F54f5dfF4FRDFGfGSHe54rf6sd5f4g55";
-
-    private final String WABA_ID = "57856727575875757";
     public final String DEFAULT_TEMPLATE_RESPONSE = """
             {
               "status": "REJECTED",
@@ -50,6 +45,9 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
               "id": "952305634123456"
             }
             """;
+    private final String PHONE_NUMBER_ID = "411001010101010";
+    private final String TOKEN = "54f6sd5f4654df21sdfs56d4fsd5f41f8we546F54f5dfF4FRDFGfGSHe54rf6sd5f4g55";
+    private final String WABA_ID = "57856727575875757";
 
     /**
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}

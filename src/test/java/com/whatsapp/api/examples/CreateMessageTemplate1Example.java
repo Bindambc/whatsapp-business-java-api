@@ -37,8 +37,8 @@ public class CreateMessageTemplate1Example {
 
         ;
 
-    var response =    whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
-     System.out.println(response);
+        var response = whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
+        System.out.println(response);
 
     }
 }

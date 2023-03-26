@@ -99,7 +99,7 @@ public class Address {
     /**
      * Sets country code.
      *
-     * @param countryCode  Optional. Two-letter country abbreviation.
+     * @param countryCode Optional. Two-letter country abbreviation.
      * @return the country code
      */
     public Address setCountryCode(String countryCode) {
@@ -179,7 +179,7 @@ public class Address {
     /**
      * Sets type.
      *
-     * @param type  Optional. Standard values are HOME and WORK.
+     * @param type Optional. Standard values are HOME and WORK.
      * @return the type
      */
     public Address setType(AddressType type) {

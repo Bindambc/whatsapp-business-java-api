@@ -58,7 +58,7 @@ public class Phone {
     /**
      * Sets wa id.
      *
-     * @param waId  Optional. WhatsApp ID.
+     * @param waId Optional. WhatsApp ID.
      * @return the wa id
      */
     public Phone setWaId(String waId) {
