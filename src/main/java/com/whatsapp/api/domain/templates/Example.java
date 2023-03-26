@@ -20,6 +20,8 @@ public class Example {
     private List<String> headerText;
 
 
+
+
     /**
      * Gets header handle.
      *
@@ -86,7 +88,7 @@ public class Example {
      * @param example the example
      * @return the example
      */
-    public Example addHeaderHandleExample(String... example) {
+    public Example addHeaderHandleExamples(String... example) {
         if (this.headerHandle == null) this.headerHandle = new ArrayList<>();
         if (example != null) this.headerHandle.addAll(Arrays.stream(example).toList());
         return this;
@@ -98,7 +100,7 @@ public class Example {
      * @param example the example
      * @return the example
      */
-    public Example addHeaderTextExample(String... example) {
+    public Example addHeaderTextExamples(String... example) {
         if (this.headerText == null) this.headerText = new ArrayList<>();
         if (example != null) this.headerText.addAll(Arrays.stream(example).toList());
         return this;

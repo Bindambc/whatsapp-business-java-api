@@ -1,0 +1,27 @@
+{
+  "name": "number_confirmation",
+  "category": "TRANSACTIONAL",
+  "components": [
+    {
+      "format": "TEXT",
+      "type": "HEADER",
+      "text": "Código de confirmação"
+    },
+    {
+      "type": "BODY",
+      "text": "Este é o seu código de confirmação: *{{1}}.*",
+      "example": {
+        "body_text": [
+          [
+            "1458425"
+          ]
+        ]
+      }
+    },
+    {
+      "type": "FOOTER",
+      "text": "Use este código para confirmar seu telefone."
+    }
+  ],
+  "language": "pt_BR"
+}

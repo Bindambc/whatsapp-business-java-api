@@ -1,8 +1,10 @@
 package com.whatsapp.api.domain.templates;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.whatsapp.api.domain.templates.type.ComponentType;
 
 /**
@@ -11,8 +13,11 @@ import com.whatsapp.api.domain.templates.type.ComponentType;
  * @param <T> the type parameter
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-@JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "BUTTONS"), @JsonSubTypes.Type(value = FooterComponent.class, name = "FOOTER"), @JsonSubTypes.Type(value = HeaderComponent.class, name = "HEADER"), @JsonSubTypes.Type(value = BodyComponent.class, name = "BODY")})
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.EXISTING_PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = ButtonComponent.class, name = "BUTTONS"), //
+        @JsonSubTypes.Type(value = FooterComponent.class, name = "FOOTER"), //
+        @JsonSubTypes.Type(value = HeaderComponent.class, name = "HEADER"), //
+        @JsonSubTypes.Type(value = BodyComponent.class, name = "BODY")})//
 public class Component<T extends Component<T>> {
     /**
      * <b>Required.</b>
@@ -24,10 +29,11 @@ public class Component<T extends Component<T>> {
      * <li>BUTTONS</li>
      * </ul>
      */
+    @JsonProperty("type")
     private ComponentType type;
-
+    @JsonProperty("text")
     private String text;
-
+    @JsonProperty("example")
     private Example example;
 
     /**

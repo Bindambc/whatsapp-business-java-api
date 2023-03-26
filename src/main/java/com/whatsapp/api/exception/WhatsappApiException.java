@@ -40,10 +40,10 @@ public class WhatsappApiException extends RuntimeException {
     public String getMessage() {
         if (whatsappApiError != null && whatsappApiError.error() != null) {
             if (whatsappApiError.error().errorData() != null && whatsappApiError.error().errorData().details() != null)
-                return whatsappApiError.error().message() + " | " + whatsappApiError.error().errorData().details();
+                return String.format("[%s] %s | %s", whatsappApiError.error().code(), whatsappApiError.error().message(), whatsappApiError.error().errorData().details());
 
             if (whatsappApiError.error().errorUserMsg() != null)
-                return whatsappApiError.error().message() + " | " + whatsappApiError.error().errorUserMsg();
+                return String.format("[%s] %s | %s", whatsappApiError.error().code(), whatsappApiError.error().message(), whatsappApiError.error().errorUserMsg());
 
             return whatsappApiError.error().message();
         }

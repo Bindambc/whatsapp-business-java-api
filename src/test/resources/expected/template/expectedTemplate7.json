@@ -1,0 +1,44 @@
+{
+  "name": "marketing_coffee",
+  "category": "MARKETING",
+  "components": [
+    {
+      "format": "IMAGE",
+      "type": "HEADER",
+      "example": {
+        "header_handle": [
+          "4::aW1hZ2UvanBlZw==:ARZdpGlLrA9uwIGGZc-UFu5viAD1BkqTCYGL8je2d7xovDZphaWG8gJPTSJfekNchsL3SWdY8-jTA9ZRq_MWro-1wfJnApfbb0ByrUoDb6nNZA:e:1679805732:3449824985304722:100002914375136:ARauotmqlFdTcNENzt0"
+        ]
+      }
+    },
+    {
+      "type": "BODY",
+      "text": "Venha aproveitar nossos cafés especiais em nossa super promoção. Nossos expressos são a partir de R${{1}}",
+      "example": {
+        "body_text": [
+          [
+            "15"
+          ]
+        ]
+      }
+    },
+    {
+      "buttons": [
+        {
+          "type": "QUICK_REPLY",
+          "text": "Saiba mais"
+        },
+        {
+          "type": "QUICK_REPLY",
+          "text": "Parar promoções"
+        }
+      ],
+      "type": "BUTTONS"
+    },
+    {
+      "type": "FOOTER",
+      "text": "Sem interesse? Clique em parar promoções"
+    }
+  ],
+  "language": "pt_BR"
+}

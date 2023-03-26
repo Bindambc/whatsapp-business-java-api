@@ -1,0 +1,64 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "template",
+  "template": {
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Mauricio"
+          },
+          {
+            "type": "text",
+            "text": "04/11/2022"
+          },
+          {
+            "type": "text",
+            "text": "14:30"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_YES_48547"
+          }
+        ],
+        "index": 0,
+        "sub_type": "quick_reply"
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_NO_48548"
+          }
+        ],
+        "index": 1,
+        "sub_type": "quick_reply"
+      },
+      {
+        "type": "button",
+        "parameters": [
+          {
+            "type": "payload",
+            "payload": "OP_CH_48549"
+          }
+        ],
+        "index": 2,
+        "sub_type": "quick_reply"
+      }
+    ],
+    "name": "schedule_confirmation3",
+    "language": {
+      "code": "pt_BR"
+    }
+  }
+}

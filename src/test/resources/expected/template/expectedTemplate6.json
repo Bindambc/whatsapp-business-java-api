@@ -1,0 +1,44 @@
+{
+  "name": "new_classes_pdf_v2",
+  "category": "UTILITY",
+  "components": [
+    {
+      "format": "DOCUMENT",
+      "type": "HEADER",
+      "example": {
+        "header_handle": [
+          "4::aW1hZ2UvanBlZw==:ARb0a9E9s7-LdErXAXQCwyh7Oy-_h9gBo4ljPynnXo53CKOyyhHYUjCCREvS4fB-0CwfSQbNn9fJC3ikLOJve1CfQO-9aeWYdMmkMUJgGJI0g:e:1680011044:3449853982404722:100007529143136:ARZMcC4QfmCW8V85Lco"
+        ]
+      }
+    },
+    {
+      "type": "BODY",
+      "text": "Olá {{1}}, seu professou publicou novas aulas na plataforma de ensino.",
+      "example": {
+        "body_text": [
+          [
+            "Maria"
+          ]
+        ]
+      }
+    },
+    {
+      "type": "FOOTER",
+      "text": "Click on the button below to watch now"
+    },
+    {
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Assistir agora",
+          "url": "https://www.coursera.org/{{1}}",
+          "example": [
+            "https://www.coursera.org/?authMode=login"
+          ]
+        }
+      ],
+      "type": "BUTTONS"
+    }
+  ],
+  "language": "pt_BR"
+}
