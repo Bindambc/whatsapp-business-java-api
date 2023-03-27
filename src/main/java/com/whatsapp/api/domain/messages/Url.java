@@ -2,15 +2,16 @@ package com.whatsapp.api.domain.messages;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whatsapp.api.domain.messages.type.UrlType;
 
 /**
- * The type Url.
+ * Contact URL(s) formatted as a urls object
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Url {
 
     @JsonProperty("type")
-    private String type;
+    private UrlType type;
 
     @JsonProperty("url")
     private String url;
@@ -20,17 +21,17 @@ public class Url {
      *
      * @return the type
      */
-    public String getType() {
+    public UrlType getType() {
         return type;
     }
 
     /**
      * Sets type.
      *
-     * @param type the type
+     * @param type the type. Standard values are HOME and WORK.
      * @return the type
      */
-    public Url setType(String type) {
+    public Url setType(UrlType type) {
         this.type = type;
         return this;
     }

@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Full contact information.
+ *
+ * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#contacts-object">Api reference</a>
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Contact {
@@ -53,8 +55,9 @@ public class Contact {
     /**
      * Sets birthday.
      *
-     * @param birthday the birthday
-     * @return the birthday
+     * @param birthday the birthday.  Optional.
+     *                 <b>YYYY-MM-DD</b> formatted string.
+     * @return Contact
      */
     public Contact setBirthday(String birthday) {
         this.birthday = birthday;
@@ -73,7 +76,7 @@ public class Contact {
     /**
      * Sets emails.
      *
-     * @param emails the emails
+     * @param emails Optional. Contact email address(es) formatted as an emails object.
      * @return the emails
      */
     public Contact setEmails(List<Email> emails) {
@@ -84,10 +87,25 @@ public class Contact {
     /**
      * Add emails contact.
      *
-     * @param email the email
+     * @param email Optional. Contact email address(es) formatted as an emails object.
+     * @return the contact
+     * @deprecated use {@link #addEmail(Email)} instead
+     */
+    @Deprecated(forRemoval = true)
+    public Contact addEmails(Email email) {
+        if (this.emails == null) this.emails = new ArrayList<>();
+
+        this.emails.add(email);
+        return this;
+    }
+
+    /**
+     * Add emails contact.
+     *
+     * @param email Optional. Contact email address(es) formatted as an emails object.
      * @return the contact
      */
-    public Contact addEmails(Email email) {
+    public Contact addEmail(Email email) {
         if (this.emails == null) this.emails = new ArrayList<>();
 
         this.emails.add(email);
@@ -106,7 +124,7 @@ public class Contact {
     /**
      * Sets addresses.
      *
-     * @param addresses the addresses
+     * @param addresses Optional. Full contact address(es) formatted as an addresses object
      * @return the addresses
      */
     public Contact setAddresses(List<Address> addresses) {
@@ -117,12 +135,26 @@ public class Contact {
     /**
      * Add addresses contact.
      *
-     * @param address the address
+     * @param address Optional. Full contact address(es) formatted as an addresses object
      * @return the contact
+     * @deprecated use {@link #addAddress(Address)}
      */
+    @Deprecated(forRemoval = true)
     public Contact addAddresses(Address address) {
         if (this.addresses == null) this.addresses = new ArrayList<>();
+        this.addresses.add(address);
+        return this;
+    }
 
+    /**
+     * Add addresses contact.
+     *
+     * @param address Optional. Full contact address(es) formatted as an addresses object
+     * @return the contact
+     */
+    public Contact addAddress(Address address) {
+        if (this.addresses == null) this.addresses = new ArrayList<>();
+        this.addresses.add(address);
         return this;
     }
 
@@ -138,7 +170,7 @@ public class Contact {
     /**
      * Sets urls.
      *
-     * @param urls the urls
+     * @param urls Optional. Contact URL(s) formatted as a urls object.
      * @return the urls
      */
     public Contact setUrls(List<Url> urls) {
@@ -149,10 +181,25 @@ public class Contact {
     /**
      * Add urls contact.
      *
-     * @param url the url
+     * @param url Optional.Contact URL(s) formatted as a urls object.
+     * @return the contact
+     * @deprecated use {@link #addUrl(Url)}
+     */
+    @Deprecated(forRemoval = true)
+    public Contact addUrls(Url url) {
+        if (this.urls == null) this.urls = new ArrayList<>();
+
+        this.urls.add(url);
+        return this;
+    }
+
+    /**
+     * Add url contact.
+     *
+     * @param url Optional.Contact URL(s) formatted as a urls object.
      * @return the contact
      */
-    public Contact addUrls(Url url) {
+    public Contact addUrl(Url url) {
         if (this.urls == null) this.urls = new ArrayList<>();
 
         this.urls.add(url);
@@ -171,7 +218,7 @@ public class Contact {
     /**
      * Sets org.
      *
-     * @param org the org
+     * @param org Optional. Contact organization information formatted as an org object
      * @return the org
      */
     public Contact setOrg(Org org) {
@@ -191,7 +238,8 @@ public class Contact {
     /**
      * Sets name.
      *
-     * @param name {@link Name}
+     * @param name {@link Name}. Required.
+     *             Full contact name formatted as a name object.
      * @return the name
      */
     public Contact setName(Name name) {
@@ -212,7 +260,7 @@ public class Contact {
     /**
      * Sets phones.
      *
-     * @param phones {@link Phone}
+     * @param phones {@link Phone} Optional. Contact phone number(s) formatted as a phone object.
      * @return the phones
      */
     public Contact setPhones(List<Phone> phones) {
@@ -223,13 +271,25 @@ public class Contact {
     /**
      * Add phones contact.
      *
-     * @param phone the phone
+     * @param phone Optional. Contact phone number(s) formatted as a phone object.
      * @return the contact
+     * @deprecated use {@link Contact#addPhone(Phone)} instead
      */
+    @Deprecated(forRemoval = true)
     public Contact addPhones(Phone phone) {
         if (this.phones == null) this.phones = new ArrayList<>();
+        this.phones.add(phone);
+        return this;
+    }
 
-
+    /**
+     * Add phones contact.
+     *
+     * @param phone Optional. Contact phone number(s) formatted as a phone object.
+     * @return the contact
+     */
+    public Contact addPhone(Phone phone) {
+        if (this.phones == null) this.phones = new ArrayList<>();
         this.phones.add(phone);
         return this;
     }

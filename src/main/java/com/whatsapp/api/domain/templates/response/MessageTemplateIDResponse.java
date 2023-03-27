@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The type Message template id response.
+ *
  * @deprecated use {@link com.whatsapp.api.domain.templates.MessageTemplate} instead
  */
 @Deprecated(forRemoval = true)

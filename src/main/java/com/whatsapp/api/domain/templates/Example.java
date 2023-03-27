@@ -20,8 +20,6 @@ public class Example {
     private List<String> headerText;
 
 
-
-
     /**
      * Gets header handle.
      *

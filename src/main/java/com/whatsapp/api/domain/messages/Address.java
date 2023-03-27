@@ -59,7 +59,7 @@ public class Address {
     /**
      * Sets zip.
      *
-     * @param zip the zip
+     * @param zip the zip code. Optional. ZIP code.
      * @return the zip
      */
     public Address setZip(String zip) {
@@ -79,7 +79,7 @@ public class Address {
     /**
      * Sets country.
      *
-     * @param country the country
+     * @param country Full country name.
      * @return the country
      */
     public Address setCountry(String country) {
@@ -99,7 +99,7 @@ public class Address {
     /**
      * Sets country code.
      *
-     * @param countryCode the country code
+     * @param countryCode Optional. Two-letter country abbreviation.
      * @return the country code
      */
     public Address setCountryCode(String countryCode) {
@@ -119,7 +119,7 @@ public class Address {
     /**
      * Sets city.
      *
-     * @param city the city
+     * @param city Optional. City name.
      * @return the city
      */
     public Address setCity(String city) {
@@ -139,7 +139,7 @@ public class Address {
     /**
      * Sets street.
      *
-     * @param street the street
+     * @param street Optional. Street number and name.
      * @return the street
      */
     public Address setStreet(String street) {
@@ -159,7 +159,7 @@ public class Address {
     /**
      * Sets state.
      *
-     * @param state the state
+     * @param state Optional. State abbreviation.
      * @return the state
      */
     public Address setState(String state) {
@@ -179,7 +179,7 @@ public class Address {
     /**
      * Sets type.
      *
-     * @param type the type
+     * @param type Optional. Standard values are HOME and WORK.
      * @return the type
      */
     public Address setType(AddressType type) {

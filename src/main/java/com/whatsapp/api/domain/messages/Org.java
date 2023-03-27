@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The type Org.
+ * Contact organization information formatted as an org object.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Org {
@@ -30,7 +30,7 @@ public class Org {
     /**
      * Sets company.
      *
-     * @param company the company
+     * @param company Optional. Name of the contact's company.
      * @return the company
      */
     public Org setCompany(String company) {
@@ -50,7 +50,7 @@ public class Org {
     /**
      * Sets department.
      *
-     * @param department the department
+     * @param department Optional. Name of the contact's department.
      * @return the department
      */
     public Org setDepartment(String department) {
@@ -70,7 +70,7 @@ public class Org {
     /**
      * Sets title.
      *
-     * @param title the title
+     * @param title Optional. Contact's business title.
      * @return the title
      */
     public Org setTitle(String title) {

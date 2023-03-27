@@ -6,7 +6,6 @@ import com.whatsapp.api.domain.phone.RequestCode;
 import com.whatsapp.api.domain.phone.VerifyCode;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.domain.templates.MessageTemplate;
-import com.whatsapp.api.domain.templates.response.MessageTemplateIDResponse;
 import com.whatsapp.api.domain.templates.response.MessageTemplates;
 import com.whatsapp.api.domain.templates.response.Template;
 import retrofit2.Call;
