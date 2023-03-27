@@ -38,7 +38,7 @@ public class CreateMessageTemplate7Example {
                         .setText("Olá {{1}}, Tivemos um problema com a entrega do seu pedido {{2}}. Por favor, entre em contato com a central de atendimento para obter mais detalhes")//
 
                         .setExample(new Example()//
-                                .addBodyTextExamples("Maria","FE-15454T45001")))//
+                                .addBodyTextExamples("Maria", "FE-15454T45001")))//
                 .addComponent(new ButtonComponent()//
 
                         .addButton(new PhoneNumberButton("Ligar agora", "16503087300"))//

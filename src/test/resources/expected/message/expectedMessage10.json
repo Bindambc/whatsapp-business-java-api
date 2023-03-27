@@ -1,0 +1,49 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "contacts",
+  "contacts": [
+    {
+      "birthday": "1900-01-01",
+      "emails": [
+        {
+          "type": "HOME",
+          "email": "mauriciobinda@hotmail.com"
+        }
+      ],
+      "addresses": [
+        {
+          "zip": "10011",
+          "country": "United States",
+          "country_code": "US",
+          "city": "New York",
+          "street": "47 W 13th St",
+          "state": "NY",
+          "type": "WORK"
+        }
+      ],
+      "urls": [
+        {
+          "type": "WORK",
+          "url": "https://www.google.com"
+        }
+      ],
+      "org": {
+        "company": "My company",
+        "department": "IT",
+        "title": "Org title"
+      },
+      "name": {
+        "first_name": "Mauricio",
+        "formatted_name": "Mauricio Binda"
+      },
+      "phones": [
+        {
+          "phone": "121212121212",
+          "type": "IPHONE"
+        }
+      ]
+    }
+  ]
+}

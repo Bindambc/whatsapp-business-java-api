@@ -50,7 +50,6 @@ public class CreateMessageTemplate5Example {
                         )//
 
 
-
                 )//
                 .addComponent(new FooterComponent().setText("Click on the button below to watch now"))
 

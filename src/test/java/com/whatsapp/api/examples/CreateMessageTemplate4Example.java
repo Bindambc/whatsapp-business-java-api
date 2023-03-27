@@ -38,7 +38,7 @@ public class CreateMessageTemplate4Example {
                 .addComponent(new BodyComponent()//
                         .setText("Join us for our live music event on {{1}}. You can get a ticket for only ${{2}}. Thanks.")//
                         .setExample(new Example()//
-                                .addBodyTextExamples("May 10th, 2023","30")//
+                                .addBodyTextExamples("May 10th, 2023", "30")//
                         ))//
                 .addComponent(new ButtonComponent()//
 

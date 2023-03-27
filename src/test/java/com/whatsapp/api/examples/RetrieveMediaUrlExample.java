@@ -7,7 +7,7 @@ import static com.whatsapp.api.TestConstants.TOKEN;
 
 public class RetrieveMediaUrlExample {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
