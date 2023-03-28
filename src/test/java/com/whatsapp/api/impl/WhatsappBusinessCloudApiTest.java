@@ -33,6 +33,7 @@ import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.Name;
 import com.whatsapp.api.domain.messages.Org;
 import com.whatsapp.api.domain.messages.Phone;
+import com.whatsapp.api.domain.messages.ReactionMessage;
 import com.whatsapp.api.domain.messages.Reply;
 import com.whatsapp.api.domain.messages.Row;
 import com.whatsapp.api.domain.messages.Section;
@@ -812,6 +813,74 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         var message = MessageBuilder.builder()//
                 .setTo(PHONE_NUMBER_1)//
                 .buildInteractiveMessage(interactive);
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+        Assertions.assertNotNull(response);
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    void testSendReactionMessage() throws InterruptedException, JSONException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        var emojiThumbsUp = "\uD83D\uDC4D";
+        var expectedJson = """
+                {
+                    "messaging_product": "whatsapp",
+                    "recipient_type": "individual",
+                    "to": "121212121212",
+                    "type": "reaction",
+                    "reaction": {
+                        "message_id": "wamid.HBgNNTUyNzk5NzAzMDkzNhUCABIYFDNBRjE2OTUyOTNCNTlCM0IzRDQ0AA==",
+                        "emoji": "\\uD83D\\uDC4D"
+                    }
+                }
+                """;
+
+        var reactionMessage = new ReactionMessage()//
+                .setMessageId("wamid.HBgNNTUyNzk5NzAzMDkzNhUCABIYFDNBRjE2OTUyOTNCNTlCM0IzRDQ0AA==")//
+                .setEmoji(emojiThumbsUp);//
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildReactionMessage(reactionMessage);
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+        Assertions.assertNotNull(response);
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    void testSendReactionMessage2() throws InterruptedException, JSONException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        var emojiThumbsUp = "\uD83D\uDC4D";
+        var expectedJson = """
+                {
+                    "messaging_product": "whatsapp",
+                    "recipient_type": "individual",
+                    "to": "121212121212",
+                    "type": "reaction",
+                    "reaction": {
+                        "message_id": "wamid.HBgNNTUyNzk5NzAzMDkzNhUCABIYFDNBRjE2OTUyOTNCNTlCM0IzRDQ0AA==",
+                        "emoji": "\\uD83D\\uDC4D"
+                    }
+                }
+                """;
+
+        var reactionMessage = new ReactionMessage("wamid.HBgNNTUyNzk5NzAzMDkzNhUCABIYFDNBRjE2OTUyOTNCNTlCM0IzRDQ0AA==", emojiThumbsUp);
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildReactionMessage(reactionMessage);
 
         var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
         Assertions.assertNotNull(response);

@@ -48,6 +48,9 @@ public class Message {
     @JsonProperty("video")
     private VideoMessage videoMessage;
 
+    @JsonProperty("reaction")
+    private ReactionMessage reactionMessage;
+
 
     private Message() {
     }
@@ -234,6 +237,20 @@ public class Message {
         public Message buildVideoMessage(VideoMessage videoMessage) {
             var message = new Message(to, MessageType.VIDEO);
             message.videoMessage = videoMessage;
+            return message;
+
+        }
+
+        /**
+         * Build reaction message
+         *
+         * @param reactionMessage the reaction message
+         * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object">API documentation</a>
+         */
+        public Message buildReactionMessage(ReactionMessage reactionMessage) {
+            var message = new Message(to, MessageType.REACTION);
+            message.reactionMessage = reactionMessage;
             return message;
 
         }
