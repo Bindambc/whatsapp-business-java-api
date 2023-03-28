@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * The type Button component.
  */
+//TODO: review
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ButtonComponent extends Component<ButtonComponent> {
 
