@@ -34,6 +34,8 @@ import com.whatsapp.api.domain.messages.Name;
 import com.whatsapp.api.domain.messages.Org;
 import com.whatsapp.api.domain.messages.Phone;
 import com.whatsapp.api.domain.messages.Reply;
+import com.whatsapp.api.domain.messages.Row;
+import com.whatsapp.api.domain.messages.Section;
 import com.whatsapp.api.domain.messages.StickerMessage;
 import com.whatsapp.api.domain.messages.TemplateMessage;
 import com.whatsapp.api.domain.messages.TextMessage;
@@ -716,7 +718,6 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
     }
 
     @Test
-    //TODO: Header is incomplete
     void testSendInteractiveMessageWithButtons() throws InterruptedException, JSONException, IOException, URISyntaxException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
 
@@ -756,6 +757,68 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("POST", recordedRequest.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
         //System.out.println(recordedRequest.getBody().readUtf8());
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    void testSendInteractiveMessageWithList() throws InterruptedException, JSONException, IOException, URISyntaxException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage12.json");
+
+        var interactive = InteractiveMessage.build() //
+                .setAction(new Action() //
+                        .setButtonText("choose an option") //
+                        .addSection(new Section() //
+                                .setTitle("Section 1") //
+                                .addRow(new Row() //
+                                        .setId("SECTION_1_ROW_1_ID") //
+                                        .setTitle("Title 1") //
+                                        .setDescription("SECTION_1_ROW_1_DESCRIPTION")) //
+                                .addRow(new Row() //
+                                        .setId("SECTION_1_ROW_2_ID") //
+                                        .setTitle("Title 2") //
+                                        .setDescription("SECTION_1_ROW_2_DESCRIPTION")) //
+                                .addRow(new Row() //
+                                        .setId("SECTION_1_ROW_3_ID") //
+                                        .setTitle("Title 3") //
+                                        .setDescription("SECTION_1_ROW_3_DESCRIPTION")) //
+                        ) //
+                        .addSection(new Section() //
+                                .setTitle("Section 2") //
+                                .addRow(new Row() //
+                                        .setId("SECTION_2_ROW_1_ID") //
+                                        .setTitle("Title 1") //
+                                        .setDescription("SECTION_2_ROW_1_DESCRIPTION")) //
+                                .addRow(new Row() //
+                                        .setId("SECTION_2_ROW_2_ID") //
+                                        .setTitle("Title 2") //
+                                        .setDescription("SECTION_2_ROW_2_DESCRIPTION")) //
+                                .addRow(new Row() //
+                                        .setId("SECTION_2_ROW_3_ID") //
+                                        .setTitle("Title 3") //
+                                        .setDescription("SECTION_2_ROW_3_DESCRIPTION")) //
+                        )) //
+                .setType(InteractiveMessageType.LIST) //
+                .setHeader(new Header() //
+                        .setType(HeaderType.TEXT) //
+                        .setText("Header Text")) //
+                .setBody(new Body() //
+                        .setText("Body message")) //
+                .setFooter(new Footer() //
+                        .setText("Footer Text"));
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildInteractiveMessage(interactive);
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+        Assertions.assertNotNull(response);
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
         JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
 
     }
