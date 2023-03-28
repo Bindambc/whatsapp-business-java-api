@@ -1,5 +1,7 @@
 package com.whatsapp.api.examples;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.messages.Action;
@@ -25,7 +27,7 @@ import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
 
 public class SendInteractiveMessageExample {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException {
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -46,7 +48,7 @@ public class SendInteractiveMessageExample {
                 .setTo(PHONE_NUMBER_1)//
                 .buildInteractiveMessage(InteractiveMessage.build() //
                         .setAction(new Action() //
-                                .setCatalogId("1") //
+                                .setCatalogId("6019053994849450") //
                                 .addSection(new Section() //
                                         .setTitle("Title 1") //
                                         .addProductItem(new Product() //
@@ -74,57 +76,65 @@ public class SendInteractiveMessageExample {
         System.out.println(messageResponse);
     }
 
-    private static void productMessage(WhatsappBusinessCloudApi whatsappBusinessCloudApi) {
+    private static void productMessage(WhatsappBusinessCloudApi whatsappBusinessCloudApi) throws JsonProcessingException {
         var message = MessageBuilder.builder()//
                 .setTo(PHONE_NUMBER_1)//
                 .buildInteractiveMessage(InteractiveMessage.build() //
                         .setAction(new Action() //
-                                .setCatalogId("1") //
-                                .setProductRetailerId("ID_TEST_ITEM_1")) //
+                                .setCatalogId("600136185327014") //
+                                .setProductRetailerId("r2d5xse158")) //
                         .setType(InteractiveMessageType.PRODUCT) //
                         .setBody(new Body() //
                                 .setText("Body message")) //
                 );
 
+        System.out.println(new ObjectMapper().writeValueAsString(message));
+
         MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 
         System.out.println(messageResponse);
     }
 
-    private static void buttonMessage(WhatsappBusinessCloudApi whatsappBusinessCloudApi) {
+    private static void buttonMessage(WhatsappBusinessCloudApi whatsappBusinessCloudApi) throws JsonProcessingException {
         var message = MessageBuilder.builder()//
                 .setTo(PHONE_NUMBER_1)//
                 .buildInteractiveMessage(InteractiveMessage.build() //
                         .setAction(new Action() //
                                 .addButton(new Button() //
-                                        .setType(ButtonType.REPLY)
-                                        .setReply(new Reply() //
-                                                .setId("UNIQUE_BUTTON_ID_1") //
-                                                .setTitle("BUTTON_TITLE_1"))) //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278454") //
+                                                .setTitle("YES"))) //
                                 .addButton(new Button() //
-                                        .setType(ButtonType.REPLY)
-                                        .setReply(new Reply() //
-                                                .setId("UNIQUE_BUTTON_ID_2") //
-                                                .setTitle("BUTTON_TITLE_2")))
-                        ) //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278455") //
+                                                .setTitle("NO"))) //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278456") //
+                                                .setTitle("CHANGE")))) //
                         .setType(InteractiveMessageType.BUTTON) //
-                        .setBody(new Body() //
-                                .setText("Body message")) //
-                );
+                        .setHeader(new Header()//
+                                .setType(HeaderType.TEXT)//
+                                .setText("Appointment confirmation.")//
+
+                        ).setBody(new Body() //
+                                .setText("Would you like to confirm your appointment for tomorrow?")) //
+                        .setFooter(new Footer().setText("Choose an option:")));
+        System.out.println(new ObjectMapper().writeValueAsString(message));
 
         MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 
         System.out.println(messageResponse);
     }
 
-    private static void listMessage(WhatsappBusinessCloudApi whatsappBusinessCloudApi) {
+    private static void listMessage(WhatsappBusinessCloudApi whatsappBusinessCloudApi) throws JsonProcessingException {
         var message = MessageBuilder.builder()//
                 .setTo(PHONE_NUMBER_1)//
                 .buildInteractiveMessage(InteractiveMessage.build() //
                         .setAction(new Action() //
-                                .setButtonText("BUTTON_TEXT") //
+                                .setButtonText("choose an option") //
                                 .addSection(new Section() //
-                                        .setTitle("Title 1") //
+                                        .setTitle("Section 1") //
                                         .addRow(new Row() //
                                                 .setId("SECTION_1_ROW_1_ID") //
                                                 .setTitle("Title 1") //
@@ -139,7 +149,7 @@ public class SendInteractiveMessageExample {
                                                 .setDescription("SECTION_1_ROW_3_DESCRIPTION")) //
                                 ) //
                                 .addSection(new Section() //
-                                        .setTitle("Title 2") //
+                                        .setTitle("Section 2") //
                                         .addRow(new Row() //
                                                 .setId("SECTION_2_ROW_1_ID") //
                                                 .setTitle("Title 1") //
@@ -152,8 +162,7 @@ public class SendInteractiveMessageExample {
                                                 .setId("SECTION_2_ROW_3_ID") //
                                                 .setTitle("Title 3") //
                                                 .setDescription("SECTION_2_ROW_3_DESCRIPTION")) //
-                                )
-                        ) //
+                                )) //
                         .setType(InteractiveMessageType.LIST) //
                         .setHeader(new Header() //
                                 .setType(HeaderType.TEXT) //
@@ -163,7 +172,7 @@ public class SendInteractiveMessageExample {
                         .setFooter(new Footer() //
                                 .setText("Footer Text")) //
                 );
-
+        System.out.println(new ObjectMapper().writeValueAsString(message));
         MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
 
         System.out.println(messageResponse);

@@ -189,7 +189,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         Assertions.assertNotNull(response);
 
         var request = mockWebServer.takeRequest();
-        //System.out.println(request.getBody().readUtf8());
+
         Assertions.assertEquals("POST", request.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + WABA_ID + "/message_templates", request.getPath());
 
@@ -219,7 +219,8 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
                         .setExample(new Example()//
                                 .addBodyTextExamples("Maria", "04/11/2022", "13:30")//
                         ))//
-                .addComponent(new FooterComponent().setText("Utilize um dos botões abaixo para a confirmação")).addComponent(new ButtonComponent()//
+                .addComponent(new FooterComponent().setText("Utilize um dos botões abaixo para a confirmação"))//
+                .addComponent(new ButtonComponent()//
                         .addButton(new QuickReplyButton("SIM"))//
                         .addButton(new QuickReplyButton("NÃO"))//
                 );
@@ -227,7 +228,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
 
         var request = mockWebServer.takeRequest();
-        // System.out.println(request.getBody().readUtf8());
+
         Assertions.assertEquals("POST", request.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + WABA_ID + "/message_templates", request.getPath());
 
@@ -267,7 +268,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
 
         var request = mockWebServer.takeRequest();
-        //System.out.println(request.getBody().readUtf8());
+
         Assertions.assertEquals("POST", request.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + WABA_ID + "/message_templates", request.getPath());
 
@@ -304,7 +305,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
 
         var request = mockWebServer.takeRequest();
-        //System.out.println(request.getBody().readUtf8());
+
         Assertions.assertEquals("POST", request.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + WABA_ID + "/message_templates", request.getPath());
 
@@ -341,7 +342,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
 
         var request = mockWebServer.takeRequest();
-        // System.out.println(request.getBody().readUtf8());
+
         Assertions.assertEquals("POST", request.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + WABA_ID + "/message_templates", request.getPath());
 
@@ -383,7 +384,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
 
         var request = mockWebServer.takeRequest();
-        //System.out.println(request.getBody().readUtf8());
+
         Assertions.assertEquals("POST", request.getMethod());
         Assertions.assertEquals("/" + API_VERSION + "/" + WABA_ID + "/message_templates", request.getPath());
 
@@ -439,14 +440,20 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
     }
 
     @Test
-    void testRetrieveMessageTemplate1() throws IOException, URISyntaxException {
+    void testRetrieveMessageTemplate1() throws IOException, URISyntaxException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
+        var expectedJson = fromResource("/retTemplate1.json");
+
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/retTemplate1.json")));
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(expectedJson));
 
         var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID);
+        //TODO: review button
+        //var returnedJson = new ObjectMapper().writeValueAsString(templates);
 
+        //JSONAssert.assertEquals(expectedJson, returnedJson,JSONCompareMode.STRICT);
+        // data[1].components[3].buttons[0]
 
         Assertions.assertEquals(7, templates.data().size());
         Assertions.assertEquals("welcome_template3", templates.data().get(0).name());

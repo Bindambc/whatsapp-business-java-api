@@ -3,7 +3,7 @@ package com.whatsapp.api.domain.messages;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.messages.type.HeaderType;
-
+//TODO: Header is incomplete
 /**
  * <p>Header content displayed on top of a message. You cannot set a header if your interactive object is of product type</p>
  */
