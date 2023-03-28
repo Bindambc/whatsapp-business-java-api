@@ -1,0 +1,64 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "interactive": {
+    "action": {
+      "button": "choose an option",
+      "sections": [
+        {
+          "title": "Section 1",
+          "rows": [
+            {
+              "id": "SECTION_1_ROW_1_ID",
+              "title": "Title 1",
+              "description": "SECTION_1_ROW_1_DESCRIPTION"
+            },
+            {
+              "id": "SECTION_1_ROW_2_ID",
+              "title": "Title 2",
+              "description": "SECTION_1_ROW_2_DESCRIPTION"
+            },
+            {
+              "id": "SECTION_1_ROW_3_ID",
+              "title": "Title 3",
+              "description": "SECTION_1_ROW_3_DESCRIPTION"
+            }
+          ]
+        },
+        {
+          "title": "Section 2",
+          "rows": [
+            {
+              "id": "SECTION_2_ROW_1_ID",
+              "title": "Title 1",
+              "description": "SECTION_2_ROW_1_DESCRIPTION"
+            },
+            {
+              "id": "SECTION_2_ROW_2_ID",
+              "title": "Title 2",
+              "description": "SECTION_2_ROW_2_DESCRIPTION"
+            },
+            {
+              "id": "SECTION_2_ROW_3_ID",
+              "title": "Title 3",
+              "description": "SECTION_2_ROW_3_DESCRIPTION"
+            }
+          ]
+        }
+      ]
+    },
+    "type": "LIST",
+    "header": {
+      "type": "text",
+      "text": "Header Text"
+    },
+    "body": {
+      "text": "Body message"
+    },
+    "footer": {
+      "text": "Footer Text"
+    }
+  },
+  "to": "121212121212",
+  "type": "interactive"
+}
