@@ -1,0 +1,12 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "121212121212",
+  "type": "location",
+  "location": {
+    "longitude": "-84.265742",
+    "latitude": "39.284064",
+    "name": "Loveland Castle Museum",
+    "address": "12025 Shore Dr, Loveland, OH 45140"
+  }
+}

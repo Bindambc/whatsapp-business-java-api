@@ -51,6 +51,9 @@ public class Message {
     @JsonProperty("reaction")
     private ReactionMessage reactionMessage;
 
+    @JsonProperty("location")
+    private LocationMessage locationMessage;
+
 
     private Message() {
     }
@@ -251,6 +254,20 @@ public class Message {
         public Message buildReactionMessage(ReactionMessage reactionMessage) {
             var message = new Message(to, MessageType.REACTION);
             message.reactionMessage = reactionMessage;
+            return message;
+
+        }
+
+        /**
+         * Build location message
+         *
+         * @param locationMessage the location message
+         * @return the message
+         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-messages">API documentation</a>
+         */
+        public Message buildLocationMessage(LocationMessage locationMessage) {
+            var message = new Message(to, MessageType.LOCATION);
+            message.locationMessage = locationMessage;
             return message;
 
         }
