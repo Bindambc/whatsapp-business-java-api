@@ -21,6 +21,7 @@ public class UrlButton extends Button {
      * Instantiates a new Url button.
      */
     protected UrlButton() {
+        super(ButtonType.URL);
     }
 
     /**
