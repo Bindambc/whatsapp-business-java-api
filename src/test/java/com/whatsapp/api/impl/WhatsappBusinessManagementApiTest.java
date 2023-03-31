@@ -1,5 +1,6 @@
 package com.whatsapp.api.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
@@ -17,6 +18,7 @@ import com.whatsapp.api.domain.templates.MessageTemplate;
 import com.whatsapp.api.domain.templates.PhoneNumberButton;
 import com.whatsapp.api.domain.templates.QuickReplyButton;
 import com.whatsapp.api.domain.templates.UrlButton;
+import com.whatsapp.api.domain.templates.type.ButtonType;
 import com.whatsapp.api.domain.templates.type.Category;
 import com.whatsapp.api.domain.templates.type.HeaderFormat;
 import com.whatsapp.api.domain.templates.type.LanguageType;
@@ -450,15 +452,20 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
         var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID);
         //TODO: review button
-        //var returnedJson = new ObjectMapper().writeValueAsString(templates);
+        var returnedJson = new ObjectMapper().writeValueAsString(templates);
 
-        //JSONAssert.assertEquals(expectedJson, returnedJson,JSONCompareMode.STRICT);
+        JSONAssert.assertEquals(expectedJson, returnedJson,JSONCompareMode.STRICT);
         // data[1].components[3].buttons[0]
 
         Assertions.assertEquals(7, templates.data().size());
         Assertions.assertEquals("welcome_template3", templates.data().get(0).name());
         Assertions.assertEquals("Hello {{1}}, welcome to our {{2}} test.", templates.data().get(0).components().get(1).getText());
         Assertions.assertEquals("1772832833109192", templates.data().get(6).id());
+
+       var buttonComponent =  (ButtonComponent) templates.data().get(1).components().get(3);
+
+       Assertions.assertEquals(ButtonType.QUICK_REPLY,buttonComponent.getButtons().get(0).getType());
+
 
     }
 

@@ -12,7 +12,7 @@ public class QuickReplyButton extends Button {
      * Instantiates a new Quick reply button.
      */
     protected QuickReplyButton() {
-
+        super(ButtonType.QUICK_REPLY);
     }
 
     /**
