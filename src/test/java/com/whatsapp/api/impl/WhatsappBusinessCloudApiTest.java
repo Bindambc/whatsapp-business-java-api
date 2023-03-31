@@ -29,6 +29,7 @@ import com.whatsapp.api.domain.messages.ImageMessage;
 import com.whatsapp.api.domain.messages.ImageParameter;
 import com.whatsapp.api.domain.messages.InteractiveMessage;
 import com.whatsapp.api.domain.messages.Language;
+import com.whatsapp.api.domain.messages.LocationMessage;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.Name;
 import com.whatsapp.api.domain.messages.Org;
@@ -968,6 +969,32 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
         Assertions.assertTrue(response.success());
 
+    }
+
+    @Test
+    void testLocationMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage13.json");
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildLocationMessage(new LocationMessage()//
+                        .setLatitude("39.284064")
+                        .setLongitude("-84.265742")
+                        .setName("Loveland Castle Museum")
+                        .setAddress("12025 Shore Dr, Loveland, OH 45140"));
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
     }
 
 
