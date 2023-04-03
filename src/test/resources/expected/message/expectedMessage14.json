@@ -1,0 +1,46 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "interactive": {
+    "action": {
+      "buttons": [
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278454",
+            "title": "YES"
+          }
+        },
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278455",
+            "title": "NO"
+          }
+        },
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278456",
+            "title": "CHANGE"
+          }
+        }
+      ]
+    },
+    "type": "BUTTON",
+    "header": {
+      "type": "image",
+      "image": {
+        "link": "https://upload.wikimedia.org/wikipedia/commons/8/87/Tamarama_Beach.jpg"
+      }
+    },
+    "body": {
+      "text": "Would you like to confirm your appointment for tomorrow?"
+    },
+    "footer": {
+      "text": "Choose an option:"
+    }
+  },
+  "to": "121212121212",
+  "type": "interactive"
+}

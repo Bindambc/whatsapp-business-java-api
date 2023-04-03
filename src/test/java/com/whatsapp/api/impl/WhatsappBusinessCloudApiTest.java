@@ -764,6 +764,132 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
     }
 
     @Test
+    void testSendInteractiveMessageWithImageHeader() throws InterruptedException, JSONException, IOException, URISyntaxException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage14.json");
+
+        var interactive = InteractiveMessage.build() //
+                .setAction(new Action() //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278454") //
+                                        .setTitle("YES"))) //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278455") //
+                                        .setTitle("NO"))) //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278456") //
+                                        .setTitle("CHANGE")))) //
+                .setType(InteractiveMessageType.BUTTON) //
+                .setHeader(new Header()//
+                        .setType(HeaderType.IMAGE)//
+                        .setImage(new Image().setLink("https://upload.wikimedia.org/wikipedia/commons/8/87/Tamarama_Beach.jpg"))//
+                ).setBody(new Body() //
+                        .setText("Would you like to confirm your appointment for tomorrow?")) //
+                .setFooter(new Footer().setText("Choose an option:"));
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildInteractiveMessage(interactive);
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+        Assertions.assertNotNull(response);
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+        // System.out.println(recordedRequest.getBody().readUtf8());
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    void testSendInteractiveMessageWithVideoHeader() throws InterruptedException, JSONException, IOException, URISyntaxException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage15.json");
+
+        var interactive = InteractiveMessage.build() //
+                .setAction(new Action() //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278454") //
+                                        .setTitle("YES"))) //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278455") //
+                                        .setTitle("NO"))) //
+                ) //
+                .setType(InteractiveMessageType.BUTTON) //
+                .setHeader(new Header()//
+                        .setType(HeaderType.VIDEO)//
+                        .setVideo(new Video().setLink("https://joy1.videvo.net/videvo_files/video/free/2014-04/large_watermarked/Lonely_tree_at_Sunset_slow_motion_CCBY_NatureClip_preview.mp4"))).setBody(new Body() //
+                        .setText("Do you like this video?")) //
+                .setFooter(new Footer().setText("Choose an option:"));
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildInteractiveMessage(interactive);
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+        Assertions.assertNotNull(response);
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+        //System.out.println(recordedRequest.getBody().readUtf8());
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    void testSendInteractiveMessageWithDocumentHeader() throws InterruptedException, JSONException, IOException, URISyntaxException {
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage16.json");
+
+        var interactive = InteractiveMessage.build() //
+                .setAction(new Action() //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278454") //
+                                        .setTitle("YES"))) //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278455") //
+                                        .setTitle("NO"))) //
+                        .addButton(new Button() //
+                                .setType(ButtonType.REPLY).setReply(new Reply() //
+                                        .setId("1278456") //
+                                        .setTitle("CHANGE")))) //
+                .setType(InteractiveMessageType.BUTTON) //
+                .setHeader(new Header()//
+                        .setType(HeaderType.DOCUMENT)//
+                        .setDocument(new Document()//
+                                .setFileName("schedule.pdf").setLink("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf")))//
+                .setBody(new Body() //
+                        .setText("Would you like to confirm your appointment for tomorrow?")) //
+                .setFooter(new Footer().setText("Choose an option:"));
+
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildInteractiveMessage(interactive);
+
+
+        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+        Assertions.assertNotNull(response);
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+        //System.out.println(recordedRequest.getBody().readUtf8());
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+    }
+
+    @Test
     void testSendInteractiveMessageWithList() throws InterruptedException, JSONException, IOException, URISyntaxException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
 
@@ -980,9 +1106,9 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         var message = MessageBuilder.builder()//
                 .setTo(PHONE_NUMBER_1)//
                 .buildLocationMessage(new LocationMessage()//
-                        .setLatitude("39.284064")
-                        .setLongitude("-84.265742")
-                        .setName("Loveland Castle Museum")
+                        .setLatitude("39.284064")//
+                        .setLongitude("-84.265742")//
+                        .setName("Loveland Castle Museum")//
                         .setAddress("12025 Shore Dr, Loveland, OH 45140"));
 
 

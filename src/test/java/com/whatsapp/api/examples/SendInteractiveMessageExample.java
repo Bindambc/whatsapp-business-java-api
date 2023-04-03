@@ -7,14 +7,17 @@ import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.messages.Action;
 import com.whatsapp.api.domain.messages.Body;
 import com.whatsapp.api.domain.messages.Button;
+import com.whatsapp.api.domain.messages.Document;
 import com.whatsapp.api.domain.messages.Footer;
 import com.whatsapp.api.domain.messages.Header;
+import com.whatsapp.api.domain.messages.Image;
 import com.whatsapp.api.domain.messages.InteractiveMessage;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.Product;
 import com.whatsapp.api.domain.messages.Reply;
 import com.whatsapp.api.domain.messages.Row;
 import com.whatsapp.api.domain.messages.Section;
+import com.whatsapp.api.domain.messages.Video;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
 import com.whatsapp.api.domain.messages.type.ButtonType;
 import com.whatsapp.api.domain.messages.type.HeaderType;
@@ -40,6 +43,13 @@ public class SendInteractiveMessageExample {
         buttonMessage(whatsappBusinessCloudApi);
 
         listMessage(whatsappBusinessCloudApi);
+
+        withImageHeader(whatsappBusinessCloudApi);
+
+        withVideoHeader(whatsappBusinessCloudApi);
+
+        withDocumentHeader(whatsappBusinessCloudApi);
+
 
     }
 
@@ -119,6 +129,93 @@ public class SendInteractiveMessageExample {
 
                         ).setBody(new Body() //
                                 .setText("Would you like to confirm your appointment for tomorrow?")) //
+                        .setFooter(new Footer().setText("Choose an option:")));
+        System.out.println(new ObjectMapper().writeValueAsString(message));
+
+        MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        System.out.println(messageResponse);
+    }
+
+    private static void withImageHeader(WhatsappBusinessCloudApi whatsappBusinessCloudApi) throws JsonProcessingException {
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildInteractiveMessage(InteractiveMessage.build() //
+                        .setAction(new Action() //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278454") //
+                                                .setTitle("YES"))) //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278455") //
+                                                .setTitle("NO"))) //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278456") //
+                                                .setTitle("CHANGE")))) //
+                        .setType(InteractiveMessageType.BUTTON) //
+                        .setHeader(new Header()//
+                                .setType(HeaderType.IMAGE)//
+                                .setImage(new Image().setLink("https://upload.wikimedia.org/wikipedia/commons/8/87/Tamarama_Beach.jpg"))).setBody(new Body() //
+                                .setText("Would you like to confirm your appointment for tomorrow?")) //
+                        .setFooter(new Footer().setText("Choose an option:")));
+        System.out.println(new ObjectMapper().writeValueAsString(message));
+
+        MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        System.out.println(messageResponse);
+    }
+
+    private static void withDocumentHeader(WhatsappBusinessCloudApi whatsappBusinessCloudApi) throws JsonProcessingException {
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildInteractiveMessage(InteractiveMessage.build() //
+                        .setAction(new Action() //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278454") //
+                                                .setTitle("YES"))) //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278455") //
+                                                .setTitle("NO"))) //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278456") //
+                                                .setTitle("CHANGE")))) //
+                        .setType(InteractiveMessageType.BUTTON) //
+                        .setHeader(new Header()//
+                                .setType(HeaderType.DOCUMENT)//
+                                .setDocument(new Document().setFileName("schedule.pdf").setLink("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"))).setBody(new Body() //
+                                .setText("Would you like to confirm your appointment for tomorrow?")) //
+                        .setFooter(new Footer().setText("Choose an option:")));
+        System.out.println(new ObjectMapper().writeValueAsString(message));
+
+        MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        System.out.println(messageResponse);
+    }
+
+    private static void withVideoHeader(WhatsappBusinessCloudApi whatsappBusinessCloudApi) throws JsonProcessingException {
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildInteractiveMessage(InteractiveMessage.build() //
+                        .setAction(new Action() //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278454") //
+                                                .setTitle("YES"))) //
+                                .addButton(new Button() //
+                                        .setType(ButtonType.REPLY).setReply(new Reply() //
+                                                .setId("1278455") //
+                                                .setTitle("NO"))) //
+                        ) //
+                        .setType(InteractiveMessageType.BUTTON) //
+                        .setHeader(new Header()//
+                                .setType(HeaderType.VIDEO)//
+                                .setVideo(new Video().setLink("https://joy1.videvo.net/videvo_files/video/free/2014-04/large_watermarked/Lonely_tree_at_Sunset_slow_motion_CCBY_NatureClip_preview.mp4"))).setBody(new Body() //
+                                .setText("Do you like this video?")) //
                         .setFooter(new Footer().setText("Choose an option:")));
         System.out.println(new ObjectMapper().writeValueAsString(message));
 

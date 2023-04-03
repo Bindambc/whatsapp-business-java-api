@@ -1,0 +1,39 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "interactive": {
+    "action": {
+      "buttons": [
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278454",
+            "title": "YES"
+          }
+        },
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278455",
+            "title": "NO"
+          }
+        }
+      ]
+    },
+    "type": "BUTTON",
+    "header": {
+      "type": "video",
+      "video": {
+        "link": "https://joy1.videvo.net/videvo_files/video/free/2014-04/large_watermarked/Lonely_tree_at_Sunset_slow_motion_CCBY_NatureClip_preview.mp4"
+      }
+    },
+    "body": {
+      "text": "Do you like this video?"
+    },
+    "footer": {
+      "text": "Choose an option:"
+    }
+  },
+  "to": "121212121212",
+  "type": "interactive"
+}
