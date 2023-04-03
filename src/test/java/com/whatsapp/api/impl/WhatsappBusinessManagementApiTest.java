@@ -454,7 +454,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         //TODO: review button
         var returnedJson = new ObjectMapper().writeValueAsString(templates);
 
-        JSONAssert.assertEquals(expectedJson, returnedJson,JSONCompareMode.STRICT);
+        JSONAssert.assertEquals(expectedJson, returnedJson, JSONCompareMode.STRICT);
         // data[1].components[3].buttons[0]
 
         Assertions.assertEquals(7, templates.data().size());
@@ -462,9 +462,9 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("Hello {{1}}, welcome to our {{2}} test.", templates.data().get(0).components().get(1).getText());
         Assertions.assertEquals("1772832833109192", templates.data().get(6).id());
 
-       var buttonComponent =  (ButtonComponent) templates.data().get(1).components().get(3);
+        var buttonComponent = (ButtonComponent) templates.data().get(1).components().get(3);
 
-       Assertions.assertEquals(ButtonType.QUICK_REPLY,buttonComponent.getButtons().get(0).getType());
+        Assertions.assertEquals(ButtonType.QUICK_REPLY, buttonComponent.getButtons().get(0).getType());
 
 
     }

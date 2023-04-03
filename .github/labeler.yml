@@ -1,13 +1,13 @@
 tests:
-- src/test/**/*
+  - src/test/**/*
 java:
-- '**/*.java'
+  - '**/*.java'
 documentation:
-- '**/*.md'
+  - '**/*.md'
 markdown:
-- '**/*.md'
+  - '**/*.md'
 github-actions:
-- .github/**/*
+  - .github/**/*
 dependencies:
-- pom.xml
+  - pom.xml
 

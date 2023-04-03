@@ -1,0 +1,47 @@
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "interactive": {
+    "action": {
+      "buttons": [
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278454",
+            "title": "YES"
+          }
+        },
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278455",
+            "title": "NO"
+          }
+        },
+        {
+          "type": "reply",
+          "reply": {
+            "id": "1278456",
+            "title": "CHANGE"
+          }
+        }
+      ]
+    },
+    "type": "BUTTON",
+    "header": {
+      "type": "document",
+      "document": {
+        "link": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "filename": "schedule.pdf"
+      }
+    },
+    "body": {
+      "text": "Would you like to confirm your appointment for tomorrow?"
+    },
+    "footer": {
+      "text": "Choose an option:"
+    }
+  },
+  "to": "121212121212",
+  "type": "interactive"
+}

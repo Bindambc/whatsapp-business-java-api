@@ -5,8 +5,8 @@ name: Maven Package
 
 on:
   release:
-    types: [created]
-    
+    types: [ created ]
+
   workflow_dispatch:
 
 jobs:
