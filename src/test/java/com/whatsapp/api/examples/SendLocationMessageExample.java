@@ -1,20 +1,20 @@
 package com.whatsapp.api.examples;
 
-import static com.whatsapp.api.TestConstants.PHONE_NUMBER_1;
-import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
-import static com.whatsapp.api.TestConstants.TOKEN;
-
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.domain.messages.LocationMessage;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
 import com.whatsapp.api.impl.WhatsappBusinessCloudApi;
 
+import static com.whatsapp.api.TestConstants.PHONE_NUMBER_1;
+import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
+import static com.whatsapp.api.TestConstants.TOKEN;
+
 public class SendLocationMessageExample {
 
-	public static void main(String[] args) {
-		
-		WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+    public static void main(String[] args) {
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
         var locationMessage = new LocationMessage()//
@@ -29,6 +29,6 @@ public class SendLocationMessageExample {
 
         System.out.println(messageResponse);
 
-	}
+    }
 
 }
