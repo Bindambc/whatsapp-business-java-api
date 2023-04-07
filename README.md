@@ -49,6 +49,8 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 	- [Retrieving the URL for a specific media](#retrieving-the-url-for-a-specific-media)
 	- [Deleting media](#deleting-a-specific-media)
 	- [downloading media](#downloading-media-from-a-media-url)
+- [:loudspeaker: Call to Action](#loudspeaker-call-to-action)
+- [:hammer_and_wrench: Get Involved](#hammer_and_wrench-get-involved)
 - [:open_file_folder: Examples folder](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples)
 
 
