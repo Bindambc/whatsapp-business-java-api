@@ -1,4 +1,4 @@
-# [ <img src="https://user-images.githubusercontent.com/7831956/222028018-181cf927-781c-40a9-af7a-e3c3d1e39390.png" width="28" height="28"> Whatsapp Business java api SDK](https://bindambc.github.io/whatsapp-business-java-api/)
+# [ <img src="https://user-images.githubusercontent.com/7831956/222028018-181cf927-781c-40a9-af7a-e3c3d1e39390.png" width="68" height="68"> Whatsapp Business java api SDK](https://bindambc.github.io/whatsapp-business-java-api/)
 
 [![Java CI with Maven](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/maven-ci.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/maven-ci.yml)
 [![CodeQL](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Bindambc/whatsapp-business-java-api/actions/workflows/codeql-analysis.yml)
@@ -13,7 +13,7 @@ Whatsapp business api SDK, written in java. This SDK implements the Official [Wh
 - upload, delete and retrieve media files.
 - receive webhooks events
 
-The WhatsApp Business API allows medium and large businesses to communicate with their customers at scale. Using the API, businesses can build systems that connect thousands of customers with agents or bots, enabling both programmatic and manual communication. Additionally, you can integrate the API with numerous backend systems, such as CRM and marketing platforms.
+The WhatsApp Business API allows medium and large businesses to communicate with their customers at scale. Using the API, businesses can build systems that connect thousands of customers with agents or bots, enabling both programmatic and manual communication. Additionally, you can integrate the API with numerous backend systems, such as CRM and marketing platforms.The library is designed to be simple and flexible, making it ideal for a wide range of use cases.
 
 This sdk implements whatsapp business cloud api version v16.0. [See api changelog](https://developers.facebook.com/docs/whatsapp/business-platform/changelog)
 
@@ -49,6 +49,8 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 	- [Retrieving the URL for a specific media](#retrieving-the-url-for-a-specific-media)
 	- [Deleting media](#deleting-a-specific-media)
 	- [downloading media](#downloading-media-from-a-media-url)
+- [:loudspeaker: Call to Action](#loudspeaker-call-to-action)
+- [:hammer_and_wrench: Get Involved](#hammer_and_wrench-get-involved)
 - [:open_file_folder: Examples folder](https://github.com/Bindambc/whatsapp-business-java-api/tree/main/src/test/java/com/whatsapp/api/examples)
 
 
@@ -80,7 +82,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
    <dependency>
       <groupId>com.github.Bindambc</groupId>
       <artifactId>whatsapp-business-java-api</artifactId>
-      <version>v0.2.0</version>
+      <version>v0.3.0</version>
    </dependency>
 ```
 
@@ -101,7 +103,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 
 ```gradle
 	dependencies {
-	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.2.0'
+	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.3.0'
 	}
 ```
 
@@ -666,3 +668,26 @@ You can use 4 different endpoints to manage your media:
         Files.write(Path.of("src/test/java/com/whatsapp/api/examples/" + mediaFile.fileName()), mediaFile.content());
 ```
 [:arrow_heading_up: back](#link-links)
+
+## :loudspeaker: Call to Action 
+
+We hope that you've found this documentation helpful and that you're excited to start using the WhatsApp Business Java API! Whether you're a developer looking to integrate WhatsApp Business functionality into your application or a user interested in contributing to the project, there are many ways to get involved.
+
+Try out the API today and see how it can enhance your messaging capabilities. We'd also love to hear your feedback and suggestions for how we can improve the library, so please feel free to open an issue or submit a pull request on our GitHub page.
+
+Thank you for your interest in the WhatsApp Business Java API! We look forward to working with you.
+
+## :hammer_and_wrench: Get Involved 
+
+[Contributing:](https://github.com/Bindambc/whatsapp-business-java-api/issues)
+
+We welcome contributions from anyone who is interested in helping to improve this project. If you would like to contribute, here are a few ways you can get involved:
+
+Report issues: If you find a bug or have a suggestion for how to improve the library, please open an issue on the project's GitHub page.
+
+Submit pull requests: If you have code changes you'd like to contribute, please submit a pull request on the project's GitHub page. Before submitting, please make sure your changes adhere to the project's code style and that all tests pass.
+
+Spread the word: If you find the library useful, please tell others about it! You can share the project on social media, write a blog post about it, or mention it in a conference talk.
+
+By contributing to this project, you will be helping to make it better for everyone who uses it. Thank you for your support!
+

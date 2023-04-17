@@ -17,25 +17,18 @@
             "id": "1278455",
             "title": "NO"
           }
-        },
-        {
-          "type": "reply",
-          "reply": {
-            "id": "1278456",
-            "title": "CHANGE"
-          }
         }
       ]
     },
     "type": "BUTTON",
     "header": {
-      "type": "image",
-      "image": {
-        "link": "https://upload.wikimedia.org/wikipedia/commons/8/87/Tamarama_Beach.jpg"
+      "type": "video",
+      "video": {
+        "link": "https://joy1.videvo.net/videvo_files/video/free/2014-04/large_watermarked/Lonely_tree_at_Sunset_slow_motion_CCBY_NatureClip_preview.mp4"
       }
     },
     "body": {
-      "text": "Would you like to confirm your appointment for tomorrow?"
+      "text": "Do you like this video?"
     },
     "footer": {
       "text": "Choose an option:"

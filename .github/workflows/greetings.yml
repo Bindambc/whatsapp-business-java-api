@@ -1,6 +1,6 @@
 name: Greetings
 
-on: [pull_request_target, issues]
+on: [ pull_request_target, issues ]
 
 jobs:
   greeting:
@@ -9,8 +9,8 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: "Hello and welcome! We're glad to see that you've opened your first issue. We appreciate your contribution and would love to hear more about the problem you're experiencing. Our team is actively monitoring this repository and we will do our best to respond to your issue as soon as possible. Thank you for using our project and we look forward to working with you!"
-        pr-message: "Hello and welcome! We are excited to see your first pull request and appreciate your contribution to our project. Our team is reviewing your changes and we will provide feedback as soon as possible. Thank you for taking the time to improve our project and we look forward to working with you!"
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "Hello and welcome! We're glad to see that you've opened your first issue. We appreciate your contribution and would love to hear more about the problem you're experiencing. Our team is actively monitoring this repository and we will do our best to respond to your issue as soon as possible. Thank you for using our project and we look forward to working with you!"
+          pr-message: "Hello and welcome! We are excited to see your first pull request and appreciate your contribution to our project. Our team is reviewing your changes and we will provide feedback as soon as possible. Thank you for taking the time to improve our project and we look forward to working with you!"

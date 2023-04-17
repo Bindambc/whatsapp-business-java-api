@@ -29,9 +29,10 @@
     },
     "type": "BUTTON",
     "header": {
-      "type": "image",
-      "image": {
-        "link": "https://upload.wikimedia.org/wikipedia/commons/8/87/Tamarama_Beach.jpg"
+      "type": "document",
+      "document": {
+        "link": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "filename": "schedule.pdf"
       }
     },
     "body": {

@@ -41,58 +41,61 @@ public class LocationMessage {
 
     /**
      * Gets longitude.
+     *
      * @return the longitude
      */
-	public String getLongitude() {
-		return longitude;
-	}
+    public String getLongitude() {
+        return longitude;
+    }
 
-	/**
-	 * Sets longitude.
-	 * 
-	 * @param longitude
-	 * @return LocationMessage
-	 */
-	public LocationMessage setLongitude(String longitude) {
-		this.longitude = longitude;
-		return this;
-	}
+    /**
+     * Sets longitude.
+     *
+     * @param longitude
+     * @return LocationMessage
+     */
+    public LocationMessage setLongitude(String longitude) {
+        this.longitude = longitude;
+        return this;
+    }
 
-	/**
-	 * Gets latitude.
-	 * @return the latitude
-	 */
-	public String getLatitude() {
-		return latitude;
-	}
+    /**
+     * Gets latitude.
+     *
+     * @return the latitude
+     */
+    public String getLatitude() {
+        return latitude;
+    }
 
-	/**
-	 * Sets latitude.
-	 * 
-	 * @param latitude
-	 * @return LocationMessage
-	 */
-	public LocationMessage setLatitude(String latitude) {
-		this.latitude = latitude;
-		return this;
-	}
+    /**
+     * Sets latitude.
+     *
+     * @param latitude
+     * @return LocationMessage
+     */
+    public LocationMessage setLatitude(String latitude) {
+        this.latitude = latitude;
+        return this;
+    }
 
-	/**
-	 * Gets address.
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
+    /**
+     * Gets address.
+     *
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
 
-	/**
-	 * Sets address.
-	 * 
-	 * @param address
-	 * @return LocationMessage
-	 */
-	public LocationMessage setAddress(String address) {
-		this.address = address;
-		return this;
-	}
+    /**
+     * Sets address.
+     *
+     * @param address
+     * @return LocationMessage
+     */
+    public LocationMessage setAddress(String address) {
+        this.address = address;
+        return this;
+    }
 }
