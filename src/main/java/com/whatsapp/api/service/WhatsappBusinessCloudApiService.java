@@ -81,4 +81,14 @@ public interface WhatsappBusinessCloudApiService {
     @DELETE("/" + API_VERSION + "/{media-id}")
     Call<Response> deleteMedia(@Path("media-id") String mediaId);
 
+    /**
+     * Send mark Meassge as read call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param message       the message
+     * @return the call
+     */
+    @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
+    Call<Response> markMessageAsRead(@Path("Phone-Number-ID") String phoneNumberId, @Body Message message);
+
 }

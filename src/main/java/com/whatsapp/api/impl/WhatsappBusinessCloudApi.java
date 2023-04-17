@@ -113,5 +113,17 @@ public class WhatsappBusinessCloudApi {
         return executeSync(whatsappBusinessCloudApiService.deleteMedia(mediaId));
     }
 
+    /**
+     * Mark a message as Read
+     *
+     * @param phoneNumberId Represents a specific phone number.
+     * @param message       The {@link Message} object.
+     * @return the response
+     * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/mark-message-as-read">official documentation</a>
+     */
+    public Response markMessageAsRead(String phoneNumberId, Message message) {
+        return executeSync(whatsappBusinessCloudApiService.markMessageAsRead(phoneNumberId, message));
+    }
+
 
 }
