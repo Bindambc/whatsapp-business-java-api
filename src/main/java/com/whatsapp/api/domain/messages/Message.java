@@ -54,12 +54,6 @@ public class Message {
     @JsonProperty("location")
     private LocationMessage locationMessage;
 
-    @JsonProperty("status")
-    private String status;
-
-    @JsonProperty("message_id")
-    private String messageId;
-
 
     private Message() {
     }
@@ -67,11 +61,6 @@ public class Message {
     private Message(String to, MessageType type) {
         this.to = to;
         this.type = type;
-    }
-
-    private Message(String status, String messageId) {
-        this.status = status;
-        this.messageId = messageId;
     }
 
     /**
@@ -281,18 +270,6 @@ public class Message {
             message.locationMessage = locationMessage;
             return message;
 
-        }
-
-        /**
-         * Build Mark as read message
-         *
-         * @param messageId the messageId
-         * @return the message
-         * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/mark-message-as-read">API documentation</a>
-         */
-        public Message buildMarkAsReadMessage(String messageId) {
-            var message = new Message("read", messageId);
-            return message;
         }
 
     }

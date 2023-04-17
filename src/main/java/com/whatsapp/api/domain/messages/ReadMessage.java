@@ -32,24 +32,10 @@ public class ReadMessage {
 	}
 
 	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	/**
 	 * @return the messageId
 	 */
 	public String getMessageId() {
 		return messageId;
-	}
-
-	/**
-	 * @param messageId the messageId to set
-	 */
-	public void setMessageId(String messageId) {
-		this.messageId = messageId;
 	}
 
 	/**
