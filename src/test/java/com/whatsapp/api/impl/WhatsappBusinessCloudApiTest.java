@@ -1126,7 +1126,13 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testMarkAsReadMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+    	
+    	String responseBody = """
+				                {
+				                "success": true
+				        		}
+				              """;
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(responseBody));
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage17.json");
 
@@ -1140,7 +1146,7 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
         JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
 
-        Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+        Assertions.assertEquals(true, response.success());
     }
 
 
