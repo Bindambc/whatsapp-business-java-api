@@ -1,10 +1,10 @@
 package com.whatsapp.api.examples;
 
 import static com.whatsapp.api.TestConstants.TOKEN;
+import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
 
 import com.whatsapp.api.WhatsappApiFactory;
-import com.whatsapp.api.domain.messages.Message;
-import com.whatsapp.api.domain.messages.Message.MessageBuilder;
+import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.impl.WhatsappBusinessCloudApi;
 
 public class MarkMessageAsReadExample {
@@ -14,9 +14,9 @@ public class MarkMessageAsReadExample {
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
 
-        Message message = MessageBuilder.builder().buildMarkAsReadMessage("123456");
+        ReadMessage message = new ReadMessage("123456");
         //Mark message as read
-        var response = whatsappBusinessCloudApi.markMessageAsRead(TOKEN, message);
+        var response = whatsappBusinessCloudApi.markMessageAsRead(PHONE_NUMBER_ID, message);
 
         System.out.println(response);
 	}

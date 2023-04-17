@@ -4,6 +4,7 @@ package com.whatsapp.api.service;
 import com.whatsapp.api.domain.media.Media;
 import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
+import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
 import com.whatsapp.api.domain.response.Response;
 import okhttp3.MultipartBody;
@@ -89,6 +90,6 @@ public interface WhatsappBusinessCloudApiService {
      * @return the call
      */
     @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
-    Call<Response> markMessageAsRead(@Path("Phone-Number-ID") String phoneNumberId, @Body Message message);
+    Call<Response> markMessageAsRead(@Path("Phone-Number-ID") String phoneNumberId, @Body ReadMessage message);
 
 }

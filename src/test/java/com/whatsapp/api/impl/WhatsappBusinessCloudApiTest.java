@@ -35,6 +35,7 @@ import com.whatsapp.api.domain.messages.Name;
 import com.whatsapp.api.domain.messages.Org;
 import com.whatsapp.api.domain.messages.Phone;
 import com.whatsapp.api.domain.messages.ReactionMessage;
+import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.domain.messages.Reply;
 import com.whatsapp.api.domain.messages.Row;
 import com.whatsapp.api.domain.messages.Section;
@@ -1129,10 +1130,9 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage17.json");
 
-        var message = MessageBuilder.builder()//
-                .buildMarkAsReadMessage("123456");
+        var message = new ReadMessage("123456");
 
-        var response = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+        var response = whatsappBusinessCloudApi.markMessageAsRead(PHONE_NUMBER_ID, message);
 
         RecordedRequest recordedRequest = mockWebServer.takeRequest();
         Assertions.assertEquals("POST", recordedRequest.getMethod());

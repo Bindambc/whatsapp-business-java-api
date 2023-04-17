@@ -5,6 +5,7 @@ import com.whatsapp.api.domain.media.Media;
 import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
+import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.service.WhatsappBusinessCloudApiService;
@@ -121,7 +122,7 @@ public class WhatsappBusinessCloudApi {
      * @return the response
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/mark-message-as-read">official documentation</a>
      */
-    public Response markMessageAsRead(String phoneNumberId, Message message) {
+    public Response markMessageAsRead(String phoneNumberId, ReadMessage message) {
         return executeSync(whatsappBusinessCloudApiService.markMessageAsRead(phoneNumberId, message));
     }
 
