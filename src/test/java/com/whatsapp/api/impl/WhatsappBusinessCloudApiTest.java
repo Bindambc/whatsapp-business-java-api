@@ -1146,7 +1146,7 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
         JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
 
-        Assertions.assertEquals(true, response.success());
+        Assertions.assertTrue(response.success());
     }
 
 

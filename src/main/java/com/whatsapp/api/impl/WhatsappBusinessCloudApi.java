@@ -118,7 +118,7 @@ public class WhatsappBusinessCloudApi {
      * Mark a message as Read
      *
      * @param phoneNumberId Represents a specific phone number.
-     * @param message       The {@link Message} object.
+     * @param message       The {@link ReadMessage} object.
      * @return the response
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/mark-message-as-read">official documentation</a>
      */
