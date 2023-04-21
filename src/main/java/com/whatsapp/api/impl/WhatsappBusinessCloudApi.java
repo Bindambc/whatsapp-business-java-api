@@ -5,6 +5,7 @@ import com.whatsapp.api.domain.media.Media;
 import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
+import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.service.WhatsappBusinessCloudApiService;
@@ -111,6 +112,18 @@ public class WhatsappBusinessCloudApi {
     public Response deleteMedia(String mediaId) {
 
         return executeSync(whatsappBusinessCloudApiService.deleteMedia(mediaId));
+    }
+
+    /**
+     * Mark a message as Read
+     *
+     * @param phoneNumberId Represents a specific phone number.
+     * @param message       The {@link ReadMessage} object.
+     * @return the response
+     * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/mark-message-as-read">official documentation</a>
+     */
+    public Response markMessageAsRead(String phoneNumberId, ReadMessage message) {
+        return executeSync(whatsappBusinessCloudApiService.markMessageAsRead(phoneNumberId, message));
     }
 
 

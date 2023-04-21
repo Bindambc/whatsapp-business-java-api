@@ -81,7 +81,7 @@ public class Message {
         return recipientType;
     }
 
-    /**
+	/**
      * The type Message builder.
      */
     public static class MessageBuilder {
@@ -271,7 +271,6 @@ public class Message {
             return message;
 
         }
-
 
     }
 
