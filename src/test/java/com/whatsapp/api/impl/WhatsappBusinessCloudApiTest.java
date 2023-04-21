@@ -35,6 +35,7 @@ import com.whatsapp.api.domain.messages.Name;
 import com.whatsapp.api.domain.messages.Org;
 import com.whatsapp.api.domain.messages.Phone;
 import com.whatsapp.api.domain.messages.ReactionMessage;
+import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.domain.messages.Reply;
 import com.whatsapp.api.domain.messages.Row;
 import com.whatsapp.api.domain.messages.Section;
@@ -1121,6 +1122,31 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
 
         Assertions.assertEquals("wamid.gBGGSFcCNEOPAgkO_KJ55r4w_ww", response.messages().get(0).id());
+    }
+
+    @Test
+    void testMarkAsReadMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
+    	
+    	String responseBody = """
+				                {
+				                "success": true
+				        		}
+				              """;
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(responseBody));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage17.json");
+
+        var message = new ReadMessage("123456");
+
+        var response = whatsappBusinessCloudApi.markMessageAsRead(PHONE_NUMBER_ID, message);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/messages", recordedRequest.getPath());
+
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+        Assertions.assertTrue(response.success());
     }
 
 
