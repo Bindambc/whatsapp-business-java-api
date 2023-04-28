@@ -17,6 +17,8 @@ public record Error(
         String message,
 
         @JsonProperty("error_data")
-        ErrorData errorData
+        ErrorData errorData,
+        @JsonProperty("href")
+        String href
 ) {
 }
