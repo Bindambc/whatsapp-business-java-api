@@ -431,5 +431,26 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("Media upload error", statuses.get(0).errors().get(0).message());
         Assertions.assertEquals("Unsupported Video mime type text/html. Please use one of video/3gpp, video/mp4.", statuses.get(0).errors().get(0).errorData().details());
     }
+
+    @Test
+    void testDeserializationReEngagementMessageError() throws IOException, URISyntaxException {
+        var payload = fromResource(JSON_FOLDER + "reEngagementMessageError.json");
+
+        var obj = WebHook.constructEvent(payload);
+
+        Assertions.assertEquals(FieldType.MESSAGES, obj.entry().get(0).changes().get(0).field());
+
+        var statuses = obj.entry().get(0).changes().get(0).value().statuses();
+
+        Assertions.assertNotNull(statuses);
+
+        Assertions.assertEquals(MessageStatus.FAILED, statuses.get(0).status());
+        Assertions.assertEquals(131047, statuses.get(0).errors().get(0).code());
+        Assertions.assertEquals("Re-engagement message", statuses.get(0).errors().get(0).title());
+        Assertions.assertEquals("Re-engagement message", statuses.get(0).errors().get(0).message());
+        Assertions.assertEquals("https://developers.facebook.com/docs/whatsapp/cloud-api/support/error-codes/", statuses.get(0).errors().get(0).href());
+        Assertions.assertEquals("Message failed to send because more than 24 hours have passed since the customer last replied to this number.", statuses.get(0).errors().get(0).errorData().details());
+
+    }
 }
 
