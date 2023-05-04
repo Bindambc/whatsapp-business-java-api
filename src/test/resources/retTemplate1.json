@@ -23,7 +23,8 @@
       ],
       "language": "en_US",
       "status": "REJECTED",
-      "category": "TRANSACTIONAL",
+      "category": "UTILITY",
+      "previous_category" : "TRANSACTIONAL",
       "id": "1214624639427985"
     },
     {
@@ -67,7 +68,8 @@
       ],
       "language": "pt_BR",
       "status": "APPROVED",
-      "category": "TRANSACTIONAL",
+      "category": "UTILITY",
+      "previous_category" : "TRANSACTIONAL",
       "id": "1145489599421404"
     },
     {
@@ -115,7 +117,8 @@
       ],
       "language": "pt_BR",
       "status": "APPROVED",
-      "category": "TRANSACTIONAL",
+      "category": "UTILITY",
+      "previous_category" : "TRANSACTIONAL",
       "id": "1184925792108517"
     },
     {
@@ -144,7 +147,8 @@
       ],
       "language": "pt_BR",
       "status": "APPROVED",
-      "category": "TRANSACTIONAL",
+      "category": "AUTHENTICATION",
+      "previous_category" : "TRANSACTIONAL",
       "id": "449731913956272"
     },
     {
@@ -170,7 +174,8 @@
       ],
       "language": "en_US",
       "status": "APPROVED",
-      "category": "TRANSACTIONAL",
+      "category": "UTILITY",
+      "previous_category" : "TRANSACTIONAL",
       "id": "1144099983158932"
     },
     {
@@ -211,7 +216,8 @@
       ],
       "language": "pt_BR",
       "status": "APPROVED",
-      "category": "TRANSACTIONAL",
+      "category": "UTILITY",
+      "previous_category" : "TRANSACTIONAL",
       "id": "1169370916992361"
     },
     {
@@ -233,7 +239,8 @@
       ],
       "language": "en_US",
       "status": "APPROVED",
-      "category": "ACCOUNT_UPDATE",
+      "category": "MARKETING",
+      "previous_category" : "ACCOUNT_UPDATE",
       "id": "1772832833109192"
     }
   ],
