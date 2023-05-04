@@ -23,7 +23,8 @@
       ],
       "language": "en_US",
       "status": "REJECTED",
-      "category": "TRANSACTIONAL",
+      "category": "UTILITY",
+      "previous_category" : "ACCOUNT_UPDATE",
       "id": "1214624639427985"
     }
   ],
