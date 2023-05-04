@@ -23,7 +23,8 @@
       ],
       "language": "en_US",
       "status": "REJECTED",
-      "category": "TRANSACTIONAL",
+      "category": "MARKETING",
+      "previous_category": "ACCOUNT_UPDATE",
       "id": "1214624639427985"
     },
     {
@@ -67,7 +68,8 @@
       ],
       "language": "pt_BR",
       "status": "APPROVED",
-      "category": "TRANSACTIONAL",
+      "category": "UTILITY",
+      "previous_category": "ACCOUNT_UPDATE",
       "id": "1145489599421404"
     }
   ],
