@@ -26,6 +26,7 @@
                 "timestamp": "1673029501",
                 "type": "video",
                 "video": {
+                  "caption": "hello world",
                   "mime_type": "video/mp4",
                   "sha256": "waIq5BBe5GgjT6DHWu3LY9F8jYOZzYLHRRRGDTbipNk=",
                   "id": "661828760183585"
