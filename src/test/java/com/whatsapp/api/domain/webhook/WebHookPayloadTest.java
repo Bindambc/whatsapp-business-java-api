@@ -247,6 +247,7 @@ class WebHookPayloadTest extends TestUtils {
         Assertions.assertEquals("1673029501", obj.entry().get(0).changes().get(0).value().messages().get(0).timestamp());
         Assertions.assertEquals(MessageType.VIDEO, obj.entry().get(0).changes().get(0).value().messages().get(0).type());
         Assertions.assertEquals("video/mp4", obj.entry().get(0).changes().get(0).value().messages().get(0).video().mimeType());
+        Assertions.assertEquals("hello world", obj.entry().get(0).changes().get(0).value().messages().get(0).video().caption());
         Assertions.assertEquals("waIq5BBe5GgjT6DHWu3LY9F8jYOZzYLHRRRGDTbipNk=", obj.entry().get(0).changes().get(0).value().messages().get(0).video().sha256());
         Assertions.assertEquals("661828760183585", obj.entry().get(0).changes().get(0).value().messages().get(0).video().id());
 
