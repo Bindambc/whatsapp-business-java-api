@@ -321,6 +321,7 @@ class WebHookPayloadTest extends TestUtils {
 
         Assertions.assertEquals(-10.93941311633, obj.entry().get(0).changes().get(0).value().messages().get(0).location().latitude());
         Assertions.assertEquals(-10.606395436721, obj.entry().get(0).changes().get(0).value().messages().get(0).location().longitude());
+        Assertions.assertEquals("https://foursquare.com/v/5c42c5667d8497002c6e09f9", obj.entry().get(0).changes().get(0).value().messages().get(0).location().url());
 
     }
 
