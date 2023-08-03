@@ -13,7 +13,9 @@ public record Location(
 
         @JsonProperty("name") String name,
 
-        @JsonProperty("longitude") double longitude
+        @JsonProperty("longitude") double longitude,
+
+        @JsonProperty("url") String url
 
 ) {
 }
