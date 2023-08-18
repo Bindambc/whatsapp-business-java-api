@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
+import com.whatsapp.api.domain.config.CommerceDataItem;
 import com.whatsapp.api.domain.phone.RequestCode;
 import com.whatsapp.api.domain.phone.VerifyCode;
 import com.whatsapp.api.domain.phone.type.CodeMethodType;
@@ -503,6 +504,22 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
     }
 
     @Test
+    void testRetrieveMessageTemplate3WithLimit() throws IOException, URISyntaxException {
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+        WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/retTemplate3.json")));
+
+        var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID, 1, "10");
+
+
+        Assertions.assertEquals(1, templates.data().size());
+        Assertions.assertEquals("welcome_template3", templates.data().get(0).name());
+        Assertions.assertEquals("Hello {{1}}, welcome to our {{2}} test.", templates.data().get(0).components().get(1).getText());
+
+    }
+
+    @Test
     void testRetrievePhoneNumber() throws IOException, URISyntaxException, InterruptedException {
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/phone/phoneNumber.json")));
 
@@ -679,6 +696,57 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
         Assertions.assertEquals("[136025] Verify code error | O código inserido está incorreto.", ex.getMessage());
 
+    }
+
+    /**
+     * Method under test: {@link WhatsappBusinessManagementApi#getWhatsappCommerceSettings(String, String...)}
+     */
+    @Test
+    void getWhatsappCommerceSettings() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(fromResource("/config/commerceSettings.json")));
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessManagementApi businessManagementApi = factory.newBusinessManagementApi();
+
+        var response = businessManagementApi.getWhatsappCommerceSettings(PHONE_NUMBER_ID, "is_catalog_visible");
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("GET", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/whatsapp_commerce_settings?fields=is_catalog_visible", recordedRequest.getPath());
+
+        Assertions.assertFalse(response.data().isEmpty());
+        Assertions.assertEquals("1001185490903808", response.data().get(0).getId());
+        Assertions.assertTrue(response.data().get(0).isCatalogVisible());
+    }
+
+    /**
+     * Method under test: {@link WhatsappBusinessManagementApi#updateWhatsappCommerceSettings(String, CommerceDataItem)}
+     */
+    @Test
+    void updateWhatsappCommerceSettings() throws IOException, URISyntaxException, InterruptedException {
+        mockWebServer.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(fromResource("/reponse.json"))
+        );
+
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        WhatsappBusinessManagementApi businessManagementApi = factory.newBusinessManagementApi();
+
+        CommerceDataItem commerceDataItem = new CommerceDataItem()
+                .setCartEnabled(true)
+                .setCatalogVisible(true);
+
+        var response = businessManagementApi.updateWhatsappCommerceSettings(PHONE_NUMBER_ID, commerceDataItem);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID + "/whatsapp_commerce_settings", recordedRequest.getPath());
+
+        Assertions.assertTrue(response.success());
     }
 
 }
