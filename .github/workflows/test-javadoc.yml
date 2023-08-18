@@ -1,0 +1,15 @@
+name: Test - JavaDoc
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate javadoc
+        run: |
+          mvn javadoc:javadoc
