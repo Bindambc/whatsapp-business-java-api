@@ -1,5 +1,6 @@
 com.whatsapp.api
 com.whatsapp.api.configuration
+com.whatsapp.api.domain.config
 com.whatsapp.api.domain.errors
 com.whatsapp.api.domain.media
 com.whatsapp.api.domain.messages
