@@ -56,6 +56,7 @@ import com.whatsapp.api.domain.messages.type.HeaderType;
 import com.whatsapp.api.domain.messages.type.InteractiveMessageType;
 import com.whatsapp.api.domain.messages.type.PhoneType;
 import com.whatsapp.api.domain.messages.type.UrlType;
+import com.whatsapp.api.domain.phone.TwoStepCode;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.utils.Formatter;
@@ -1126,12 +1127,12 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testMarkAsReadMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-    	
-    	String responseBody = """
-				                {
-				                "success": true
-				        		}
-				              """;
+
+        String responseBody = """
+                      {
+                      "success": true
+                }
+                    """;
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(responseBody));
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage17.json");
@@ -1149,6 +1150,29 @@ public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
         Assertions.assertTrue(response.success());
     }
 
+    @Test
+    void testTwoStepVerification() throws IOException, URISyntaxException, InterruptedException, JSONException {
+
+        String responseBody = """
+                     {
+                      "success": true
+                }
+                    """;
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(responseBody));
+
+        var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage18.json");
+
+        var twoStepCode = new TwoStepCode("123456");
+
+        var response = whatsappBusinessCloudApi.twoStepVerification(PHONE_NUMBER_ID, twoStepCode);
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("POST", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + PHONE_NUMBER_ID, recordedRequest.getPath());
+
+        JSONAssert.assertEquals(expectedJson, recordedRequest.getBody().readUtf8(), JSONCompareMode.STRICT);
+
+        Assertions.assertTrue(response.success());
+    }
 
 }
-
