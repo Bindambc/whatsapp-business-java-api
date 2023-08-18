@@ -6,15 +6,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * The type Commerce data item.
  *
- * <p>
- * <li> <b>is_catalog_visible</b> – <i>Optional</i>. Set to true to enable cart and display cart-related buttons in the business phone number's messages, catalogs, and product details.
+ * <ul>
+ * <li> <b>is_catalog_visible</b> - <i>Optional</i>. Set to true to enable cart and display cart-related buttons in the business phone number's messages, catalogs, and product details.
  * Set to false to disable cart. When disabled, customers can see products and their details in messages, but all cart related buttons will not appear in any message view.
- * </br>
- * <p>
+ * <br>
+ *
  * <li> <b>is_cart_enabled</b> – <i>Optional</i>. Set to true to enable catalog. When enabled, catalog storefront icon and catalog-related buttons appear in the business phone number's messages and business profile.
  * Set to false to disable catalog. If disabled, the storefront icon and catalog-related buttons will not appear in any views and the catalog preview with thumbnails will not appear in the business profile view.
  * In addition, wa.me links to the business's catalog, as well as the View catalog button that appears when sending catalog links in a message will display an Invalid catalog link warning when tapped.
- * <p>
+ * </ul>
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommerceDataItem {
