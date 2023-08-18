@@ -1,5 +1,7 @@
 package com.whatsapp.api.service;
 
+import com.whatsapp.api.domain.config.CommerceDataItem;
+import com.whatsapp.api.domain.config.GraphCommerceSettings;
 import com.whatsapp.api.domain.phone.PhoneNumber;
 import com.whatsapp.api.domain.phone.PhoneNumbers;
 import com.whatsapp.api.domain.phone.RequestCode;
@@ -118,5 +120,23 @@ public interface WhatsappBusinessManagementApiService {
     @POST("/" + API_VERSION + "/{phone-number-ID}/verify_code")
     Call<Response> verifyCode(@Path("phone-number-ID") String phoneNumberId, @Body VerifyCode verifyCode);
 
+    /**
+     * Business phone number's whatsApp commerce settings call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param queryParams   the query params
+     * @return the call
+     */
+    @GET("/" + API_VERSION + "/{phone-number-ID}/whatsapp_commerce_settings")
+    Call<GraphCommerceSettings> getWhatsappCommerceSettings(@Path("phone-number-ID") String phoneNumberId, @QueryMap Map<String, String> queryParams);
 
+    /**
+     * Business phone number's whatsApp commerce settings call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param commerceDataItem the query params
+     * @return the call
+     */
+    @POST("/" + API_VERSION + "/{phone-number-ID}/whatsapp_commerce_settings")
+    Call<Response> updateWhatsappCommerceSettings(@Path("phone-number-ID") String phoneNumberId, @Body CommerceDataItem commerceDataItem);
 }

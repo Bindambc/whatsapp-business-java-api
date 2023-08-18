@@ -1,5 +1,7 @@
 package com.whatsapp.api.impl;
 
+import com.whatsapp.api.domain.config.CommerceDataItem;
+import com.whatsapp.api.domain.config.GraphCommerceSettings;
 import com.whatsapp.api.domain.phone.PhoneNumber;
 import com.whatsapp.api.domain.phone.PhoneNumbers;
 import com.whatsapp.api.domain.phone.RequestCode;
@@ -186,6 +188,36 @@ public class WhatsappBusinessManagementApi {
      */
     public Response verifyCode(String phoneNumberId, VerifyCode verifyCode) {
         return executeSync(whatsappBusinessManagementApiService.verifyCode(phoneNumberId, verifyCode));
+    }
+
+
+    /**
+     * Get a business phone number's WhatsApp Commerce Settings. Returns empty if commerce settings have not been set.
+     *
+     * @param phoneNumberId the phone number id
+     * @param fields        the fields. Available options:
+     *                      <ul>
+     *                          <li>id</li>
+     *                          <li>is_cart_enabled</li>
+     *                          <li>is_catalog_visible</li>
+     *                      </ul>
+     * @return the response
+     * @see <a href="https://developers.facebook.com/docs/graph-api/reference/whats-app-business-account-to-number-current-status/whatsapp_commerce_settings">api docs</a>
+     */
+    public GraphCommerceSettings getWhatsappCommerceSettings(String phoneNumberId, String... fields) {
+        return executeSync(whatsappBusinessManagementApiService.getWhatsappCommerceSettings(phoneNumberId, Map.of("fields", String.join(",", fields))));
+    }
+
+    /**
+     * Update a business WhatsApp Commerce Settings.
+     *
+     * @param phoneNumberId    the phone number id
+     * @param commerceDataItem the commerce configuration fields
+     * @return the response
+     * @see <a href="https://developers.facebook.com/docs/graph-api/reference/whats-app-business-account-to-number-current-status/whatsapp_commerce_settings">api docs</a>
+     */
+    public Response updateWhatsappCommerceSettings(String phoneNumberId, CommerceDataItem commerceDataItem) {
+        return executeSync(whatsappBusinessManagementApiService.updateWhatsappCommerceSettings(phoneNumberId, commerceDataItem));
     }
 
 }
