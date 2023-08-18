@@ -1,11 +1,11 @@
 package com.whatsapp.api.service;
 
-
 import com.whatsapp.api.domain.media.Media;
 import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
 import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
+import com.whatsapp.api.domain.phone.TwoStepCode;
 import com.whatsapp.api.domain.response.Response;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
@@ -23,12 +23,10 @@ import retrofit2.http.Url;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
 
-
 /**
  * The interface Whatsapp business cloud api service.
  */
 public interface WhatsappBusinessCloudApiService {
-
 
     /**
      * Send message call.
@@ -50,7 +48,8 @@ public interface WhatsappBusinessCloudApiService {
      */
     @Multipart
     @POST("/" + API_VERSION + "/{Phone-Number-ID}/media")
-    Call<UploadResponse> uploadMedia(@Path("Phone-Number-ID") String phoneNumberId, @Part MultipartBody.Part file, @Part MultipartBody.Part messageProduct);
+    Call<UploadResponse> uploadMedia(@Path("Phone-Number-ID") String phoneNumberId, @Part MultipartBody.Part file,
+                                     @Part MultipartBody.Part messageProduct);
 
     /**
      * Retrieve media url call.
@@ -60,7 +59,6 @@ public interface WhatsappBusinessCloudApiService {
      */
     @GET("/" + API_VERSION + "/{media-id}")
     Call<Media> retrieveMediaUrl(@Path("media-id") String mediaId);
-
 
     /**
      * Download media file call.
@@ -91,5 +89,15 @@ public interface WhatsappBusinessCloudApiService {
      */
     @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
     Call<Response> markMessageAsRead(@Path("Phone-Number-ID") String phoneNumberId, @Body ReadMessage message);
+
+    /**
+     * Two-step verification call.
+     *
+     * @param phoneNumberId the phone number id
+     * @param twoStepCode   the two-step code
+     * @return the call
+     */
+    @POST("/" + API_VERSION + "/{Phone-Number-ID}")
+    Call<Response> twoStepVerification(@Path("Phone-Number-ID") String phoneNumberId, @Body TwoStepCode twoStepCode);
 
 }

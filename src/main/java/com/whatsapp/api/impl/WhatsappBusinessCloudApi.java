@@ -7,6 +7,7 @@ import com.whatsapp.api.domain.media.UploadResponse;
 import com.whatsapp.api.domain.messages.Message;
 import com.whatsapp.api.domain.messages.ReadMessage;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
+import com.whatsapp.api.domain.phone.TwoStepCode;
 import com.whatsapp.api.domain.response.Response;
 import com.whatsapp.api.service.WhatsappBusinessCloudApiService;
 import okhttp3.MediaType;
@@ -26,7 +27,6 @@ import static com.whatsapp.api.WhatsappApiServiceGenerator.executeSync;
 public class WhatsappBusinessCloudApi {
 
     private final WhatsappBusinessCloudApiService whatsappBusinessCloudApiService;
-
 
     /**
      * Instantiates a new Whatsapp business cloud api.
@@ -72,7 +72,6 @@ public class WhatsappBusinessCloudApi {
         Part body = Part.createFormData("file", fileName, requestFile);
 
         var messageProduct = Part.createFormData("messaging_product", "whatsapp");
-
 
         return executeSync(whatsappBusinessCloudApiService.uploadMedia(phoneNumberId, body, messageProduct));
     }
@@ -126,5 +125,17 @@ public class WhatsappBusinessCloudApi {
         return executeSync(whatsappBusinessCloudApiService.markMessageAsRead(phoneNumberId, message));
     }
 
+    /**
+     * Business Solution Providers (BSPs) must authenticate themselves with
+     * an access token with the whatsapp_business_management permission.
+     *
+     * @param phoneNumberId Represents a specific phone number.
+     * @param twoStepCode   The {@link TwoStepCode} object.
+     * @return the response
+     * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/two-step-verification">official documentation</a>
+     */
+    public Response twoStepVerification(String phoneNumberId, TwoStepCode twoStepCode) {
+        return executeSync(whatsappBusinessCloudApiService.twoStepVerification(phoneNumberId, twoStepCode));
+    }
 
 }
