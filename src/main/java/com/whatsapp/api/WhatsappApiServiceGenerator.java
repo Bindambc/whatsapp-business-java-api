@@ -6,6 +6,9 @@ import com.whatsapp.api.domain.errors.WhatsappApiError;
 import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.interceptor.AuthenticationInterceptor;
+import com.whatsapp.api.utils.proxy.CustomProxyAuthenticator;
+import com.whatsapp.api.utils.proxy.CustomHttpProxySelector;
+
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -24,10 +27,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class WhatsappApiServiceGenerator {
 
-    private static final OkHttpClient sharedClient;
+    static OkHttpClient sharedClient;
     private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
     @SuppressWarnings("unchecked")
     private static final Converter<ResponseBody, WhatsappApiError> errorBodyConverter = (Converter<ResponseBody, WhatsappApiError>) converterFactory.responseBodyConverter(WhatsappApiError.class, new Annotation[0], null);
+
+    private WhatsappApiServiceGenerator() {
+        throw new IllegalStateException("Cannot instantiate WhatsappApiServiceGenerator is an utility class!");
+    }
 
     static {
 
@@ -36,6 +43,46 @@ public class WhatsappApiServiceGenerator {
                 .pingInterval(20, TimeUnit.SECONDS)//
                 .build();
     }
+
+    /**
+     * Sets http proxy for the shared client.
+     * <p>If you need to use a proxy to connect to the internet,
+     * you can use this method to set it.
+     * <p>
+     * <ul>
+     * <li>If you want to use a proxy that requires authentication,
+     * you can pass the username and password as parameters.
+     * <p>
+     * <li>If you want to use a proxy that does not require authentication,
+     * you can pass {@code null} as parameters for {@code username} and {@code pwd}.
+     * </ul>
+     * <p>
+     * @param host     the host (Not null)
+     * @param port     the port (Not null)
+     * @param username the username
+     * @param pwd      the pwd
+     * @see <a href="https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/proxy-selector/">Proxy Selector</a>
+     * @see <a href="https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/proxy-authenticator/">Proxy Authenticator</a>
+     */
+    public static void setHttpProxy(String host, int port, String username, String pwd) {
+        Objects.requireNonNull(host, "Host cannot be null");
+        Objects.requireNonNull(port, "Http Port cannot be null");
+        CustomHttpProxySelector proxySelector = new CustomHttpProxySelector(host, port);
+
+        if (username == null || pwd == null) {
+            sharedClient = sharedClient.newBuilder()
+                    .proxySelector(proxySelector)
+                    .build();
+            return;
+        }
+
+        CustomProxyAuthenticator proxyAuthenticator = new CustomProxyAuthenticator(username, pwd);
+
+        sharedClient = sharedClient.newBuilder()
+                .authenticator(proxyAuthenticator)
+                .build();
+    }
+
 
     /**
      * Create service s.
