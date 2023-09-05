@@ -21,3 +21,4 @@ com.whatsapp.api.impl
 com.whatsapp.api.interceptor
 com.whatsapp.api.service
 com.whatsapp.api.utils
+com.whatsapp.api.utils.proxy
