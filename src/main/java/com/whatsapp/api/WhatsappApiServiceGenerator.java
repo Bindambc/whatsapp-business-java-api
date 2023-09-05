@@ -58,7 +58,7 @@ public class WhatsappApiServiceGenerator {
      * </ul>
      * <p>
      * @param host     the host (Not null)
-     * @param port     the port (Not null)
+     * @param port     the port 
      * @param username the username
      * @param pwd      the pwd
      * @see <a href="https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/proxy-selector/">Proxy Selector</a>
@@ -66,13 +66,14 @@ public class WhatsappApiServiceGenerator {
      */
     public static void setHttpProxy(String host, int port, String username, String pwd) {
         Objects.requireNonNull(host, "Host cannot be null");
-        Objects.requireNonNull(port, "Http Port cannot be null");
         CustomHttpProxySelector proxySelector = new CustomHttpProxySelector(host, port);
 
+        sharedClient = sharedClient.newBuilder()
+                .proxySelector(proxySelector)
+                .build();
+
         if (username == null || pwd == null) {
-            sharedClient = sharedClient.newBuilder()
-                    .proxySelector(proxySelector)
-                    .build();
+            //Without authentication 
             return;
         }
 
