@@ -70,6 +70,7 @@ public class WhatsappApiServiceGenerator {
 
         sharedClient = sharedClient.newBuilder()
                 .proxySelector(proxySelector)
+                .proxy(proxySelector.getProxy())
                 .build();
 
         if (username == null || pwd == null) {
