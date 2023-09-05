@@ -80,7 +80,7 @@ public class WhatsappApiServiceGenerator {
         CustomProxyAuthenticator proxyAuthenticator = new CustomProxyAuthenticator(username, pwd);
 
         sharedClient = sharedClient.newBuilder()
-                .authenticator(proxyAuthenticator)
+                .proxyAuthenticator(proxyAuthenticator)
                 .build();
     }
 
