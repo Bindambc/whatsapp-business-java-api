@@ -37,8 +37,11 @@ public class WhatsappApiServiceGenerator {
     }
 
     static {
+        sharedClient = createDefaultHttpClient();
+    }
 
-        sharedClient = new OkHttpClient.Builder()//
+    public static OkHttpClient createDefaultHttpClient(){
+        return new OkHttpClient.Builder()//
                 .callTimeout(20, TimeUnit.SECONDS)//
                 .pingInterval(20, TimeUnit.SECONDS)//
                 .build();
