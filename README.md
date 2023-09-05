@@ -27,6 +27,10 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 	- [Maven](#maven)
 	- [Gradle](#gradle)
 - [:eyes: Overview](#eyes-overview)
+- [:eyes: Proxy](#eyes-proxy)
+- [:scroll: Examples (Proxy)](#scroll-examples-proxy)
+        - [Direct proxy without authentication credentials:](#direct-proxy-without-authentication-credentials)
+        - [With authentication credentials:](#with-authentication-credentials)
 - [:scroll: Examples (Sending messages)](#scroll-examples-sending-messages)
 	- [Sending a simple text message](#sending-a-simple-text-message)
 	- [Sending a message with buttons (template)](#sending-a-message-with-buttons-template)
@@ -143,6 +147,64 @@ These can be instantiated through the corresponding factory method of [`Whatsapp
 [:arrow_heading_up: back](#link-links)
 
 ---
+## :eyes: Proxy 
+
+You can add a proxy to the api by calling the method `setHttpProxy(...)` of class [`WhatsappApiServiceGenerator`](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/WhatsappApiServiceGenerator.java)
+
+```java
+public static void setHttpProxy(String host, int port, String username, String pwd)
+``` 
+Call this method __before__ create the api instance like:
+
+```java
+// Set http proxy with credentials before the creation of the api instance
+WhatsappApiServiceGenerator.setHttpProxy("<YOUR_PROXY_HOST>", "<YOUR_PROXY_PORT>", "<YOUR_PROXY_USERNAME>", "<YOUR_PROXY_PWD>");
+
+// Create the api instance
+WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+```
+
+### :scroll: Examples (Proxy):
+
+#### [Direct proxy without authentication credentials:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/proxy/SendMessageByProxyNoCredentials.java)
+```java
+   WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        // Set http proxy without credentials before the creation of the api instance
+        WhatsappApiServiceGenerator.setHttpProxy("localhost", 8080, null,null);
+        
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildTextMessage(new TextMessage()//
+                        .setBody(Formatter.bold("Hello world!") + "\nSome code here: \n" + Formatter.code("hello world code here"))//
+                        .setPreviewUrl(false));
+
+        MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        System.out.println(messageResponse);
+```
+#### [With authentication credentials:](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/test/java/com/whatsapp/api/examples/proxy/SendMessageByProxyNoCredentials.java)
+```java
+ WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
+
+        // Set http proxy with credentials before the creation of the api instance
+        WhatsappApiServiceGenerator.setHttpProxy("localhost", 8080, "username", "password");
+        
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+        var message = MessageBuilder.builder()//
+                .setTo(PHONE_NUMBER_1)//
+                .buildTextMessage(new TextMessage()//
+                        .setBody(Formatter.bold("Hello world!") + "\nSome code here: \n" + Formatter.code("hello world code here"))//
+                        .setPreviewUrl(false));
+
+        MessageResponse messageResponse = whatsappBusinessCloudApi.sendMessage(PHONE_NUMBER_ID, message);
+
+        System.out.println(messageResponse);
+```
+
+[:arrow_heading_up: back](#link-links)
+
 
 ## :scroll: Examples (Sending messages)
 
