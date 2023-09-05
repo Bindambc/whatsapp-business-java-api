@@ -86,7 +86,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
    <dependency>
       <groupId>com.github.Bindambc</groupId>
       <artifactId>whatsapp-business-java-api</artifactId>
-      <version>v0.3.3</version>
+      <version>v0.3.4</version>
    </dependency>
 ```
 
@@ -107,7 +107,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 
 ```gradle
 	dependencies {
-	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.3.3'
+	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.3.4'
 	}
 ```
 
