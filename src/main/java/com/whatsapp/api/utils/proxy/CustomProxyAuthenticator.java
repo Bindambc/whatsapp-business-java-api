@@ -12,10 +12,6 @@ public class CustomProxyAuthenticator implements Authenticator {
 
     private final String CREDENTIALS;
 
-    public String getCREDENTIALS() {
-        return CREDENTIALS;
-    }
-
     public CustomProxyAuthenticator(final String username, final String password) {
         CREDENTIALS = Credentials.basic(username, password);
     }
