@@ -13,10 +13,6 @@ import java.util.List;
 public class CustomHttpProxySelector extends ProxySelector {
     private final Proxy proxy;
 
-    public Proxy getProxy() {
-        return proxy;
-    }
-
     public CustomHttpProxySelector(String host, int port) {
         this.proxy = new Proxy(Type.HTTP, new InetSocketAddress(host, port));
     }
