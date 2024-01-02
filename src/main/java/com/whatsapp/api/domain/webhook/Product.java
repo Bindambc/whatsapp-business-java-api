@@ -1,10 +1,12 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The type Product.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Product(
 
         @JsonProperty("quantity") String quantity,

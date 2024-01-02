@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.webhook.type.FieldType;
 
@@ -9,6 +10,7 @@ import com.whatsapp.api.domain.webhook.type.FieldType;
  * @param field A value object. Contains details of the changes related to the specified field.
  * @param value Contains the type of notification you are getting on that Webhook. Currently, the only option for this API is “messages”.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Change(
 /*
 Contains the type of notification you are getting on that Webhook. Currently, the only option for this API is “messages”.

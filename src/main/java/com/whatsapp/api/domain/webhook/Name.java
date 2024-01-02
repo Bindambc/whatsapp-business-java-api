@@ -1,10 +1,12 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The type Name.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Name(
 
         @JsonProperty("prefix") String prefix,

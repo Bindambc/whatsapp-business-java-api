@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.webhook.type.MessageStatus;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @param timestamp    The timestamp of the status message.
  * @param errors       The errors object in webhooks triggered by v16.0+ request errors now include message and error_data.details properties, and title values have changed for multiple error codes.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Status(
 
         @JsonProperty("id") String id,

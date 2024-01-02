@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.webhook.type.EventType;
 
@@ -24,6 +25,7 @@ import java.util.List;
  * @param rejectionReason         If a request was rejected, this field displays the reason for that rejection.
  * @param requestedVerifiedName   This field displays the name that was sent to be verified.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Value(
 
         @JsonProperty("metadata") Metadata metadata,

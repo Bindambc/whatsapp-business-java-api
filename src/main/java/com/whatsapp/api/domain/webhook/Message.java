@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.messages.type.MessageType;
 
@@ -29,6 +30,7 @@ import java.util.List;
  * @param audio       A media object with the audio information. Added to Webhook if type is audio (including voice messages). See {@link Audio}
  * @param document    A media object with the document information. Added to Webhook if type is document. See {@link Document}
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Message(
 
         @JsonProperty("reaction") Reaction reaction,

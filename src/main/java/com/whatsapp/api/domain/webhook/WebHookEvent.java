@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -13,5 +14,6 @@ import java.util.List;
  *
  * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/set-up-webhooks">Webhooks Setup Guide</a> to more details.
  **/
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record WebHookEvent(@JsonProperty("entry") List<Entry> entry, @JsonProperty("object") String object) {
 }
