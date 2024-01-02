@@ -35,6 +35,7 @@
         <org.mockito.version>5.2.0</org.mockito.version>
         <org.junit.jupiter.version>5.10.0</org.junit.jupiter.version>
         <com.squareup.okhttp3.version>5.0.0-alpha.11</com.squareup.okhttp3.version>
+        <jackson.version>2.16.0</jackson.version>
     </properties>
 
     <distributionManagement>
@@ -61,6 +62,23 @@
             <artifactId>okhttp</artifactId>
             <version>${com.squareup.okhttp3.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <!--tests-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
