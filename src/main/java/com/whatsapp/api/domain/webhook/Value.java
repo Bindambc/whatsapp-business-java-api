@@ -1,10 +1,13 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.webhook.type.EventType;
 
 import java.util.List;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Feature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE;
 
 /**
  * The type Value.
@@ -26,6 +29,7 @@ import java.util.List;
  * @param requestedVerifiedName   This field displays the name that was sent to be verified.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonFormat(with = READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)
 public record Value(
 
         @JsonProperty("metadata") Metadata metadata,

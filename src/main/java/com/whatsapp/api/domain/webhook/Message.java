@@ -1,10 +1,13 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.messages.type.MessageType;
 
 import java.util.List;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Feature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE;
 
 /**
  * The type Message.
@@ -31,6 +34,7 @@ import java.util.List;
  * @param document    A media object with the document information. Added to Webhook if type is document. See {@link Document}
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonFormat(with = READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)
 public record Message(
 
         @JsonProperty("reaction") Reaction reaction,

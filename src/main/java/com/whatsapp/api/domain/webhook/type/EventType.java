@@ -1,5 +1,7 @@
 package com.whatsapp.api.domain.webhook.type;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+
 /**
  * Used when an event happened in a specific WABA.
  * See <a href="https://developers.facebook.com/docs/whatsapp/business-management-api/webhooks/components">Webhooks Components</a>
@@ -81,6 +83,12 @@ public enum EventType {
     /**
      * Pin changed event type.
      */
-    PIN_CHANGED
+    PIN_CHANGED,
+
+    /**
+     * Fallback value.
+     */
+    @JsonEnumDefaultValue
+    UNKNOWN;
 
 }

@@ -1,10 +1,13 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whatsapp.api.domain.webhook.type.MessageStatus;
 
 import java.util.List;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Feature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE;
 
 /**
  * The type Status.
@@ -18,6 +21,7 @@ import java.util.List;
  * @param errors       The errors object in webhooks triggered by v16.0+ request errors now include message and error_data.details properties, and title values have changed for multiple error codes.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonFormat(with = READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)
 public record Status(
 
         @JsonProperty("id") String id,
