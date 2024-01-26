@@ -1,13 +1,25 @@
 tests:
-  - src/test/**/*
+  - changed-files:
+    - any-glob-to-any-file: 'src/test/**/*'
+    
 java:
-  - '**/*.java'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.java'
+
 documentation:
-  - '**/*.md'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.md'
+    
 markdown:
-  - '**/*.md'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.md'
+
 github-actions:
-  - .github/**/*
+  - changed-files:
+    - any-glob-to-any-file: '.github/**/*'
+
 dependencies:
-  - pom.xml
+  - changed-files:
+    - any-glob-to-any-file: 'pom.xml'
+
 
