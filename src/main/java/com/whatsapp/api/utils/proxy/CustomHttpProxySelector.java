@@ -26,4 +26,6 @@ public class CustomHttpProxySelector extends ProxySelector {
     public void connectFailed(URI uri, SocketAddress sa, IOException ioe) {
         // Do something here
     }
+
+    
 }
