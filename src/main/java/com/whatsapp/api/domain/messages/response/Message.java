@@ -9,5 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record Message(
 
-        @JsonProperty("id") String id) {
+        @JsonProperty("id") String id,
+        @JsonProperty("message_status") String messageStatus)
+{
 }
