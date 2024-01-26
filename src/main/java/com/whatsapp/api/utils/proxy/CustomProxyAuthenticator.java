@@ -10,16 +10,16 @@ import okhttp3.Route;
 
 public class CustomProxyAuthenticator implements Authenticator {
 
-    private final String credential;
+    private final String CREDENTIALS;
 
     public CustomProxyAuthenticator(final String username, final String password) {
-        credential = Credentials.basic(username, password);
+        CREDENTIALS = Credentials.basic(username, password);
     }
 
     @Override
     public Request authenticate(final Route route, final Response response) throws IOException {
         return response.request().newBuilder()
-                .header("Proxy-Authorization", credential)
+                .header("Proxy-Authorization", CREDENTIALS)
                 .build();
     }
 }
