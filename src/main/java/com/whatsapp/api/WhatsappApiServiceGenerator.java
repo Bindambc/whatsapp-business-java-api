@@ -9,6 +9,9 @@ import com.whatsapp.api.interceptor.AuthenticationInterceptor;
 import com.whatsapp.api.utils.proxy.CustomProxyAuthenticator;
 import com.whatsapp.api.utils.proxy.CustomHttpProxySelector;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -28,7 +31,10 @@ import java.util.concurrent.TimeUnit;
 public class WhatsappApiServiceGenerator {
 
     static OkHttpClient sharedClient;
-    private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
+    private static final Converter.Factory converterFactory = JacksonConverterFactory.create(
+        new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+    );
+
     @SuppressWarnings("unchecked")
     private static final Converter<ResponseBody, WhatsappApiError> errorBodyConverter = (Converter<ResponseBody, WhatsappApiError>) converterFactory.responseBodyConverter(WhatsappApiError.class, new Annotation[0], null);
 
