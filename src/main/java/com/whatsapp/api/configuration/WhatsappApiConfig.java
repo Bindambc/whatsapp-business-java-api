@@ -5,10 +5,14 @@ package com.whatsapp.api.configuration;
  */
 public class WhatsappApiConfig {
 
+
+    private WhatsappApiConfig() {
+    }
+
     /**
      * The constant API_VERSION.
      */
-    public final static String API_VERSION = "v16.0";
+    public static String API_VERSION = ApiVersion.V19_0.getValue();
     /**
      * The constant BASE_DOMAIN.
      */
@@ -21,6 +25,15 @@ public class WhatsappApiConfig {
      */
     public static void setBaseDomain(String baseDomain) {
         BASE_DOMAIN = baseDomain;
+    }
+
+    /**
+     * Sets api version.
+     *
+     * @param apiVersion the api version enum
+     */
+    public static void setApiVersion(ApiVersion apiVersion) {
+        API_VERSION = apiVersion.getValue();
     }
 
 

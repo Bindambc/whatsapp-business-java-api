@@ -21,8 +21,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
-import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
-
 /**
  * The interface Whatsapp business cloud api service.
  */
@@ -35,7 +33,7 @@ public interface WhatsappBusinessCloudApiService {
      * @param message       the message
      * @return the call
      */
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
+    @POST("/{Phone-Number-ID}/messages")
     Call<MessageResponse> sendMessage(@Path("Phone-Number-ID") String phoneNumberId, @Body Message message);
 
     /**
@@ -47,7 +45,7 @@ public interface WhatsappBusinessCloudApiService {
      * @return the call
      */
     @Multipart
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}/media")
+    @POST( "/{Phone-Number-ID}/media")
     Call<UploadResponse> uploadMedia(@Path("Phone-Number-ID") String phoneNumberId, @Part MultipartBody.Part file,
                                      @Part MultipartBody.Part messageProduct);
 
@@ -57,7 +55,7 @@ public interface WhatsappBusinessCloudApiService {
      * @param mediaId the media id
      * @return the call
      */
-    @GET("/" + API_VERSION + "/{media-id}")
+    @GET("/{media-id}")
     Call<Media> retrieveMediaUrl(@Path("media-id") String mediaId);
 
     /**
@@ -77,7 +75,7 @@ public interface WhatsappBusinessCloudApiService {
      * @param mediaId the media id
      * @return the call
      */
-    @DELETE("/" + API_VERSION + "/{media-id}")
+    @DELETE("/{media-id}")
     Call<Response> deleteMedia(@Path("media-id") String mediaId);
 
     /**
@@ -87,7 +85,7 @@ public interface WhatsappBusinessCloudApiService {
      * @param message       the message
      * @return the call
      */
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
+    @POST("/{Phone-Number-ID}/messages")
     Call<Response> markMessageAsRead(@Path("Phone-Number-ID") String phoneNumberId, @Body ReadMessage message);
 
     /**
@@ -97,7 +95,7 @@ public interface WhatsappBusinessCloudApiService {
      * @param twoStepCode   the two-step code
      * @return the call
      */
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}")
+    @POST("/{Phone-Number-ID}")
     Call<Response> twoStepVerification(@Path("Phone-Number-ID") String phoneNumberId, @Body TwoStepCode twoStepCode);
 
 }
