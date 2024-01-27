@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param phoneNumberId      The ID of the phone number receiving the Webhooks. You can use this phone_number_id to send messages back to customers.
  * @param displayPhoneNumber The phone number of the business account that is receiving the Webhooks.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Metadata(
 /*
 The ID of the phone number receiving the Webhooks. You can use this phone_number_id to send messages back to customers.

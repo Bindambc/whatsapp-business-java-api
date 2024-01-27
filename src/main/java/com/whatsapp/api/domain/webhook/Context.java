@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param forwarded           Added to Webhooks if message was forwarded. Set to true if the received message has been forwarded.
  * @param frequentlyForwarded Added to Webhooks if message has been frequently forwarded.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Context(
 
         @JsonProperty("from") String from,

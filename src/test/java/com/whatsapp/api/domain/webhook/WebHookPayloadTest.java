@@ -210,7 +210,7 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = WebHook.constructEvent(payload);
 
-        Assertions.assertEquals("whatsapp_business_account", obj.object());
+        Assertions.assertEquals("whatsapp_business_account", obj.object().name());
         Assertions.assertFalse(obj.entry().isEmpty());
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
 
@@ -229,7 +229,7 @@ class WebHookPayloadTest extends TestUtils {
 
         var obj = WebHook.constructEvent(payload);
 
-        Assertions.assertEquals("whatsapp_business_account", obj.object());
+        Assertions.assertEquals("whatsapp_business_account", obj.object().name());
         Assertions.assertFalse(obj.entry().isEmpty());
         Assertions.assertEquals("880480571844883", obj.entry().get(0).id());
 

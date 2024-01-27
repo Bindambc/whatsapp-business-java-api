@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param headline     Specifies the headline used in the ad or post that generated the message.
  * @param sourceUrl    Specifies the URL that leads to the ad or post clicked by the user. Opening this URL takes you to the ad viewed by your user.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Referral(
 
         @JsonProperty("video_url") String videoUrl,

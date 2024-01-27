@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param id          The unique identifier (ID) of the selected row.
  * @param title       The title of the selected row.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record ListReply(
 
         @JsonProperty("description")

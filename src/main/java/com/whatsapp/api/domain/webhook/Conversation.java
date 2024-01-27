@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param origin              Describes where the conversation originated from. See {@link Origin} object for more information.
  * @param id                  The ID of the conversation the given status notification belongs to.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Conversation(
 
         @JsonProperty("expiration_timestamp") String expirationTimestamp,

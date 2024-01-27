@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook.type;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 
@@ -38,7 +39,13 @@ public enum FieldType {
      *  <li>the two-step verification code is updated</li>
      * </ul>
      */
-    security("security");
+    SECURITY( "security"),
+
+    /**
+     * Fallback value.
+     */
+    @JsonEnumDefaultValue
+    UNKNOWN( "unknown");
 
     private final String value;
 

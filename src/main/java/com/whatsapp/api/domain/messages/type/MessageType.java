@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.messages.type;
 //TODO: implementar mais tipos de mensagens. Não está completo.
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -78,7 +79,7 @@ public enum MessageType {
     /**
      * Unknown message type.
      */
-    UNKNOWN("unknown"), //
+    @JsonEnumDefaultValue UNKNOWN( "unknown"), //
     /**
      * Video message type.
      */

@@ -1,5 +1,7 @@
 package com.whatsapp.api.domain.webhook.type;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+
 /**
  * The enum Restriction type.
  */
@@ -15,5 +17,11 @@ public enum RestrictionType {
     /**
      * Restricted customer initiated messaging restriction type.
      */
-    RESTRICTED_CUSTOMER_INITIATED_MESSAGING
+    RESTRICTED_CUSTOMER_INITIATED_MESSAGING,
+
+    /**
+     * Fallback value.
+     */
+    @JsonEnumDefaultValue
+    UNKNOWN;
 }

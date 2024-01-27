@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param id       ID for the document
  * @param caption  Caption for the document, if provided
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Document(
 
         @JsonProperty("filename") String filename,

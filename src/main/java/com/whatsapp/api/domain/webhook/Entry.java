@@ -1,5 +1,6 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @param id      The ID of Whatsapp Business Accounts this Webhook belongs to.
  * @param time    Time for the entry. (WhatsApp Business Management API)
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Entry(
 
         /*
