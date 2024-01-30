@@ -17,6 +17,8 @@ public class Message {
     private final String messagingProduct = "whatsapp";
     @JsonProperty("recipient_type")
     private final String recipientType = "individual";
+    @JsonProperty("message_status")
+    private final String messageStatus;
     /**
      * The Interactive message.
      */
@@ -79,6 +81,15 @@ public class Message {
      */
     public String getRecipientType() {
         return recipientType;
+    }
+
+    /**
+     * Gets message status.
+     *
+     * @return the message status
+     */
+    public String getMessageStatus() {
+        return messageStatus;
     }
 
 	/**
