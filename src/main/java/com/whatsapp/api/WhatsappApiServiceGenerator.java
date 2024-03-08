@@ -36,6 +36,7 @@ public class WhatsappApiServiceGenerator {
           .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
           .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
           .configure(DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS, false)
+          .configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false)
     );
 
     @SuppressWarnings("unchecked")
