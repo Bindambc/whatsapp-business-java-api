@@ -51,4 +51,8 @@ public class WhatsappApiException extends RuntimeException {
         return super.getMessage();
     }
 
+    public WhatsappApiError getError() {
+        return whatsappApiError;
+    }
+
 }

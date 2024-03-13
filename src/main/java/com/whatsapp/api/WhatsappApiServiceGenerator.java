@@ -32,7 +32,11 @@ public class WhatsappApiServiceGenerator {
 
     static OkHttpClient sharedClient;
     private static final Converter.Factory converterFactory = JacksonConverterFactory.create(
-        new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        new ObjectMapper()
+          .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+          .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
+          .configure(DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS, false)
+          .configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false)
     );
 
     @SuppressWarnings("unchecked")
