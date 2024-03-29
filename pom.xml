@@ -31,7 +31,7 @@
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <com.squareup.retrofit2.version>2.9.0</com.squareup.retrofit2.version>
+        <com.squareup.retrofit2.version>2.11.0</com.squareup.retrofit2.version>
         <org.mockito.version>5.2.0</org.mockito.version>
         <org.junit.jupiter.version>5.10.1</org.junit.jupiter.version>
         <com.squareup.okhttp3.version>5.0.0-alpha.11</com.squareup.okhttp3.version>
