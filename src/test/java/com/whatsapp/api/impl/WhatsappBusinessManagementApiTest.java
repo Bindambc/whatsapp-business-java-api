@@ -34,7 +34,7 @@ import java.util.Collections;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
+public class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
     private final String  API_VERSION = getApiVersion().getValue();
 

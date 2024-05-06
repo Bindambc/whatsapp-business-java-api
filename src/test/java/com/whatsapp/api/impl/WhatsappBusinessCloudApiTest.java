@@ -30,7 +30,7 @@ import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
+public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     private final String PHONE_NUMBER_1 = "121212121212";
     private final String PHONE_NUMBER_ID = "888888888888";
