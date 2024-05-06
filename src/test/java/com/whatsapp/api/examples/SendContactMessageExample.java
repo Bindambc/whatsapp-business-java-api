@@ -2,6 +2,7 @@ package com.whatsapp.api.examples;
 
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
+import com.whatsapp.api.configuration.ApiVersion;
 import com.whatsapp.api.domain.messages.Address;
 import com.whatsapp.api.domain.messages.Contact;
 import com.whatsapp.api.domain.messages.ContactMessage;
@@ -26,7 +27,9 @@ public class SendContactMessageExample {
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
-        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+        WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi(ApiVersion.V18_0);
+
+
         var message = MessageBuilder.builder()//
                 .setTo(PHONE_NUMBER_1)//
                 .buildContactMessage(new ContactMessage()//
