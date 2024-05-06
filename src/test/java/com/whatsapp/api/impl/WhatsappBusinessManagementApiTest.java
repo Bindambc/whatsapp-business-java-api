@@ -1,16 +1,14 @@
 package com.whatsapp.api.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.whatsapp.api.MockServerTestUtils;
 import com.whatsapp.api.TestConstants;
+import com.whatsapp.api.TestUtils;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.configuration.WhatsappApiConfig;
 import com.whatsapp.api.domain.config.CommerceDataItem;
 import com.whatsapp.api.domain.phone.RequestCode;
 import com.whatsapp.api.domain.phone.VerifyCode;
-
 import com.whatsapp.api.domain.phone.type.*;
-
 import com.whatsapp.api.domain.templates.*;
 import com.whatsapp.api.domain.templates.type.ButtonType;
 import com.whatsapp.api.domain.templates.type.Category;
@@ -22,7 +20,10 @@ import mockwebserver3.MockResponse;
 import mockwebserver3.MockWebServer;
 import mockwebserver3.RecordedRequest;
 import org.json.JSONException;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
@@ -32,9 +33,15 @@ import java.util.Collections;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
+public class WhatsappBusinessManagementApiTest extends TestUtils {
+    private MockWebServer mockWebServer;
 
-    private final String  API_VERSION = getApiVersion().getValue();
+    private String baseUrl;
+
+
+    private WhatsappBusinessManagementApi whatsappBusinessManagementApi;
+
+    private final String API_VERSION = getApiVersion().getValue();
 
     public final String DEFAULT_TEMPLATE_RESPONSE = """
             {
@@ -59,7 +66,6 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
         String TOKEN = "df4UIkhjdli48574654SDsdf54654sdf5s4DDF54654654654564654sdfsdf54sdf65s4";
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
-        whatsappBusinessCloudApi = factory.newBusinessCloudApi();
 
         whatsappBusinessManagementApi = factory.newBusinessManagementApi();
 
@@ -76,11 +82,10 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplate() throws InterruptedException, JSONException
-    {
+    void testCreateMessageTemplate() throws InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
-        WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
+
 
         mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
         var expectedJson = """
@@ -116,15 +121,15 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.UTILITY)//
                 .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
-                                                   .setText("Wellcome title")//
-                                                   .setFormat(HeaderFormat.TEXT))//
+                        .setText("Wellcome title")//
+                        .setFormat(HeaderFormat.TEXT))//
                 .addComponent(new BodyComponent()//
-                                                 .setText("Hello {{1}}, welcome to our {{2}} test. ")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("Mr. José", "s")//
-                                                 ));
+                        .setText("Hello {{1}}, welcome to our {{2}} test. ")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("Mr. José", "s")//
+                        ));
 
-        var response = whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
+        var response = whatsappBusinessManagementApi.createMessageTemplate(WABA_ID, template);
 
         var request = mockWebServer.takeRequest();
         Assertions.assertEquals("POST", request.getMethod());
@@ -142,8 +147,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplate2() throws IOException, URISyntaxException, InterruptedException, JSONException
-    {
+    void testCreateMessageTemplate2() throws IOException, URISyntaxException, InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -158,13 +162,13 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.TRANSACTIONAL)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
-                                                   .setText("Código de confirmação")//
-                                                   .setFormat(HeaderFormat.TEXT))//
+                        .setText("Código de confirmação")//
+                        .setFormat(HeaderFormat.TEXT))//
                 .addComponent(new BodyComponent()//
-                                                 .setText("Este é o seu código de confirmação: " + Formatter.bold("{{1}}."))//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("1458425")//
-                                                 ))//
+                        .setText("Este é o seu código de confirmação: " + Formatter.bold("{{1}}."))//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("1458425")//
+                        ))//
                 .addComponent(new FooterComponent().setText("Use este código para confirmar seu telefone."));
 
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
@@ -181,8 +185,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplate3() throws IOException, URISyntaxException, InterruptedException, JSONException
-    {
+    void testCreateMessageTemplate3() throws IOException, URISyntaxException, InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -196,19 +199,19 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.TRANSACTIONAL)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
-                                                   .setText("Confirmação de Atendimento")//
-                                                   .setFormat(HeaderFormat.TEXT))//
+                        .setText("Confirmação de Atendimento")//
+                        .setFormat(HeaderFormat.TEXT))//
                 .addComponent(new BodyComponent()//
-                                                 .setText("Olá " + Formatter.bold("{{1}}") + ", passando aqui para confirmar seu horário no dia " + Formatter.bold("{{2}}") + " as " + Formatter.bold(
-                                                         "{{3}}h") + ".\nVocê confirma que comparecerá?")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("Maria", "04/11/2022", "13:30")//
-                                                 ))//
+                        .setText("Olá " + Formatter.bold("{{1}}") + ", passando aqui para confirmar seu horário no dia " + Formatter.bold("{{2}}") + " as " + Formatter.bold(
+                                "{{3}}h") + ".\nVocê confirma que comparecerá?")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("Maria", "04/11/2022", "13:30")//
+                        ))//
                 .addComponent(new ButtonComponent()//
-                                                   .addButton(new QuickReplyButton("SIM"))//
-                                                   .addButton(new QuickReplyButton("NÃO"))//
-                                                   .addButton(new QuickReplyButton("REMARCAR")//
-                                                   ))//
+                        .addButton(new QuickReplyButton("SIM"))//
+                        .addButton(new QuickReplyButton("NÃO"))//
+                        .addButton(new QuickReplyButton("REMARCAR")//
+                        ))//
                 .addComponent(new FooterComponent().setText("Utilize um dos botões abaixo para a confirmação"));
 
         var response = whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
@@ -226,8 +229,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplate4() throws IOException, URISyntaxException, InterruptedException, JSONException
-    {
+    void testCreateMessageTemplate4() throws IOException, URISyntaxException, InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -239,18 +241,18 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.TRANSACTIONAL)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
-                                                   .setText("Confirmação de Atendimento")//
-                                                   .setFormat(HeaderFormat.TEXT))//
+                        .setText("Confirmação de Atendimento")//
+                        .setFormat(HeaderFormat.TEXT))//
                 .addComponent(new BodyComponent()//
-                                                 .setText("Olá " + Formatter.bold("{{1}}") + ", passando aqui para confirmar seu horário no dia " + Formatter.bold("{{2}}") + " as " + Formatter.bold(
-                                                         "{{3}}h") + ".\nVocê confirma que comparecerá?")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("Maria", "04/11/2022", "13:30")//
-                                                 ))//
+                        .setText("Olá " + Formatter.bold("{{1}}") + ", passando aqui para confirmar seu horário no dia " + Formatter.bold("{{2}}") + " as " + Formatter.bold(
+                                "{{3}}h") + ".\nVocê confirma que comparecerá?")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("Maria", "04/11/2022", "13:30")//
+                        ))//
                 .addComponent(new FooterComponent().setText("Utilize um dos botões abaixo para a confirmação"))//
                 .addComponent(new ButtonComponent()//
-                                                   .addButton(new QuickReplyButton("SIM"))//
-                                                   .addButton(new QuickReplyButton("NÃO"))//
+                        .addButton(new QuickReplyButton("SIM"))//
+                        .addButton(new QuickReplyButton("NÃO"))//
                 );
 
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
@@ -267,8 +269,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplateUtility1() throws IOException, URISyntaxException, InterruptedException, JSONException
-    {
+    void testCreateMessageTemplateUtility1() throws IOException, URISyntaxException, InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -280,19 +281,19 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.UTILITY)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
-                                                   .setFormat(HeaderFormat.DOCUMENT).setExample(new Example().addHeaderHandleExamples(
+                        .setFormat(HeaderFormat.DOCUMENT).setExample(new Example().addHeaderHandleExamples(
                                 "4::aW1hZ2UvanBlZw==:ARb0a9E9s7-LdErXAXQCwyh7Oy-_h9gBo4ljPynnXo53CKOyyhHYUjCCREvS4fB-0CwfSQbNn9fJC3ikLOJve1CfQO-9aeWYdMmkMUJgGJI0g:e:1680011044:3449853982404722:100007529143136:ARZMcC4QfmCW8V85Lco")))//
                 .addComponent(new BodyComponent()//
-                                                 .setText("Olá {{1}}, seu professou publicou novas aulas na plataforma de ensino.")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("Maria")//
-                                                 ))//
+                        .setText("Olá {{1}}, seu professou publicou novas aulas na plataforma de ensino.")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("Maria")//
+                        ))//
                 .addComponent(new FooterComponent().setText("Click on the button below to watch now"))//
                 .addComponent(new ButtonComponent()//
-                                                   .addButton(new UrlButton("Assistir agora")//
-                                                                                             .setUrl("https://www.coursera.org/{{1}}")//
-                                                                                             .setUrlExample(Collections.singletonList("https://www.coursera.org/?authMode=login"))//
-                                                   ));
+                        .addButton(new UrlButton("Assistir agora")//
+                                .setUrl("https://www.coursera.org/{{1}}")//
+                                .setUrlExample(Collections.singletonList("https://www.coursera.org/?authMode=login"))//
+                        ));
 
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
 
@@ -308,8 +309,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplateUtility2() throws IOException, URISyntaxException, InterruptedException, JSONException
-    {
+    void testCreateMessageTemplateUtility2() throws IOException, URISyntaxException, InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -321,15 +321,15 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.UTILITY)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
-                                                   .setText("Problemas com a entrega do seu pedido")//
-                                                   .setFormat(HeaderFormat.TEXT))//
+                        .setText("Problemas com a entrega do seu pedido")//
+                        .setFormat(HeaderFormat.TEXT))//
                 .addComponent(new BodyComponent()//
-                                                 .setText(
-                                                         "Olá {{1}}, Tivemos um problema com a entrega do seu pedido {{2}}. Por favor, entre em contato com a central de atendimento para obter mais detalhes")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("Maria", "FE-15454T45001")))//
+                        .setText(
+                                "Olá {{1}}, Tivemos um problema com a entrega do seu pedido {{2}}. Por favor, entre em contato com a central de atendimento para obter mais detalhes")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("Maria", "FE-15454T45001")))//
                 .addComponent(new ButtonComponent()//
-                                                   .addButton(new PhoneNumberButton("Ligar agora", "16503087300"))//
+                        .addButton(new PhoneNumberButton("Ligar agora", "16503087300"))//
                 )//
                 .addComponent(new FooterComponent().setText("Clique no botão abaixo para ligar agora."));
 
@@ -347,8 +347,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplateAuthentication() throws IOException, URISyntaxException, InterruptedException, JSONException
-    {
+    void testCreateMessageTemplateAuthentication() throws IOException, URISyntaxException, InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -360,15 +359,15 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.AUTHENTICATION)//
                 .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
-                                                   .setFormat(HeaderFormat.TEXT).setText("Your authentication code for {{1}}")//
-                                                   .setExample(new Example().addHeaderTextExamples("App X")))//
+                        .setFormat(HeaderFormat.TEXT).setText("Your authentication code for {{1}}")//
+                        .setExample(new Example().addHeaderTextExamples("App X")))//
                 .addComponent(new BodyComponent()//
-                                                 .setText("Please use the code {{1}} to sign in to your account. Do not provide this code to third parties.")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("784-H45-7R4")))//
+                        .setText("Please use the code {{1}} to sign in to your account. Do not provide this code to third parties.")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("784-H45-7R4")))//
                 .addComponent(new FooterComponent().setText("Did you not request the code? Click on 'Not me'"))//
                 .addComponent(new ButtonComponent()//
-                                                   .addButton(new QuickReplyButton("Not me"))//
+                        .addButton(new QuickReplyButton("Not me"))//
                 );
 
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
@@ -385,8 +384,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
      */
     @Test
-    void testCreateMessageTemplateMarketing2() throws IOException, URISyntaxException, InterruptedException, JSONException
-    {
+    void testCreateMessageTemplateMarketing2() throws IOException, URISyntaxException, InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -398,19 +396,19 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.MARKETING)//
                 .setLanguage(LanguageType.PT_BR)//
                 .addComponent(new HeaderComponent()//
-                                                   .setFormat(HeaderFormat.IMAGE).setExample(new Example().addHeaderHandleExamples(
+                        .setFormat(HeaderFormat.IMAGE).setExample(new Example().addHeaderHandleExamples(
                                 "4::aW1hZ2UvanBlZw==:ARZdpGlLrA9uwIGGZc-UFu5viAD1BkqTCYGL8je2d7xovDZphaWG8gJPTSJfekNchsL3SWdY8-jTA9ZRq_MWro-1wfJnApfbb0ByrUoDb6nNZA:e:1679805732:3449824985304722:100002914375136:ARauotmqlFdTcNENzt0")))//
 
                 .addComponent(new BodyComponent()//
-                                                 .setText("Venha aproveitar nossos cafés especiais em nossa super promoção. Nossos expressos são a partir de R${{1}}")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("15")//
-                                                 ))//
+                        .setText("Venha aproveitar nossos cafés especiais em nossa super promoção. Nossos expressos são a partir de R${{1}}")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("15")//
+                        ))//
                 .addComponent(new ButtonComponent()//
 
-                                                   .addButton(new QuickReplyButton("Saiba mais"))//
-                                                   .addButton(new QuickReplyButton("Parar promoções")//
-                                                   ))//
+                        .addButton(new QuickReplyButton("Saiba mais"))//
+                        .addButton(new QuickReplyButton("Parar promoções")//
+                        ))//
                 .addComponent(new FooterComponent().setText("Sem interesse? Clique em parar promoções"));
 
         whatsappBusinessCloudApi.createMessageTemplate(WABA_ID, template);
@@ -427,8 +425,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#updateMessageTemplate(String, String, MessageTemplate)}
      */
     @Test
-    void testUpdateMessageTemplate() throws IOException, URISyntaxException
-    {
+    void testUpdateMessageTemplate() throws IOException, URISyntaxException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -441,13 +438,13 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
                 .setCategory(Category.TRANSACTIONAL)//
                 .setLanguage(LanguageType.EN_US)//
                 .addComponent(new HeaderComponent()//
-                                                   .setText("Wellcome title")//
-                                                   .setFormat(HeaderFormat.TEXT))//
+                        .setText("Wellcome title")//
+                        .setFormat(HeaderFormat.TEXT))//
                 .addComponent(new BodyComponent()//
-                                                 .setText("Hello {{1}}, welcome to our {{2}} test. ")//
-                                                 .setExample(new Example()//
-                                                                          .addBodyTextExamples("Mr. José", "satisfaction")//
-                                                 ));
+                        .setText("Hello {{1}}, welcome to our {{2}} test. ")//
+                        .setExample(new Example()//
+                                .addBodyTextExamples("Mr. José", "satisfaction")//
+                        ));
 
         var response = whatsappBusinessCloudApi.updateMessageTemplate(WABA_ID, "952305634123456", template);
 
@@ -458,8 +455,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
      * Method under test: {@link WhatsappBusinessManagementApi#deleteMessageTemplate(String, String)}
      */
     @Test
-    void testDeleteMessageTemplate() throws IOException, URISyntaxException
-    {
+    void testDeleteMessageTemplate() throws IOException, URISyntaxException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -473,8 +469,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
     }
 
     @Test
-    void testRetrieveMessageTemplate1() throws IOException, URISyntaxException, JSONException
-    {
+    void testRetrieveMessageTemplate1() throws IOException, URISyntaxException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         var expectedJson = fromResource("/retTemplate1.json");
@@ -501,8 +496,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
     }
 
     @Test
-    void testRetrieveMessageTemplate2() throws IOException, URISyntaxException
-    {
+    void testRetrieveMessageTemplate2() throws IOException, URISyntaxException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -518,8 +512,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
     }
 
     @Test
-    void testRetrieveMessageTemplate3() throws IOException, URISyntaxException
-    {
+    void testRetrieveMessageTemplate3() throws IOException, URISyntaxException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
@@ -534,8 +527,7 @@ public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
     }
 
     @Test
-    void testRetrieveMessageTemplate3WithLimit() throws IOException, URISyntaxException
-    {
+    void testRetrieveMessageTemplate3WithLimit() throws IOException, URISyntaxException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();

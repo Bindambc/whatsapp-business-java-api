@@ -8,13 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 
 public class MockServerTestUtils extends TestUtils {
 
-    public MockWebServer mockWebServer;
-
-    public String baseUrl;
-
-    public WhatsappBusinessCloudApi whatsappBusinessCloudApi;
-
-    public WhatsappBusinessManagementApi whatsappBusinessManagementApi;
 
 
 }

@@ -1,6 +1,7 @@
 package com.whatsapp.api.impl;
 
 import com.whatsapp.api.MockServerTestUtils;
+import com.whatsapp.api.TestUtils;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.configuration.ApiVersion;
 import com.whatsapp.api.configuration.WhatsappApiConfig;
@@ -28,7 +29,14 @@ import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-public class WhatsappBusinessCloudApiTest extends MockServerTestUtils {
+public class WhatsappBusinessCloudApiTest extends TestUtils {
+    private MockWebServer mockWebServer;
+
+    private String baseUrl;
+
+    private WhatsappBusinessCloudApi whatsappBusinessCloudApi;
+
+
 
     private final String PHONE_NUMBER_1 = "121212121212";
     private final String PHONE_NUMBER_ID = "888888888888";
@@ -66,7 +74,7 @@ public class WhatsappBusinessCloudApiTest extends MockServerTestUtils {
 
         whatsappBusinessCloudApi = factory.newBusinessCloudApi();
 
-        whatsappBusinessManagementApi = factory.newBusinessManagementApi();
+
 
     }
 
