@@ -1,5 +1,6 @@
 package com.whatsapp.api.impl;
 
+import com.whatsapp.api.configuration.ApiVersion;
 import com.whatsapp.api.domain.media.FileType;
 import com.whatsapp.api.domain.media.Media;
 import com.whatsapp.api.domain.media.MediaFile;
@@ -14,9 +15,8 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.MultipartBody.Part;
 
-import static com.whatsapp.api.WhatsappApiServiceGenerator.createService;
-import static com.whatsapp.api.WhatsappApiServiceGenerator.executeDownloadSync;
-import static com.whatsapp.api.WhatsappApiServiceGenerator.executeSync;
+import static com.whatsapp.api.WhatsappApiServiceGenerator.*;
+import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
 /**
  * Implementation of WhatsApp Business Platform Cloud API with synchronous/blocking
@@ -28,12 +28,28 @@ public class WhatsappBusinessCloudApi {
 
     private final WhatsappBusinessCloudApiService whatsappBusinessCloudApiService;
 
+    private final ApiVersion apiVersion;
+
     /**
      * Instantiates a new Whatsapp business cloud api.
      *
      * @param token the token
      */
     public WhatsappBusinessCloudApi(String token) {
+        this.apiVersion = getApiVersion();
+        this.whatsappBusinessCloudApiService = createService(WhatsappBusinessCloudApiService.class, token);
+
+    }
+
+
+    /**
+     * Instantiates a new Whatsapp business cloud api, specifying API version
+     *
+     * @param token      the token
+     * @param apiVersion api version
+     */
+    public WhatsappBusinessCloudApi(String token, ApiVersion apiVersion) {
+        this.apiVersion = apiVersion;
         this.whatsappBusinessCloudApiService = createService(WhatsappBusinessCloudApiService.class, token);
 
     }
@@ -49,7 +65,7 @@ public class WhatsappBusinessCloudApi {
      */
     public MessageResponse sendMessage(String phoneNumberId, Message message) {
 
-        return executeSync(whatsappBusinessCloudApiService.sendMessage(phoneNumberId, message));
+        return executeSync(whatsappBusinessCloudApiService.sendMessage(apiVersion.getValue(), phoneNumberId, message));
     }
 
     /**
@@ -73,7 +89,7 @@ public class WhatsappBusinessCloudApi {
 
         var messageProduct = Part.createFormData("messaging_product", "whatsapp");
 
-        return executeSync(whatsappBusinessCloudApiService.uploadMedia(phoneNumberId, body, messageProduct));
+        return executeSync(whatsappBusinessCloudApiService.uploadMedia(apiVersion.getValue(), phoneNumberId, body, messageProduct));
     }
 
     /**
@@ -84,7 +100,7 @@ public class WhatsappBusinessCloudApi {
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media">official documentation</a>
      */
     public Media retrieveMediaUrl(String mediaId) {
-        return executeSync(whatsappBusinessCloudApiService.retrieveMediaUrl(mediaId));
+        return executeSync(whatsappBusinessCloudApiService.retrieveMediaUrl(apiVersion.getValue(), mediaId));
 
     }
 
@@ -110,7 +126,7 @@ public class WhatsappBusinessCloudApi {
      */
     public Response deleteMedia(String mediaId) {
 
-        return executeSync(whatsappBusinessCloudApiService.deleteMedia(mediaId));
+        return executeSync(whatsappBusinessCloudApiService.deleteMedia(apiVersion.getValue(), mediaId));
     }
 
     /**
@@ -122,7 +138,7 @@ public class WhatsappBusinessCloudApi {
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/mark-message-as-read">official documentation</a>
      */
     public Response markMessageAsRead(String phoneNumberId, ReadMessage message) {
-        return executeSync(whatsappBusinessCloudApiService.markMessageAsRead(phoneNumberId, message));
+        return executeSync(whatsappBusinessCloudApiService.markMessageAsRead(apiVersion.getValue(), phoneNumberId, message));
     }
 
     /**
@@ -135,7 +151,7 @@ public class WhatsappBusinessCloudApi {
      * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/reference/two-step-verification">official documentation</a>
      */
     public Response twoStepVerification(String phoneNumberId, TwoStepCode twoStepCode) {
-        return executeSync(whatsappBusinessCloudApiService.twoStepVerification(phoneNumberId, twoStepCode));
+        return executeSync(whatsappBusinessCloudApiService.twoStepVerification(apiVersion.getValue(), phoneNumberId, twoStepCode));
     }
 
 }
