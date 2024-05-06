@@ -44,8 +44,9 @@ public class MockServerUtilsTest extends TestUtils {
 
     @AfterEach
     public void tearDown() throws IOException {
-        mockWebServer.close();
+
         mockWebServer.shutdown();
+        mockWebServer.close();
     }
 
 

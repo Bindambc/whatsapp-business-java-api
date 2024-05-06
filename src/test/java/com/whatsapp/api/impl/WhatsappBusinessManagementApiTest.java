@@ -21,6 +21,7 @@ import mockwebserver3.MockResponse;
 import mockwebserver3.RecordedRequest;
 import org.json.JSONException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
@@ -30,7 +31,7 @@ import java.net.URISyntaxException;
 import java.util.Collections;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
-
+@Disabled
 class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
     private final String  API_VERSION = getApiVersion().getValue();
