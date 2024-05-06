@@ -60,9 +60,12 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
         mockWebServer = new MockWebServer();
         mockWebServer.start();
+        System.err.println("Starting MockWebServer"+mockWebServer.getPort());
 
         baseUrl = String.format("http://localhost:%s", mockWebServer.getPort());
         WhatsappApiConfig.setBaseDomain(baseUrl);
+
+        System.err.println(baseUrl);
 
         String TOKEN = "df4UIkhjdli48574654SDsdf54654sdf5s4DDF54654654654564654sdfsdf54sdf65s4";
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
@@ -86,7 +89,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
     void testCreateMessageTemplate() throws InterruptedException, JSONException {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
-
+        System.err.println("testCreateMessageTemplate");
 
         mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
         var expectedJson = """
