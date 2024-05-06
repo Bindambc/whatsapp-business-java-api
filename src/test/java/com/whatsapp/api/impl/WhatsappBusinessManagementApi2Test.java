@@ -30,7 +30,7 @@ import java.util.Collections;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-public class WhatsappBusinessManagementApiTest extends TestUtils {
+public class WhatsappBusinessManagementApi2Test extends TestUtils {
     private static MockWebServer mockWebServer;
 
     private static String baseUrl;

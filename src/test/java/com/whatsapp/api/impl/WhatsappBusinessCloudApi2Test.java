@@ -1,6 +1,5 @@
 package com.whatsapp.api.impl;
 
-import com.whatsapp.api.MockServerTestUtils;
 import com.whatsapp.api.TestUtils;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.configuration.ApiVersion;
@@ -29,7 +28,7 @@ import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-public class WhatsappBusinessCloudApiTest extends TestUtils {
+public class WhatsappBusinessCloudApi2Test extends TestUtils {
     private MockWebServer mockWebServer;
 
     private String baseUrl;
