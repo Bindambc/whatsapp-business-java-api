@@ -33,7 +33,7 @@ import java.net.URISyntaxException;
 import java.util.Collections;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
-@ExtendWith(MockitoExtension.class)
+
 class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
 
     private final String  API_VERSION = getApiVersion().getValue();

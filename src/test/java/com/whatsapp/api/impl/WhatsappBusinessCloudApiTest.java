@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
-@ExtendWith(MockitoExtension.class)
+
 class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     private final String PHONE_NUMBER_1 = "121212121212";
