@@ -20,10 +20,7 @@ import mockwebserver3.MockResponse;
 import mockwebserver3.MockWebServer;
 import mockwebserver3.RecordedRequest;
 import org.json.JSONException;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
@@ -34,12 +31,12 @@ import java.util.Collections;
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
 public class WhatsappBusinessManagementApiTest extends TestUtils {
-    private MockWebServer mockWebServer;
+    private static MockWebServer mockWebServer;
 
-    private String baseUrl;
+    private static String baseUrl;
 
 
-    private WhatsappBusinessManagementApi whatsappBusinessManagementApi;
+    private static WhatsappBusinessManagementApi whatsappBusinessManagementApi;
 
     private final String API_VERSION = getApiVersion().getValue();
 
@@ -54,8 +51,8 @@ public class WhatsappBusinessManagementApiTest extends TestUtils {
     private final String TOKEN = "54f6sd5f4654df21sdfs56d4fsd5f41f8we546F54f5dfF4FRDFGfGSHe54rf6sd5f4g55";
     private final String WABA_ID = "57856727575875757";
 
-    @BeforeEach
-    public void setUp() throws IOException {
+    @BeforeAll
+    public static void setUp() throws IOException {
 
         mockWebServer = new MockWebServer();
         mockWebServer.start();
@@ -71,8 +68,8 @@ public class WhatsappBusinessManagementApiTest extends TestUtils {
 
     }
 
-    @AfterEach
-    public void tearDown() throws IOException {
+    @AfterAll
+    public static void tearDown() throws IOException {
 
         mockWebServer.shutdown();
         mockWebServer.close();
