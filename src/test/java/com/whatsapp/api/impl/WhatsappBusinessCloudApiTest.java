@@ -16,6 +16,8 @@ import mockwebserver3.RecordedRequest;
 import org.json.JSONException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
@@ -23,7 +25,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
-
+@ExtendWith(MockitoExtension.class)
 class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     private final String PHONE_NUMBER_1 = "121212121212";
