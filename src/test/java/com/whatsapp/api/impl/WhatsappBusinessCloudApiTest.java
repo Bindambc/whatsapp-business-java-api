@@ -1128,9 +1128,9 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
 
     @Test
-    void testApiVersion() throws IOException, URISyntaxException, InterruptedException {
+    void testApiVersion() throws InterruptedException {
 
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var message = MessageBuilder.builder()//
                 .setTo(PHONE_NUMBER_1)//
