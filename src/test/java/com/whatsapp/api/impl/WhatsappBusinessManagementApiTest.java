@@ -1,7 +1,7 @@
 package com.whatsapp.api.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.whatsapp.api.MockServerUtilsTest;
+import com.whatsapp.api.MockServerTestUtils;
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.configuration.WhatsappApiConfig;
@@ -23,8 +23,6 @@ import mockwebserver3.MockWebServer;
 import mockwebserver3.RecordedRequest;
 import org.json.JSONException;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
@@ -34,7 +32,7 @@ import java.util.Collections;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-public class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
+public class WhatsappBusinessManagementApiTest extends MockServerTestUtils {
 
     private final String  API_VERSION = getApiVersion().getValue();
 

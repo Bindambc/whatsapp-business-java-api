@@ -1,6 +1,6 @@
 package com.whatsapp.api.impl;
 
-import com.whatsapp.api.MockServerUtilsTest;
+import com.whatsapp.api.MockServerTestUtils;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.configuration.ApiVersion;
 import com.whatsapp.api.configuration.WhatsappApiConfig;
@@ -20,8 +20,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
@@ -30,7 +28,7 @@ import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-public class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
+public class WhatsappBusinessCloudApiTest extends MockServerTestUtils {
 
     private final String PHONE_NUMBER_1 = "121212121212";
     private final String PHONE_NUMBER_ID = "888888888888";
