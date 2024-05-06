@@ -1,6 +1,7 @@
 package com.whatsapp.api;
 
 
+import com.whatsapp.api.configuration.ApiVersion;
 import com.whatsapp.api.impl.WhatsappBusinessCloudApi;
 import com.whatsapp.api.impl.WhatsappBusinessManagementApi;
 
@@ -42,6 +43,16 @@ public class WhatsappApiFactory {
     public WhatsappBusinessCloudApi newBusinessCloudApi() {
 
         return new WhatsappBusinessCloudApi(token);
+    }
+
+    /**
+     * Creates a new synchronous/blocking Whatsapp business cloud api client, especifying the api version
+     *
+     * @return the whatsapp business cloud api
+     */
+    public WhatsappBusinessCloudApi newBusinessCloudApi(ApiVersion apiVersion) {
+
+        return new WhatsappBusinessCloudApi(token, apiVersion);
     }
 
     /**
