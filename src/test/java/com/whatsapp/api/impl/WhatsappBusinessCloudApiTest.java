@@ -50,7 +50,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendMessageError() throws InterruptedException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(500).setBody("{" +//
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(500).body("{" +//
                 "  \"error\": {\n" +//
                 "    \"message\": \"(#130429) Rate limit hit\",\n" +//
                 "    \"type\": \"OAuthException\",\n" +//
@@ -62,7 +62,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
                 "    \"error_subcode\": 2494055,\n" +//
                 "    \"fbtrace_id\": \"Az8or2yhqkZfEZ-_4Qn_Bam\"\n" +//
                 "  }\n" +//
-                "}"));
+                "}").build());
 
 
         var message = MessageBuilder.builder()//
@@ -86,7 +86,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTextMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage1.json");
 
@@ -110,7 +110,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendContactMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage10.json");
 
@@ -162,7 +162,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendContactMessage2() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage10.json");
 
@@ -214,7 +214,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTemplateTextMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage2.json");
 
@@ -239,7 +239,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTemplateButtonMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage3.json");
 
@@ -278,7 +278,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTemplateButtonMessageWithDateTimeParam() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage4.json");
 
@@ -331,7 +331,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTemplateButtonMessageMarketing() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage5.json");
 
@@ -381,7 +381,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTemplateDocumentPdfMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage6.json");
 
@@ -418,7 +418,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTemplateVideoMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage8.json");
 
@@ -451,7 +451,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendTemplateAuthMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage9.json");
 
@@ -484,7 +484,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendAudioMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage7.json");
 
@@ -507,7 +507,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendAudioLinkMessage() throws InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = """
                 {
@@ -542,7 +542,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendVideoMessage() throws InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = """
                 {
@@ -576,7 +576,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendImageMessage() throws InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = """
                 {
@@ -608,7 +608,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendDocumentMessage() throws InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = """
                 {
@@ -642,7 +642,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendStickerMessage() throws InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = """
                 {
@@ -674,7 +674,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendInteractiveMessageWithButtons() throws InterruptedException, JSONException, IOException, URISyntaxException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage11.json");
 
@@ -718,7 +718,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendInteractiveMessageWithImageHeader() throws InterruptedException, JSONException, IOException, URISyntaxException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage14.json");
 
@@ -761,7 +761,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendInteractiveMessageWithVideoHeader() throws InterruptedException, JSONException, IOException, URISyntaxException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage15.json");
 
@@ -800,7 +800,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendInteractiveMessageWithDocumentHeader() throws InterruptedException, JSONException, IOException, URISyntaxException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage16.json");
 
@@ -844,7 +844,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendInteractiveMessageWithList() throws InterruptedException, JSONException, IOException, URISyntaxException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage12.json");
 
@@ -906,7 +906,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendReactionMessage() throws InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
         var emojiThumbsUp = "\uD83D\uDC4D";
         var expectedJson = """
                 {
@@ -941,7 +941,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testSendReactionMessage2() throws InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
         var emojiThumbsUp = "\uD83D\uDC4D";
         var expectedJson = """
                 {
@@ -974,7 +974,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testUploadMedia() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/uploadResponse.json")));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/uploadResponse.json")).build());
 
         var fileContent = bytesFromResource("/starwars.png");
 
@@ -990,7 +990,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testRetrieveMediaUrl() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/media.json")));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/media.json")).build());
 
         var response = whatsappBusinessCloudApi.retrieveMediaUrl("1227829768162607");
 
@@ -1008,7 +1008,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testDownloadMediaFile() throws InterruptedException, IOException, URISyntaxException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/starwars.png")).setResponseCode(200).addHeader("Content-Disposition", "inline;filename=starwars.png"));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/starwars.png")).addHeader("Content-Disposition", "inline;filename=starwars.png").build());
 
         var response = whatsappBusinessCloudApi.downloadMediaFile(baseUrl + "/whatsapp_business/attachments/?mid=1228169767822607&ext=16772107977&hash=ATs5BiSbLTZzCFh73M16stmnUK2UV6NBqChXB4WWC21sw");
 
@@ -1024,7 +1024,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testDownloadMediaFileNotFound() throws InterruptedException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody("<html>.</html>").setResponseCode(404));
+        mockWebServer.enqueue(new MockResponse().newBuilder().body("<html>.</html>").code(404).build());
 
         var exception = Assertions.assertThrows(WhatsappApiException.class, () -> whatsappBusinessCloudApi.downloadMediaFile(baseUrl + "/whatsapp_business/attachments/?mid=1228169767822607&ext=16772107977&hash=ATs5BiSbLTZzCFh73M16stmnUK2UV6NBqChXB4WWC21sw"));
 
@@ -1038,7 +1038,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testDeleteMedia() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/reponse.json")));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/reponse.json")).build());
 
         var response = whatsappBusinessCloudApi.deleteMedia("1227829768162607");
 
@@ -1052,7 +1052,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
 
     @Test
     void testLocationMessage() throws IOException, URISyntaxException, InterruptedException, JSONException {
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_SEND_MESSAGE_RESPONSE));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_SEND_MESSAGE_RESPONSE).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage13.json");
 
@@ -1084,7 +1084,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
                       "success": true
                 }
                     """;
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(responseBody));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(responseBody).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage17.json");
 
@@ -1109,7 +1109,7 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
                       "success": true
                 }
                     """;
-        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(responseBody));
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(responseBody).build());
 
         var expectedJson = fromResource(EXPECTED_FOLDER + "expectedMessage18.json");
 
