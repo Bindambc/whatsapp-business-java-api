@@ -62,6 +62,12 @@
             <artifactId>okhttp</artifactId>
             <version>${com.squareup.okhttp3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.14.14</version>
+        </dependency>
+
         <!--tests-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
