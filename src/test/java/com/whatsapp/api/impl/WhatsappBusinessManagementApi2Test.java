@@ -16,9 +16,10 @@ import com.whatsapp.api.domain.templates.type.HeaderFormat;
 import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.utils.Formatter;
-import mockwebserver3.MockResponse;
-import mockwebserver3.MockWebServer;
-import mockwebserver3.RecordedRequest;
+
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import okhttp3.mockwebserver.RecordedRequest;
 import org.json.JSONException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -87,7 +88,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
 
 
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
         var expectedJson = """
                 {
                    "name": "welcome_template2",
@@ -152,7 +153,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
 
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
 
         var expectedJson = fromResource("/expected/template/expectedTemplate1.json");
 
@@ -189,7 +190,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
 
         var expectedJson = fromResource("/expected/template/expectedTemplate2.json");
 
@@ -233,7 +234,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
         var expectedJson = fromResource("/expected/template/expectedTemplate4.json");
         var template = new MessageTemplate();
 
@@ -273,7 +274,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
         var expectedJson = fromResource("/expected/template/expectedTemplate6.json");
         var template = new MessageTemplate();
 
@@ -313,7 +314,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
         var expectedJson = fromResource("/expected/template/expectedTemplate8.json");
         var template = new MessageTemplate();
 
@@ -351,7 +352,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
         var expectedJson = fromResource("/expected/template/expectedTemplate9.json");
         var template = new MessageTemplate();
 
@@ -388,7 +389,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(DEFAULT_TEMPLATE_RESPONSE).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(DEFAULT_TEMPLATE_RESPONSE));
         var expectedJson = fromResource("/expected/template/expectedTemplate7.json");
         var template = new MessageTemplate();
 
@@ -430,7 +431,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
 
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/template.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/template.json")));
 
         var template = new MessageTemplate();
 
@@ -460,7 +461,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
 
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/deleteTemplate.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/deleteTemplate.json")));
 
         var resp = whatsappBusinessCloudApi.deleteMessageTemplate(WABA_ID, "welcome_template");
 
@@ -475,7 +476,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         var expectedJson = fromResource("/retTemplate1.json");
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(expectedJson).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(expectedJson));
 
         var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID);
         //TODO: review button
@@ -500,7 +501,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/retTemplate2.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/retTemplate2.json")));
 
         var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID, 2);
 
@@ -516,7 +517,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/retTemplate3.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/retTemplate3.json")));
 
         var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID, "welcome_template3");
 
@@ -531,7 +532,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
         WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/retTemplate3.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/retTemplate3.json")));
 
         var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID, 1, "10");
 
@@ -543,7 +544,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
     @Test
     void testRetrievePhoneNumber() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/phone/phoneNumber.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/phone/phoneNumber.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -567,7 +568,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
     @Test
     void testRetrievePhoneNumberWithSpecificFields() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/phone/phoneWithSpecificFields.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/phone/phoneWithSpecificFields.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -589,7 +590,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
     @Test
     void testRetrievePhoneNumbers() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/phone/phoneNumbersList.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/phone/phoneNumbersList.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -618,7 +619,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
 
     @Test
     void testRetrievePhoneNumberNotFoundError() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(400).body(fromResource("/phone/phoneNumberNotFoundError.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody(fromResource("/phone/phoneNumberNotFoundError.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -641,7 +642,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
      */
     @Test
     void requestCode() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/reponse.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/reponse.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -663,7 +664,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
      */
     @Test
     void requestCodeError() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(400).body(fromResource("/phone/requestCodeError.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody(fromResource("/phone/requestCodeError.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -685,7 +686,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
      */
     @Test
     void verifyCode() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/reponse.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(200).setBody(fromResource("/reponse.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -707,7 +708,7 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
      */
     @Test
     void verifyCodeError() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder().code(400).body(fromResource("/phone/verifyCodeError.json")).build());
+        mockWebServer.enqueue(new MockResponse().setResponseCode(400).setBody(fromResource("/phone/verifyCodeError.json")));
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -729,10 +730,10 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
      */
     @Test
     void getWhatsappCommerceSettings() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder()
-                .code(200)
-                .body(fromResource("/config/commerceSettings.json"))
-                .build());
+        mockWebServer.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(fromResource("/config/commerceSettings.json"))
+               );
 
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
@@ -754,10 +755,10 @@ public class WhatsappBusinessManagementApi2Test extends TestUtils {
      */
     @Test
     void updateWhatsappCommerceSettings() throws IOException, URISyntaxException, InterruptedException {
-        mockWebServer.enqueue(new MockResponse().newBuilder()
-                .code(200)
-                .body(fromResource("/reponse.json"))
-                .build()
+        mockWebServer.enqueue(new MockResponse()
+                .setResponseCode(200)
+                .setBody(fromResource("/reponse.json"))
+
 
         );
 
