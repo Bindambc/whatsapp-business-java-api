@@ -27,10 +27,11 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collections;
 
-import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
+import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-class WhatsappBusinessManagementApiTest extends MockServerUtilsTest
-{
+class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
+
+    private final String  API_VERSION = getApiVersion().getValue();
 
     public final String DEFAULT_TEMPLATE_RESPONSE = """
             {

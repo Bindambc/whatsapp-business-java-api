@@ -12,11 +12,11 @@ public class WhatsappApiConfig {
     /**
      * The constant API_VERSION.
      */
-    public static String API_VERSION = ApiVersion.V19_0.getValue();
+    private static ApiVersion apiVersion = ApiVersion.V19_0;
     /**
      * The constant BASE_DOMAIN.
      */
-    public static String BASE_DOMAIN = "https://graph.facebook.com/";
+    private static String baseDomain = "https://graph.facebook.com/";
 
     /**
      * Sets base domain.
@@ -24,7 +24,7 @@ public class WhatsappApiConfig {
      * @param baseDomain the base domain
      */
     public static void setBaseDomain(String baseDomain) {
-        BASE_DOMAIN = baseDomain;
+        WhatsappApiConfig.baseDomain = baseDomain;
     }
 
     /**
@@ -33,7 +33,25 @@ public class WhatsappApiConfig {
      * @param apiVersion the api version enum
      */
     public static void setApiVersion(ApiVersion apiVersion) {
-        API_VERSION = apiVersion.getValue();
+        WhatsappApiConfig.apiVersion = apiVersion;
+    }
+
+    /**
+     * Gets api version
+     *
+     * @return apiVersion
+     */
+    public static ApiVersion getApiVersion() {
+        return apiVersion;
+    }
+
+    /**
+     * Gets api version
+     *
+     * @return apiVersion
+     */
+    public static String getBaseDomain() {
+        return baseDomain;
     }
 
 

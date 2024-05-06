@@ -103,14 +103,18 @@ public class WhatsappApiServiceGenerator {
      * @return the s
      */
     public static <S> S createService(Class<S> serviceClass, String token, String baseUrl) {
-        Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(converterFactory);
+        Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(converterFactory);
 
         if (token == null) {
             retrofitBuilder.client(sharedClient);
         } else {
 
             AuthenticationInterceptor interceptor = new AuthenticationInterceptor(token);
-            OkHttpClient adaptedClient = sharedClient.newBuilder().addInterceptor(interceptor).build();
+            OkHttpClient adaptedClient = sharedClient.newBuilder()
+                    .addInterceptor(interceptor)
+                    .build();
             retrofitBuilder.client(adaptedClient);
         }
 
@@ -128,7 +132,7 @@ public class WhatsappApiServiceGenerator {
      */
     public static <S> S createService(Class<S> serviceClass, String token) {
 
-        var baseUrl = WhatsappApiConfig.BASE_DOMAIN + WhatsappApiConfig.API_VERSION + "/";
+        var baseUrl = WhatsappApiConfig.getBaseDomain();
         return createService(serviceClass, token, baseUrl);
 
     }

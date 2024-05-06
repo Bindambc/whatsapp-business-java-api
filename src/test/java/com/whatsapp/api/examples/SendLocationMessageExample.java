@@ -1,6 +1,8 @@
 package com.whatsapp.api.examples;
 
 import com.whatsapp.api.WhatsappApiFactory;
+import com.whatsapp.api.configuration.ApiVersion;
+import com.whatsapp.api.configuration.WhatsappApiConfig;
 import com.whatsapp.api.domain.messages.LocationMessage;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
 import com.whatsapp.api.domain.messages.response.MessageResponse;
@@ -14,7 +16,9 @@ public class SendLocationMessageExample {
 
     public static void main(String[] args) {
 
+        WhatsappApiConfig.setApiVersion(ApiVersion.V17_0);
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
         var locationMessage = new LocationMessage()//
