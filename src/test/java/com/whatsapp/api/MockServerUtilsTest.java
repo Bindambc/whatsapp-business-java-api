@@ -24,30 +24,7 @@ public class MockServerUtilsTest extends TestUtils {
     public static WhatsappBusinessManagementApi whatsappBusinessManagementApi;
 
 
-    @BeforeEach
-    public void setUp() throws IOException {
 
-        mockWebServer = new MockWebServer();
-        mockWebServer.start();
-
-        baseUrl = String.format("http://localhost:%s", mockWebServer.getPort());
-        WhatsappApiConfig.setBaseDomain(baseUrl);
-
-        String TOKEN = "df4UIkhjdli48574654SDsdf54654sdf5s4DDF54654654654564654sdfsdf54sdf65s4";
-        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
-
-        whatsappBusinessCloudApi = factory.newBusinessCloudApi();
-
-        whatsappBusinessManagementApi = factory.newBusinessManagementApi();
-
-    }
-
-    @AfterEach
-    public void tearDown() throws IOException {
-
-        mockWebServer.shutdown();
-        mockWebServer.close();
-    }
 
 
 

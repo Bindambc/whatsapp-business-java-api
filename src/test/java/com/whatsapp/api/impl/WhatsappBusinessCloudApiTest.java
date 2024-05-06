@@ -3,6 +3,7 @@ package com.whatsapp.api.impl;
 import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.WhatsappApiFactory;
 import com.whatsapp.api.configuration.ApiVersion;
+import com.whatsapp.api.configuration.WhatsappApiConfig;
 import com.whatsapp.api.domain.media.FileType;
 import com.whatsapp.api.domain.messages.*;
 import com.whatsapp.api.domain.messages.Message.MessageBuilder;
@@ -12,9 +13,12 @@ import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.utils.Formatter;
 import mockwebserver3.MockResponse;
+import mockwebserver3.MockWebServer;
 import mockwebserver3.RecordedRequest;
 import org.json.JSONException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -49,6 +53,31 @@ class WhatsappBusinessCloudApiTest extends MockServerUtilsTest {
               ]
             }
             """;
+
+    @BeforeEach
+    public void setUp() throws IOException {
+
+        mockWebServer = new MockWebServer();
+        mockWebServer.start();
+
+        baseUrl = String.format("http://localhost:%s", mockWebServer.getPort());
+        WhatsappApiConfig.setBaseDomain(baseUrl);
+
+        String TOKEN = "df4UIkhjdli48574654SDsdf54654sdf5s4DDF54654654654564654sdfsdf54sdf65s4";
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+        whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+        whatsappBusinessManagementApi = factory.newBusinessManagementApi();
+
+    }
+
+    @AfterEach
+    public void tearDown() throws IOException {
+
+        mockWebServer.shutdown();
+        mockWebServer.close();
+    }
 
     @Test
     void testSendMessageError() throws InterruptedException {

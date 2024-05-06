@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsapp.api.MockServerUtilsTest;
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
+import com.whatsapp.api.configuration.WhatsappApiConfig;
 import com.whatsapp.api.domain.config.CommerceDataItem;
 import com.whatsapp.api.domain.phone.RequestCode;
 import com.whatsapp.api.domain.phone.VerifyCode;
@@ -18,11 +19,10 @@ import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.utils.Formatter;
 import mockwebserver3.MockResponse;
+import mockwebserver3.MockWebServer;
 import mockwebserver3.RecordedRequest;
 import org.json.JSONException;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -48,6 +48,31 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
     private final String PHONE_NUMBER_ID = "411001010101010";
     private final String TOKEN = "54f6sd5f4654df21sdfs56d4fsd5f41f8we546F54f5dfF4FRDFGfGSHe54rf6sd5f4g55";
     private final String WABA_ID = "57856727575875757";
+
+    @BeforeEach
+    public void setUp() throws IOException {
+
+        mockWebServer = new MockWebServer();
+        mockWebServer.start();
+
+        baseUrl = String.format("http://localhost:%s", mockWebServer.getPort());
+        WhatsappApiConfig.setBaseDomain(baseUrl);
+
+        String TOKEN = "df4UIkhjdli48574654SDsdf54654sdf5s4DDF54654654654564654sdfsdf54sdf65s4";
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+        whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+
+        whatsappBusinessManagementApi = factory.newBusinessManagementApi();
+
+    }
+
+    @AfterEach
+    public void tearDown() throws IOException {
+
+        mockWebServer.shutdown();
+        mockWebServer.close();
+    }
 
     /**
      * Method under test: {@link WhatsappBusinessManagementApi#createMessageTemplate(String, MessageTemplate)}
