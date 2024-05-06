@@ -33,7 +33,7 @@ import java.util.Collections;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
-@ExtendWith(MockitoExtension.class)
+
 public class WhatsappBusinessManagementApi2Test extends TestUtils {
     private static MockWebServer mockWebServer;
 

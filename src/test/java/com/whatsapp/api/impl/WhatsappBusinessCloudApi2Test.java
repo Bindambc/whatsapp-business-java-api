@@ -30,7 +30,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
-@ExtendWith(MockitoExtension.class)
+
 public class WhatsappBusinessCloudApi2Test extends TestUtils {
     private MockWebServer mockWebServer;
 
