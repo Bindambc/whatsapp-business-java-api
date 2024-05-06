@@ -20,6 +20,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
@@ -27,7 +29,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
-
+@ExtendWith(MockitoExtension.class)
 public class WhatsappBusinessCloudApi2Test extends TestUtils {
     private MockWebServer mockWebServer;
 
