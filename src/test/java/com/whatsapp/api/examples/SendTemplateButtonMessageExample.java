@@ -2,6 +2,8 @@ package com.whatsapp.api.examples;
 
 import com.whatsapp.api.TestConstants;
 import com.whatsapp.api.WhatsappApiFactory;
+import com.whatsapp.api.configuration.ApiVersion;
+import com.whatsapp.api.configuration.WhatsappApiConfig;
 import com.whatsapp.api.domain.messages.BodyComponent;
 import com.whatsapp.api.domain.messages.ButtonComponent;
 import com.whatsapp.api.domain.messages.ButtonPayloadParameter;
@@ -18,6 +20,8 @@ import static com.whatsapp.api.TestConstants.PHONE_NUMBER_ID;
 
 public class SendTemplateButtonMessageExample {
     public static void main(String[] args) {
+        // setting the api version
+        WhatsappApiConfig.setApiVersion(ApiVersion.V17_0);
         WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestConstants.TOKEN);
 
         WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();

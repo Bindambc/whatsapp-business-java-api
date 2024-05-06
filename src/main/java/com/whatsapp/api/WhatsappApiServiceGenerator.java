@@ -1,17 +1,15 @@
 package com.whatsapp.api;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whatsapp.api.configuration.WhatsappApiConfig;
 import com.whatsapp.api.domain.errors.Error;
 import com.whatsapp.api.domain.errors.WhatsappApiError;
 import com.whatsapp.api.domain.media.MediaFile;
 import com.whatsapp.api.exception.WhatsappApiException;
 import com.whatsapp.api.interceptor.AuthenticationInterceptor;
-import com.whatsapp.api.utils.proxy.CustomProxyAuthenticator;
 import com.whatsapp.api.utils.proxy.CustomHttpProxySelector;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.whatsapp.api.utils.proxy.CustomProxyAuthenticator;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -32,7 +30,11 @@ public class WhatsappApiServiceGenerator {
 
     static OkHttpClient sharedClient;
     private static final Converter.Factory converterFactory = JacksonConverterFactory.create(
-        new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        new ObjectMapper()
+          .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+          .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
+          .configure(DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS, false)
+          .configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false)
     );
 
     @SuppressWarnings("unchecked")
@@ -46,7 +48,7 @@ public class WhatsappApiServiceGenerator {
         sharedClient = createDefaultHttpClient();
     }
 
-    public static OkHttpClient createDefaultHttpClient(){
+    public static OkHttpClient createDefaultHttpClient() {
         return new OkHttpClient.Builder()//
                 .callTimeout(20, TimeUnit.SECONDS)//
                 .pingInterval(20, TimeUnit.SECONDS)//
@@ -66,8 +68,9 @@ public class WhatsappApiServiceGenerator {
      * you can pass {@code null} as parameters for {@code username} and {@code pwd}.
      * </ul>
      * <p>
+     *
      * @param host     the host (Not null)
-     * @param port     the port 
+     * @param port     the port
      * @param username the username
      * @param pwd      the pwd
      * @see <a href="https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/proxy-selector/">Proxy Selector</a>
@@ -104,14 +107,18 @@ public class WhatsappApiServiceGenerator {
      * @return the s
      */
     public static <S> S createService(Class<S> serviceClass, String token, String baseUrl) {
-        Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(converterFactory);
+        Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(converterFactory);
 
         if (token == null) {
             retrofitBuilder.client(sharedClient);
         } else {
 
             AuthenticationInterceptor interceptor = new AuthenticationInterceptor(token);
-            OkHttpClient adaptedClient = sharedClient.newBuilder().addInterceptor(interceptor).build();
+            OkHttpClient adaptedClient = sharedClient.newBuilder()
+                    .addInterceptor(interceptor)
+                    .build();
             retrofitBuilder.client(adaptedClient);
         }
 
@@ -129,7 +136,7 @@ public class WhatsappApiServiceGenerator {
      */
     public static <S> S createService(Class<S> serviceClass, String token) {
 
-        var baseUrl = WhatsappApiConfig.BASE_DOMAIN;
+        var baseUrl = WhatsappApiConfig.getBaseDomain();
         return createService(serviceClass, token, baseUrl);
 
     }
