@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.webhook;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Use this class to deserialize webhook events
  */
 public final class WebHook {
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     /**
      * Construct WebHookEvent object
