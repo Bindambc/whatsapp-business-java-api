@@ -2,6 +2,7 @@ package com.whatsapp.api.domain.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * The type Commerce data item.

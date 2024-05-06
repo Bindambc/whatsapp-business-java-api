@@ -10,18 +10,7 @@ import com.whatsapp.api.domain.response.Response;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.Path;
-import retrofit2.http.Streaming;
-import retrofit2.http.Url;
-
-import static com.whatsapp.api.configuration.WhatsappApiConfig.API_VERSION;
+import retrofit2.http.*;
 
 /**
  * The interface Whatsapp business cloud api service.
@@ -35,8 +24,8 @@ public interface WhatsappBusinessCloudApiService {
      * @param message       the message
      * @return the call
      */
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
-    Call<MessageResponse> sendMessage(@Path("Phone-Number-ID") String phoneNumberId, @Body Message message);
+    @POST("/{api-version}/{Phone-Number-ID}/messages")
+    Call<MessageResponse> sendMessage(@Path("api-version") String apiVersion, @Path("Phone-Number-ID") String phoneNumberId, @Body Message message);
 
     /**
      * Upload media call.
@@ -47,8 +36,8 @@ public interface WhatsappBusinessCloudApiService {
      * @return the call
      */
     @Multipart
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}/media")
-    Call<UploadResponse> uploadMedia(@Path("Phone-Number-ID") String phoneNumberId, @Part MultipartBody.Part file,
+    @POST("/{api-version}/{Phone-Number-ID}/media")
+    Call<UploadResponse> uploadMedia(@Path("api-version") String apiVersion, @Path("Phone-Number-ID") String phoneNumberId, @Part MultipartBody.Part file,
                                      @Part MultipartBody.Part messageProduct);
 
     /**
@@ -57,8 +46,8 @@ public interface WhatsappBusinessCloudApiService {
      * @param mediaId the media id
      * @return the call
      */
-    @GET("/" + API_VERSION + "/{media-id}")
-    Call<Media> retrieveMediaUrl(@Path("media-id") String mediaId);
+    @GET("/{api-version}/{media-id}")
+    Call<Media> retrieveMediaUrl(@Path("api-version") String apiVersion, @Path("media-id") String mediaId);
 
     /**
      * Download media file call.
@@ -77,8 +66,8 @@ public interface WhatsappBusinessCloudApiService {
      * @param mediaId the media id
      * @return the call
      */
-    @DELETE("/" + API_VERSION + "/{media-id}")
-    Call<Response> deleteMedia(@Path("media-id") String mediaId);
+    @DELETE("/{api-version}/{media-id}")
+    Call<Response> deleteMedia(@Path("api-version") String apiVersion, @Path("media-id") String mediaId);
 
     /**
      * Send mark Meassge as read call.
@@ -87,8 +76,8 @@ public interface WhatsappBusinessCloudApiService {
      * @param message       the message
      * @return the call
      */
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}/messages")
-    Call<Response> markMessageAsRead(@Path("Phone-Number-ID") String phoneNumberId, @Body ReadMessage message);
+    @POST("/{api-version}/{Phone-Number-ID}/messages")
+    Call<Response> markMessageAsRead(@Path("api-version") String apiVersion, @Path("Phone-Number-ID") String phoneNumberId, @Body ReadMessage message);
 
     /**
      * Two-step verification call.
@@ -97,7 +86,7 @@ public interface WhatsappBusinessCloudApiService {
      * @param twoStepCode   the two-step code
      * @return the call
      */
-    @POST("/" + API_VERSION + "/{Phone-Number-ID}")
-    Call<Response> twoStepVerification(@Path("Phone-Number-ID") String phoneNumberId, @Body TwoStepCode twoStepCode);
+    @POST("/{api-version}/{Phone-Number-ID}")
+    Call<Response> twoStepVerification(@Path("api-version") String apiVersion, @Path("Phone-Number-ID") String phoneNumberId, @Body TwoStepCode twoStepCode);
 
 }
