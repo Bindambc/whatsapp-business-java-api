@@ -11,5 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record Message(
 
-        @JsonProperty("id") String id) {
+        @JsonProperty("id") String id,
+        @JsonProperty("message_status") String messageStatus)
+{
 }
