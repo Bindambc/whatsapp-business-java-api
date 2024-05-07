@@ -1,6 +1,7 @@
 package com.whatsapp.api.domain.webhook.type;
 
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -21,13 +22,18 @@ public enum MessageStatus {
     READ("read"),
 
     /**
-     * Message failed to send.(Red error triangle)
+     * Message failed to send. (Red error triangle)
      */
     FAILED("failed"),
     /**
-     * Message deleted by the user. (	Message is replaced in WhatsApp mobile with the note "This message was deleted".)
+     * Message deleted by the user. (Message is replaced in WhatsApp mobile with the note "This message was deleted".)
      */
-    DELETED("deleted");
+    DELETED("deleted"),
+
+    /**
+     * Fallback value.
+     */
+    @JsonEnumDefaultValue UNKNOWN( "unknown");
 
     private final String value;
 

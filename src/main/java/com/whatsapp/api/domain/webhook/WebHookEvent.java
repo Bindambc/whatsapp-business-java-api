@@ -1,8 +1,13 @@
 package com.whatsapp.api.domain.webhook;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.whatsapp.api.domain.webhook.type.WebhookType;
 
 import java.util.List;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Feature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE;
 
 /**
  * This class is a representation of the json object sent by the WhatsApp webhook.
@@ -13,5 +18,7 @@ import java.util.List;
  *
  * @see <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/set-up-webhooks">Webhooks Setup Guide</a> to more details.
  **/
-public record WebHookEvent(@JsonProperty("entry") List<Entry> entry, @JsonProperty("object") String object) {
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonFormat(with = READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)
+public record WebHookEvent(@JsonProperty("entry") List<Entry> entry, @JsonProperty("object") WebhookType object) {
 }
