@@ -1,31 +1,35 @@
 package com.whatsapp.api;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import com.whatsapp.api.domain.errors.WhatsappApiError;
+import com.whatsapp.api.utils.proxy.CustomHttpProxySelector;
+import com.whatsapp.api.utils.proxy.CustomProxyAuthenticator;
+import okhttp3.Authenticator;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import retrofit2.Response;
 
 import java.io.IOException;
 import java.net.ProxySelector;
 import java.net.URISyntaxException;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import com.whatsapp.api.domain.errors.WhatsappApiError;
-import com.whatsapp.api.exception.WhatsappApiException;
-import com.whatsapp.api.utils.proxy.CustomHttpProxySelector;
-import com.whatsapp.api.utils.proxy.CustomProxyAuthenticator;
 
-import okhttp3.Authenticator;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
-import retrofit2.Response;
-
-public class WhatsappApiServiceGeneratorTest extends TestUtils {
+class WhatsappApiServiceGeneratorTest extends TestUtils {
 
     @BeforeEach
     void resetProxy() {
+        WhatsappApiServiceGenerator.sharedClient = WhatsappApiServiceGenerator.createDefaultHttpClient();
+    }
+
+
+    @AfterAll
+    static void resetSharedOkHttpClientToDefault() {
+        // reset the OkHttpClient to its default settings, preventing errors in other tests that do not utilize a proxy
         WhatsappApiServiceGenerator.sharedClient = WhatsappApiServiceGenerator.createDefaultHttpClient();
     }
 
@@ -44,10 +48,6 @@ public class WhatsappApiServiceGeneratorTest extends TestUtils {
     /**
      * Method under test:
      * {@link WhatsappApiServiceGenerator#getWhatsappApiError}
-     * 
-     * @throws IOException
-     * @throws URISyntaxException
-     * @throws WhatsappApiException
      */
     @Test
     void testGetWhatsappApiError() throws IOException, URISyntaxException {
@@ -60,8 +60,8 @@ public class WhatsappApiServiceGeneratorTest extends TestUtils {
         assertEquals(136025, apiError.error().code(), "Error code should be 136025");
         assertEquals(2388093, apiError.error().errorSubcode(), "Error code should be 136025");
         assertEquals(false, apiError.error().isTransient(), "Error code should be 136025");
-        assertEquals("O c\u00F3digo inserido est\u00E1 incorreto.", apiError.error().errorUserMsg(), "Error code should be 136025");
-        assertEquals("N\u00E3o foi poss\u00EDvel verificar o c\u00F3digo", apiError.error().errorUserSubtitle(), "Error code should be 136025");
+        assertEquals("O código inserido está incorreto.", apiError.error().errorUserMsg(), "Error code should be 136025");
+        assertEquals("Não foi possível verificar o código", apiError.error().errorUserSubtitle(), "Error code should be 136025");
 
     }
 
