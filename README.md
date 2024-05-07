@@ -15,7 +15,7 @@ Whatsapp business api SDK, written in java. This SDK implements the Official [Wh
 
 The WhatsApp Business API allows medium and large businesses to communicate with their customers at scale. Using the API, businesses can build systems that connect thousands of customers with agents or bots, enabling both programmatic and manual communication. Additionally, you can integrate the API with numerous backend systems, such as CRM and marketing platforms.The library is designed to be simple and flexible, making it ideal for a wide range of use cases.
 
-This sdk implements whatsapp business cloud api version v16.0. [See api changelog](https://developers.facebook.com/docs/whatsapp/business-platform/changelog)
+This SDK supports WhatsApp Business API versions from v16.0 onwards. [See api changelog](https://developers.facebook.com/docs/whatsapp/business-platform/changelog)
 
 :warning: This project is still under construction. Contributions are welcome.
 
@@ -86,7 +86,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
    <dependency>
       <groupId>com.github.Bindambc</groupId>
       <artifactId>whatsapp-business-java-api</artifactId>
-      <version>v0.3.4</version>
+      <version>v0.4.0</version>
    </dependency>
 ```
 
@@ -107,7 +107,7 @@ This sdk implements whatsapp business cloud api version v16.0. [See api changelo
 
 ```gradle
 	dependencies {
-	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.3.4'
+	        implementation 'com.github.Bindambc:whatsapp-business-java-api:v0.4.0'
 	}
 ```
 
@@ -130,7 +130,7 @@ There are two client classes that can be used to interact with the API:
 ```java
  WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TestUtils.TOKEN);
 
- WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi();
+ WhatsappBusinessCloudApi whatsappBusinessCloudApi = factory.newBusinessCloudApi(ApiVersion.V19_0);
 ```
 
 2. [`WhatsappBusinessManagementApi`](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/impl/WhatsappBusinessManagementApi.java), a synchronous/blocking [WhatsApp Business Management API](https://developers.facebook.com/docs/whatsapp/business-management-api) client;
@@ -139,7 +139,7 @@ There are two client classes that can be used to interact with the API:
 ```java
 WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
 
-WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
+WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi(ApiVersion.V19_0);
  ```
 
 These can be instantiated through the corresponding factory method of [`WhatsappApiFactory`](https://github.com/Bindambc/whatsapp-business-java-api/blob/main/src/main/java/com/whatsapp/api/WhatsappApiFactory.java), by passing the token, which can be created following the instructions at [whatsapp](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started).
