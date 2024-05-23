@@ -34,13 +34,12 @@ public interface WhatsappBusinessManagementApiService {
     /**
      * Update message template call.
      *
-     * @param whatsappBusinessAccountId the whatsapp business account id
      * @param messageTemplateId         the message template id
      * @param messageTemplate           the message template
      * @return the call
      */
-    @POST("/{api-version}/{whatsapp-business-account-ID}/message_templates/{message-template-id}")
-    Call<Template> updateMessageTemplate(@Path("api-version") String apiVersion, @Path("whatsapp-business-account-ID") String whatsappBusinessAccountId, @Path("message-template-id") String messageTemplateId, @Body MessageTemplate messageTemplate);
+    @POST("/{api-version}/{message-template-id}")
+    Call<Template> updateMessageTemplate(@Path("api-version") String apiVersion, @Path("message-template-id") String messageTemplateId, @Body MessageTemplate messageTemplate);
 
     /**
      * Delete message template call.
