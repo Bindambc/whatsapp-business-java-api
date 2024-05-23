@@ -11,7 +11,6 @@ import com.whatsapp.api.domain.templates.type.LanguageType;
 import com.whatsapp.api.impl.WhatsappBusinessManagementApi;
 
 import static com.whatsapp.api.TestConstants.TOKEN;
-import static com.whatsapp.api.TestConstants.WABA_ID;
 
 public class UpdateMessageTemplateExample {
 
@@ -34,7 +33,7 @@ public class UpdateMessageTemplateExample {
                                 .addBodyTextExamples("Mr. José", "satisfaction")//
                         ))//
         ;
-        whatsappBusinessCloudApi.updateMessageTemplate(WABA_ID, "1144996326396573", template);
+        whatsappBusinessCloudApi.updateMessageTemplate("1144996326396573", template);
     }
 
 }
