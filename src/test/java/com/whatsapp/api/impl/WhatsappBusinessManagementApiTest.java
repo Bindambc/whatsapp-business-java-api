@@ -398,7 +398,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
     }
 
     /**
-     * Method under test: {@link WhatsappBusinessManagementApi#updateMessageTemplate(String, String, MessageTemplate)}
+     * Method under test: {@link WhatsappBusinessManagementApi#updateMessageTemplate(String, MessageTemplate)}
      */
     @Test
     void testUpdateMessageTemplate() throws IOException, URISyntaxException
@@ -423,7 +423,7 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
                                                                           .addBodyTextExamples("Mr. José", "satisfaction")//
                                                  ));
 
-        var response = whatsappBusinessCloudApi.updateMessageTemplate(WABA_ID, "952305634123456", template);
+        var response = whatsappBusinessCloudApi.updateMessageTemplate("952305634123456", template);
 
         Assertions.assertEquals("952305634123456", response.id());
     }
