@@ -21,7 +21,8 @@ public enum QualityRatingType {
     /**
      * Quality has not been determined
      */
-    NA("NA");
+    NA("NA"),
+    UNKNOWN("UNKNOWN");
 
     private final String value;
 
