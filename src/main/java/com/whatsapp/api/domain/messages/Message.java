@@ -93,7 +93,123 @@ public class Message {
         return context;
     }
 
-	/**
+    /**
+     * Gets interactive message.
+     * @return the interactive message
+     */
+    public InteractiveMessage getInteractiveMessage() {
+        return interactiveMessage;
+    }
+
+    /**
+     * Gets to.
+     *
+     * @return the to
+     */
+    public String getTo() {
+        return to;
+    }
+
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
+    public MessageType getType() {
+        return type;
+    }
+
+    /**
+     * Gets text message.
+     *
+     * @return the text message
+     */
+    public TextMessage getTextMessage() {
+        return textMessage;
+    }
+
+    /**
+     * Gets contact message.
+     *
+     * @return the contact message
+     */
+    public List<Contact> getContactMessage() {
+        return contactMessage;
+    }
+
+    /**
+     * Gets template message.
+     *
+     * @return the template message
+     */
+    public TemplateMessage getTemplateMessage() {
+        return templateMessage;
+    }
+
+    /**
+     * Gets audio message.
+     *
+     * @return the audio message
+     */
+    public AudioMessage getAudioMessage() {
+        return audioMessage;
+    }
+
+    /**
+     * Gets document message.
+     *
+     * @return the document message
+     */
+    public DocumentMessage getDocumentMessage() {
+        return documentMessage;
+    }
+
+    /**
+     * Gets image message.
+     *
+     * @return the image message
+     */
+    public ImageMessage getImageMessage() {
+        return imageMessage;
+    }
+
+    /**
+     * Gets sticker message.
+     *
+     * @return the sticker message
+     */
+    public StickerMessage getStickerMessage() {
+        return stickerMessage;
+    }
+
+    /**
+     * Gets video message.
+     *
+     * @return the video message
+     */
+    public VideoMessage getVideoMessage() {
+        return videoMessage;
+    }
+
+    /**
+     * Gets reaction message.
+     *
+     * @return the reaction message
+     */
+    public ReactionMessage getReactionMessage() {
+        return reactionMessage;
+    }
+
+    /**
+     * Gets location message.
+     *
+     * @return the location message
+     */
+    public LocationMessage getLocationMessage() {
+        return locationMessage;
+    }
+
+    /**
      * The type Message builder.
      */
     public static class MessageBuilder {
