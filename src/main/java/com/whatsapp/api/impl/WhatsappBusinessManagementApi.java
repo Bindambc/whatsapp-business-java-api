@@ -67,14 +67,13 @@ public class WhatsappBusinessManagementApi {
     /**
      * Update message template message template id response.
      *
-     * @param whatsappBusinessAccountId the whatsapp business account id
      * @param messageTemplateId         the message template id
      * @param messageTemplate           the message template
      * @return the message template id response
      */
-    public Template updateMessageTemplate(String whatsappBusinessAccountId, String messageTemplateId, MessageTemplate messageTemplate) {
+    public Template updateMessageTemplate(String messageTemplateId, MessageTemplate messageTemplate) {
 
-        return executeSync(whatsappBusinessManagementApiService.updateMessageTemplate(apiVersion.getValue(), whatsappBusinessAccountId, messageTemplateId, messageTemplate));
+        return executeSync(whatsappBusinessManagementApiService.updateMessageTemplate(apiVersion.getValue(), messageTemplateId, messageTemplate));
     }
 
     /**
