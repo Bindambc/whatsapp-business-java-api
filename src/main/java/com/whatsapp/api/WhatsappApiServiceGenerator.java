@@ -20,6 +20,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
+import java.time.Duration;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -96,6 +97,13 @@ public class WhatsappApiServiceGenerator {
                 .build();
     }
 
+    public static void setTimeout(final Duration duration) {
+
+        Objects.requireNonNull(duration, "Duration cannot be null");
+        sharedClient = sharedClient.newBuilder()
+                                   .callTimeout( duration )
+                                   .build();
+    }
 
     /**
      * Create service s.

@@ -15,6 +15,7 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.net.ProxySelector;
 import java.net.URISyntaxException;
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -116,4 +117,21 @@ class WhatsappApiServiceGeneratorTest extends TestUtils {
         assertEquals(CustomProxyAuthenticator.class, WhatsappApiServiceGenerator.getSharedClient().proxyAuthenticator().getClass(), "Authenticator should be CustomProxyAuthenticator");
 
     }
+
+    /**
+     * Method under test:
+     * {@link WhatsappApiServiceGenerator#setTimeout(Duration)}
+     */
+    @Test
+    void testSetTimeout() {
+
+        assertEquals( 20 * 1000, WhatsappApiServiceGenerator.getSharedClient().callTimeoutMillis() );
+
+        // Set timeout in shared client
+        WhatsappApiServiceGenerator.setTimeout( Duration.ofMinutes( 1L ) );
+
+        // Check if timeout is set
+        assertEquals( 60 * 1000, WhatsappApiServiceGenerator.getSharedClient().callTimeoutMillis() );
+    }
+
 }
