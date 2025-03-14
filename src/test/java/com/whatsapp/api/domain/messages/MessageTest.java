@@ -30,4 +30,39 @@ public class MessageTest {
 
         assertEquals(null, message.getContext(), "Context should be null");
     }
+
+    @Test
+    public void testComponentWithNamedAndOrderedParameters() {
+        // Create named parameters
+        TextParameter namedParam1 = new TextParameter("John");
+        namedParam1.setParameterName("customer_name");
+
+        TextParameter namedParam2 = new TextParameter("9128312831");
+        namedParam2.setParameterName("order_id");
+
+        // Create ordered parameters
+        TextParameter orderedParam1 = new TextParameter("John");
+        TextParameter orderedParam2 = new TextParameter("9128312831");
+
+        // Create a component and add parameters
+        Component<?> component = new BodyComponent();
+        component.addParameter(namedParam1)
+                .addParameter(namedParam2)
+                .addParameter(orderedParam1)
+                .addParameter(orderedParam2);
+
+        // Verify named parameters
+        assertEquals("customer_name", component.getParameters().get(0).getParameterName());
+        assertEquals("John", ((TextParameter) component.getParameters().get(0)).getText());
+
+        assertEquals("order_id", component.getParameters().get(1).getParameterName());
+        assertEquals("9128312831", ((TextParameter) component.getParameters().get(1)).getText());
+
+        // Verify ordered parameters
+        assertEquals(null, component.getParameters().get(2).getParameterName());
+        assertEquals("John", ((TextParameter) component.getParameters().get(2)).getText());
+
+        assertEquals(null, component.getParameters().get(3).getParameterName());
+        assertEquals("9128312831", ((TextParameter) component.getParameters().get(3)).getText());
+    }
 }
