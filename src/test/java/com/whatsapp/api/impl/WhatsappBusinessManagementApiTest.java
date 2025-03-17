@@ -28,6 +28,7 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collections;
+import java.util.Map;
 
 import static com.whatsapp.api.configuration.WhatsappApiConfig.getApiVersion;
 
@@ -505,6 +506,24 @@ class WhatsappBusinessManagementApiTest extends MockServerUtilsTest {
         Assertions.assertEquals("welcome_template3", templates.data().get(0).name());
         Assertions.assertEquals("Hello {{1}}, welcome to our {{2}} test.", templates.data().get(0).components().get(1).getText());
 
+    }
+
+    @Test
+    void testRetrieveFilteredMessageTemplate() throws IOException, URISyntaxException, InterruptedException {
+        WhatsappApiFactory factory = WhatsappApiFactory.newInstance(TOKEN);
+
+        WhatsappBusinessManagementApi whatsappBusinessCloudApi = factory.newBusinessManagementApi();
+        mockWebServer.enqueue(new MockResponse().newBuilder().code(200).body(fromResource("/retTemplate3.json")).build());
+
+        var templates = whatsappBusinessCloudApi.retrieveTemplates(WABA_ID, Map.of("name", "welcome_template3"));
+
+        RecordedRequest recordedRequest = mockWebServer.takeRequest();
+        Assertions.assertEquals("GET", recordedRequest.getMethod());
+        Assertions.assertEquals("/" + API_VERSION + "/" + WABA_ID + "/message_templates?name=welcome_template3", recordedRequest.getPath());
+
+        Assertions.assertEquals(1, templates.data().size());
+        Assertions.assertEquals("welcome_template3", templates.data().get(0).name());
+        Assertions.assertEquals("Hello {{1}}, welcome to our {{2}} test.", templates.data().get(0).components().get(1).getText());
     }
 
     @Test

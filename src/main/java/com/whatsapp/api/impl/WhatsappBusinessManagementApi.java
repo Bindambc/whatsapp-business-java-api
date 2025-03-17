@@ -128,6 +128,18 @@ public class WhatsappBusinessManagementApi {
     }
 
     /**
+     * Retrieve filtered templates message templates.
+     *
+     * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
+     * @param filters              map of query objects, key is query parameter and value is query parameter value, i.e. Map.of("name", "templateName") will search by name.
+     *                             For all filters see <a href="https://developers.facebook.com/docs/graph-api/reference/whats-app-business-hsm/#fields">Allowed fields for filtering</a>
+     * @return {@link MessageTemplates} List of templates
+     * @see <a href="https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates">Message templates</a>
+     */
+    public MessageTemplates retrieveTemplates(String whatsappBusinessAccountId, Map<String, Object> filters) {
+        return executeSync(whatsappBusinessManagementApiService.retrieveTemplates(apiVersion.getValue(), whatsappBusinessAccountId, filters));
+    }
+    /**
      * Retrieve templates message templates.
      *
      * @param whatsappBusinessAccountId Represents a specific WhatsApp Business Account (WABA). Make the API call to the WABA ID.
