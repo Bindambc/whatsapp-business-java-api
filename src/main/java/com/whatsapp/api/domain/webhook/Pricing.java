@@ -13,7 +13,9 @@ public record Pricing(
 
         @JsonProperty("category") String category,
 
-        @JsonProperty("billable") boolean billable
+        @JsonProperty("billable") boolean billable,
+
+        @JsonProperty("type") String type
 
 ) {
 
